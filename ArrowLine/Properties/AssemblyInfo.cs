@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("UML_drawer")]
+[assembly: AssemblyTitle("ArrowLine")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("UML_drawer")]
+[assembly: AssemblyProduct("ArrowLine")]
 [assembly: AssemblyCopyright("Copyright ©  2021")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("6adab93f-37b0-428b-b461-aacd0eeceee7")]
+[assembly: Guid("c3866f9d-f126-4fed-aaa4-9341f9c68b47")]
 
 // Version information for an assembly consists of the following four values:
 //
