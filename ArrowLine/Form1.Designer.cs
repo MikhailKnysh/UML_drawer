@@ -37,6 +37,7 @@ namespace ArrowLine
             this.trackBar1 = new System.Windows.Forms.TrackBar();
             this.buttonInheritanceArrow = new System.Windows.Forms.Button();
             this.buttonAggregationEndRhomb = new System.Windows.Forms.Button();
+            this.buttonAggregationStartRhomb = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_color)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).BeginInit();
@@ -115,12 +116,23 @@ namespace ArrowLine
             this.buttonAggregationEndRhomb.UseVisualStyleBackColor = true;
             this.buttonAggregationEndRhomb.Click += new System.EventHandler(this.buttonAggregationEndRhomb_Click);
             // 
+            // buttonAggregationStartRhomb
+            // 
+            this.buttonAggregationStartRhomb.Location = new System.Drawing.Point(29, 251);
+            this.buttonAggregationStartRhomb.Name = "buttonAggregationStartRhomb";
+            this.buttonAggregationStartRhomb.Size = new System.Drawing.Size(75, 23);
+            this.buttonAggregationStartRhomb.TabIndex = 6;
+            this.buttonAggregationStartRhomb.Text = "button1";
+            this.buttonAggregationStartRhomb.UseVisualStyleBackColor = true;
+            this.buttonAggregationStartRhomb.Click += new System.EventHandler(this.buttonAggregationStartRhomb_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
             this.ClientSize = new System.Drawing.Size(1220, 692);
+            this.Controls.Add(this.buttonAggregationStartRhomb);
             this.Controls.Add(this.buttonAggregationEndRhomb);
             this.Controls.Add(this.buttonInheritanceArrow);
             this.Controls.Add(this.trackBar1);
@@ -149,6 +161,7 @@ namespace ArrowLine
         private System.Windows.Forms.TrackBar trackBar1;
         private System.Windows.Forms.Button buttonInheritanceArrow;
         private System.Windows.Forms.Button buttonAggregationEndRhomb;
+        private System.Windows.Forms.Button buttonAggregationStartRhomb;
     }
 }
 

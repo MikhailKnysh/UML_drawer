@@ -20,6 +20,7 @@ namespace ArrowLine
         Graphics _graphics;
         Pen _pen;
         bool isButtonPress = false;
+        int chooseButton = 0;
         bool isMoving = false;
         Point startPoint = new Point();
         Point endPoint = new Point();
@@ -70,10 +71,24 @@ namespace ArrowLine
 
                 _graphics.DrawLines(_pen, points);
 
-                if (isButtonPress)
+                switch (chooseButton)
                 {
-                    //CreateCustomCapArrow();
-                    CreateCustomCapRhomb();
+                    case 1:
+                        {
+                            CreateCustomCapArrow();
+                            break;
+                        }
+                    case 2:
+                        {
+                            CreateCustomCapRhomb();
+                            break;
+                        }
+                    case 3:
+                        {
+                            CreateCustomCapRhombStart();
+                            break;
+                        }
+
                 }
 
             }
@@ -93,7 +108,7 @@ namespace ArrowLine
 
         private void buttonInheritanceArrow_Click(object sender, EventArgs e)
         {
-            //isButtonPress = true;
+            chooseButton = 1;
         }
 
         private void CreateCustomCapArrow()
@@ -137,7 +152,7 @@ namespace ArrowLine
 
         private void buttonAggregationEndRhomb_Click(object sender, EventArgs e)
         {
-            isButtonPress = true;
+            chooseButton = 2;
         }
 
         private void CreateCustomCapRhomb()
@@ -196,6 +211,69 @@ namespace ArrowLine
 
             _graphics.DrawPolygon(_pen, CustomCapArrow);
             _graphics.FillPolygon(shadowBrush, CustomCapArrow);
+        }
+
+        private void buttonAggregationStartRhomb_Click(object sender, EventArgs e)
+        {
+            chooseButton = 3;
+        }
+        private void CreateCustomCapRhombStart()
+        {
+            Point[] CustomCapArrow = new Point[]
+             {
+                    new Point(startPoint.X, startPoint.Y),
+                    new Point(startPoint.X, startPoint.Y),
+                    startPoint,
+                    new Point(startPoint.X, startPoint.Y),
+                    startPoint,
+             };
+
+            if (startPoint.X < endPoint.X && startPoint.Y==endPoint.Y)
+            {
+                
+                CustomCapArrow[1].X += arrowSize;
+                CustomCapArrow[1].Y -= arrowSize;
+
+                CustomCapArrow[2].X += 2 * arrowSize;
+
+                CustomCapArrow[3].X += arrowSize;
+                CustomCapArrow[3].Y += arrowSize;
+            }
+            else if (startPoint.Y > endPoint.Y && startPoint.X == endPoint.X)
+            {
+                CustomCapArrow[1].X -= arrowSize;
+                CustomCapArrow[1].Y -= arrowSize;
+
+                CustomCapArrow[2].Y -= 2 * arrowSize;
+
+                CustomCapArrow[3].X += arrowSize;
+                CustomCapArrow[3].Y -= arrowSize;
+            }
+            else if (startPoint.X > endPoint.X && startPoint.Y == endPoint.Y)
+            {
+                CustomCapArrow[1].X -= arrowSize;
+                CustomCapArrow[1].Y -= arrowSize;
+
+                CustomCapArrow[2].X -= 2 * arrowSize;
+
+                CustomCapArrow[3].X -= arrowSize;
+                CustomCapArrow[3].Y += arrowSize;
+            }
+            else 
+            {
+                CustomCapArrow[1].X += arrowSize;
+                CustomCapArrow[1].Y += arrowSize;
+
+                CustomCapArrow[2].Y += 2 * arrowSize;
+
+                CustomCapArrow[3].X -= arrowSize;
+                CustomCapArrow[3].Y += arrowSize;
+            }
+
+            SolidBrush shadowBrush = new SolidBrush(Color.White);
+
+            _graphics.DrawPolygon(_pen, CustomCapArrow);
+            //_graphics.FillPolygon(shadowBrush, CustomCapArrow);
         }
     }
 }
