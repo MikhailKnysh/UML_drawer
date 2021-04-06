@@ -151,7 +151,7 @@ namespace ArrowLine
                     break;
                 case "buttonCloseArrowDash":
                     chooseButton = 6;
-                    break;
+                    break
             }
         }
     }
