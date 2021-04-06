@@ -34,6 +34,7 @@ namespace ArrowLine
             }
 
             _graphics.DrawLines(_pen, points);
+         //   _pen.DashStyle = DashStyle.Solid;
         }
     }
 }

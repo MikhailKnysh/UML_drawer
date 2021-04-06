@@ -64,38 +64,53 @@ namespace ArrowLine
                 _graphics = Graphics.FromImage(_tmpBitmap);
                 pictureBox1.Image = _tmpBitmap;
 
-               //Line
-                
+                //Line
+                Line line = new Line(_pen, startPoint, endPoint, _graphics);
+              
+                ArrowCap arrowCap = new ArrowCap(_graphics, _pen, startPoint, endPoint);
+                line.DrawLine(false);
 
                 switch (chooseButton)
                 {
+                    case 0:
+                        {
+                            arrowCap.CreateCustomCapArrow();
+                            break;
+                        }
                     case 1:
                         {
-                          //  CreateCustomCapArrow();
+                            arrowCap.CreateCustomCapRhombEnd(true);
                             break;
                         }
                     case 2:
                         {
-                           // CreateCustomCapRhomb();
+                            arrowCap.CreateCustomCapRhombEnd(false);
                             break;
                         }
                     case 3:
                         {
-                           // CreateCustomCapRhombStart();
+                            arrowCap.CreateCustomOpenCapArrow();
+                            arrowCap.CreateCustomCapRhombStart(true);
                             break;
                         }
                     case 4:
                         {
-                           // CreateCustomOpenCapArrow();
+                            arrowCap.CreateCustomOpenCapArrow();
+                            arrowCap.CreateCustomCapRhombStart(false);
                             break;
                         }
                     case 5:
                         {
-                            //CreateCustomDashLine();
+                            arrowCap.CreateCustomOpenCapArrow();
+                            break;
+                        }
+                    case 6:
+                        {
+                            arrowCap.CreateCustomCapArrow();
+                            line.DrawLine(true);
                             break;
                         }
                 }
-
             }
         }
 
@@ -111,30 +126,33 @@ namespace ArrowLine
             _pen.Width = trackBar1.Value;
         }
 
-        private void buttonInheritanceArrow_Click(object sender, EventArgs e)
+        private void CheckButtonPressed_Click(object sender, EventArgs e)
         {
-            chooseButton = 1;
-        }
-
-       
-
-        private void buttonAggregationEndRhomb_Click(object sender, EventArgs e)
-        {
-            chooseButton = 2;
-        }
-        private void buttonAggregationStartRhomb_Click(object sender, EventArgs e)
-        {
-            chooseButton = 3;
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            chooseButton = 4;
-        }
-
-        private void button2_Click(object sender, EventArgs e)
-        {
-            chooseButton = 5;
+            Button tmp = (Button)sender;
+            switch (tmp.Name)
+            {
+                case "buttonCloseArrow":
+                    chooseButton = 0;
+                    break;
+                case "buttonEndRhomb":
+                    chooseButton = 1;
+                    break;
+                case "buttonEndRhombBlack":
+                    chooseButton = 2;
+                    break;
+                case "buttonStartRhomb1":
+                    chooseButton = 3;
+                    break;
+                case "buttonStartRhombBlack":
+                    chooseButton = 4;
+                    break;
+                case "buttonOpenArrow":
+                    chooseButton = 5;
+                    break;
+                case "buttonCloseArrowDash":
+                    chooseButton = 6;
+                    break
+            }
         }
     }
 }
