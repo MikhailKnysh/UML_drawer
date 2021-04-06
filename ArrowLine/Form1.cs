@@ -228,7 +228,7 @@ namespace ArrowLine
                     startPoint,
              };
 
-            if (startPoint.X < endPoint.X && startPoint.Y!=endPoint.Y)
+            if (startPoint.X < endPoint.X && startPoint.Y==endPoint.Y)
             {
                 
                 CustomCapArrow[1].X += arrowSize;
@@ -249,7 +249,7 @@ namespace ArrowLine
                 CustomCapArrow[3].X += arrowSize;
                 CustomCapArrow[3].Y -= arrowSize;
             }
-            else if (startPoint.X > endPoint.X)
+            else if (startPoint.X > endPoint.X && startPoint.Y == endPoint.Y)
             {
                 CustomCapArrow[1].X -= arrowSize;
                 CustomCapArrow[1].Y -= arrowSize;
@@ -259,7 +259,7 @@ namespace ArrowLine
                 CustomCapArrow[3].X -= arrowSize;
                 CustomCapArrow[3].Y += arrowSize;
             }
-            else
+            else 
             {
                 CustomCapArrow[1].X += arrowSize;
                 CustomCapArrow[1].Y += arrowSize;
@@ -273,7 +273,7 @@ namespace ArrowLine
             SolidBrush shadowBrush = new SolidBrush(Color.White);
 
             _graphics.DrawPolygon(_pen, CustomCapArrow);
-            _graphics.FillPolygon(shadowBrush, CustomCapArrow);
+            //_graphics.FillPolygon(shadowBrush, CustomCapArrow);
         }
     }
 }
