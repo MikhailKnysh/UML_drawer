@@ -38,6 +38,7 @@ namespace ArrowLine
             this.buttonInheritanceArrow = new System.Windows.Forms.Button();
             this.buttonAggregationEndRhomb = new System.Windows.Forms.Button();
             this.buttonAggregationStartRhomb = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_color)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).BeginInit();
@@ -46,10 +47,10 @@ namespace ArrowLine
             // pictureBox1
             // 
             this.pictureBox1.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.pictureBox1.Location = new System.Drawing.Point(205, -1);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.pictureBox1.Location = new System.Drawing.Point(154, -1);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(1017, 692);
+            this.pictureBox1.Size = new System.Drawing.Size(763, 562);
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
             this.pictureBox1.Paint += new System.Windows.Forms.PaintEventHandler(this.pictureBox1_Paint);
@@ -66,11 +67,11 @@ namespace ArrowLine
             this.button_Color.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Maroon;
             this.button_Color.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.button_Color.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.button_Color.Location = new System.Drawing.Point(16, 14);
+            this.button_Color.Location = new System.Drawing.Point(12, 11);
             this.button_Color.Margin = new System.Windows.Forms.Padding(0);
             this.button_Color.Name = "button_Color";
-            this.button_Color.Padding = new System.Windows.Forms.Padding(0, 4, 0, 0);
-            this.button_Color.Size = new System.Drawing.Size(129, 43);
+            this.button_Color.Padding = new System.Windows.Forms.Padding(0, 3, 0, 0);
+            this.button_Color.Size = new System.Drawing.Size(97, 35);
             this.button_Color.TabIndex = 1;
             this.button_Color.Text = "Change Color";
             this.button_Color.UseVisualStyleBackColor = false;
@@ -79,29 +80,28 @@ namespace ArrowLine
             // pictureBox_color
             // 
             this.pictureBox_color.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.pictureBox_color.Location = new System.Drawing.Point(151, 21);
-            this.pictureBox_color.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.pictureBox_color.Location = new System.Drawing.Point(113, 17);
+            this.pictureBox_color.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.pictureBox_color.Name = "pictureBox_color";
-            this.pictureBox_color.Size = new System.Drawing.Size(21, 26);
+            this.pictureBox_color.Size = new System.Drawing.Size(16, 21);
             this.pictureBox_color.TabIndex = 2;
             this.pictureBox_color.TabStop = false;
             // 
             // trackBar1
             // 
-            this.trackBar1.Location = new System.Drawing.Point(16, 75);
-            this.trackBar1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.trackBar1.Location = new System.Drawing.Point(12, 61);
+            this.trackBar1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.trackBar1.Name = "trackBar1";
-            this.trackBar1.Size = new System.Drawing.Size(104, 56);
+            this.trackBar1.Size = new System.Drawing.Size(78, 45);
             this.trackBar1.TabIndex = 3;
             this.trackBar1.Scroll += new System.EventHandler(this.trackBar1_Scroll);
             // 
             // buttonInheritanceArrow
             // 
             this.buttonInheritanceArrow.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("buttonInheritanceArrow.BackgroundImage")));
-            this.buttonInheritanceArrow.Location = new System.Drawing.Point(16, 122);
-            this.buttonInheritanceArrow.Margin = new System.Windows.Forms.Padding(4);
+            this.buttonInheritanceArrow.Location = new System.Drawing.Point(12, 99);
             this.buttonInheritanceArrow.Name = "buttonInheritanceArrow";
-            this.buttonInheritanceArrow.Size = new System.Drawing.Size(89, 48);
+            this.buttonInheritanceArrow.Size = new System.Drawing.Size(67, 39);
             this.buttonInheritanceArrow.TabIndex = 4;
             this.buttonInheritanceArrow.UseVisualStyleBackColor = true;
             this.buttonInheritanceArrow.Click += new System.EventHandler(this.buttonInheritanceArrow_Click);
@@ -109,29 +109,42 @@ namespace ArrowLine
             // buttonAggregationEndRhomb
             // 
             this.buttonAggregationEndRhomb.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("buttonAggregationEndRhomb.BackgroundImage")));
-            this.buttonAggregationEndRhomb.Location = new System.Drawing.Point(27, 177);
+            this.buttonAggregationEndRhomb.Location = new System.Drawing.Point(20, 144);
+            this.buttonAggregationEndRhomb.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.buttonAggregationEndRhomb.Name = "buttonAggregationEndRhomb";
-            this.buttonAggregationEndRhomb.Size = new System.Drawing.Size(78, 49);
+            this.buttonAggregationEndRhomb.Size = new System.Drawing.Size(58, 40);
             this.buttonAggregationEndRhomb.TabIndex = 5;
             this.buttonAggregationEndRhomb.UseVisualStyleBackColor = true;
             this.buttonAggregationEndRhomb.Click += new System.EventHandler(this.buttonAggregationEndRhomb_Click);
             // 
             // buttonAggregationStartRhomb
             // 
-            this.buttonAggregationStartRhomb.Location = new System.Drawing.Point(29, 251);
+            this.buttonAggregationStartRhomb.Location = new System.Drawing.Point(22, 204);
+            this.buttonAggregationStartRhomb.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.buttonAggregationStartRhomb.Name = "buttonAggregationStartRhomb";
-            this.buttonAggregationStartRhomb.Size = new System.Drawing.Size(75, 23);
+            this.buttonAggregationStartRhomb.Size = new System.Drawing.Size(56, 19);
             this.buttonAggregationStartRhomb.TabIndex = 6;
             this.buttonAggregationStartRhomb.Text = "button1";
             this.buttonAggregationStartRhomb.UseVisualStyleBackColor = true;
             this.buttonAggregationStartRhomb.Click += new System.EventHandler(this.buttonAggregationStartRhomb_Click);
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(20, 241);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 7;
+            this.button1.Text = "button1";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // Form1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
-            this.ClientSize = new System.Drawing.Size(1220, 692);
+            this.ClientSize = new System.Drawing.Size(915, 562);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.buttonAggregationStartRhomb);
             this.Controls.Add(this.buttonAggregationEndRhomb);
             this.Controls.Add(this.buttonInheritanceArrow);
@@ -140,7 +153,7 @@ namespace ArrowLine
             this.Controls.Add(this.button_Color);
             this.Controls.Add(this.pictureBox1);
             this.ForeColor = System.Drawing.SystemColors.ActiveCaption;
-            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "Form1";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
@@ -162,6 +175,7 @@ namespace ArrowLine
         private System.Windows.Forms.Button buttonInheritanceArrow;
         private System.Windows.Forms.Button buttonAggregationEndRhomb;
         private System.Windows.Forms.Button buttonAggregationStartRhomb;
+        private System.Windows.Forms.Button button1;
     }
 }
 

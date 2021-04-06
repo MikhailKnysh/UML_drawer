@@ -88,7 +88,11 @@ namespace ArrowLine
                             CreateCustomCapRhombStart();
                             break;
                         }
-
+                    case 4:
+                        {
+                            CreateCustomOpenCapArrow();
+                            break;
+                        }
                 }
 
             }
@@ -228,9 +232,9 @@ namespace ArrowLine
                     startPoint,
              };
 
-            if (startPoint.X < endPoint.X && startPoint.Y==endPoint.Y)
+            if (startPoint.X < endPoint.X && startPoint.Y == endPoint.Y)
             {
-                
+
                 CustomCapArrow[1].X += arrowSize;
                 CustomCapArrow[1].Y -= arrowSize;
 
@@ -259,7 +263,7 @@ namespace ArrowLine
                 CustomCapArrow[3].X -= arrowSize;
                 CustomCapArrow[3].Y += arrowSize;
             }
-            else 
+            else
             {
                 CustomCapArrow[1].X += arrowSize;
                 CustomCapArrow[1].Y += arrowSize;
@@ -274,6 +278,56 @@ namespace ArrowLine
 
             _graphics.DrawPolygon(_pen, CustomCapArrow);
             //_graphics.FillPolygon(shadowBrush, CustomCapArrow);
+        }
+
+        private void CreateCustomOpenCapArrow()
+        {
+            Point[] CustomCapArrow = new Point[]
+             {
+                    new Point(endPoint.X, endPoint.Y),
+                    endPoint,
+                    new Point(endPoint.X, endPoint.Y)
+             };
+
+            if (startPoint.X < endPoint.X)
+            {
+                CustomCapArrow[0].Y -= arrowSize;
+                CustomCapArrow[0].X -= arrowSize;
+
+                CustomCapArrow[2].Y += arrowSize;
+                CustomCapArrow[2].X -= arrowSize;
+            }
+            else if (startPoint.Y > endPoint.Y && startPoint.X == endPoint.X)
+            {
+                CustomCapArrow[0].Y += arrowSize;
+                CustomCapArrow[0].X -= arrowSize;
+
+                CustomCapArrow[2].Y += arrowSize;
+                CustomCapArrow[2].X += arrowSize;
+            }
+            else if (startPoint.X > endPoint.X)
+            {
+                CustomCapArrow[0].Y -= arrowSize;
+                CustomCapArrow[0].X += arrowSize;
+
+                CustomCapArrow[2].Y += arrowSize;
+                CustomCapArrow[2].X += arrowSize;
+            }
+            else
+            {
+                CustomCapArrow[0].Y -= arrowSize;
+                CustomCapArrow[0].X += arrowSize;
+
+                CustomCapArrow[2].Y -= arrowSize;
+                CustomCapArrow[2].X -= arrowSize;
+            }
+
+            _graphics.DrawLines(_pen, CustomCapArrow);
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            chooseButton = 4;
         }
     }
 }
