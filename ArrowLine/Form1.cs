@@ -69,7 +69,7 @@ namespace ArrowLine
                 Point end = endPoint;
                 Point[] points = { start, cointermediate, end };
 
-                _graphics.DrawLines(_pen, points);
+                //_graphics.DrawLines(_pen, points);
 
                 switch (chooseButton)
                 {
@@ -91,6 +91,11 @@ namespace ArrowLine
                     case 4:
                         {
                             CreateCustomOpenCapArrow();
+                            break;
+                        }
+                    case 5:
+                        {
+                            CreateCustomDashLine();
                             break;
                         }
                 }
@@ -324,10 +329,20 @@ namespace ArrowLine
 
             _graphics.DrawLines(_pen, CustomCapArrow);
         }
+        private void CreateCustomDashLine()
+        {
+            _pen.DashStyle = DashStyle.Dash;
+            _graphics.DrawLine(_pen, startPoint, endPoint);
+        }
 
         private void button1_Click(object sender, EventArgs e)
         {
             chooseButton = 4;
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            chooseButton = 5;
         }
     }
 }
