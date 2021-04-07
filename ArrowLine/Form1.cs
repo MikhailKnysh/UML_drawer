@@ -55,52 +55,56 @@ namespace ArrowLine
                 _graphics = Graphics.FromImage(_tmpBitmap);
                 pictureBox1.Image = _tmpBitmap;
 
-                Line line = new Line(_pen, _startPoint, _endPoint, _graphics);
-              
+                AbstractLine line = new Line(_pen, _startPoint, _endPoint, _graphics);
                 ArrowCap arrowCap = new ArrowCap(_graphics, _pen, _startPoint, _endPoint);
-                line.DrawLine(false);
 
-                switch (_chooseButton)
-                {
-                    case 0:
-                        {
-                            arrowCap.CreateCustomCapArrow();
-                            break;
-                        }
-                    case 1:
-                        {
-                            arrowCap.CreateCustomCapRhombEnd(true);
-                            break;
-                        }
-                    case 2:
-                        {
-                            arrowCap.CreateCustomCapRhombEnd(false);
-                            break;
-                        }
-                    case 3:
-                        {
-                            arrowCap.CreateCustomOpenCapArrow();
-                            arrowCap.CreateCustomCapRhombStart(true);
-                            break;
-                        }
-                    case 4:
-                        {
-                            arrowCap.CreateCustomOpenCapArrow();
-                            arrowCap.CreateCustomCapRhombStart(false);
-                            break;
-                        }
-                    case 5:
-                        {
-                            arrowCap.CreateCustomOpenCapArrow();
-                            break;
-                        }
-                    case 6:
-                        {
-                            arrowCap.CreateCustomCapArrow();
-                            line.DrawLine(true);
-                            break;
-                        }
-                }
+                //if (_chooseButton >= 0 && _chooseButton <= 5)
+                //{
+                //    line.DrawLine();
+                //}
+
+                //switch (_chooseButton)
+                //{
+                //    case 0:
+                //        {
+                //            arrowCap.CreateCustomCapArrow();
+                //            break;
+                //        }
+                //    case 1:
+                //        {
+                //            arrowCap.CreateCustomCapRhombEnd(true);
+                //            break;
+                //        }
+                //    case 2:
+                //        {
+                //            arrowCap.CreateCustomCapRhombEnd(false);
+                //            break;
+                //        }
+                //    case 3:
+                //        {
+                //            arrowCap.CreateCustomOpenCapArrow();
+                //            arrowCap.CreateCustomCapRhombStart(true);
+                //            break;
+                //        }
+                //    case 4:
+                //        {
+                //            arrowCap.CreateCustomOpenCapArrow();
+                //            arrowCap.CreateCustomCapRhombStart(false);
+                //            break;
+                //        }
+                //    case 5:
+                //        {
+                //            arrowCap.CreateCustomOpenCapArrow();
+                //            break;
+                //        }
+                //    case 6:
+                //        {
+                //            line = new DashLine(_startPoint, _endPoint, _graphics);
+                //            line.DrawLine();
+                //            arrowCap.CreateCustomCapArrow();
+                //            break;
+                //        }
+                //}
             }
         }
 
@@ -121,25 +125,25 @@ namespace ArrowLine
             Button button = (Button)sender;
             switch (button.Name)
             {
-                case "buttonCloseArrow":
+                case nameof(buttonCloseArrow):
                     _chooseButton = 0;
                     break;
-                case "buttonEndRhomb":
+                case nameof(buttonEndRhomb):
                     _chooseButton = 1;
                     break;
-                case "buttonEndRhombBlack":
+                case nameof(buttonEndRhombBlack):
                     _chooseButton = 2;
                     break;
-                case "buttonStartRhomb1":
+                case nameof(buttonStartRhomb1):
                     _chooseButton = 3;
                     break;
-                case "buttonStartRhombBlack":
+                case nameof(buttonStartRhombBlack):
                     _chooseButton = 4;
                     break;
-                case "buttonOpenArrow":
+                case nameof(buttonOpenArrow):
                     _chooseButton = 5;
                     break;
-                case "buttonCloseArrowDash":
+                case nameof(buttonCloseArrowDash):
                     _chooseButton = 6;
                     break;
             }
