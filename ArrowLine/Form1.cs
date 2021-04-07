@@ -1,29 +1,20 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Drawing.Drawing2D;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace ArrowLine
 {
     public partial class Form1 : Form
     {
+        private Bitmap _bitmap;
+        private Bitmap _tmpBitmap;
+        private Graphics _graphics;
+        private Pen _pen;
+        private int _chooseButton = 0;
+        private bool _isMoving = false;
+        private Point _startPoint = new Point();
+        private Point _endPoint = new Point();
 
-        const int arrowSize = 10;
-        Bitmap _bitmap;
-        Bitmap _tmpBitmap;
-        Graphics _graphics;
-        Pen _pen;
-        bool isButtonPress = false;
-        int chooseButton = 0;
-        bool isMoving = false;
-        Point startPoint = new Point();
-        Point endPoint = new Point();
         public Form1()
         {
             InitializeComponent();
@@ -37,40 +28,39 @@ namespace ArrowLine
 
         private void pictureBox1_MouseDown(object sender, MouseEventArgs e)
         {
-            isMoving = true;
-            startPoint = e.Location;
+            _isMoving = true;
+            _startPoint = e.Location;
         }
 
         private void pictureBox1_MouseUp(object sender, MouseEventArgs e)
         {
-            isMoving = false;
+            _isMoving = false;
             _bitmap = _tmpBitmap;
         }
 
         private void pictureBox1_MouseMove(object sender, MouseEventArgs e)
         {
-            if (isMoving)
+            if (_isMoving)
             {
-                endPoint = e.Location;
+                _endPoint = e.Location;
                 pictureBox1.Invalidate();
             }
         }
 
         private void pictureBox1_Paint(object sender, PaintEventArgs e)
         {
-            if (isMoving)
+            if (_isMoving)
             {
                 _tmpBitmap = (Bitmap)_bitmap.Clone();
                 _graphics = Graphics.FromImage(_tmpBitmap);
                 pictureBox1.Image = _tmpBitmap;
 
-                //Line
-                Line line = new Line(_pen, startPoint, endPoint, _graphics);
+                Line line = new Line(_pen, _startPoint, _endPoint, _graphics);
               
-                ArrowCap arrowCap = new ArrowCap(_graphics, _pen, startPoint, endPoint);
+                ArrowCap arrowCap = new ArrowCap(_graphics, _pen, _startPoint, _endPoint);
                 line.DrawLine(false);
 
-                switch (chooseButton)
+                switch (_chooseButton)
                 {
                     case 0:
                         {
@@ -128,30 +118,30 @@ namespace ArrowLine
 
         private void CheckButtonPressed_Click(object sender, EventArgs e)
         {
-            Button tmp = (Button)sender;
-            switch (tmp.Name)
+            Button button = (Button)sender;
+            switch (button.Name)
             {
                 case "buttonCloseArrow":
-                    chooseButton = 0;
+                    _chooseButton = 0;
                     break;
                 case "buttonEndRhomb":
-                    chooseButton = 1;
+                    _chooseButton = 1;
                     break;
                 case "buttonEndRhombBlack":
-                    chooseButton = 2;
+                    _chooseButton = 2;
                     break;
                 case "buttonStartRhomb1":
-                    chooseButton = 3;
+                    _chooseButton = 3;
                     break;
                 case "buttonStartRhombBlack":
-                    chooseButton = 4;
+                    _chooseButton = 4;
                     break;
                 case "buttonOpenArrow":
-                    chooseButton = 5;
+                    _chooseButton = 5;
                     break;
                 case "buttonCloseArrowDash":
-                    chooseButton = 6;
-                    break
+                    _chooseButton = 6;
+                    break;
             }
         }
     }

@@ -10,23 +10,23 @@ namespace ArrowLine
 {
     class Line
     {
-        Point startPoint = new Point();
-        Point endPoint = new Point();
-        Pen _pen;
-        Graphics _graphics;
+        private Point _startPoint = new Point();
+        private Point _endPoint = new Point();
+        private Pen _pen;
+        private Graphics _graphics;
 
-        public Line(Pen _pen, Point startPoint, Point endPoint, Graphics _graphics)
+        public Line(Pen pen, Point startPoint, Point endPoint, Graphics graphics)
         {
-            this._pen = _pen;
-            this.startPoint = startPoint;
-            this.endPoint = endPoint;
-            this._graphics = _graphics;
+            _pen = pen;
+            _startPoint = startPoint;
+            _endPoint = endPoint;
+            _graphics = graphics;
         }
 
         public void DrawLine(bool chooseLine)
         {
-            Point cointermediate = new Point(startPoint.X, endPoint.Y);
-            Point[] points = { startPoint, cointermediate, endPoint };
+            Point cointermediate = new Point(_startPoint.X, _endPoint.Y);
+            Point[] points = { _startPoint, cointermediate, _endPoint };
 
             if (chooseLine)
             {
