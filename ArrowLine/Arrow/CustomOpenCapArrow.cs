@@ -4,7 +4,7 @@ namespace ArrowLine.Arrow
 {
     public class CustomOpenCapArrow : AbstractArrow
     {
-        public CustomOpenCapArrow(Pen pen)
+        public CustomOpenCapArrow(Pen pen)//
         {
             _pen = pen;
         }
@@ -54,7 +54,7 @@ namespace ArrowLine.Arrow
             return _CustomCapArrow;
         }
 
-        public override void Draw(Graphics graphics)
+        public override void Draw()
         {
             CreateArrowObject();
 

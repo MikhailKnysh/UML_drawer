@@ -10,12 +10,20 @@ namespace ArrowLine.Arrow
 {
     class InheritanceArrow : AbstractArrow
     {
-        public override void Draw(Graphics graphics)
+        public InheritanceArrow(Pen pen, Point startPoint, Point endPoint, Graphics graphics)
         {
-            AbstractArrow line = new SolidLine(_pen);
-            AbstractArrow arrowCap = new CustomCloseCap(_pen);
-            line.Draw(graphics);
-            arrowCap.Draw(graphics);
+            _pen = pen;
+            _startPoint = startPoint;
+            _endPoint = endPoint;
+            this.graphics = graphics;
+        }
+
+        public override void Draw()
+        {
+            AbstractArrow line = new SolidLine(_pen, _startPoint, _endPoint, graphics);
+            line.Draw();
+            AbstractArrow arrowCap = new CustomCloseCap(_pen, _startPoint, _endPoint, graphics);
+            arrowCap.Draw();
         }
 
         protected override Point[] CreateArrowObject()

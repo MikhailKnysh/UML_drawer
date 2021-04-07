@@ -4,7 +4,7 @@ namespace ArrowLine.Arrow
 {
     public class CustomWhiteCapRhombStart : AbstractArrow
     {
-        public CustomWhiteCapRhombStart(Pen pen)
+        public CustomWhiteCapRhombStart(Pen pen)//
         {
             _pen = pen;
         }
@@ -65,7 +65,7 @@ namespace ArrowLine.Arrow
             return _CustomCapArrow;
         }
 
-        public override void Draw(Graphics graphics)
+        public override void Draw()
         {
             SolidBrush shadowBrush = new SolidBrush(Color.White);
 
