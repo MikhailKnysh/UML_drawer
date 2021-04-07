@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Drawing;
 
 namespace ArrowLine
 {
@@ -16,12 +11,12 @@ namespace ArrowLine
         private Point _endPoint = new Point();
         private Point[] _CustomCapArrow;
 
-        public ArrowCap(Graphics _graphics, Pen _pen, Point startPoint, Point endPoint)
+        public ArrowCap(Graphics graphics, Pen pen, Point startPoint, Point endPoint)
         {
-            this._graphics = _graphics;
-            this._pen = _pen;
-            this._startPoint = startPoint;
-            this._endPoint = endPoint;
+            _graphics = graphics;
+            _pen = pen;
+            _startPoint = startPoint;
+            _endPoint = endPoint;
         }
 
         public void CreateCustomCapArrow()
