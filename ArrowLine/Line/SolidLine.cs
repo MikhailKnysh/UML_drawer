@@ -1,18 +1,16 @@
 ﻿using System.Drawing;
-using System.Drawing.Drawing2D;
 
 namespace ArrowLine.Line
 {
-    public class DashLine : AbstractArrow
+    public class SolidLine : AbstractArrow
     {
-        public DashLine(Pen pen)
+        public SolidLine(Pen pen)
         {
             _pen = pen;
         }
 
         public override void Draw(Graphics graphics)
         {
-            _pen.DashStyle = DashStyle.Dash;
             graphics.DrawLines(_pen, CreateArrowObject());
         }
 

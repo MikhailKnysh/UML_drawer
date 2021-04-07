@@ -4,9 +4,8 @@ namespace ArrowLine
 {
     public abstract class AbstractTools
     {
-        protected Point _startPoint;
-        protected Point _endPoint;
-        protected Pen _pen;
-        protected Graphics _graphics;
+        public Point _startPoint;
+        public Point _endPoint;
+        public Pen _pen;
     }
 }
