@@ -47,12 +47,20 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AbstractArrow.cs" />
+    <Compile Include="AgregationArrowEnd.cs" />
+    <Compile Include="AgregationArrowStart.cs" />
     <Compile Include="Arrow\CustomBlackCapRhombEnd.cs" />
     <Compile Include="Arrow\CustomBlackCapRhombStart.cs" />
     <Compile Include="Arrow\CustomCloseCap.cs" />
     <Compile Include="Arrow\CustomOpenCapArrow.cs" />
     <Compile Include="Arrow\CustomWhiteCapRhombEnd.cs" />
     <Compile Include="Arrow\CustomWhiteCapRhombStart.cs" />
+    <Compile Include="AssociationArrow.cs" />
+    <Compile Include="CompositionArrowEnd.cs" />
+    <Compile Include="CompositionArrowStart.cs" />
+    <Compile Include="IArrowCap.cs" />
+    <Compile Include="ILine.cs" />
+    <Compile Include="ImplementationArrow.cs" />
     <Compile Include="InheritanceArrow.cs" />
     <Compile Include="Line\DashLine.cs" />
     <Compile Include="Form1.cs">

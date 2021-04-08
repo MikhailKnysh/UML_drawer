@@ -3,23 +3,22 @@ using System.Drawing.Drawing2D;
 
 namespace ArrowLine.Line
 {
-    public class DashLine : AbstractArrow
+    public class DashLine : AbstractArrow, ILine
     {
-        public DashLine(Pen pen, Point startPoint, Point endPoint, Graphics graphics)
+        public DashLine(Pen pen, Point startPoint, Point endPoint)
         {
             _pen = pen;
             _startPoint = startPoint;
             _endPoint = endPoint;
-            this.graphics = graphics;
         }
 
         public override void Draw(Graphics graphics)
         {
             _pen.DashStyle = DashStyle.Dash;
-            graphics.DrawLines(_pen, CreateArrowObject());
+            graphics.DrawLines(_pen, CreateArrowLine());
         }
 
-        public override Point[] CreateArrowObject()
+        public Point[] CreateArrowLine()
         {
             return new Point[] {
                 _startPoint,

@@ -13,8 +13,6 @@ namespace ArrowLine
         private Graphics _graphics;
         private Pen _pen;
         private bool _isMoving = false;
-        //Point startPoint = new Point();
-        //Point endPoint = new Point();
 
         AbstractArrow arrow;
         
@@ -28,7 +26,7 @@ namespace ArrowLine
         {
             _bitmap = new Bitmap(pictureBox1.Width, pictureBox1.Height);
             _pen = new Pen(Color.Black, 2);
-            arrow = new InheritanceArrow(_pen);
+            arrow = new InheritanceArrow();
         }
 
         private void pictureBox1_MouseDown(object sender, MouseEventArgs e)
@@ -87,26 +85,26 @@ namespace ArrowLine
             switch (button.Name)
             {
                 case nameof(buttonCloseArrow):
-                    arrow = new InheritanceArrow(_pen);
+                    arrow = new InheritanceArrow();
                     break;
                 case nameof(buttonEndRhomb):
-                   // arrowCap = new CustomWhiteCapRhombEnd(_graphics, _pen, line._startPoint, line._endPoint);
+                    arrow = new AgregationEndArrow();
                     break;
                 case nameof(buttonEndRhombBlack):
-                   // arrowCap = new CustomBlackCapRhombEnd(_graphics, _pen, line._startPoint, line._endPoint);
+                    arrow = new CompositionEndArrow();
                     break;
                 case nameof(buttonStartRhomb1):
 
-                    //arrowCap = new CustomWhiteCapRhombStart(_graphics, _pen, line._startPoint, line._endPoint);
+                    arrow = new AgregationStartArrow();
                     break;
                 case nameof(buttonStartRhombBlack):
-                    //_chooseButton = 4;
+                    arrow = new CompositionStartArrow();
                     break;
                 case nameof(buttonOpenArrow):
-                    //_chooseButton = 5;
+                    arrow = new AssociationArrow();
                     break;
                 case nameof(buttonCloseArrowDash):
-                   // _chooseButton = 6;
+                    arrow = new ImplementationArrow();
                     break;
             }
         }

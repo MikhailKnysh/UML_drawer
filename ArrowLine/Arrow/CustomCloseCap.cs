@@ -2,7 +2,7 @@
 
 namespace ArrowLine.Arrow
 {
-    public class CustomCloseCap : AbstractArrow
+    public class CustomCloseCap : AbstractArrow, IArrowCap
     {
         public CustomCloseCap(Pen pen, Point startPoint, Point endPoint)
         {
@@ -12,7 +12,7 @@ namespace ArrowLine.Arrow
         }
 
 
-        public override Point[] CreateArrowObject()
+        public Point[] CreateArrowObject()
         {
             Point[] _CustomCapArrow = new Point[]
             {

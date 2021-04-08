@@ -1,22 +1,27 @@
-﻿using ArrowLine.Line;
+﻿using ArrowLine.Arrow;
+using ArrowLine.Line;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
-namespace ArrowLine.Arrow
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ArrowLine
 {
-    class InheritanceArrow : AbstractArrow
+    class AssociationArrow: AbstractArrow
     {
-        public InheritanceArrow()
+        public AssociationArrow()
         {
             _pen = new Pen(Color.Black, 2);
         }
-      
+
 
         public override void Draw(Graphics graphics)
         {
             AbstractArrow line = new SolidLine(_pen, _startPoint, _endPoint);
             line.Draw(graphics);
-            AbstractArrow arrowCap = new CustomCloseCap(_pen, _startPoint, _endPoint);
+            AbstractArrow arrowCap = new CustomOpenCapArrow(_pen, _startPoint, _endPoint);
             arrowCap.Draw(graphics);
         }
     }

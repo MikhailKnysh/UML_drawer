@@ -2,7 +2,7 @@
 
 namespace ArrowLine.Line
 {
-    public class SolidLine : AbstractArrow
+    public class SolidLine : AbstractArrow, ILine
     {
         public SolidLine(Pen pen, Point startPoint, Point endPoint)
         {
@@ -13,10 +13,10 @@ namespace ArrowLine.Line
 
         public override void Draw(Graphics graphics)
         {
-            graphics.DrawLines(_pen, CreateArrowObject());
+            graphics.DrawLines(_pen, CreateArrowLine());
         }
 
-        public override Point[] CreateArrowObject()
+        public Point[] CreateArrowLine()
         {
             return new Point[] {
                 _startPoint,
