@@ -13,8 +13,8 @@ namespace ArrowLine
         private Graphics _graphics;
         private Pen _pen;
         private bool _isMoving = false;
-        Point startPoint = new Point();
-        Point endPoint = new Point();
+        //Point startPoint = new Point();
+        //Point endPoint = new Point();
 
         AbstractArrow arrow;
         
@@ -28,12 +28,13 @@ namespace ArrowLine
         {
             _bitmap = new Bitmap(pictureBox1.Width, pictureBox1.Height);
             _pen = new Pen(Color.Black, 2);
+            arrow = new InheritanceArrow(_pen);
         }
 
         private void pictureBox1_MouseDown(object sender, MouseEventArgs e)
         {
             _isMoving = true;
-            startPoint = e.Location;
+            arrow._startPoint = e.Location;
         }
 
         private void pictureBox1_MouseUp(object sender, MouseEventArgs e)
@@ -46,85 +47,27 @@ namespace ArrowLine
         {
             if (_isMoving)
             {
-                _tmpBitmap = (Bitmap)_bitmap.Clone();
-                _graphics = Graphics.FromImage(_tmpBitmap);
-
-                endPoint = e.Location;
-
-                arrow.Draw();
-
-                pictureBox1.Image = _tmpBitmap;
-                GC.Collect();
+                arrow._endPoint = e.Location;
                 pictureBox1.Invalidate();
             }
         }
 
         private void pictureBox1_Paint(object sender, PaintEventArgs e)
         {
-            //if (_isMoving)
-            //{
-            //    _tmpBitmap = (Bitmap)_bitmap.Clone();
-            //    _graphics = Graphics.FromImage(_tmpBitmap);
-            //    pictureBox1.Image = _tmpBitmap;
+            if (_isMoving)
+            {
+                _tmpBitmap = (Bitmap)_bitmap.Clone();
+                _graphics = Graphics.FromImage(_tmpBitmap);
+                pictureBox1.Image = _tmpBitmap;
 
-            //    arrow.Draw(_graphics);
+                arrow.Draw(_graphics);
 
-            //    pictureBox1.Image = _tmpBitmap;
-            //    GC.Collect();
+                pictureBox1.Image = _tmpBitmap;
+                GC.Collect();
 
-                //AbstractLine line = new Line(_pen, _startPoint, _endPoint, _graphics);
-                //ArrowCap arrowCap = new ArrowCap(_graphics, _pen, _startPoint, _endPoint);
-
-                //if (_chooseButton >= 0 && _chooseButton <= 5)
-                //{
-                //    line.DrawLine();
-                //}
-
-                //switch (_chooseButton)
-                //{
-                //    case 0:
-                //        {
-                //            arrowCap.CreateCustomCapArrow();
-                //            break;
-                //        }
-                //    case 1:
-                //        {
-                //            arrowCap.CreateCustomCapRhombEnd(true);
-                //            break;
-                //        }
-                //    case 2:
-                //        {
-                //            arrowCap.CreateCustomCapRhombEnd(false);
-                //            break;
-                //        }
-                //    case 3:
-                //        {
-                //            arrowCap.CreateCustomOpenCapArrow();
-                //            arrowCap.CreateCustomCapRhombStart(true);
-                //            break;
-                //        }
-                //    case 4:
-                //        {
-                //            arrowCap.CreateCustomOpenCapArrow();
-                //            arrowCap.CreateCustomCapRhombStart(false);
-                //            break;
-                //        }
-                //    case 5:
-                //        {
-                //            arrowCap.CreateCustomOpenCapArrow();
-                //            break;
-                //        }
-                //    case 6:
-                //        {
-                //            line = new DashLine(_startPoint, _endPoint, _graphics);
-                //            line.DrawLine();
-                //            arrowCap.CreateCustomCapArrow();
-                //            break;
-                //        }
-                //}
-            //}
+               
+            }
         }
-
         private void button_Color_Click(object sender, EventArgs e)
         {
             colorDialog1.ShowDialog();
@@ -144,7 +87,7 @@ namespace ArrowLine
             switch (button.Name)
             {
                 case nameof(buttonCloseArrow):
-                    arrow = new InheritanceArrow(_pen, startPoint, endPoint, _graphics);
+                    arrow = new InheritanceArrow(_pen);
                     break;
                 case nameof(buttonEndRhomb):
                    // arrowCap = new CustomWhiteCapRhombEnd(_graphics, _pen, line._startPoint, line._endPoint);

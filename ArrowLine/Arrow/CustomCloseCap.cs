@@ -4,16 +4,15 @@ namespace ArrowLine.Arrow
 {
     public class CustomCloseCap : AbstractArrow
     {
-        public CustomCloseCap(Pen pen, Point startPoint, Point endPoint, Graphics graphics)
+        public CustomCloseCap(Pen pen, Point startPoint, Point endPoint)
         {
             _pen = pen;
             _startPoint = startPoint;
             _endPoint = endPoint;
-            this.graphics = graphics;
         }
 
 
-        protected override Point[] CreateArrowObject()
+        public override Point[] CreateArrowObject()
         {
             Point[] _CustomCapArrow = new Point[]
             {
@@ -52,9 +51,8 @@ namespace ArrowLine.Arrow
             return _CustomCapArrow;
         }
 
-        public override void Draw()
+        public override void Draw(Graphics graphics)
         {
-            CreateArrowObject();
 
             graphics.DrawLines(_pen, CreateArrowObject());
         }

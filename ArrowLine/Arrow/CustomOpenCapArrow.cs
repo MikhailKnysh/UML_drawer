@@ -9,7 +9,7 @@ namespace ArrowLine.Arrow
             _pen = pen;
         }
 
-        protected override Point[] CreateArrowObject()
+        public override Point[] CreateArrowObject()
         {
            Point[] _CustomCapArrow = new Point[]
              {
@@ -54,7 +54,7 @@ namespace ArrowLine.Arrow
             return _CustomCapArrow;
         }
 
-        public override void Draw()
+        public override void Draw(Graphics graphics)
         {
             CreateArrowObject();
 

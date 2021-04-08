@@ -2,31 +2,25 @@
 using System;
 using System.Collections.Generic;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
 namespace ArrowLine.Arrow
 {
     class InheritanceArrow : AbstractArrow
     {
-        public InheritanceArrow(Pen pen, Point startPoint, Point endPoint, Graphics graphics)
+        public InheritanceArrow(Pen pen)
         {
             _pen = pen;
-            _startPoint = startPoint;
-            _endPoint = endPoint;
-            this.graphics = graphics;
         }
+      
 
-        public override void Draw()
+        public override void Draw(Graphics graphics)
         {
-            AbstractArrow line = new SolidLine(_pen, _startPoint, _endPoint, graphics);
-            line.Draw();
-            AbstractArrow arrowCap = new CustomCloseCap(_pen, _startPoint, _endPoint, graphics);
-            arrowCap.Draw();
+            AbstractArrow line = new SolidLine(_pen, _startPoint, _endPoint);
+            line.Draw(graphics);
+            AbstractArrow arrowCap = new CustomCloseCap(_pen, _startPoint, _endPoint);
+            arrowCap.Draw(graphics);
         }
 
-        protected override Point[] CreateArrowObject()
+        public override Point[] CreateArrowObject()
         {
             throw new NotImplementedException();
         }

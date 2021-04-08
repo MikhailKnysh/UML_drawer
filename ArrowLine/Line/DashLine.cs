@@ -13,13 +13,13 @@ namespace ArrowLine.Line
             this.graphics = graphics;
         }
 
-        public override void Draw()
+        public override void Draw(Graphics graphics)
         {
             _pen.DashStyle = DashStyle.Dash;
             graphics.DrawLines(_pen, CreateArrowObject());
         }
 
-        protected override Point[] CreateArrowObject()
+        public override Point[] CreateArrowObject()
         {
             return new Point[] {
                 _startPoint,

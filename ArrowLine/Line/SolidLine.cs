@@ -4,20 +4,19 @@ namespace ArrowLine.Line
 {
     public class SolidLine : AbstractArrow
     {
-        public SolidLine(Pen pen, Point startPoint, Point endPoint, Graphics graphics)
+        public SolidLine(Pen pen, Point startPoint, Point endPoint)
         {
             _pen = pen;
             _startPoint = startPoint;
             _endPoint = endPoint;
-            this.graphics = graphics;
         }
 
-        public override void Draw()
+        public override void Draw(Graphics graphics)
         {
             graphics.DrawLines(_pen, CreateArrowObject());
         }
 
-        protected override Point[] CreateArrowObject()
+        public override Point[] CreateArrowObject()
         {
             return new Point[] {
                 _startPoint,
