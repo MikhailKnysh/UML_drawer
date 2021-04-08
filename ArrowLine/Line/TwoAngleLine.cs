@@ -13,6 +13,7 @@ namespace ArrowLine.Line
         public Point[] CreateArrowLine()
         {
             int midlle = (_startPoint.X + _endPoint.X) / 2;
+            
             return new Point[] {
                 _startPoint,
                 new Point(midlle, _startPoint.Y),
