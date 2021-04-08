@@ -2,22 +2,21 @@
 
 namespace ArrowLine.Line
 {
-    public class Line : AbstractLine
+    public class SolidLine : AbstractArrow, ILine
     {
-        public Line(Pen pen, Point startPoint, Point endPoint, Graphics graphics)
+        public SolidLine(Pen pen, Point startPoint, Point endPoint)
         {
             _pen = pen;
             _startPoint = startPoint;
             _endPoint = endPoint;
-            _graphics = graphics;
         }
 
-        public override void DrawLine()
+        public override void Draw(Graphics graphics)
         {
-            _graphics.DrawLines(_pen, GetPoints());
+            graphics.DrawLines(_pen, CreateArrowLine());
         }
 
-        protected override Point[] GetPoints()
+        public Point[] CreateArrowLine()
         {
             return new Point[] {
                 _startPoint,

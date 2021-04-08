@@ -2,19 +2,19 @@
 
 namespace ArrowLine.Arrow
 {
-    public class CustomCloseCap : AbstractArrowCap
+    public class CustomCloseCap : AbstractArrow, IArrowCap
     {
-        public CustomCloseCap(Graphics graphics, Pen pen, Point startPoint, Point endPoint)
+        public CustomCloseCap(Pen pen, Point startPoint, Point endPoint)
         {
-            _graphics = graphics;
             _pen = pen;
             _startPoint = startPoint;
             _endPoint = endPoint;
         }
 
-        protected override void CreateArrowCap()
+
+        public Point[] CreateArrowObject()
         {
-            _CustomCapArrow = new Point[]
+            Point[] _CustomCapArrow = new Point[]
             {
                 _endPoint,
                 new Point(_endPoint.X, _endPoint.Y),
@@ -47,13 +47,14 @@ namespace ArrowLine.Arrow
                 _CustomCapArrow[2].Y += _arrowSize;
                 _CustomCapArrow[3].X += _arrowSize;
             }
+
+            return _CustomCapArrow;
         }
 
-        public override void DrawCap()
+        public override void Draw(Graphics graphics)
         {
-            CreateArrowCap();
 
-            _graphics.DrawLines(_pen, _CustomCapArrow);
+            graphics.DrawLines(_pen, CreateArrowObject());
         }
     }
 }

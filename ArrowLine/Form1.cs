@@ -1,4 +1,6 @@
-﻿using System;
+﻿using ArrowLine.Arrow;
+using ArrowLine.Line;
+using System;
 using System.Drawing;
 using System.Windows.Forms;
 
@@ -10,10 +12,10 @@ namespace ArrowLine
         private Bitmap _tmpBitmap;
         private Graphics _graphics;
         private Pen _pen;
-        private int _chooseButton = 0;
         private bool _isMoving = false;
-        private Point _startPoint = new Point();
-        private Point _endPoint = new Point();
+
+        AbstractArrow arrow;
+        
 
         public Form1()
         {
@@ -24,12 +26,13 @@ namespace ArrowLine
         {
             _bitmap = new Bitmap(pictureBox1.Width, pictureBox1.Height);
             _pen = new Pen(Color.Black, 2);
+            arrow = new InheritanceArrow();
         }
 
         private void pictureBox1_MouseDown(object sender, MouseEventArgs e)
         {
             _isMoving = true;
-            _startPoint = e.Location;
+            arrow._startPoint = e.Location;
         }
 
         private void pictureBox1_MouseUp(object sender, MouseEventArgs e)
@@ -42,7 +45,7 @@ namespace ArrowLine
         {
             if (_isMoving)
             {
-                _endPoint = e.Location;
+                arrow._endPoint = e.Location;
                 pictureBox1.Invalidate();
             }
         }
@@ -55,59 +58,14 @@ namespace ArrowLine
                 _graphics = Graphics.FromImage(_tmpBitmap);
                 pictureBox1.Image = _tmpBitmap;
 
-                AbstractLine line = new Line(_pen, _startPoint, _endPoint, _graphics);
-                ArrowCap arrowCap = new ArrowCap(_graphics, _pen, _startPoint, _endPoint);
+                arrow.Draw(_graphics);
 
-                //if (_chooseButton >= 0 && _chooseButton <= 5)
-                //{
-                //    line.DrawLine();
-                //}
+                pictureBox1.Image = _tmpBitmap;
+                GC.Collect();
 
-                //switch (_chooseButton)
-                //{
-                //    case 0:
-                //        {
-                //            arrowCap.CreateCustomCapArrow();
-                //            break;
-                //        }
-                //    case 1:
-                //        {
-                //            arrowCap.CreateCustomCapRhombEnd(true);
-                //            break;
-                //        }
-                //    case 2:
-                //        {
-                //            arrowCap.CreateCustomCapRhombEnd(false);
-                //            break;
-                //        }
-                //    case 3:
-                //        {
-                //            arrowCap.CreateCustomOpenCapArrow();
-                //            arrowCap.CreateCustomCapRhombStart(true);
-                //            break;
-                //        }
-                //    case 4:
-                //        {
-                //            arrowCap.CreateCustomOpenCapArrow();
-                //            arrowCap.CreateCustomCapRhombStart(false);
-                //            break;
-                //        }
-                //    case 5:
-                //        {
-                //            arrowCap.CreateCustomOpenCapArrow();
-                //            break;
-                //        }
-                //    case 6:
-                //        {
-                //            line = new DashLine(_startPoint, _endPoint, _graphics);
-                //            line.DrawLine();
-                //            arrowCap.CreateCustomCapArrow();
-                //            break;
-                //        }
-                //}
+               
             }
         }
-
         private void button_Color_Click(object sender, EventArgs e)
         {
             colorDialog1.ShowDialog();
@@ -123,28 +81,30 @@ namespace ArrowLine
         private void CheckButtonPressed_Click(object sender, EventArgs e)
         {
             Button button = (Button)sender;
+
             switch (button.Name)
             {
                 case nameof(buttonCloseArrow):
-                    _chooseButton = 0;
+                    arrow = new InheritanceArrow();
                     break;
                 case nameof(buttonEndRhomb):
-                    _chooseButton = 1;
+                    arrow = new AgregationEndArrow();
                     break;
                 case nameof(buttonEndRhombBlack):
-                    _chooseButton = 2;
+                    arrow = new CompositionEndArrow();
                     break;
                 case nameof(buttonStartRhomb1):
-                    _chooseButton = 3;
+
+                    arrow = new AgregationStartArrow();
                     break;
                 case nameof(buttonStartRhombBlack):
-                    _chooseButton = 4;
+                    arrow = new CompositionStartArrow();
                     break;
                 case nameof(buttonOpenArrow):
-                    _chooseButton = 5;
+                    arrow = new AssociationArrow();
                     break;
                 case nameof(buttonCloseArrowDash):
-                    _chooseButton = 6;
+                    arrow = new ImplementationArrow();
                     break;
             }
         }

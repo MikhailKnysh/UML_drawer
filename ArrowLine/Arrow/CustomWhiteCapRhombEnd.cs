@@ -2,19 +2,18 @@
 
 namespace ArrowLine.Arrow
 {
-    public class CustomWhiteCapRhombEnd : AbstractArrowCap
+    public class CustomWhiteCapRhombEnd : AbstractArrow, IArrowCap
     {
-        public CustomWhiteCapRhombEnd(Graphics graphics, Pen pen, Point startPoint, Point endPoint)
+        public CustomWhiteCapRhombEnd(Pen pen, Point startPoint, Point endPoint)
         {
-            _graphics = graphics;
             _pen = pen;
             _startPoint = startPoint;
             _endPoint = endPoint;
         }
 
-        protected override void CreateArrowCap()
+        public Point[] CreateArrowObject()
         {
-            _CustomCapArrow = new Point[]
+            Point[] _CustomCapArrow = new Point[]
              {
                 _endPoint,
                 new Point(_endPoint.X, _endPoint.Y),
@@ -63,16 +62,16 @@ namespace ArrowLine.Arrow
                 _CustomCapArrow[3].X += _arrowSize;
                 _CustomCapArrow[3].Y -= _arrowSize;
             }
+
+            return _CustomCapArrow;
         }
 
-        public override void DrawCap()
+        public override void Draw(Graphics graphics)
         {
             SolidBrush shadowBrush = new SolidBrush(Color.White);
 
-            CreateArrowCap();
-
-            _graphics.DrawPolygon(_pen, _CustomCapArrow);
-            _graphics.FillPolygon(shadowBrush, _CustomCapArrow);
+            graphics.DrawPolygon(_pen, CreateArrowObject());
+            graphics.FillPolygon(shadowBrush, CreateArrowObject());
         }
     }
 }
