@@ -58,7 +58,7 @@ namespace ArrowLine
                 _graphics = Graphics.FromImage(_tmpBitmap);
                 pictureBox1.Image = _tmpBitmap;
 
-                arrow.Draw(_graphics);
+                arrow.Draw(_pen, _graphics);
 
                 pictureBox1.Image = _tmpBitmap;
                 GC.Collect();

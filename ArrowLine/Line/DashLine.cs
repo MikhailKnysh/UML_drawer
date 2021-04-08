@@ -5,17 +5,16 @@ namespace ArrowLine.Line
 {
     public class DashLine : AbstractArrow, ILine
     {
-        public DashLine(Pen pen, Point startPoint, Point endPoint)
+        public DashLine(Point startPoint, Point endPoint)
         {
-            _pen = pen;
             _startPoint = startPoint;
             _endPoint = endPoint;
         }
 
-        public override void Draw(Graphics graphics)
+        public override void Draw(Pen pen,Graphics graphics)
         {
-            _pen.DashStyle = DashStyle.Dash;
-            graphics.DrawLines(_pen, CreateArrowLine());
+            pen.DashStyle = DashStyle.Dash;
+            graphics.DrawLines(pen, CreateArrowLine());
         }
 
         public Point[] CreateArrowLine()

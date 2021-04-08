@@ -4,9 +4,8 @@ namespace ArrowLine.Arrow
 {
     public class CustomWhiteCapRhombStart : AbstractArrow, IArrowCap
     {
-        public CustomWhiteCapRhombStart(Pen pen, Point startPoint, Point endPoint)
+        public CustomWhiteCapRhombStart(Point startPoint, Point endPoint)
         {
-            _pen = pen;
             _startPoint = startPoint;
             _endPoint = endPoint;
         }
@@ -67,11 +66,11 @@ namespace ArrowLine.Arrow
             return _CustomCapArrow;
         }
 
-        public override void Draw(Graphics graphics)
+        public override void Draw(Pen pen,Graphics graphics)
         {
             SolidBrush shadowBrush = new SolidBrush(Color.White);
 
-            graphics.DrawPolygon(_pen, CreateArrowObject());
+            graphics.DrawPolygon(pen, CreateArrowObject());
             graphics.FillPolygon(shadowBrush, CreateArrowObject());
         }
     }
