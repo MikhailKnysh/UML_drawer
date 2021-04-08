@@ -6,21 +6,16 @@ namespace ArrowLine
 {
     class AgregationStartArrow : AbstractArrow
     {
-        public AgregationStartArrow()
+        public override void Draw(Pen pen, Graphics graphics)
         {
-            _pen = new Pen(Color.Black, 2);
-        }
+            AbstractArrow line = new SolidLine(_startPoint, _endPoint);
+            line.Draw(pen, graphics);
 
-        public override void Draw(Graphics graphics)
-        {
-            AbstractArrow line = new SolidLine(_pen, _startPoint, _endPoint);
-            line.Draw(graphics);
+            AbstractArrow arrowCap = new CustomOpenCapArrow(_startPoint, _endPoint);
+            arrowCap.Draw(pen, graphics);
 
-            AbstractArrow arrowCap = new CustomOpenCapArrow(_pen, _startPoint, _endPoint);
-            arrowCap.Draw(graphics);
-
-            AbstractArrow arrowCapRhomb = new CustomWhiteCapRhombStart(_pen, _startPoint, _endPoint);
-            arrowCapRhomb.Draw(graphics);
+            AbstractArrow arrowCapRhomb = new CustomWhiteCapRhombStart(_startPoint, _endPoint);
+            arrowCapRhomb.Draw(pen, graphics);
         }
     }
 }

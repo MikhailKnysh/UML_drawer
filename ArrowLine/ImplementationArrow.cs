@@ -2,23 +2,20 @@
 using ArrowLine.Line;
 using System;
 using System.Drawing;
+using System.Drawing.Drawing2D;
 
 namespace ArrowLine
 {
     public class ImplementationArrow: AbstractArrow
     {
-        public ImplementationArrow()
+        public override void Draw(Pen pen, Graphics graphics)
         {
-            _pen = new Pen(Color.Black, 2);
-        }
-
-
-        public override void Draw(Graphics graphics)
-        {
-            AbstractArrow line = new DashLine(_pen, _startPoint, _endPoint);
-            line.Draw(graphics);
-            AbstractArrow arrowCap = new CustomCloseCap(new Pen(Color.Black,2), _startPoint, _endPoint);
-            arrowCap.Draw(graphics);
+            AbstractArrow arrowCap = new CustomCloseCap(_startPoint, _endPoint);
+            arrowCap.Draw(pen, graphics);
+            AbstractArrow line = new DashLine(_startPoint, _endPoint);
+            line.Draw(pen, graphics);
+            pen.DashStyle = DashStyle.Solid;
+            
         }
     }
 }

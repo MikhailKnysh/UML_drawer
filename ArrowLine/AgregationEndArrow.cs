@@ -11,18 +11,15 @@ namespace ArrowLine
 {
     class AgregationEndArrow : AbstractArrow
     {
-        public AgregationEndArrow()
-        {
-            _pen = new Pen(Color.Black, 2);
-        }
+        
 
-        public override void Draw(Graphics graphics)
+        public override void Draw(Pen pen, Graphics graphics)
         {
-            AbstractArrow line = new SolidLine(_pen, _startPoint, _endPoint);
-            line.Draw(graphics);
+            AbstractArrow line = new SolidLine(_startPoint, _endPoint);
+            line.Draw(pen, graphics);
 
-            AbstractArrow arrowCapRhomb = new CustomWhiteCapRhombEnd(_pen, _startPoint, _endPoint);
-            arrowCapRhomb.Draw(graphics);
+            AbstractArrow arrowCapRhomb = new CustomWhiteCapRhombEnd(_startPoint, _endPoint);
+            arrowCapRhomb.Draw(pen, graphics);
         }
     }
 }
