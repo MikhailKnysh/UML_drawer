@@ -15,7 +15,7 @@ namespace ArrowLine
         private bool _isMoving = false;
 
         AbstractArrow arrow;
-        
+
 
         public Form1()
         {
@@ -63,14 +63,17 @@ namespace ArrowLine
                 pictureBox1.Image = _tmpBitmap;
                 GC.Collect();
 
-               
+
             }
         }
+
         private void button_Color_Click(object sender, EventArgs e)
         {
+            Button btnColor = (Button)sender;
             colorDialog1.ShowDialog();
-            pictureBox_color.BackColor = colorDialog1.Color;
+            btnColor.BackColor = colorDialog1.Color;
             _pen.Color = colorDialog1.Color;
+
         }
 
         private void trackBar1_Scroll(object sender, EventArgs e)
@@ -106,7 +109,11 @@ namespace ArrowLine
                 case nameof(buttonCloseArrowDash):
                     arrow = new ImplementationArrow();
                     break;
+                case nameof(buttonTwoAngleLine):
+                    arrow = new TwoAngleLine(arrow._startPoint,arrow._endPoint);
+                    break;
             }
         }
+
     }
 }

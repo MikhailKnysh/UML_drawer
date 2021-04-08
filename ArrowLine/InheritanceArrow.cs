@@ -1,6 +1,4 @@
 ﻿using ArrowLine.Line;
-using System;
-using System.Collections.Generic;
 using System.Drawing;
 namespace ArrowLine.Arrow
 {
