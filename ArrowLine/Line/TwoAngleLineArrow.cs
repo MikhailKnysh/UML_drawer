@@ -2,9 +2,9 @@
 
 namespace ArrowLine.Line
 {
-    class TwoAngleLine : AbstractArrow, ILine
+    class TwoAngleLineArrow : AbstractArrow, ILine
     {
-        public TwoAngleLine(Point startPoint, Point endPoint)
+        public TwoAngleLineArrow(Point startPoint, Point endPoint)
         {
             _startPoint = startPoint;
             _endPoint = endPoint;

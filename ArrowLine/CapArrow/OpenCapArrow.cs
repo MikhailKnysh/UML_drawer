@@ -1,10 +1,10 @@
 ﻿using System.Drawing;
 
-namespace ArrowLine.Arrow
+namespace ArrowLine.CapArrow
 {
-    public class CustomOpenCapArrow : AbstractArrow, IArrowCap
+    public class OpenCapArrow : AbstractArrow, IArrowCap
     {
-        public CustomOpenCapArrow(Point startPoint, Point endPoint)
+        public OpenCapArrow(Point startPoint, Point endPoint)
         {
             _startPoint = startPoint;
             _endPoint = endPoint;
@@ -12,12 +12,12 @@ namespace ArrowLine.Arrow
 
         public Point[] CreateArrowObject()
         {
-           Point[] _CustomCapArrow = new Point[]
-             {
+            Point[] _CustomCapArrow = new Point[]
+              {
                 new Point(_endPoint.X, _endPoint.Y),
                 _endPoint,
                 new Point(_endPoint.X, _endPoint.Y)
-             };
+              };
 
             if (_startPoint.X < _endPoint.X)
             {
@@ -55,7 +55,7 @@ namespace ArrowLine.Arrow
             return _CustomCapArrow;
         }
 
-        public override void Draw(Pen pen,Graphics graphics)
+        public override void Draw(Pen pen, Graphics graphics)
         {
             graphics.DrawLines(pen, CreateArrowObject());
         }

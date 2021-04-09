@@ -1,10 +1,10 @@
 ﻿using System.Drawing;
 
-namespace ArrowLine.Arrow
+namespace ArrowLine.CapArrow
 {
-    public class CustomBlackCapRhombStart : AbstractArrow, IArrowCap
+    public class BlackRhombStartCapArrow : AbstractArrow, IArrowCap
     {
-        public CustomBlackCapRhombStart(Point startPoint, Point endPoint)
+        public BlackRhombStartCapArrow(Point startPoint, Point endPoint)
         {
             _startPoint = startPoint;
             _endPoint = endPoint;
