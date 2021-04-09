@@ -1,10 +1,10 @@
 ﻿using System.Drawing;
 
-namespace ArrowLine.Arrow
+namespace ArrowLine.CapArrow
 {
-    public class CustomBlackCapRhombEnd : AbstractArrow, IArrowCap
+    public class BlackRhombEndCapArrow : AbstractArrow, IArrowCap
     {
-        public CustomBlackCapRhombEnd(Point startPoint, Point endPoint)
+        public BlackRhombEndCapArrow(Point startPoint, Point endPoint)
         {
             _startPoint = startPoint;
             _endPoint = endPoint;
@@ -65,7 +65,7 @@ namespace ArrowLine.Arrow
             return _CustomCapArrow;
         }
 
-        public override void Draw(Pen pen,Graphics graphics)
+        public override void Draw(Pen pen, Graphics graphics)
         {
             SolidBrush shadowBrush = new SolidBrush(pen.Color);
 

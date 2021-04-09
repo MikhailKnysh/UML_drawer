@@ -62,8 +62,6 @@ namespace ArrowLine
 
                 pictureBox1.Image = _tmpBitmap;
                 GC.Collect();
-
-
             }
         }
 
@@ -110,7 +108,7 @@ namespace ArrowLine
                     arrow = new ImplementationArrow();
                     break;
                 case nameof(buttonTwoAngleLine):
-                    arrow = new TwoAngleLine(arrow._startPoint,arrow._endPoint);
+                    arrow = new TwoAngleLineArrow(arrow._startPoint,arrow._endPoint);
                     break;
             }
         }

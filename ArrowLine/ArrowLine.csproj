@@ -47,30 +47,30 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AbstractArrow.cs" />
-    <Compile Include="AgregationEndArrow.cs" />
-    <Compile Include="AgregationStartArrow.cs" />
-    <Compile Include="Arrow\CustomBlackCapRhombEnd.cs" />
-    <Compile Include="Arrow\CustomBlackCapRhombStart.cs" />
-    <Compile Include="Arrow\CustomCloseCap.cs" />
-    <Compile Include="Arrow\CustomOpenCapArrow.cs" />
-    <Compile Include="Arrow\CustomWhiteCapRhombEnd.cs" />
-    <Compile Include="Arrow\CustomWhiteCapRhombStart.cs" />
-    <Compile Include="AssociationArrow.cs" />
-    <Compile Include="CompositionEndArrow.cs" />
-    <Compile Include="CompositionStartArrow.cs" />
+    <Compile Include="Arrow\AgregationEndArrow.cs" />
+    <Compile Include="Arrow\AgregationStartArrow.cs" />
+    <Compile Include="CapArrow\BlackRhombEndCapArrow.cs" />
+    <Compile Include="CapArrow\BlackRhombStartCapArrow.cs" />
+    <Compile Include="CapArrow\CloseCapArrow.cs" />
+    <Compile Include="CapArrow\OpenCapArrow.cs" />
+    <Compile Include="CapArrow\WhiteRhombEndCapArrow.cs" />
+    <Compile Include="CapArrow\WhiteRhombStartCapArrow.cs" />
+    <Compile Include="Arrow\AssociationArrow.cs" />
+    <Compile Include="Arrow\CompositionEndArrow.cs" />
+    <Compile Include="Arrow\CompositionStartArrow.cs" />
     <Compile Include="IArrowCap.cs" />
     <Compile Include="ILine.cs" />
-    <Compile Include="ImplementationArrow.cs" />
-    <Compile Include="InheritanceArrow.cs" />
-    <Compile Include="Line\DashLine.cs" />
+    <Compile Include="Arrow\ImplementationArrow.cs" />
+    <Compile Include="Arrow\InheritanceArrow.cs" />
+    <Compile Include="Line\DashLineArrow.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
-    <Compile Include="Line\SolidLine.cs" />
-    <Compile Include="Line\TwoAngleLine.cs" />
+    <Compile Include="Line\SolidLineArrow.cs" />
+    <Compile Include="Line\TwoAngleLineArrow.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Form1.resx">
