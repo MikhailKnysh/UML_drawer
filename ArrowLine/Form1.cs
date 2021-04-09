@@ -65,7 +65,7 @@ namespace ArrowLine
             }
         }
 
-        private void button_Color_Click(object sender, EventArgs e)
+        private void ButtonColor_Click(object sender, EventArgs e)
         {
             Button btnColor = (Button)sender;
             colorDialog1.ShowDialog();
@@ -74,41 +74,55 @@ namespace ArrowLine
 
         }
 
-        private void trackBar1_Scroll(object sender, EventArgs e)
+        private void trackbar1_Scroll(object sender, EventArgs e)
         {
             _pen.Width = trackBar1.Value;
         }
 
         private void CheckButtonPressed_Click(object sender, EventArgs e)
         {
-            Button button = (Button)sender;
+            ToolStripButton toolStripButton = (ToolStripButton)sender;
 
-            switch (button.Name)
+            switch (toolStripButton.Name)
             {
-                case nameof(buttonCloseArrow):
+                case nameof(toolStripButtonCloseArrow):
                     arrow = new InheritanceArrow();
+                    toolStripGroupButtons.BackgroundImage = toolStripButton.BackgroundImage;
                     break;
-                case nameof(buttonEndRhomb):
-                    arrow = new AgregationEndArrow();
-                    break;
-                case nameof(buttonEndRhombBlack):
-                    arrow = new CompositionEndArrow();
-                    break;
-                case nameof(buttonStartRhomb1):
 
+                case nameof(toolStripButtonEndRhomb):
+                    arrow = new AgregationEndArrow();
+                    toolStripGroupButtons.BackgroundImage = toolStripButton.BackgroundImage;
+                    break;
+
+                case nameof(toolStripButtonEndRhombBlack):
+                    arrow = new CompositionEndArrow();
+                    toolStripGroupButtons.BackgroundImage = toolStripButton.BackgroundImage;
+                    break;
+
+                case nameof(toolStripButtonStartRhomb1):
                     arrow = new AgregationStartArrow();
+                    toolStripGroupButtons.BackgroundImage = toolStripButton.BackgroundImage;
                     break;
-                case nameof(buttonStartRhombBlack):
+
+                case nameof(toolStripButtonStartRhombBlack):
                     arrow = new CompositionStartArrow();
+                    toolStripGroupButtons.BackgroundImage = toolStripButton.BackgroundImage;
                     break;
-                case nameof(buttonOpenArrow):
+
+                case nameof(toolStripButtonOpenArrow):
                     arrow = new AssociationArrow();
+                    toolStripGroupButtons.BackgroundImage = toolStripButton.BackgroundImage;
                     break;
-                case nameof(buttonCloseArrowDash):
+
+                case nameof(toolStripButtonCloseArrowDash):
                     arrow = new ImplementationArrow();
+                    toolStripGroupButtons.BackgroundImage = toolStripButton.BackgroundImage;
                     break;
-                case nameof(buttonTwoAngleLine):
-                    arrow = new TwoAngleLineArrow(arrow._startPoint,arrow._endPoint);
+
+                case nameof(toolStripButtonTwoAngleLine):
+                    arrow = new TwoAngleLineArrow(arrow._startPoint, arrow._endPoint);
+                    toolStripGroupButtons.BackgroundImage = toolStripButton.BackgroundImage;
                     break;
             }
         }
