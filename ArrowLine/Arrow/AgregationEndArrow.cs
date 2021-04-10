@@ -18,10 +18,10 @@ namespace ArrowLine.Arrow
                 _endPoint.Y = _startPoint.Y;
             }
 
-            AbstractArrow line = new SolidLineArrow(_startPoint, _endPoint);
+            AbstractLine line = new SolidLineArrow(_startPoint, _endPoint);
             line.Draw(pen, graphics);
 
-            AbstractArrow arrowCapRhomb = new WhiteRhombEndCapArrow(_startPoint, _endPoint);
+            AbstractArrowCap arrowCapRhomb = new WhiteRhombEndCapArrow(_startPoint, _endPoint);
             arrowCapRhomb.Draw(pen, graphics);
         }
     }

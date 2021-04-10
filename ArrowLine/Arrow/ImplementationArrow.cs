@@ -19,10 +19,10 @@ namespace ArrowLine.Arrow
                 _endPoint.Y = _startPoint.Y;
             }
 
-            AbstractArrow arrowCap = new CloseCapArrow(_startPoint, _endPoint);
+            AbstractArrowCap arrowCap = new CloseCapArrow(_startPoint, _endPoint);
             arrowCap.Draw(pen, graphics);
 
-            AbstractArrow line = new DashLineArrow(_startPoint, _endPoint);
+            AbstractLine line = new DashLineArrow(_startPoint, _endPoint);
             line.Draw(pen, graphics);
             pen.DashStyle = DashStyle.Solid;
         }

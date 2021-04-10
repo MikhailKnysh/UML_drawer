@@ -29,7 +29,7 @@ namespace ArrowLine
 
             _bitmap = new Bitmap(pictureBox1.Width, pictureBox1.Height);
             _pen = new Pen(Color.Black, 2);
-            arrow = new SolidLine(startPoint,endPoint)
+            arrow = new SolidLineArrow(startPoint,endPoint)
                 ;
         }
 
