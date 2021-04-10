@@ -82,50 +82,36 @@ namespace ArrowLine
         private void CheckButtonPressed_Click(object sender, EventArgs e)
         {
             ToolStripButton toolStripButton = (ToolStripButton)sender;
-
+            
+            toolStripGroupButtons.BackgroundImage = toolStripButton.BackgroundImage;
+            
             switch (toolStripButton.Name)
             {
                 case nameof(toolStripButtonCloseArrow):
                     arrow = new InheritanceArrow();
-                    toolStripGroupButtons.BackgroundImage = toolStripButton.BackgroundImage;
                     break;
-
                 case nameof(toolStripButtonEndRhomb):
                     arrow = new AgregationEndArrow();
-                    toolStripGroupButtons.BackgroundImage = toolStripButton.BackgroundImage;
                     break;
-
                 case nameof(toolStripButtonEndRhombBlack):
                     arrow = new CompositionEndArrow();
-                    toolStripGroupButtons.BackgroundImage = toolStripButton.BackgroundImage;
                     break;
-
                 case nameof(toolStripButtonStartRhomb1):
                     arrow = new AgregationStartArrow();
-                    toolStripGroupButtons.BackgroundImage = toolStripButton.BackgroundImage;
                     break;
-
                 case nameof(toolStripButtonStartRhombBlack):
                     arrow = new CompositionStartArrow();
-                    toolStripGroupButtons.BackgroundImage = toolStripButton.BackgroundImage;
                     break;
-
                 case nameof(toolStripButtonOpenArrow):
                     arrow = new AssociationArrow();
-                    toolStripGroupButtons.BackgroundImage = toolStripButton.BackgroundImage;
                     break;
-
                 case nameof(toolStripButtonCloseArrowDash):
                     arrow = new ImplementationArrow();
-                    toolStripGroupButtons.BackgroundImage = toolStripButton.BackgroundImage;
                     break;
-
                 case nameof(toolStripButtonTwoAngleLine):
                     arrow = new TwoAngleLineArrow(arrow._startPoint, arrow._endPoint);
-                    toolStripGroupButtons.BackgroundImage = toolStripButton.BackgroundImage;
                     break;
             }
         }
-
     }
 }
