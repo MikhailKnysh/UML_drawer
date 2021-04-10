@@ -2,9 +2,9 @@
 
 namespace ArrowLine.Line
 {
-    public class SolidLine : AbstractArrow, ILine
+    public class SolidLineArrow : AbstractArrow, ILine
     {
-        public SolidLine(Point startPoint, Point endPoint)
+        public SolidLineArrow(Point startPoint, Point endPoint)
         {
             _startPoint = startPoint;
             _endPoint = endPoint;

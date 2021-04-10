@@ -3,9 +3,9 @@ using System.Drawing.Drawing2D;
 
 namespace ArrowLine.Line
 {
-    public class DashLine : AbstractArrow, ILine
+    public class DashLineArrow : AbstractArrow, ILine
     {
-        public DashLine(Point startPoint, Point endPoint)
+        public DashLineArrow(Point startPoint, Point endPoint)
         {
             _startPoint = startPoint;
             _endPoint = endPoint;
