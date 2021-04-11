@@ -24,9 +24,13 @@ namespace ArrowLine
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            Point startPoint = new Point();
+            Point endPoint = new Point();
+
             _bitmap = new Bitmap(pictureBox1.Width, pictureBox1.Height);
             _pen = new Pen(Color.Black, 2);
-            arrow = new InheritanceArrow();
+            arrow = new SolidLineArrow(startPoint,endPoint)
+                ;
         }
 
         private void pictureBox1_MouseDown(object sender, MouseEventArgs e)

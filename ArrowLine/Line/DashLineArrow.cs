@@ -3,7 +3,7 @@ using System.Drawing.Drawing2D;
 
 namespace ArrowLine.Line
 {
-    public class DashLineArrow : AbstractArrow, ILine
+    public class DashLineArrow : AbstractLine
     {
         public DashLineArrow(Point startPoint, Point endPoint)
         {
@@ -17,7 +17,7 @@ namespace ArrowLine.Line
             graphics.DrawLines(pen, CreateArrowLine());
         }
 
-        public Point[] CreateArrowLine()
+        public override Point[] CreateArrowLine()
         {
             return new Point[] {
                 _startPoint,
