@@ -43,6 +43,9 @@ namespace ArrowLine
             this.toolStripButtonOpenArrow = new System.Windows.Forms.ToolStripButton();
             this.toolStripButtonCloseArrowDash = new System.Windows.Forms.ToolStripButton();
             this.toolStripButtonTwoAngleLine = new System.Windows.Forms.ToolStripButton();
+            this.button2 = new System.Windows.Forms.Button();
+            this.button3 = new System.Windows.Forms.Button();
+            this.textBox1 = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).BeginInit();
             this.toolStripGroupButtons.SuspendLayout();
@@ -52,11 +55,11 @@ namespace ArrowLine
             // 
             this.pictureBox1.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.pictureBox1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.pictureBox1.Location = new System.Drawing.Point(121, 11);
+            this.pictureBox1.Location = new System.Drawing.Point(157, 11);
             this.pictureBox1.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Padding = new System.Windows.Forms.Padding(0, 3, 0, 0);
-            this.pictureBox1.Size = new System.Drawing.Size(794, 553);
+            this.pictureBox1.Size = new System.Drawing.Size(750, 541);
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
             this.pictureBox1.Paint += new System.Windows.Forms.PaintEventHandler(this.pictureBox1_Paint);
@@ -215,12 +218,43 @@ namespace ArrowLine
             this.toolStripButtonTwoAngleLine.Text = "toolStripButton1";
             this.toolStripButtonTwoAngleLine.Click += new System.EventHandler(this.CheckButtonPressed_Click);
             // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(13, 188);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(75, 23);
+            this.button2.TabIndex = 14;
+            this.button2.Text = "button2";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.CheckTableType_Click);
+            // 
+            // button3
+            // 
+            this.button3.Location = new System.Drawing.Point(33, 306);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(75, 23);
+            this.button3.TabIndex = 15;
+            this.button3.Text = "button3";
+            this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
+            // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(33, 251);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(100, 20);
+            this.textBox1.TabIndex = 16;
+            this.textBox1.Text = "Inter";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Coral;
             this.ClientSize = new System.Drawing.Size(910, 557);
+            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.button3);
+            this.Controls.Add(this.button2);
             this.Controls.Add(this.toolStripGroupButtons);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.trackBar1);
@@ -254,6 +288,9 @@ namespace ArrowLine
         private System.Windows.Forms.ToolStripButton toolStripButtonStartRhomb1;
         private System.Windows.Forms.ToolStripButton toolStripButtonEndRhombBlack;
         private System.Windows.Forms.ToolStripButton toolStripButtonStartRhombBlack;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.TextBox textBox1;
     }
 }
 
