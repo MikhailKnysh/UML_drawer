@@ -58,10 +58,11 @@
     <Compile Include="Arrow\AssociationArrow.cs" />
     <Compile Include="Arrow\CompositionEndArrow.cs" />
     <Compile Include="Arrow\CompositionStartArrow.cs" />
-    <Compile Include="IArrowCap.cs" />
-    <Compile Include="ILine.cs" />
+    <Compile Include="AbstractArrowCap.cs" />
+    <Compile Include="AbstractLine.cs" />
     <Compile Include="Arrow\ImplementationArrow.cs" />
     <Compile Include="Arrow\InheritanceArrow.cs" />
+    <Compile Include="AbstractMiveable.cs" />
     <Compile Include="Line\DashLineArrow.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>

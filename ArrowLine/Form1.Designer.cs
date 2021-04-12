@@ -43,6 +43,8 @@ namespace ArrowLine
             this.toolStripButtonOpenArrow = new System.Windows.Forms.ToolStripButton();
             this.toolStripButtonCloseArrowDash = new System.Windows.Forms.ToolStripButton();
             this.toolStripButtonTwoAngleLine = new System.Windows.Forms.ToolStripButton();
+            this.button_Clear = new System.Windows.Forms.Button();
+            this.button_save = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).BeginInit();
             this.toolStripGroupButtons.SuspendLayout();
@@ -79,7 +81,7 @@ namespace ArrowLine
             // 
             this.button1.BackColor = System.Drawing.Color.Black;
             this.button1.Location = new System.Drawing.Point(16, 14);
-            this.button1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.button1.Margin = new System.Windows.Forms.Padding(4);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(79, 42);
             this.button1.TabIndex = 11;
@@ -217,12 +219,34 @@ namespace ArrowLine
             this.toolStripButtonTwoAngleLine.Text = "toolStripButton1";
             this.toolStripButtonTwoAngleLine.Click += new System.EventHandler(this.CheckButtonPressed_Click);
             // 
+            // button_Clear
+            // 
+            this.button_Clear.Location = new System.Drawing.Point(22, 211);
+            this.button_Clear.Name = "button_Clear";
+            this.button_Clear.Size = new System.Drawing.Size(110, 60);
+            this.button_Clear.TabIndex = 14;
+            this.button_Clear.Text = "Clear";
+            this.button_Clear.UseVisualStyleBackColor = true;
+            this.button_Clear.Click += new System.EventHandler(this.button_Clear_Click);
+            // 
+            // button_save
+            // 
+            this.button_save.Location = new System.Drawing.Point(21, 306);
+            this.button_save.Name = "button_save";
+            this.button_save.Size = new System.Drawing.Size(111, 57);
+            this.button_save.TabIndex = 15;
+            this.button_save.Text = "save";
+            this.button_save.UseVisualStyleBackColor = true;
+            this.button_save.Click += new System.EventHandler(this.button_save_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Coral;
             this.ClientSize = new System.Drawing.Size(1213, 686);
+            this.Controls.Add(this.button_save);
+            this.Controls.Add(this.button_Clear);
             this.Controls.Add(this.toolStripGroupButtons);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.trackBar1);
@@ -256,6 +280,8 @@ namespace ArrowLine
         private System.Windows.Forms.ToolStripButton toolStripButtonStartRhomb1;
         private System.Windows.Forms.ToolStripButton toolStripButtonEndRhombBlack;
         private System.Windows.Forms.ToolStripButton toolStripButtonStartRhombBlack;
+        private System.Windows.Forms.Button button_Clear;
+        private System.Windows.Forms.Button button_save;
     }
 }
 
