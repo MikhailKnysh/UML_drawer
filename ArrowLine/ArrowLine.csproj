@@ -47,6 +47,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AbstractArrow.cs" />
+    <Compile Include="AbstractTable.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Arrow\AgregationEndArrow.cs" />
     <Compile Include="Arrow\AgregationStartArrow.cs" />
     <Compile Include="CapArrow\BlackRhombEndCapArrow.cs" />
@@ -62,6 +65,7 @@
     <Compile Include="AbstractLine.cs" />
     <Compile Include="Arrow\ImplementationArrow.cs" />
     <Compile Include="Arrow\InheritanceArrow.cs" />
+    <Compile Include="LineInTable.cs" />
     <Compile Include="AbstractMiveable.cs" />
     <Compile Include="Line\DashLineArrow.cs" />
     <Compile Include="Form1.cs">
@@ -74,6 +78,9 @@
     <Compile Include="Line\TwoAngleLineArrow.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Table\InterfaceTable.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>

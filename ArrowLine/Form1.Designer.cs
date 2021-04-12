@@ -43,6 +43,9 @@ namespace ArrowLine
             this.toolStripButtonOpenArrow = new System.Windows.Forms.ToolStripButton();
             this.toolStripButtonCloseArrowDash = new System.Windows.Forms.ToolStripButton();
             this.toolStripButtonTwoAngleLine = new System.Windows.Forms.ToolStripButton();
+            this.button2 = new System.Windows.Forms.Button();
+            this.button3 = new System.Windows.Forms.Button();
+            this.textBox1 = new System.Windows.Forms.TextBox();
             this.button_Clear = new System.Windows.Forms.Button();
             this.button_save = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -219,6 +222,35 @@ namespace ArrowLine
             this.toolStripButtonTwoAngleLine.Text = "toolStripButton1";
             this.toolStripButtonTwoAngleLine.Click += new System.EventHandler(this.CheckButtonPressed_Click);
             // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(13, 188);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(75, 23);
+            this.button2.TabIndex = 14;
+            this.button2.Text = "button2";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.CheckTableType_Click);
+            // 
+            // button3
+            // 
+            this.button3.Location = new System.Drawing.Point(33, 306);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(75, 23);
+            this.button3.TabIndex = 15;
+            this.button3.Text = "button3";
+            this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
+            // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(33, 251);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(100, 20);
+            this.textBox1.TabIndex = 16;
+            this.textBox1.Text = "Inter";
+            // 
+
             // button_Clear
             // 
             this.button_Clear.Location = new System.Drawing.Point(22, 211);
@@ -244,6 +276,10 @@ namespace ArrowLine
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Coral;
+            this.ClientSize = new System.Drawing.Size(910, 557);
+            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.button3);
+            this.Controls.Add(this.button2);
             this.ClientSize = new System.Drawing.Size(1213, 686);
             this.Controls.Add(this.button_save);
             this.Controls.Add(this.button_Clear);
@@ -282,6 +318,9 @@ namespace ArrowLine
         private System.Windows.Forms.ToolStripButton toolStripButtonStartRhombBlack;
         private System.Windows.Forms.Button button_Clear;
         private System.Windows.Forms.Button button_save;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.TextBox textBox1;
     }
 }
 
