@@ -5,7 +5,7 @@ using System;
 
 namespace ArrowLine.Arrow
 {
-    class InheritanceArrow : AbstractArrow
+    class InheritanceArrow : AbstractFigure
     {
         public override void Draw(Pen pen, Graphics graphics)
         {
