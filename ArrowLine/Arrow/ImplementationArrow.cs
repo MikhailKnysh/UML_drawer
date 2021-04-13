@@ -6,7 +6,7 @@ using System;
 
 namespace ArrowLine.Arrow
 {
-    public class ImplementationArrow : AbstractArrow
+    public class ImplementationArrow : AbstractFigure
     {
         public override void Draw(Pen pen, Graphics graphics)
         {

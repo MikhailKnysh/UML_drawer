@@ -2,9 +2,10 @@
 
 namespace ArrowLine
 {
-    public abstract class AbstractArrow
+    //make as interface
+
+    public abstract class AbstractFigure
     {
-        
         public Point _startPoint;
         public Point _endPoint;
 

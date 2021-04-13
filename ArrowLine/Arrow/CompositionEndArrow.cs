@@ -5,7 +5,7 @@ using System;
 
 namespace ArrowLine.Arrow
 {
-    class CompositionEndArrow : AbstractArrow
+    class CompositionEndArrow : AbstractFigure
     {
         public override void Draw(Pen pen, Graphics graphics)
         {
@@ -24,7 +24,7 @@ namespace ArrowLine.Arrow
             AbstractArrowCap arrowCap = new OpenCapArrow(_startPoint, _endPoint);
             arrowCap.Draw(pen, graphics);
 
-            AbstractArrow arrowCapRhomb = new BlackRhombEndCapArrow(_startPoint, _endPoint);
+            AbstractFigure arrowCapRhomb = new BlackRhombEndCapArrow(_startPoint, _endPoint);
             arrowCapRhomb.Draw(pen, graphics);
         }
     }

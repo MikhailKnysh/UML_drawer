@@ -46,7 +46,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AbstractArrow.cs" />
+    <Compile Include="AbstractFigure.cs" />
+    <Compile Include="AbstractArrowCap.cs" />
+    <Compile Include="AbstractLine.cs" />
     <Compile Include="AbstractTable.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -61,8 +63,6 @@
     <Compile Include="Arrow\AssociationArrow.cs" />
     <Compile Include="Arrow\CompositionEndArrow.cs" />
     <Compile Include="Arrow\CompositionStartArrow.cs" />
-    <Compile Include="AbstractArrowCap.cs" />
-    <Compile Include="AbstractLine.cs" />
     <Compile Include="Arrow\ImplementationArrow.cs" />
     <Compile Include="Arrow\InheritanceArrow.cs" />
     <Compile Include="LineInTable.cs" />

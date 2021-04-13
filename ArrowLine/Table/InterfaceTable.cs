@@ -28,28 +28,13 @@ namespace ArrowLine.Table
 
         public override void Draw(Pen pen, Graphics graphics)
         {
-            AbstractTable table = new InterfaceTable(startPoint);
-            graphics.DrawRectangle(pen, new Rectangle(startPoint.X, startPoint.Y, widght, height));
 
-            Label label = new Label
-            {
-                Text = "<<Interface>>",
-                Location = new Point(startPoint.X, startPoint.Y),
-            };
+            // Create font and brush.
+            Font drawFont = new Font("Arial", 14);
+            SolidBrush drawBrush = new SolidBrush(pen.Color);
 
-            Controls.Add(label);
-            label.BringToFront();
-
-            title = new TextBox
-            {
-                Text = "Interface",
-                Location = new Point(startPoint.X, startPoint.Y),
-                BackColor = Color.Red
-            };
-
-
-            label.Controls.Add(title);
-            title.BringToFront();
+            StringFormat drawFormat = new StringFormat();
+            drawFormat.Alignment = StringAlignment.Center;
 
             linesInTable = new List<LineInTable>();
             LineInTable lineInTable = new LineInTable();
@@ -59,12 +44,30 @@ namespace ArrowLine.Table
             lineInTable._endLinePoint.X = startPoint.X + widght;
             lineInTable._endLinePoint.Y = startPoint.Y + stepDown * 2;
 
-            for (int i = 0; i < 2; i++)
+            for (int i = 0; i < 3; i++)
             {
                 linesInTable.Add(lineInTable);
             }
 
+            // Create rectangle for drawing.
+            int heightRec = stepDown;
+            Pen penRec = new Pen(Color.White, pen.Width);
+
+            Rectangle drawRect = new Rectangle(startPoint.X, startPoint.Y, widght, heightRec);
+
+            graphics.DrawRectangle(penRec, startPoint.X, startPoint.Y, widght, heightRec);
+            graphics.DrawString("<< Interface >> ", drawFont, new SolidBrush(pen.Color), drawRect, drawFormat);
+
+            drawRect = new Rectangle(startPoint.X, startPoint.Y + stepDown, widght, heightRec);
+            graphics.DrawRectangle(penRec, startPoint.X, startPoint.Y + stepDown, widght, heightRec);
+            graphics.DrawString("Title", drawFont, new SolidBrush(pen.Color), drawRect, drawFormat);
+
+
+
+
             graphics.DrawLine(pen, lineInTable._startLinePoint, lineInTable._endLinePoint);
+
+            graphics.DrawRectangle(pen, new Rectangle(startPoint.X, startPoint.Y, widght, height));
         }
 
         protected override void Move()
@@ -75,20 +78,6 @@ namespace ArrowLine.Table
         protected override void Resize()
         {
             throw new NotImplementedException();
-        }
-
-        public TextBox GetTextBox(int x, int y)
-        {
-            title = new TextBox
-            {
-                Text = "Interface",
-                Location = new Point(x, y),
-                BackColor = Color.Red
-            };
-
-            title.BringToFront();
-
-            return title;
         }
     }
 }

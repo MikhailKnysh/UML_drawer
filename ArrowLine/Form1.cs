@@ -17,8 +17,7 @@ namespace ArrowLine
         private bool _isMoving = false;
         private bool isArrow = true;
 
-        AbstractArrow crntArrow;
-        List<AbstractArrow> arrowsList;
+        AbstractFigure arrow;
         AbstractTable table;
 
         public Form1()
@@ -30,11 +29,9 @@ namespace ArrowLine
         {
             Point startPoint = new Point();
             Point endPoint = new Point();
-            arrowsList = new List<AbstractArrow>();
-
             _bitmap = new Bitmap(pictureBox1.Width, pictureBox1.Height);
             _pen = new Pen(Color.Black, 2);
-            crntArrow = new SolidLineArrow(startPoint, endPoint);
+            arrow = new SolidLineArrow(startPoint,endPoint);
             table = new InterfaceTable();//Add to draw moment
         }
 
@@ -44,6 +41,7 @@ namespace ArrowLine
             crntArrow._startPoint = e.Location;
             crntArrow._endPoint = e.Location;
             table.startPoint = e.Location;
+
             pictureBox1.Invalidate();
         }
 
@@ -51,7 +49,7 @@ namespace ArrowLine
         {
             _isMoving = false;
             _bitmap = _tmpBitmap;
-            arrowsList.Add(crntArrow);
+
         }
 
         private void pictureBox1_MouseMove(object sender, MouseEventArgs e)
@@ -77,15 +75,7 @@ namespace ArrowLine
                 }
                 else
                 {
-                    table.Width = 5;
-                    table.Height = 5;
-                    table.Name = "TableNNN";
-                    table.BackColor = Color.Green;
-
                     table.Draw(_pen, _graphics);
-                    table.Location = new Point(table.startPoint.X, table.startPoint.Y);
-                    Controls.Add(table);
-                    table.BringToFront();
                 }
 
                 pictureBox1.Image = _tmpBitmap;
@@ -96,6 +86,7 @@ namespace ArrowLine
         private void ButtonColor_Click(object sender, EventArgs e)
         {
             Button btnColor = (Button)sender;
+
             colorDialog1.ShowDialog();
             btnColor.BackColor = colorDialog1.Color;
             _pen.Color = colorDialog1.Color;
@@ -149,48 +140,5 @@ namespace ArrowLine
             isArrow = false;
             table = new InterfaceTable(table.startPoint);
         }
-
-        private void button3_Click(object sender, EventArgs e)
-        {
-            //TextBox title = new TextBox
-            //{
-            //    Text = "Interface",
-            //    Location = new Point(200 + 10, 300 + 14),
-            //    Size = new Size(100, 80),
-            //    BackColor = Color.Red
-            //};
-
-            //InterfaceTable inTable = new InterfaceTable();
-
-            //Controls.Add(inTable.GetTextBox(200, 200));
-
-            //title.BringToFront();
-
-            //InitializeComponent();
-
-            //textBox1.Text = "Interface";
-            //textBox1.BackColor = Color.Red;
-        }
-
-        private void button_Clear_Click(object sender, EventArgs e)
-        {
-            _tmpBitmap = (Bitmap)_bitmap.Clone();
-            _graphics = Graphics.FromImage(_tmpBitmap);
-            _graphics.Clear(Color.White);
-            pictureBox1.Image = _tmpBitmap;
-        }
-
-        private void button_save_Click(object sender, EventArgs e)
-        {
-            _tmpBitmap = (Bitmap)_bitmap.Clone();
-            _graphics = Graphics.FromImage(_tmpBitmap);
-
-            foreach (var arrow in arrowsList)
-            {
-
-                arrow.Draw(_pen, _graphics);
-            }
-
-            pictureBox1.Image = _tmpBitmap;
-        }
+    }
 }

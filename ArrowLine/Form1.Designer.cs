@@ -44,10 +44,6 @@ namespace ArrowLine
             this.toolStripButtonCloseArrowDash = new System.Windows.Forms.ToolStripButton();
             this.toolStripButtonTwoAngleLine = new System.Windows.Forms.ToolStripButton();
             this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.button_Clear = new System.Windows.Forms.Button();
-            this.button_save = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).BeginInit();
             this.toolStripGroupButtons.SuspendLayout();
@@ -57,11 +53,11 @@ namespace ArrowLine
             // 
             this.pictureBox1.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.pictureBox1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.pictureBox1.Location = new System.Drawing.Point(161, 14);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.pictureBox1.Location = new System.Drawing.Point(118, -2);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Padding = new System.Windows.Forms.Padding(0, 4, 0, 0);
-            this.pictureBox1.Size = new System.Drawing.Size(1057, 680);
+            this.pictureBox1.Padding = new System.Windows.Forms.Padding(0, 2, 0, 0);
+            this.pictureBox1.Size = new System.Drawing.Size(872, 565);
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
             this.pictureBox1.Paint += new System.Windows.Forms.PaintEventHandler(this.pictureBox1_Paint);
@@ -72,21 +68,20 @@ namespace ArrowLine
             // trackBar1
             // 
             this.trackBar1.LargeChange = 3;
-            this.trackBar1.Location = new System.Drawing.Point(16, 153);
-            this.trackBar1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.trackBar1.Location = new System.Drawing.Point(12, 124);
+            this.trackBar1.Margin = new System.Windows.Forms.Padding(2);
             this.trackBar1.Maximum = 5;
             this.trackBar1.Name = "trackBar1";
-            this.trackBar1.Size = new System.Drawing.Size(104, 56);
+            this.trackBar1.Size = new System.Drawing.Size(78, 45);
             this.trackBar1.TabIndex = 3;
             this.trackBar1.Scroll += new System.EventHandler(this.trackbar1_Scroll);
             // 
             // button1
             // 
             this.button1.BackColor = System.Drawing.Color.Black;
-            this.button1.Location = new System.Drawing.Point(16, 14);
-            this.button1.Margin = new System.Windows.Forms.Padding(4);
+            this.button1.Location = new System.Drawing.Point(12, 11);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(79, 42);
+            this.button1.Size = new System.Drawing.Size(59, 34);
             this.button1.TabIndex = 11;
             this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.ButtonColor_Click);
@@ -110,10 +105,10 @@ namespace ArrowLine
             this.toolStripButtonCloseArrowDash,
             this.toolStripButtonTwoAngleLine});
             this.toolStripGroupButtons.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.HorizontalStackWithOverflow;
-            this.toolStripGroupButtons.Location = new System.Drawing.Point(16, 76);
+            this.toolStripGroupButtons.Location = new System.Drawing.Point(12, 62);
             this.toolStripGroupButtons.Name = "toolStripGroupButtons";
             this.toolStripGroupButtons.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
-            this.toolStripGroupButtons.Size = new System.Drawing.Size(117, 49);
+            this.toolStripGroupButtons.Size = new System.Drawing.Size(88, 40);
             this.toolStripGroupButtons.Stretch = true;
             this.toolStripGroupButtons.TabIndex = 13;
             this.toolStripGroupButtons.Text = "ARROWS";
@@ -224,71 +219,30 @@ namespace ArrowLine
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(13, 188);
+            this.button2.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button2.BackgroundImage")));
+            this.button2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.button2.Location = new System.Drawing.Point(12, 173);
+            this.button2.Margin = new System.Windows.Forms.Padding(2);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
+            this.button2.Size = new System.Drawing.Size(80, 109);
             this.button2.TabIndex = 14;
-            this.button2.Text = "button2";
+            this.button2.Text = "Прямокутник";
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.CheckTableType_Click);
             // 
-            // button3
-            // 
-            this.button3.Location = new System.Drawing.Point(33, 306);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(75, 23);
-            this.button3.TabIndex = 15;
-            this.button3.Text = "button3";
-            this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
-            // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(33, 251);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(100, 20);
-            this.textBox1.TabIndex = 16;
-            this.textBox1.Text = "Inter";
-            // 
-
-            // button_Clear
-            // 
-            this.button_Clear.Location = new System.Drawing.Point(22, 211);
-            this.button_Clear.Name = "button_Clear";
-            this.button_Clear.Size = new System.Drawing.Size(110, 60);
-            this.button_Clear.TabIndex = 14;
-            this.button_Clear.Text = "Clear";
-            this.button_Clear.UseVisualStyleBackColor = true;
-            this.button_Clear.Click += new System.EventHandler(this.button_Clear_Click);
-            // 
-            // button_save
-            // 
-            this.button_save.Location = new System.Drawing.Point(21, 306);
-            this.button_save.Name = "button_save";
-            this.button_save.Size = new System.Drawing.Size(111, 57);
-            this.button_save.TabIndex = 15;
-            this.button_save.Text = "save";
-            this.button_save.UseVisualStyleBackColor = true;
-            this.button_save.Click += new System.EventHandler(this.button_save_Click);
-            // 
             // Form1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Coral;
-            this.ClientSize = new System.Drawing.Size(910, 557);
-            this.Controls.Add(this.textBox1);
-            this.Controls.Add(this.button3);
+            this.ClientSize = new System.Drawing.Size(987, 561);
             this.Controls.Add(this.button2);
-            this.ClientSize = new System.Drawing.Size(1213, 686);
-            this.Controls.Add(this.button_save);
-            this.Controls.Add(this.button_Clear);
             this.Controls.Add(this.toolStripGroupButtons);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.trackBar1);
             this.Controls.Add(this.pictureBox1);
             this.ForeColor = System.Drawing.SystemColors.ActiveCaption;
-            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "Form1";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
@@ -319,8 +273,6 @@ namespace ArrowLine
         private System.Windows.Forms.Button button_Clear;
         private System.Windows.Forms.Button button_save;
         private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.TextBox textBox1;
     }
 }
 
