@@ -2,7 +2,7 @@
 
 namespace ArrowLine.CapArrow
 {
-    public class BlackRhombStartCapArrow : AbstractArrow, IArrowCap
+    public class BlackRhombStartCapArrow : AbstractArrowCap
     {
         public BlackRhombStartCapArrow(Point startPoint, Point endPoint)
         {
@@ -10,7 +10,7 @@ namespace ArrowLine.CapArrow
             _endPoint = endPoint;
         }
 
-        public Point[] CreateArrowObject()
+        public override Point[] CreateArrowObject()
         {
             Point[] _CustomCapArrow = new Point[]
             {

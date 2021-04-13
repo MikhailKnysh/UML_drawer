@@ -2,7 +2,7 @@
 
 namespace ArrowLine.Line
 {
-    class TwoAngleLineArrow : AbstractArrow, ILine
+    class TwoAngleLineArrow : AbstractLine
     {
         public TwoAngleLineArrow(Point startPoint, Point endPoint)
         {
@@ -10,7 +10,7 @@ namespace ArrowLine.Line
             _endPoint = endPoint;
         }
 
-        public Point[] CreateArrowLine()
+        public override Point[] CreateArrowLine()
         {
             int midlle = (_startPoint.X + _endPoint.X) / 2;
             
