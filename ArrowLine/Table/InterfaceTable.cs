@@ -28,7 +28,13 @@ namespace ArrowLine.Table
 
         public override void Draw(Pen pen, Graphics graphics)
         {
-            graphics.DrawRectangle(pen, new Rectangle(startPoint.X, startPoint.Y, widght, height));
+
+            // Create font and brush.
+            Font drawFont = new Font("Arial", 14);
+            SolidBrush drawBrush = new SolidBrush(pen.Color);
+
+            StringFormat drawFormat = new StringFormat();
+            drawFormat.Alignment = StringAlignment.Center;
 
             linesInTable = new List<LineInTable>();
             LineInTable lineInTable = new LineInTable();
@@ -43,7 +49,25 @@ namespace ArrowLine.Table
                 linesInTable.Add(lineInTable);
             }
 
+            // Create rectangle for drawing.
+            int heightRec = stepDown;
+            Pen penRec = new Pen(Color.White, pen.Width);
+
+            Rectangle drawRect = new Rectangle(startPoint.X, startPoint.Y, widght, heightRec);
+
+            graphics.DrawRectangle(penRec, startPoint.X, startPoint.Y, widght, heightRec);
+            graphics.DrawString("<< Interface >> ", drawFont, new SolidBrush(pen.Color), drawRect, drawFormat);
+
+            drawRect = new Rectangle(startPoint.X, startPoint.Y + stepDown, widght, heightRec);
+            graphics.DrawRectangle(penRec, startPoint.X, startPoint.Y + stepDown, widght, heightRec);
+            graphics.DrawString("Title", drawFont, new SolidBrush(pen.Color), drawRect, drawFormat);
+
+
+
+
             graphics.DrawLine(pen, lineInTable._startLinePoint, lineInTable._endLinePoint);
+
+            graphics.DrawRectangle(pen, new Rectangle(startPoint.X, startPoint.Y, widght, height));
         }
 
         protected override void Move()

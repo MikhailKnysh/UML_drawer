@@ -8,8 +8,8 @@ namespace ArrowLine
     {
         protected TextBox title;
         public Point startPoint;
-        protected int widght = 120;
-        protected int height = 160;
+        protected int widght = 140;
+        protected int height = 180;
         protected int stepDown = 24;
         protected List<string> fields;
         protected List<string> properties;

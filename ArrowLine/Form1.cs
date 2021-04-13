@@ -28,7 +28,6 @@ namespace ArrowLine
         {
             Point startPoint = new Point();
             Point endPoint = new Point();
-
             _bitmap = new Bitmap(pictureBox1.Width, pictureBox1.Height);
             _pen = new Pen(Color.Black, 2);
             arrow = new SolidLineArrow(startPoint,endPoint);
@@ -49,6 +48,7 @@ namespace ArrowLine
         {
             _isMoving = false;
             _bitmap = _tmpBitmap;
+
         }
 
         private void pictureBox1_MouseMove(object sender, MouseEventArgs e)
