@@ -31,7 +31,7 @@ namespace ArrowLine
             _bitmap = new Bitmap(pictureBox1.Width, pictureBox1.Height);
             _pen = new Pen(Color.Black, 2);
             arrow = new SolidLineArrow(startPoint,endPoint);
-            table = new InterfaceTable();//Add to draw moment
+            table = new InterfaceTable();
         }
 
         private void pictureBox1_MouseDown(object sender, MouseEventArgs e)

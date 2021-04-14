@@ -4,7 +4,7 @@ using System.Windows.Forms;
 
 namespace ArrowLine
 {
-    public abstract class AbstractTable
+    public abstract class AbstractTable// : AbstractFigure
     {
         protected TextBox title;
         public Point startPoint;
@@ -20,7 +20,6 @@ namespace ArrowLine
         protected abstract void AddMethod();
         public virtual void Draw(Pen pen, Graphics graphics)
         {
-
         }
         protected abstract void Resize();
         protected abstract void Move();

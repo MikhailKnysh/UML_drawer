@@ -29,6 +29,8 @@ namespace ArrowLine.Table
         public override void Draw(Pen pen, Graphics graphics)
         {
 
+            graphics.DrawRectangle(pen, new Rectangle(startPoint.X, startPoint.Y, widght, height));
+
             // Create font and brush.
             Font drawFont = new Font("Arial", 14);
             SolidBrush drawBrush = new SolidBrush(pen.Color);
