@@ -48,7 +48,6 @@ namespace ArrowLine
         {
             _isMoving = false;
             _bitmap = _tmpBitmap;
-
         }
 
         private void pictureBox1_MouseMove(object sender, MouseEventArgs e)
@@ -138,6 +137,29 @@ namespace ArrowLine
 
             isArrow = false;
             table = new InterfaceTable(table.startPoint);
+        }
+
+        private void F_Click(object sender, EventArgs e)
+        {
+            _tmpBitmap = (Bitmap)_bitmap.Clone();
+            _graphics = Graphics.FromImage(_tmpBitmap);
+            pictureBox1.Image = _tmpBitmap;
+
+            //Pen pen = new Pen(Color.White, _pen.Width);
+            
+            //table.Draw(pen, _graphics);
+            table.AddField(_pen, _graphics);
+
+            pictureBox1.Image = _tmpBitmap;
+
+            //table.Draw(_pen, _graphics);
+
+            //pictureBox1.Invalidate();
+            _bitmap = _tmpBitmap;
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
         }
     }
 }
