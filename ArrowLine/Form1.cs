@@ -30,7 +30,7 @@ namespace ArrowLine
             Point endPoint = new Point();
             _bitmap = new Bitmap(pictureBox1.Width, pictureBox1.Height);
             _pen = new Pen(Color.Black, 2);
-            arrow = new SolidLineArrow(startPoint,endPoint);
+            arrow = new SolidLineArrow(startPoint, endPoint);
             table = new InterfaceTable();
         }
 
@@ -55,6 +55,7 @@ namespace ArrowLine
             if (_isMoving)
             {
                 arrow._endPoint = e.Location;
+                table.startPoint = e.Location;
                 pictureBox1.Invalidate();
             }
         }
@@ -145,21 +146,24 @@ namespace ArrowLine
             _graphics = Graphics.FromImage(_tmpBitmap);
             pictureBox1.Image = _tmpBitmap;
 
-            //Pen pen = new Pen(Color.White, _pen.Width);
-            
-            //table.Draw(pen, _graphics);
             table.AddField(_pen, _graphics);
 
-            pictureBox1.Image = _tmpBitmap;
-
-            //table.Draw(_pen, _graphics);
-
-            //pictureBox1.Invalidate();
             _bitmap = _tmpBitmap;
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            _tmpBitmap = (Bitmap)_bitmap.Clone();
+            _graphics = Graphics.FromImage(_tmpBitmap);
+            pictureBox1.Image = _tmpBitmap;
+
+            table.AddProperty(_pen, _graphics);
+
+            _bitmap = _tmpBitmap;
         }
     }
 }

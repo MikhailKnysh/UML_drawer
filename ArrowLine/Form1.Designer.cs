@@ -236,43 +236,45 @@ namespace ArrowLine
             // 
             // F
             // 
-            this.F.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.F.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.F.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.F.Location = new System.Drawing.Point(-4, 309);
+            this.F.Location = new System.Drawing.Point(2, 308);
             this.F.Name = "F";
-            this.F.Size = new System.Drawing.Size(35, 37);
+            this.F.Size = new System.Drawing.Size(111, 25);
             this.F.TabIndex = 15;
-            this.F.Text = "F";
+            this.F.Text = "Add field";
             this.F.UseVisualStyleBackColor = true;
             this.F.Click += new System.EventHandler(this.F_Click);
             // 
             // button4
             // 
-            this.button4.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.button4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.button4.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.button4.Location = new System.Drawing.Point(37, 309);
+            this.button4.Location = new System.Drawing.Point(2, 339);
             this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(35, 37);
+            this.button4.Size = new System.Drawing.Size(111, 25);
             this.button4.TabIndex = 16;
-            this.button4.Text = "P";
+            this.button4.Text = "Add prop";
             this.button4.UseVisualStyleBackColor = true;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
             // button5
             // 
-            this.button5.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.button5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.button5.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.button5.Location = new System.Drawing.Point(78, 309);
+            this.button5.Location = new System.Drawing.Point(2, 370);
             this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(35, 37);
+            this.button5.Size = new System.Drawing.Size(111, 25);
             this.button5.TabIndex = 17;
-            this.button5.Text = "M";
+            this.button5.TabStop = false;
+            this.button5.Text = "Add method";
             this.button5.UseVisualStyleBackColor = true;
             // 
             // button3
             // 
             this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.button3.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.button3.Location = new System.Drawing.Point(24, 369);
+            this.button3.Location = new System.Drawing.Point(24, 489);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(35, 37);
             this.button3.TabIndex = 18;

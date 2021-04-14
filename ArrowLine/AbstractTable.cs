@@ -23,7 +23,7 @@ namespace ArrowLine
 
         public AbstractTable()
         {
-            font = new Font("Arial", 12);
+            font = new Font("Arial", 14);
             format = new StringFormat();
             linesInTable = new List<LineInTable>();
 
@@ -39,16 +39,46 @@ namespace ArrowLine
 
         public virtual void AddField(Pen pen, Graphics graphics)
         {
-            //DrawStringRectangle(graphics, pen, font, format, "Field", heightStringRectangle, stepDownPoint: 40);//
+            format.Alignment = StringAlignment.Near;
+            font = new Font("Arial", 12);
 
             Pen whitePen = new Pen(Color.White, pen.Width);
 
             graphics.DrawRectangle(whitePen, objectRectangle);
 
+            DrawStringRectangle(graphics, pen, font, format, "Field", heightStringRectangle-2, stepDownPoint: objectRectangle.Height - heightStringRectangle +2);
+
             objectRectangle.Height += heightStringRectangle;
             graphics.DrawRectangle(pen, objectRectangle);
+
+            linesInTable[1]._startLinePoint.X = startPoint.X;
+            linesInTable[1]._startLinePoint.Y = startPoint.Y + (objectRectangle.Height - heightStringRectangle+2);
+            linesInTable[1]._endLinePoint.X = startPoint.X + widght;
+            linesInTable[1]._endLinePoint.Y = startPoint.Y + (objectRectangle.Height - heightStringRectangle+2);
+
+            graphics.DrawLine(pen, linesInTable[1]._startLinePoint, linesInTable[1]._endLinePoint);
+
         }
-        public virtual void AddProperty() { }
+        public virtual void AddProperty(Pen pen, Graphics graphics) {
+            format.Alignment = StringAlignment.Near;
+            font = new Font("Arial", 12);
+
+            Pen whitePen = new Pen(Color.White, pen.Width);
+
+            graphics.DrawRectangle(whitePen, objectRectangle);
+
+            DrawStringRectangle(graphics, pen, font, format, "Property", heightStringRectangle - 2, stepDownPoint: objectRectangle.Height - heightStringRectangle + 4);
+
+            objectRectangle.Height += heightStringRectangle;
+            graphics.DrawRectangle(pen, objectRectangle);
+
+            linesInTable[2]._startLinePoint.X = startPoint.X;
+            linesInTable[2]._startLinePoint.Y = startPoint.Y + (objectRectangle.Height - heightStringRectangle + 4);
+            linesInTable[2]._endLinePoint.X = startPoint.X + widght;
+            linesInTable[2]._endLinePoint.Y = startPoint.Y + (objectRectangle.Height - heightStringRectangle + 4);
+
+            graphics.DrawLine(pen, linesInTable[2]._startLinePoint, linesInTable[2]._endLinePoint);
+        }
         public virtual void AddMethod() { }
         public virtual void Draw(Pen pen, Graphics graphics)
         {
