@@ -35,9 +35,9 @@ namespace ArrowLine.Table
             DrawStringRectangle(graphics, pen, font, format, "Title", heightStringRectangle, stepDownPoint: 20);
 
             linesInTable[0]._startLinePoint.X = startPoint.X;
-            linesInTable[0]._startLinePoint.Y = startPoint.Y + stepDownLine * 2;
+            linesInTable[0]._startLinePoint.Y = startPoint.Y + stepDownLine * 2 - 2;
             linesInTable[0]._endLinePoint.X = startPoint.X + widght;
-            linesInTable[0]._endLinePoint.Y = startPoint.Y + stepDownLine * 2;
+            linesInTable[0]._endLinePoint.Y = startPoint.Y + stepDownLine * 2 - 2;
 
             graphics.DrawLine(pen, linesInTable[0]._startLinePoint, linesInTable[0]._endLinePoint);
 
