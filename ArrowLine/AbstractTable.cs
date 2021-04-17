@@ -90,6 +90,8 @@ namespace ArrowLine
 
         public virtual void AddProperty(Pen pen, Graphics graphics)
         {
+            stepDownMethodPoint += 20;
+
             format.Alignment = StringAlignment.Near;
 
             graphics.DrawRectangle(whitePen, objectRectangle);
@@ -109,14 +111,7 @@ namespace ArrowLine
             objectRectangle.Height += heightStringRectangle;
             graphics.DrawRectangle(pen, objectRectangle);
 
-            //linesInTable[2]._startLinePoint.X = startPoint.X;
-            //linesInTable[2]._startLinePoint.Y = startPoint.Y + stepDownPropertyPoint + heightStringRectangle;
-            //linesInTable[2]._endLinePoint.X = startPoint.X + width;
-            //linesInTable[2]._endLinePoint.Y = startPoint.Y + stepDownPropertyPoint + heightStringRectangle;
-            //graphics.DrawLine(pen, linesInTable[2]._startLinePoint, linesInTable[2]._endLinePoint);
             DrawHorizontalLine(pen, graphics, lineIndex: 2, stepDownPropertyPoint);
-
-            stepDownMethodPoint += 20;
         }
 
         public virtual void AddMethod(Pen pen, Graphics graphics)
@@ -174,10 +169,10 @@ namespace ArrowLine
                     stringRectangles[0].Y),
 
                 new Point(stringRectangles[stringRectangles.Count - 1].X + width,
-                    stringRectangles[stringRectangles.Count - 1].Y),
+                    stringRectangles[stringRectangles.Count - 1].Y + 20),
 
                 new Point(stringRectangles[stringRectangles.Count - 1].X,
-                    stringRectangles[stringRectangles.Count - 1].Y),
+                    stringRectangles[stringRectangles.Count - 1].Y + 20),
             };
 
             SolidBrush shadowBrush = new SolidBrush(Color.White);
