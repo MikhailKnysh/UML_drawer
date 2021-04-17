@@ -36,18 +36,21 @@ namespace ArrowLine
 
         private void pictureBox1_MouseDown(object sender, MouseEventArgs e)
         {
-            _isMoving = true;
-            arrow._startPoint = e.Location;
-            arrow._endPoint = e.Location;
-            table.startPoint = e.Location;
-
             switch (e.Button)
             {
+                case MouseButtons.Left:
+                    {
+                        _isMoving = true;
+                        arrow._startPoint = e.Location;
+                        arrow._endPoint = e.Location;
+                        table.startPoint = e.Location;
+                        break;
+                    }
                 case MouseButtons.Right:
                     {
                         contextMenuStrip1.Show(this, new Point(e.X + 120, e.Y));
+                        break;
                     }
-                    break;
             }
 
             pictureBox1.Invalidate();
@@ -182,9 +185,37 @@ namespace ArrowLine
             _bitmap = _tmpBitmap;
         }
 
-        private void contextMenuStrip1_Opening(object sender, System.ComponentModel.CancelEventArgs e)
+        private void toolStripMenuItemAddField_Click(object sender, EventArgs e)
         {
+            _tmpBitmap = (Bitmap)_bitmap.Clone();
+            _graphics = Graphics.FromImage(_tmpBitmap);
+            pictureBox1.Image = _tmpBitmap;
 
+            table.AddField(_pen, _graphics);
+
+            _bitmap = _tmpBitmap;
+        }
+
+        private void toolStripMenuItemAddProperty_Click(object sender, EventArgs e)
+        {
+            _tmpBitmap = (Bitmap)_bitmap.Clone();
+            _graphics = Graphics.FromImage(_tmpBitmap);
+            pictureBox1.Image = _tmpBitmap;
+
+            table.AddProperty(_pen, _graphics);
+
+            _bitmap = _tmpBitmap;
+        }
+
+        private void toolStripMenuItemAddMethod_Click(object sender, EventArgs e)
+        {
+            _tmpBitmap = (Bitmap)_bitmap.Clone();
+            _graphics = Graphics.FromImage(_tmpBitmap);
+            pictureBox1.Image = _tmpBitmap;
+
+            table.AddMethod(_pen, _graphics);
+
+            _bitmap = _tmpBitmap;
         }
     }
 }

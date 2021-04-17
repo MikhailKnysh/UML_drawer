@@ -49,8 +49,9 @@ namespace ArrowLine
             this.button4 = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.addPropertyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItemAddField = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItemAddProperty = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItemAddMethod = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).BeginInit();
             this.toolStripGroupButtons.SuspendLayout();
@@ -278,23 +279,32 @@ namespace ArrowLine
             // contextMenuStrip1
             // 
             this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripMenuItem1,
-            this.addPropertyToolStripMenuItem});
+            this.toolStripMenuItemAddField,
+            this.toolStripMenuItemAddProperty,
+            this.toolStripMenuItemAddMethod});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(181, 70);
-            this.contextMenuStrip1.Opening += new System.ComponentModel.CancelEventHandler(this.contextMenuStrip1_Opening);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(181, 92);
             // 
-            // toolStripMenuItem1
+            // toolStripMenuItemAddField
             // 
-            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(144, 22);
-            this.toolStripMenuItem1.Text = "Add field";
+            this.toolStripMenuItemAddField.Name = "toolStripMenuItemAddField";
+            this.toolStripMenuItemAddField.Size = new System.Drawing.Size(180, 22);
+            this.toolStripMenuItemAddField.Text = "Add field";
+            this.toolStripMenuItemAddField.Click += new System.EventHandler(this.toolStripMenuItemAddField_Click);
             // 
-            // addPropertyToolStripMenuItem
+            // toolStripMenuItemAddProperty
             // 
-            this.addPropertyToolStripMenuItem.Name = "addPropertyToolStripMenuItem";
-            this.addPropertyToolStripMenuItem.Size = new System.Drawing.Size(144, 22);
-            this.addPropertyToolStripMenuItem.Text = "Add property";
+            this.toolStripMenuItemAddProperty.Name = "toolStripMenuItemAddProperty";
+            this.toolStripMenuItemAddProperty.Size = new System.Drawing.Size(180, 22);
+            this.toolStripMenuItemAddProperty.Text = "Add property";
+            this.toolStripMenuItemAddProperty.Click += new System.EventHandler(this.toolStripMenuItemAddProperty_Click);
+            // 
+            // toolStripMenuItemAddMethod
+            // 
+            this.toolStripMenuItemAddMethod.Name = "toolStripMenuItemAddMethod";
+            this.toolStripMenuItemAddMethod.Size = new System.Drawing.Size(180, 22);
+            this.toolStripMenuItemAddMethod.Text = "Add method";
+            this.toolStripMenuItemAddMethod.Click += new System.EventHandler(this.toolStripMenuItemAddMethod_Click);
             // 
             // Form1
             // 
@@ -345,8 +355,9 @@ namespace ArrowLine
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Button button5;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
-        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem1;
-        private System.Windows.Forms.ToolStripMenuItem addPropertyToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemAddField;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemAddProperty;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemAddMethod;
     }
 }
 
