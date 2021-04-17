@@ -64,19 +64,19 @@ namespace ArrowLine
 
             if (methodRectangles.Count != 0)
             {
-                ClearArea(pen, graphics, methodRectangles);
-                ReDrawArea(pen, graphics, methodRectangles, methods);
+                ClearArea(graphics, methodRectangles);
+                ReDrawArea(graphics, methodRectangles, methods);
             }
 
             if (propertieRectangles.Count != 0)
             {
-                ClearArea(pen, graphics, propertieRectangles);
-                ReDrawArea(pen, graphics, propertieRectangles, properties);
+                ClearArea(graphics, propertieRectangles);
+                ReDrawArea(graphics, propertieRectangles, properties);
 
                 DrawHorizontalLine(pen, graphics, lineIndex: 2, stepDownPropertyPoint);
             }
 
-            DrawStringRectangle(graphics, pen, font, format, "Field", heightStringRectangle,
+            DrawStringRectangle(graphics, font, format, "Field", heightStringRectangle,
                 stepDownPoint: stepDownFieldPoint += 20);
 
             fields.Add("Field");
@@ -98,11 +98,11 @@ namespace ArrowLine
 
             if (methodRectangles.Count != 0)
             {
-                ClearArea(pen, graphics, methodRectangles);
-                ReDrawArea(pen, graphics, methodRectangles, methods);
+                ClearArea(graphics, methodRectangles);
+                ReDrawArea(graphics, methodRectangles, methods);
             }
 
-            DrawStringRectangle(graphics, pen, font, format, "Property", heightStringRectangle,
+            DrawStringRectangle(graphics, font, format, "Property", heightStringRectangle,
                 stepDownPoint: stepDownPropertyPoint += 20);
 
             properties.Add("Property");
@@ -120,7 +120,7 @@ namespace ArrowLine
 
             graphics.DrawRectangle(whitePen, objectRectangle);
 
-            DrawStringRectangle(graphics, pen, font, format, "Method", heightStringRectangle,
+            DrawStringRectangle(graphics, font, format, "Method", heightStringRectangle,
                 stepDownPoint: stepDownMethodPoint += 20);
 
             methods.Add("Method");
@@ -136,7 +136,7 @@ namespace ArrowLine
         protected abstract void Resize();
         protected abstract void Move();
         protected virtual void DrawStringRectangle(
-            Graphics graphics, Pen pen, Font font, StringFormat format, string text, int heightStringRectangle, int stepDownPoint)
+            Graphics graphics, Font font, StringFormat format, string text, int heightStringRectangle, int stepDownPoint)
         {
             stringRectangle = new Rectangle(startPoint.X, startPoint.Y + stepDownPoint, width, heightStringRectangle);
 
@@ -145,7 +145,7 @@ namespace ArrowLine
         }
 
         protected virtual void ReDrawArea(
-            Pen pen, Graphics graphics, List<Rectangle> stringRectangles, List<string> stringData)
+            Graphics graphics, List<Rectangle> stringRectangles, List<string> stringData)
         {
             for (int i = 0; i < stringRectangles.Count; i++)
             {
@@ -159,7 +159,7 @@ namespace ArrowLine
             }
         }
 
-        protected virtual void ClearArea(Pen pen, Graphics graphics, List<Rectangle> stringRectangles)
+        protected virtual void ClearArea(Graphics graphics, List<Rectangle> stringRectangles)
         {
             Point[] points = new Point[] {
                 new Point(stringRectangles[0].X,

@@ -31,8 +31,8 @@ namespace ArrowLine.Table
 
         public override void Draw(Pen pen, Graphics graphics)
         {
-            DrawStringRectangle(graphics, pen, font, format, "<< Interface >>", heightStringRectangle, stepDownPoint: 0);
-            DrawStringRectangle(graphics, pen, font, format, "Title", heightStringRectangle, stepDownPoint: 20);
+            DrawStringRectangle(graphics, font, format, "<< Interface >>", heightStringRectangle, stepDownPoint: 0);
+            DrawStringRectangle(graphics, font, format, "Title", heightStringRectangle, stepDownPoint: 20);
             DrawHorizontalLine(pen, graphics, lineIndex: 0, stepDownLine - 2);
 
             objectRectangle = new Rectangle(startPoint.X, startPoint.Y, width, height);
