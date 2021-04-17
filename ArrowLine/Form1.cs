@@ -41,6 +41,15 @@ namespace ArrowLine
             arrow._endPoint = e.Location;
             table.startPoint = e.Location;
 
+            switch (e.Button)
+            {
+                case MouseButtons.Right:
+                    {
+                        contextMenuStrip1.Show(this, new Point(e.X + 120, e.Y));
+                    }
+                    break;
+            }
+
             pictureBox1.Invalidate();
         }
 
@@ -151,10 +160,6 @@ namespace ArrowLine
             _bitmap = _tmpBitmap;
         }
 
-        private void button3_Click(object sender, EventArgs e)
-        {
-        }
-
         private void button4_Click(object sender, EventArgs e)
         {
             _tmpBitmap = (Bitmap)_bitmap.Clone();
@@ -164,6 +169,22 @@ namespace ArrowLine
             table.AddProperty(_pen, _graphics);
 
             _bitmap = _tmpBitmap;
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            _tmpBitmap = (Bitmap)_bitmap.Clone();
+            _graphics = Graphics.FromImage(_tmpBitmap);
+            pictureBox1.Image = _tmpBitmap;
+
+            table.AddMethod(_pen, _graphics);
+
+            _bitmap = _tmpBitmap;
+        }
+
+        private void contextMenuStrip1_Opening(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+
         }
     }
 }
