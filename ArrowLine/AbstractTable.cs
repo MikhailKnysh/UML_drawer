@@ -32,12 +32,29 @@ namespace ArrowLine
         public SolidBrush solidBrush;
 
         public AbstractTable()
-
-
-        public AbstractTable()
         {
             objectRectangle = new Rectangle();
             objectRegion = new Region();
+
+            font = new Font("Arial", 12);
+            format = new StringFormat();
+            whitePen = new Pen(Color.White, 2);////////////////
+            solidBrush = new SolidBrush(Color.Black);//////Pen.Color
+            linesInTable = new List<LineInTable>();
+            fields = new List<string>();
+            fieldRectangles = new List<Rectangle>();
+            properties = new List<string>();
+            propertieRectangles = new List<Rectangle>();
+            methods = new List<string>();
+            methodRectangles = new List<Rectangle>();
+            format.Alignment = StringAlignment.Center;
+
+            LineInTable lineInTable = new LineInTable();
+
+            for (int i = 0; i < 3; i++)
+            {
+                linesInTable.Add(lineInTable);
+            }
         }
         public virtual Rectangle ObjectRectangle
         {
@@ -50,25 +67,9 @@ namespace ArrowLine
             set { selected = value; }
         }
 
-        protected abstract void AddField();
-        protected abstract void AddMethod();
-
-        protected abstract void Resize();
-        protected abstract void Move();
-
         public virtual void DrawOverlay(Graphics g)
         {
-            font = new Font("Arial", 12);
-            format = new StringFormat();
-            whitePen = new Pen(Color.White, 2);////////////////
-            solidBrush = new SolidBrush(Color.Black);//////Pen.Color
-            linesInTable = new List<LineInTable>();
-            fields = new List<string>();
-            fieldRectangles = new List<Rectangle>();
-            properties = new List<string>();
-            propertieRectangles = new List<Rectangle>();
-            methods = new List<string>();
-            methodRectangles = new List<Rectangle>();
+           
             if (selected)
             {
                 g.FillRectangle(Brushes.Black, new Rectangle(objectRectangle.Left - 8, objectRectangle.Top - 8, 8, 8));
@@ -76,14 +77,7 @@ namespace ArrowLine
                 g.FillRectangle(Brushes.Black, new Rectangle(objectRectangle.Left - 8, objectRectangle.Bottom, 8, 8));
                 g.FillRectangle(Brushes.Black, new Rectangle(objectRectangle.Right, objectRectangle.Bottom, 8, 8));
 
-            format.Alignment = StringAlignment.Center;
-
-            LineInTable lineInTable = new LineInTable();
-
-            for (int i = 0; i < 3; i++)
-            {
-                linesInTable.Add(lineInTable);
-            }
+          
                 g.FillRectangle(Brushes.Black, new Rectangle(objectRectangle.Left + objectRectangle.Width / 2 - 4, objectRectangle.Top - 8, 8, 8));
                 g.FillRectangle(Brushes.Black, new Rectangle(objectRectangle.Left - 8, objectRectangle.Top + objectRectangle.Height / 2 - 4, 8, 8));
                 g.FillRectangle(Brushes.Black, new Rectangle(objectRectangle.Left + objectRectangle.Width / 2 - 4, objectRectangle.Bottom, 8, 8));
@@ -178,9 +172,9 @@ namespace ArrowLine
             graphics.DrawRectangle(pen, objectRectangle);
         }
 
-        public virtual void Draw(Pen pen, Graphics graphics)
-        {
-        }
+        //public override void Draw(Pen pen, Graphics graphics)
+        //{
+        //}
         protected abstract void Resize();
         protected abstract void Move();
         protected virtual void DrawStringRectangle(

@@ -56,7 +56,7 @@ namespace ArrowLine
         private void Form1_Load(object sender, EventArgs e)
         {
             figures = new List<AbstractTable>();
-            
+
             _bitmap = new Bitmap(pictureBox1.Width, pictureBox1.Height);
 
             _graphics = Graphics.FromImage(_bitmap);
@@ -70,23 +70,7 @@ namespace ArrowLine
 
         private void pictureBox1_MouseDown(object sender, MouseEventArgs e)
         {
-            switch (e.Button)
-            {
-                case MouseButtons.Left:
-                    {
-                        _isMoving = true;
-                        arrow._startPoint = e.Location;
-                        arrow._endPoint = e.Location;
-                        table.startPoint = e.Location;
-                        break;
-                    }
-                case MouseButtons.Right:
-                    {
-                        contextMenuStrip1.Show(this, new Point(e.X + 120, e.Y));
-                        break;
-                    }
-            }
-            ChooseButton();
+           // ChooseButton();
 
             _isMoving = true;
             if (isButtonSelectPressed)
@@ -95,9 +79,22 @@ namespace ArrowLine
             }
             else
             {
-                crntFigure._startPoint = e.Location;
-                crntFigure._endPoint = e.Location;
-                table._startPoint = e.Location;
+                switch (e.Button)
+                {
+                    case MouseButtons.Left:
+                        {
+                            _isMoving = true;
+                            crntFigure._startPoint = e.Location;
+                            crntFigure._endPoint = e.Location;
+                            table.startPoint = e.Location;
+                            break;
+                        }
+                    case MouseButtons.Right:
+                        {
+                            contextMenuStrip1.Show(this, new Point(e.X + 120, e.Y));
+                            break;
+                        }
+                }
             }
 
             if (isButtonSelectPressed)
@@ -158,7 +155,7 @@ namespace ArrowLine
             if (_isMoving)
             {
                 crntFigure._endPoint = e.Location;
-               endPoint = e.Location;
+                endPoint = e.Location;
                 table.startPoint = e.Location;
                 pictureBox1.Invalidate();
             }
@@ -244,10 +241,11 @@ namespace ArrowLine
             toolStripGroupButtons.BackgroundImage = toolStripButton.BackgroundImage;
             isArrow = true;
             buttonName = toolStripButton.Name;
-           
+
         }
         private void ChooseButton()
         {
+            
             switch (buttonName)
             {
                 case nameof(toolStripButtonCloseArrow):
@@ -339,6 +337,8 @@ namespace ArrowLine
             _tmpBitmap = (Bitmap)_bitmap.Clone();
             _graphics = Graphics.FromImage(_tmpBitmap);
             pictureBox1.Image = _tmpBitmap;
+
+            ChooseButton();
 
             table.AddField(_pen, _graphics);
 
