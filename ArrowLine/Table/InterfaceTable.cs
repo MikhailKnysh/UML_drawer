@@ -45,7 +45,7 @@ namespace ArrowLine.Table
             DrawStringRectangle(graphics, font, format, "Title", heightStringRectangle, stepDownPoint: 20);
             DrawHorizontalLine(pen, graphics, lineIndex: 0, stepDownLine - 2);
 
-            objectRectangle = new Rectangle(startPoint.X, startPoint.Y, width, height);
+            objectRectangle = new Rectangle(_startPoint.X, _startPoint.Y, width, height);
             graphics.DrawRectangle(pen, objectRectangle);
         }
 

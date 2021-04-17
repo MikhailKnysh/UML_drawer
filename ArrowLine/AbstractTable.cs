@@ -7,7 +7,6 @@ namespace ArrowLine
     public abstract class AbstractTable : AbstractFigure
     {
         protected TextBox title;
-        public Point startPoint;
         protected int width = 140;
         protected int height = 60;
         protected int heightStringRectangle = 20;
@@ -25,7 +24,7 @@ namespace ArrowLine
         protected List<LineInTable> linesInTable;
         public Rectangle objectRectangle;
         protected Rectangle stringRectangle;
-        public List<Rectangle> rectangles = new List<Rectangle>();
+        public List<Rectangle> highlightRectangles = new List<Rectangle>();
         public Font font;
         public StringFormat format;
         public Pen whitePen;
@@ -180,9 +179,9 @@ namespace ArrowLine
         protected virtual void DrawStringRectangle(
             Graphics graphics, Font font, StringFormat format, string text, int heightStringRectangle, int stepDownPoint)
         {
-            stringRectangle = new Rectangle(startPoint.X, startPoint.Y + stepDownPoint, width, heightStringRectangle);
+            stringRectangle = new Rectangle(_startPoint.X, _startPoint.Y + stepDownPoint, width, heightStringRectangle);
 
-            graphics.DrawRectangle(whitePen, startPoint.X, startPoint.Y + stepDownPoint, width, heightStringRectangle);
+            graphics.DrawRectangle(whitePen, _startPoint.X, _startPoint.Y + stepDownPoint, width, heightStringRectangle);
             graphics.DrawString(text, font, solidBrush, stringRectangle, format);
         }
 
@@ -225,10 +224,10 @@ namespace ArrowLine
 
         protected virtual void DrawHorizontalLine(Pen pen, Graphics graphics, int lineIndex, int stepDownPoint)
         {
-            linesInTable[lineIndex]._startLinePoint.X = startPoint.X;
-            linesInTable[lineIndex]._startLinePoint.Y = startPoint.Y + stepDownPoint + heightStringRectangle;
-            linesInTable[lineIndex]._endLinePoint.X = startPoint.X + width;
-            linesInTable[lineIndex]._endLinePoint.Y = startPoint.Y + stepDownPoint + heightStringRectangle;
+            linesInTable[lineIndex]._startLinePoint.X = _startPoint.X;
+            linesInTable[lineIndex]._startLinePoint.Y = _startPoint.Y + stepDownPoint + heightStringRectangle;
+            linesInTable[lineIndex]._endLinePoint.X = _startPoint.X + width;
+            linesInTable[lineIndex]._endLinePoint.Y = _startPoint.Y + stepDownPoint + heightStringRectangle;
             graphics.DrawLine(pen, linesInTable[lineIndex]._startLinePoint, linesInTable[lineIndex]._endLinePoint);
         }
     }

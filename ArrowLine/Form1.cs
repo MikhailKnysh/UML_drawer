@@ -70,31 +70,29 @@ namespace ArrowLine
 
         private void pictureBox1_MouseDown(object sender, MouseEventArgs e)
         {
-           // ChooseButton();
+            // ChooseButton();
 
-            _isMoving = true;
-            if (isButtonSelectPressed)
+            switch (e.Button)
             {
-                startPoint = e.Location;
-            }
-            else
-            {
-                switch (e.Button)
-                {
-                    case MouseButtons.Left:
+                case MouseButtons.Left:
+                    {
+                        _isMoving = true;
+                        if (isButtonSelectPressed)
                         {
-                            _isMoving = true;
-                            crntFigure._startPoint = e.Location;
-                            crntFigure._endPoint = e.Location;
-                            table.startPoint = e.Location;
-                            break;
+                            startPoint = e.Location;
                         }
-                    case MouseButtons.Right:
+                        else
                         {
-                            contextMenuStrip1.Show(this, new Point(e.X + 120, e.Y));
-                            break;
+                          
+
                         }
-                }
+                        break;
+                    }
+                case MouseButtons.Right:
+                    {
+                        contextMenuStrip1.Show(this, new Point(e.X + 120, e.Y));
+                        break;
+                    }
             }
 
             if (isButtonSelectPressed)
@@ -156,7 +154,7 @@ namespace ArrowLine
             {
                 crntFigure._endPoint = e.Location;
                 endPoint = e.Location;
-                table.startPoint = e.Location;
+                table._startPoint = e.Location;
                 pictureBox1.Invalidate();
             }
         }
@@ -242,10 +240,12 @@ namespace ArrowLine
             isArrow = true;
             buttonName = toolStripButton.Name;
 
+            ChooseButton();
+
         }
         private void ChooseButton()
         {
-            
+
             switch (buttonName)
             {
                 case nameof(toolStripButtonCloseArrow):
@@ -284,6 +284,7 @@ namespace ArrowLine
             Button button = (Button)sender;
             isArrow = false;
             isButtonSelectPressed = false;
+            table = new InterfaceTable(table._startPoint);
             buttonName = button.Name;
 
             foreach (var item in figures)
@@ -338,7 +339,6 @@ namespace ArrowLine
             _graphics = Graphics.FromImage(_tmpBitmap);
             pictureBox1.Image = _tmpBitmap;
 
-            ChooseButton();
 
             table.AddField(_pen, _graphics);
 
