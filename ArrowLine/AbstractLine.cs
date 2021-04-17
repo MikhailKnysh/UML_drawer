@@ -2,7 +2,7 @@
 
 namespace ArrowLine
 {
-    public abstract class AbstractLine: AbstractFigure
+    public abstract class AbstractLine : AbstractFigure
     {
         //public Point _endPoint;
 
