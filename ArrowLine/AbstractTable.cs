@@ -66,23 +66,23 @@ namespace ArrowLine
             set { selected = value; }
         }
 
-        public virtual void DrawOverlay(Graphics g)
+        public virtual void DrawOverlay()
         {
            
             if (selected)
             {
-                g.FillRectangle(Brushes.Black, new Rectangle(objectRectangle.Left - 8, objectRectangle.Top - 8, 8, 8));
-                g.FillRectangle(Brushes.Black, new Rectangle(objectRectangle.Right, objectRectangle.Top - 8, 8, 8));
-                g.FillRectangle(Brushes.Black, new Rectangle(objectRectangle.Left - 8, objectRectangle.Bottom, 8, 8));
-                g.FillRectangle(Brushes.Black, new Rectangle(objectRectangle.Right, objectRectangle.Bottom, 8, 8));
+                singltone.graphics.FillRectangle(Brushes.Black, new Rectangle(objectRectangle.Left - 8, objectRectangle.Top - 8, 8, 8));
+                singltone.graphics.FillRectangle(Brushes.Black, new Rectangle(objectRectangle.Right, objectRectangle.Top - 8, 8, 8));
+                singltone.graphics.FillRectangle(Brushes.Black, new Rectangle(objectRectangle.Left - 8, objectRectangle.Bottom, 8, 8));
+                singltone.graphics.FillRectangle(Brushes.Black, new Rectangle(objectRectangle.Right, objectRectangle.Bottom, 8, 8));
 
           
-                g.FillRectangle(Brushes.Black, new Rectangle(objectRectangle.Left + objectRectangle.Width / 2 - 4, objectRectangle.Top - 8, 8, 8));
-                g.FillRectangle(Brushes.Black, new Rectangle(objectRectangle.Left - 8, objectRectangle.Top + objectRectangle.Height / 2 - 4, 8, 8));
-                g.FillRectangle(Brushes.Black, new Rectangle(objectRectangle.Left + objectRectangle.Width / 2 - 4, objectRectangle.Bottom, 8, 8));
-                g.FillRectangle(Brushes.Black, new Rectangle(objectRectangle.Right, objectRectangle.Top + objectRectangle.Height / 2 - 4, 8, 8));
+                singltone.graphics.FillRectangle(Brushes.Black, new Rectangle(objectRectangle.Left + objectRectangle.Width / 2 - 4, objectRectangle.Top - 8, 8, 8));
+                singltone.graphics.FillRectangle(Brushes.Black, new Rectangle(objectRectangle.Left - 8, objectRectangle.Top + objectRectangle.Height / 2 - 4, 8, 8));
+                singltone.graphics.FillRectangle(Brushes.Black, new Rectangle(objectRectangle.Left + objectRectangle.Width / 2 - 4, objectRectangle.Bottom, 8, 8));
+                singltone.graphics.FillRectangle(Brushes.Black, new Rectangle(objectRectangle.Right, objectRectangle.Top + objectRectangle.Height / 2 - 4, 8, 8));
 
-                g.DrawRectangle(Pens.CadetBlue, objectRectangle);
+                singltone.graphics.DrawRectangle(Pens.CadetBlue, objectRectangle);
             }
         }
         public virtual bool HitTest(Point pt)
@@ -95,98 +95,94 @@ namespace ArrowLine
             return objectRegion.IsVisible(r);
         }
 
-        public virtual void AddField(Pen pen, Graphics graphics)
+        public virtual void AddField()
         {
             stepDownPropertyPoint += 20;
             stepDownMethodPoint += 20;
             format.Alignment = StringAlignment.Near;
 
-            graphics.DrawRectangle(whitePen, objectRectangle);
+            singltone.graphics.DrawRectangle(whitePen, objectRectangle);
 
             if (methodRectangles.Count != 0)
             {
-                ClearArea(graphics, methodRectangles);
-                ReDrawArea(graphics, methodRectangles, methods);
+                ClearArea(methodRectangles);
+                ReDrawArea(methodRectangles, methods);
             }
 
             if (propertieRectangles.Count != 0)
             {
-                ClearArea(graphics, propertieRectangles);
-                ReDrawArea(graphics, propertieRectangles, properties);
+                ClearArea(propertieRectangles);
+                ReDrawArea(propertieRectangles, properties);
 
-                DrawHorizontalLine(pen, graphics, lineIndex: 2, stepDownPropertyPoint);
+                DrawHorizontalLine(lineIndex: 2, stepDownPropertyPoint);
             }
 
-            DrawStringRectangle(graphics, font, format, "Field", heightStringRectangle,
+            DrawStringRectangle(font, format, "Field", heightStringRectangle,
                 stepDownPoint: stepDownFieldPoint += 20);
 
             fields.Add("Field");
             fieldRectangles.Add(stringRectangle);
 
             objectRectangle.Height += heightStringRectangle;
-            graphics.DrawRectangle(pen, objectRectangle);
+            singltone.graphics.DrawRectangle(singltone.pen, objectRectangle);
 
-            DrawHorizontalLine(pen, graphics, lineIndex: 1, stepDownFieldPoint);
+            DrawHorizontalLine(lineIndex: 1, stepDownFieldPoint);
         }
 
-        public virtual void AddProperty(Pen pen, Graphics graphics)
+        public virtual void AddProperty()
         {
             stepDownMethodPoint += 20;
 
             format.Alignment = StringAlignment.Near;
 
-            graphics.DrawRectangle(whitePen, objectRectangle);
+            singltone.graphics.DrawRectangle(whitePen, objectRectangle);
 
             if (methodRectangles.Count != 0)
             {
-                ClearArea(graphics, methodRectangles);
-                ReDrawArea(graphics, methodRectangles, methods);
+                ClearArea(methodRectangles);
+                ReDrawArea(methodRectangles, methods);
             }
 
-            DrawStringRectangle(graphics, font, format, "Property", heightStringRectangle,
+            DrawStringRectangle(font, format, "Property", heightStringRectangle,
                 stepDownPoint: stepDownPropertyPoint += 20);
 
             properties.Add("Property");
             propertieRectangles.Add(stringRectangle);
 
             objectRectangle.Height += heightStringRectangle;
-            graphics.DrawRectangle(pen, objectRectangle);
+            singltone.graphics.DrawRectangle(singltone.pen, objectRectangle);
 
-            DrawHorizontalLine(pen, graphics, lineIndex: 2, stepDownPropertyPoint);
+            DrawHorizontalLine(lineIndex: 2, stepDownPropertyPoint);
         }
 
-        public virtual void AddMethod(Pen pen, Graphics graphics)
+        public virtual void AddMethod()
         {
             format.Alignment = StringAlignment.Near;
 
-            graphics.DrawRectangle(whitePen, objectRectangle);
+            singltone.graphics.DrawRectangle(whitePen, objectRectangle);
 
-            DrawStringRectangle(graphics, font, format, "Method", heightStringRectangle,
+            DrawStringRectangle(font, format, "Method", heightStringRectangle,
                 stepDownPoint: stepDownMethodPoint += 20);
 
             methods.Add("Method");
             methodRectangles.Add(stringRectangle);
 
             objectRectangle.Height += heightStringRectangle;
-            graphics.DrawRectangle(pen, objectRectangle);
+            singltone.graphics.DrawRectangle(singltone.pen, objectRectangle);
         }
 
-        //public override void Draw(Pen pen, Graphics graphics)
-        //{
-        //}
         protected abstract void Resize();
         protected abstract void Move();
         protected virtual void DrawStringRectangle(
-            Graphics graphics, Font font, StringFormat format, string text, int heightStringRectangle, int stepDownPoint)
+            Font font, StringFormat format, string text, int heightStringRectangle, int stepDownPoint)
         {
             stringRectangle = new Rectangle(_startPoint.X, _startPoint.Y + stepDownPoint, width, heightStringRectangle);
 
-            graphics.DrawRectangle(whitePen, _startPoint.X, _startPoint.Y + stepDownPoint, width, heightStringRectangle);
-            graphics.DrawString(text, font, solidBrush, stringRectangle, format);
+            singltone.graphics.DrawRectangle(whitePen, _startPoint.X, _startPoint.Y + stepDownPoint, width, heightStringRectangle);
+            singltone.graphics.DrawString(text, font, solidBrush, stringRectangle, format);
         }
 
-        protected virtual void ReDrawArea(
-            Graphics graphics, List<Rectangle> stringRectangles, List<string> stringData)
+        protected virtual void ReDrawArea(List<Rectangle> stringRectangles, List<string> stringData)
         {
             for (int i = 0; i < stringRectangles.Count; i++)
             {
@@ -195,12 +191,12 @@ namespace ArrowLine
 
                 stringRectangles[i] = stringRectangle;
 
-                graphics.DrawRectangle(whitePen, stringRectangles[i].X, stringRectangles[i].Y, width, heightStringRectangle);
-                graphics.DrawString(stringData[i], font, solidBrush, stringRectangles[i], format);
+                singltone.graphics.DrawRectangle(whitePen, stringRectangles[i].X, stringRectangles[i].Y, width, heightStringRectangle);
+                singltone.graphics.DrawString(stringData[i], font, solidBrush, stringRectangles[i], format);
             }
         }
 
-        protected virtual void ClearArea(Graphics graphics, List<Rectangle> stringRectangles)
+        protected virtual void ClearArea(List<Rectangle> stringRectangles)
         {
             Point[] points = new Point[] {
                 new Point(stringRectangles[0].X,
@@ -218,17 +214,17 @@ namespace ArrowLine
 
             SolidBrush shadowBrush = new SolidBrush(Color.White);
 
-            graphics.DrawPolygon(whitePen, points);
-            graphics.FillPolygon(shadowBrush, points);
+            singltone.graphics.DrawPolygon(whitePen, points);
+            singltone.graphics.FillPolygon(shadowBrush, points);
         }
 
-        protected virtual void DrawHorizontalLine(Pen pen, Graphics graphics, int lineIndex, int stepDownPoint)
+        protected virtual void DrawHorizontalLine(int lineIndex, int stepDownPoint)
         {
             linesInTable[lineIndex]._startLinePoint.X = _startPoint.X;
             linesInTable[lineIndex]._startLinePoint.Y = _startPoint.Y + stepDownPoint + heightStringRectangle;
             linesInTable[lineIndex]._endLinePoint.X = _startPoint.X + width;
             linesInTable[lineIndex]._endLinePoint.Y = _startPoint.Y + stepDownPoint + heightStringRectangle;
-            graphics.DrawLine(pen, linesInTable[lineIndex]._startLinePoint, linesInTable[lineIndex]._endLinePoint);
+            singltone.graphics.DrawLine(singltone.pen, linesInTable[lineIndex]._startLinePoint, linesInTable[lineIndex]._endLinePoint);
         }
     }
 }

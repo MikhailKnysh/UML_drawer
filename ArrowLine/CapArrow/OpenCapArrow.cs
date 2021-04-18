@@ -55,9 +55,9 @@ namespace ArrowLine.CapArrow
             return _CustomCapArrow;
         }
 
-        public override void Draw(Pen pen, Graphics graphics)
+        public override void Draw()
         {
-            graphics.DrawLines(pen, CreateArrowObject());
+            singltone.graphics.DrawLines(singltone.pen, CreateArrowObject());
         }
     }
 }

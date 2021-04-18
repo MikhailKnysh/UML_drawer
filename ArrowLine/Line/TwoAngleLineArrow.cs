@@ -22,9 +22,9 @@ namespace ArrowLine.Line
             };
         }
 
-        public override void Draw(Pen pen, Graphics graphics)
+        public override void Draw()
         {
-            graphics.DrawLines(pen, CreateArrowLine());
+            singltone.graphics.DrawLines(singltone.pen, CreateArrowLine());
         }
     }
 }

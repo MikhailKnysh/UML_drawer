@@ -8,7 +8,7 @@ namespace ArrowLine.Arrow
 {
     public class ImplementationArrow : AbstractFigure
     {
-        public override void Draw(Pen pen, Graphics graphics)
+        public override void Draw()
         {
             if (Math.Abs(_startPoint.X - _endPoint.X) < 20)
             {
@@ -20,11 +20,11 @@ namespace ArrowLine.Arrow
             }
 
             AbstractArrowCap arrowCap = new CloseCapArrow(_startPoint, _endPoint);
-            arrowCap.Draw(pen, graphics);
+            arrowCap.Draw();
 
             AbstractLine line = new DashLineArrow(_startPoint, _endPoint);
-            line.Draw(pen, graphics);
-            pen.DashStyle = DashStyle.Solid;
+            line.Draw();
+            singltone.pen.DashStyle = DashStyle.Solid;
         }
     }
 }

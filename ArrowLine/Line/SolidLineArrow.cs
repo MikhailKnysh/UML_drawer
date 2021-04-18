@@ -10,9 +10,9 @@ namespace ArrowLine.Line
             _endPoint = endPoint;
         }
 
-        public override void Draw(Pen pen,Graphics graphics)
+        public override void Draw()
         {
-            graphics.DrawLines(pen, CreateArrowLine());
+            singltone.graphics.DrawLines(singltone.pen, CreateArrowLine());
            
         }
 

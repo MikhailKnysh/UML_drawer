@@ -65,12 +65,12 @@ namespace ArrowLine.CapArrow
             return _CustomCapArrow;
         }
 
-        public override void Draw(Pen pen, Graphics graphics)
+        public override void Draw()
         {
             SolidBrush shadowBrush = new SolidBrush(Color.White);
 
-            graphics.DrawPolygon(pen, CreateArrowObject());
-            graphics.FillPolygon(shadowBrush, CreateArrowObject());
+            singltone.graphics.DrawPolygon(singltone.pen, CreateArrowObject());
+            singltone.graphics.FillPolygon(shadowBrush, CreateArrowObject());
         }
     }
 }

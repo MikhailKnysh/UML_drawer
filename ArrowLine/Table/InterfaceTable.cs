@@ -39,14 +39,14 @@ namespace ArrowLine.Table
         //    throw new NotImplementedException();
         //}
 
-        public override void Draw(Pen pen, Graphics graphics)
+        public override void Draw()
         {
-            DrawStringRectangle(graphics, font, format, "<< Interface >>", heightStringRectangle, stepDownPoint: 0);
-            DrawStringRectangle(graphics, font, format, "Title", heightStringRectangle, stepDownPoint: 20);
-            DrawHorizontalLine(pen, graphics, lineIndex: 0, stepDownLine - 2);
+            DrawStringRectangle(font, format, "<< Interface >>", heightStringRectangle, stepDownPoint: 0);
+            DrawStringRectangle(font, format, "Title", heightStringRectangle, stepDownPoint: 20);
+            DrawHorizontalLine(lineIndex: 0, stepDownLine - 2);
 
             objectRectangle = new Rectangle(_startPoint.X, _startPoint.Y, width, height);
-            graphics.DrawRectangle(pen, objectRectangle);
+            singltone.graphics.DrawRectangle(singltone.pen, objectRectangle);
         }
 
         protected override void Move()

@@ -7,7 +7,7 @@ namespace ArrowLine.Arrow
 {
     class AgregationEndArrow : AbstractFigure
     {
-        public override void Draw(Pen pen, Graphics graphics)
+        public override void Draw()
         {
             if (Math.Abs(_startPoint.X - _endPoint.X) < 20)
             {
@@ -19,10 +19,10 @@ namespace ArrowLine.Arrow
             }
 
             AbstractLine line = new SolidLineArrow(_startPoint, _endPoint);
-            line.Draw(pen, graphics);
+            line.Draw();
 
             AbstractArrowCap arrowCapRhomb = new WhiteRhombEndCapArrow(_startPoint, _endPoint);
-            arrowCapRhomb.Draw(pen, graphics);
+            arrowCapRhomb.Draw();
         }
     }
 }

@@ -11,10 +11,10 @@ namespace ArrowLine.Line
             _endPoint = endPoint;
         }
 
-        public override void Draw(Pen pen,Graphics graphics)
+        public override void Draw()
         {
-            pen.DashStyle = DashStyle.Dash;
-            graphics.DrawLines(pen, CreateArrowLine());
+            singltone.pen.DashStyle = DashStyle.Dash;
+            singltone.graphics.DrawLines(singltone.pen, CreateArrowLine());
         }
 
         public override Point[] CreateArrowLine()

@@ -12,16 +12,13 @@ namespace ArrowLine
 {
     public partial class Form1 : Form
     {
-        private Bitmap _bitmap;
-        private Bitmap _tmpBitmap;
-        private Graphics _graphics;
+        Singltone singltone;
         string buttonName;
-        private Pen _pen;
         bool isButtonSelectPressed = false;
         private bool _isMoving = false;
         private bool isArrow = true;
-        Point startPoint = new Point();
-        Point endPoint = new Point();
+        Point startPointSelection = new Point();
+        Point endPointSelection = new Point();
         private Brush _highlightBrush;
         private Pen _highlightPen;
         AbstractFigure crntFigure;
@@ -46,6 +43,8 @@ namespace ArrowLine
         public Form1()
         {
             InitializeComponent();
+
+           
             _isMoving = false;
 
             _highlightBrush = new SolidBrush(Color.FromArgb(50, Color.Aquamarine));
@@ -55,48 +54,46 @@ namespace ArrowLine
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            singltone = Singltone.GetInstance();
+            singltone.SetPictureBox(pictureBox1);
             figures = new List<AbstractTable>();
-
-            _bitmap = new Bitmap(pictureBox1.Width, pictureBox1.Height);
-
-            _graphics = Graphics.FromImage(_bitmap);
-            _graphics.Clear(Color.White);
-            pictureBox1.Image = _bitmap;
-
-            _pen = new Pen(Color.Black, 2);
-            crntFigure = new SolidLineArrow(startPoint, endPoint);
-            table = new InterfaceTable();//Add to draw moment
+            crntFigure = new SolidLineArrow(startPointSelection, endPointSelection);
+            table = new InterfaceTable();
         }
 
         private void pictureBox1_MouseDown(object sender, MouseEventArgs e)
         {
-            // ChooseButton();
+             ChooseButton();
 
-            switch (e.Button)
-            {
-                case MouseButtons.Left:
-                    {
-                        _isMoving = true;
-                        if (isButtonSelectPressed)
-                        {
-                            startPoint = e.Location;
-                        }
-                        else
-                        {
-                          
+            IMouseHandler mouseHandler = new DrawMouseHandler();
+            mouseHandler.OnMouseDown(e);
+            //switch (e.Button)
+            //{
+            //    case MouseButtons.Left:
+            //        {
+            //            _isMoving = true;
 
-                        }
-                        break;
-                    }
-                case MouseButtons.Right:
-                    {
-                        contextMenuStrip1.Show(this, new Point(e.X + 120, e.Y));
-                        break;
-                    }
-            }
+            //            //else
+            //            //{
+
+            //            //    //crntFigure._startPoint = e.Location;
+            //            //    //crntFigure._endPoint = e.Location;
+            //            //    table._startPoint = e.Location;
+            //            //}
+
+            //            break;
+            //        }
+            //    case MouseButtons.Right:
+            //        {
+
+            //            contextMenuStrip1.Show(this, new Point(e.X + 120, e.Y));
+            //            break;
+            //        }
+            //}
 
             if (isButtonSelectPressed)
             {
+                startPointSelection = e.Location;
                 AbstractTable selectedObject = null;
 
                 foreach (var item in figures)
@@ -120,9 +117,13 @@ namespace ArrowLine
 
         private void pictureBox1_MouseUp(object sender, MouseEventArgs e)
         {
-            _bitmap = _tmpBitmap;
+           foreach(var item in figures)
+            {
+                item.Selected = false;
+            }
+           
             _isMoving = false;
-            _bitmap = _tmpBitmap;
+            singltone.SetBitmap();
 
             switch (Mode)
             {
@@ -135,10 +136,10 @@ namespace ArrowLine
 
                 case WorkingMode.Select: // Множественное выделение объектов
                     Rectangle r = new Rectangle(
-                       Math.Min(startPoint.X, endPoint.X),
-                       Math.Min(startPoint.Y, endPoint.Y),
-                       Math.Abs(startPoint.X - endPoint.X),
-                       Math.Abs(startPoint.Y - endPoint.Y));
+                       Math.Min(startPointSelection.X, endPointSelection.X),
+                       Math.Min(startPointSelection.Y, endPointSelection.Y),
+                       Math.Abs(startPointSelection.X - endPointSelection.X),
+                       Math.Abs(startPointSelection.Y - endPointSelection.Y));
 
                     foreach (AbstractTable item in figures)
                         item.Selected = item.HitTest(r);
@@ -153,7 +154,7 @@ namespace ArrowLine
             if (_isMoving)
             {
                 crntFigure._endPoint = e.Location;
-                endPoint = e.Location;
+                endPointSelection = e.Location;
                 table._startPoint = e.Location;
                 pictureBox1.Invalidate();
             }
@@ -163,19 +164,20 @@ namespace ArrowLine
         {
             if (_isMoving)
             {
-                _tmpBitmap = (Bitmap)_bitmap.Clone();
-                _graphics = Graphics.FromImage(_tmpBitmap);
-                pictureBox1.Image = _tmpBitmap;
+                //_tmpBitmap = (Bitmap)_bitmap.Clone();
+                //_graphics = Graphics.FromImage(_tmpBitmap);
+                //pictureBox1.Image = _tmpBitmap;
+                singltone.UpdateTmpBitmap();
 
                 switch (Mode)
                 {
                     case WorkingMode.Select:
 
                         Rectangle r = new Rectangle(
-                         Math.Min(startPoint.X, endPoint.X),
-                       Math.Min(startPoint.Y, endPoint.Y),
-                       Math.Abs(startPoint.X - endPoint.X),
-                       Math.Abs(startPoint.Y - endPoint.Y));
+                         Math.Min(startPointSelection.X, endPointSelection.X),
+                       Math.Min(startPointSelection.Y, endPointSelection.Y),
+                       Math.Abs(startPointSelection.X - endPointSelection.X),
+                       Math.Abs(startPointSelection.Y - endPointSelection.Y));
 
                         e.Graphics.FillRectangle(_highlightBrush, r);
                         e.Graphics.DrawRectangle(_highlightPen, r);
@@ -190,9 +192,9 @@ namespace ArrowLine
 
                         foreach (var item in figures)
                         {
-                            if (table.Selected)
+                            if (item.Selected)
                             {
-                                table.DrawOverlay(_graphics);
+                                item.DrawOverlay();
                             }
                         }
                         break;
@@ -201,17 +203,19 @@ namespace ArrowLine
 
                         if (isArrow)
                         {
-                            crntFigure.Draw(_pen, _graphics);
+                            crntFigure.Draw();
+                            
                         }
                         else
                         {
-                            table.Draw(_pen, _graphics);
+                            table.Draw();
                         }
 
                         break;
                 }
 
-                pictureBox1.Image = _tmpBitmap;
+                singltone.UpdatePictureBox();
+               
                 GC.Collect();
             }
         }
@@ -222,12 +226,12 @@ namespace ArrowLine
 
             colorDialog1.ShowDialog();
             btnColor.BackColor = colorDialog1.Color;
-            _pen.Color = colorDialog1.Color;
+            singltone.pen.Color = colorDialog1.Color;
         }
 
         private void trackbar1_Scroll(object sender, EventArgs e)
         {
-            _pen.Width = trackBar1.Value;
+            singltone.pen.Width = trackBar1.Value;
         }
 
         private void CheckButtonPressed_Click(object sender, EventArgs e)
@@ -240,7 +244,7 @@ namespace ArrowLine
             isArrow = true;
             buttonName = toolStripButton.Name;
 
-            ChooseButton();
+            //ChooseButton();
 
         }
         private void ChooseButton()
@@ -302,69 +306,57 @@ namespace ArrowLine
 
         private void F_Click(object sender, EventArgs e)
         {
-            _tmpBitmap = (Bitmap)_bitmap.Clone();
-            _graphics = Graphics.FromImage(_tmpBitmap);
-            pictureBox1.Image = _tmpBitmap;
+            singltone.UpdateTmpBitmap();
 
-            table.AddField(_pen, _graphics);
+            table.AddField();
 
-            _bitmap = _tmpBitmap;
+            singltone.SetBitmap();
         }
 
         private void button4_Click(object sender, EventArgs e)
         {
-            _tmpBitmap = (Bitmap)_bitmap.Clone();
-            _graphics = Graphics.FromImage(_tmpBitmap);
-            pictureBox1.Image = _tmpBitmap;
+            singltone.UpdateTmpBitmap();
 
-            table.AddProperty(_pen, _graphics);
+            table.AddProperty();
 
-            _bitmap = _tmpBitmap;
+            singltone.SetBitmap();
         }
 
         private void button5_Click(object sender, EventArgs e)
         {
-            _tmpBitmap = (Bitmap)_bitmap.Clone();
-            _graphics = Graphics.FromImage(_tmpBitmap);
-            pictureBox1.Image = _tmpBitmap;
+            singltone.UpdateTmpBitmap(); ;
 
-            table.AddMethod(_pen, _graphics);
+            table.AddMethod();
 
-            _bitmap = _tmpBitmap;
+            singltone.SetBitmap();
         }
 
         private void toolStripMenuItemAddField_Click(object sender, EventArgs e)
         {
-            _tmpBitmap = (Bitmap)_bitmap.Clone();
-            _graphics = Graphics.FromImage(_tmpBitmap);
-            pictureBox1.Image = _tmpBitmap;
+            singltone.UpdateTmpBitmap();
 
 
-            table.AddField(_pen, _graphics);
+            table.AddField();
 
-            _bitmap = _tmpBitmap;
+            singltone.SetBitmap();
         }
 
         private void toolStripMenuItemAddProperty_Click(object sender, EventArgs e)
         {
-            _tmpBitmap = (Bitmap)_bitmap.Clone();
-            _graphics = Graphics.FromImage(_tmpBitmap);
-            pictureBox1.Image = _tmpBitmap;
+            singltone.UpdateTmpBitmap();
 
-            table.AddProperty(_pen, _graphics);
+            table.AddProperty();
 
-            _bitmap = _tmpBitmap;
+            singltone.SetBitmap();
         }
 
         private void toolStripMenuItemAddMethod_Click(object sender, EventArgs e)
         {
-            _tmpBitmap = (Bitmap)_bitmap.Clone();
-            _graphics = Graphics.FromImage(_tmpBitmap);
-            pictureBox1.Image = _tmpBitmap;
+            singltone.UpdateTmpBitmap();
 
-            table.AddMethod(_pen, _graphics);
+            table.AddMethod();
 
-            _bitmap = _tmpBitmap;
+            singltone.SetBitmap();
         }
     }
 }

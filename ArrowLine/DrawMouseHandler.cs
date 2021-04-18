@@ -3,17 +3,38 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Drawing;
+using System.Windows.Forms;
 
 namespace ArrowLine
 {
-    public class DrawMouseHandler : IMouseHandler 
+    public class DrawMouseHandler : IMouseHandler
     {
-        public void OnMouseDown()
+        public AbstractFigure currentFigure ;
+
+            Form1 form1 = new Form1();
+        public void OnMouseDown(MouseEventArgs e)
         {
-            crntFigure._startPoint = e.Location;
-            crntFigure._endPoint = e.Location;
-            table.startPoint = e.Location;
+            
+            switch (e.Button)
+            {
+                case MouseButtons.Left:
+                    {
+                        currentFigure._startPoint = e.Location;
+                        currentFigure._endPoint = e.Location;
+                    }
+                    break;
+                case MouseButtons.Right:
+                    {
+                        form1.ContextMenuStrip.Show(form1, new Point(e.X + 120, e.Y));
+                       
+                        break;
+                    }
+            }
+            //    table.startPoint = e.Location;
         }
+
+        
 
         public void OnMouseMove()
         {
