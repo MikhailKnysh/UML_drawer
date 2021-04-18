@@ -4,21 +4,21 @@ namespace ArrowLine.Line
 {
     class TwoAngleLineArrow : AbstractLine
     {
-        public TwoAngleLineArrow(Point startPoint, Point endPoint)
-        {
-            _startPoint = startPoint;
-            _endPoint = endPoint;
-        }
+        //public TwoAngleLineArrow(Point startPoint, Point endPoint)
+        //{
+        //    _startPoint = startPoint;
+        //    _endPoint = endPoint;
+        //}
 
         public override Point[] CreateArrowLine()
         {
-            int midlle = (_startPoint.X + _endPoint.X) / 2;
+            int midlle = (startPoint.X + endPoint.X) / 2;
             
             return new Point[] {
-                _startPoint,
-                new Point(midlle, _startPoint.Y),
-                new Point(midlle, _endPoint.Y),
-                _endPoint
+                startPoint,
+                new Point(midlle, startPoint.Y),
+                new Point(midlle, endPoint.Y),
+                endPoint
             };
         }
 

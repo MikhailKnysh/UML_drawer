@@ -176,9 +176,9 @@ namespace ArrowLine
         protected virtual void DrawStringRectangle(
             Font font, StringFormat format, string text, int heightStringRectangle, int stepDownPoint)
         {
-            stringRectangle = new Rectangle(_startPoint.X, _startPoint.Y + stepDownPoint, width, heightStringRectangle);
+            stringRectangle = new Rectangle(startPoint.X, startPoint.Y + stepDownPoint, width, heightStringRectangle);
 
-            singltone.graphics.DrawRectangle(whitePen, _startPoint.X, _startPoint.Y + stepDownPoint, width, heightStringRectangle);
+            singltone.graphics.DrawRectangle(whitePen, startPoint.X,startPoint.Y + stepDownPoint, width, heightStringRectangle);
             singltone.graphics.DrawString(text, font, solidBrush, stringRectangle, format);
         }
 
@@ -220,10 +220,10 @@ namespace ArrowLine
 
         protected virtual void DrawHorizontalLine(int lineIndex, int stepDownPoint)
         {
-            linesInTable[lineIndex]._startLinePoint.X = _startPoint.X;
-            linesInTable[lineIndex]._startLinePoint.Y = _startPoint.Y + stepDownPoint + heightStringRectangle;
-            linesInTable[lineIndex]._endLinePoint.X = _startPoint.X + width;
-            linesInTable[lineIndex]._endLinePoint.Y = _startPoint.Y + stepDownPoint + heightStringRectangle;
+            linesInTable[lineIndex]._startLinePoint.X = startPoint.X;
+            linesInTable[lineIndex]._startLinePoint.Y = startPoint.Y + stepDownPoint + heightStringRectangle;
+            linesInTable[lineIndex]._endLinePoint.X = startPoint.X + width;
+            linesInTable[lineIndex]._endLinePoint.Y = startPoint.Y + stepDownPoint + heightStringRectangle;
             singltone.graphics.DrawLine(singltone.pen, linesInTable[lineIndex]._startLinePoint, linesInTable[lineIndex]._endLinePoint);
         }
     }

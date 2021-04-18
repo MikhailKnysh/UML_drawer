@@ -9,19 +9,12 @@ namespace ArrowLine.Arrow
     {
         public override void Draw()
         {
-            if (Math.Abs(_startPoint.X - _endPoint.X) < 20)
-            {
-                _endPoint.X = _startPoint.X;
-            }
-            else if (Math.Abs(_startPoint.Y - _endPoint.Y) < 20)
-            {
-                _endPoint.Y = _startPoint.Y;
-            }
+            Delta();
 
-            AbstractLine line = new SolidLineArrow(_startPoint, _endPoint);
+            AbstractLine line = new SolidLineArrow(startPoint, endPoint);
             line.Draw();
 
-            AbstractArrowCap arrowCap = new OpenCapArrow(_startPoint, _endPoint);
+            AbstractArrowCap arrowCap = new OpenCapArrow(startPoint, endPoint);
             arrowCap.Draw();
         }
     }

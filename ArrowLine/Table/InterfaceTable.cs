@@ -9,15 +9,15 @@ namespace ArrowLine.Table
         {
         }
 
-        public InterfaceTable(Point startPoint)
-        {
-            _startPoint = startPoint;
-        }
-        public InterfaceTable(Point startPoint, Point endPoint)
-        {
-            _startPoint = startPoint;
-            _endPoint = endPoint;
-        }
+        //public InterfaceTable(Point startPoint)
+        //{
+        //    singltone.startPoint = startPoint;
+        //}
+        //public InterfaceTable(Point startPoint, Point endPoint)
+        //{
+        //    _startPoint = startPoint;
+        //    _endPoint = endPoint;
+        //}
 
         public override Rectangle ObjectRectangle
         {
@@ -45,7 +45,7 @@ namespace ArrowLine.Table
             DrawStringRectangle(font, format, "Title", heightStringRectangle, stepDownPoint: 20);
             DrawHorizontalLine(lineIndex: 0, stepDownLine - 2);
 
-            objectRectangle = new Rectangle(_startPoint.X, _startPoint.Y, width, height);
+            objectRectangle = new Rectangle(startPoint.X, startPoint.Y, width, height);
             singltone.graphics.DrawRectangle(singltone.pen, objectRectangle);
         }
 

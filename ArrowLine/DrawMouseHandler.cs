@@ -1,18 +1,19 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Drawing;
 using System.Windows.Forms;
+using ArrowLine.Line;
+using ArrowLine.Arrow;
 
 namespace ArrowLine
 {
     public class DrawMouseHandler : IMouseHandler
     {
-        public AbstractFigure currentFigure ;
+        public DataPictureBox singltone = DataPictureBox.GetInstance();
 
-            Form1 form1 = new Form1();
+        Form1 form1 = new Form1();
+        public AbstractFigure currentFigure= new AgregationEndArrow();
         public void OnMouseDown(MouseEventArgs e)
         {
             
@@ -20,8 +21,8 @@ namespace ArrowLine
             {
                 case MouseButtons.Left:
                     {
-                        currentFigure._startPoint = e.Location;
-                        currentFigure._endPoint = e.Location;
+                        currentFigure.startPoint = e.Location;
+                        currentFigure.endPoint = e.Location;
                     }
                     break;
                 case MouseButtons.Right:

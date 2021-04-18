@@ -10,19 +10,12 @@ namespace ArrowLine.Arrow
     {
         public override void Draw()
         {
-            if (Math.Abs(_startPoint.X - _endPoint.X) < 20)
-            {
-                _endPoint.X = _startPoint.X;
-            }
-            else if (Math.Abs(_startPoint.Y - _endPoint.Y) < 20)
-            {
-                _endPoint.Y = _startPoint.Y;
-            }
+            Delta();
 
-            AbstractArrowCap arrowCap = new CloseCapArrow(_startPoint, _endPoint);
+            AbstractArrowCap arrowCap = new CloseCapArrow(startPoint, endPoint);
             arrowCap.Draw();
 
-            AbstractLine line = new DashLineArrow(_startPoint, _endPoint);
+            AbstractLine line = new DashLineArrow(startPoint, endPoint);
             line.Draw();
             singltone.pen.DashStyle = DashStyle.Solid;
         }

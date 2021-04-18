@@ -1,38 +1,29 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Drawing;
+﻿using System.Drawing;
 using System.Windows.Forms;
 
 namespace ArrowLine
 {
-    public class Singltone
+    public class DataPictureBox
     {
-        private static Singltone _instance;
+        private static DataPictureBox _instance;
         public Graphics graphics { get; set; }
         public Pen pen { get; set; }
-       // public Color color { get; set; }
-        public Font font { get; set; }
-        public SolidBrush solidBrush { get; set; }
         private PictureBox _pictureBox;
         private Bitmap _bitmap;
         private Bitmap _tmpbitmap;
-        public Brush highlightBrush;
-        public Pen highlightPen;
+        // public Color color { get; set; }
+        //public SolidBrush solidBrush { get; set; }
 
-        public StringFormat format;
-        public Pen whitePen;
-
-        private Singltone()
+        private DataPictureBox()
         {
-            
-
+          
         }
 
-        public static Singltone GetInstance()
+        public static DataPictureBox GetInstance()
         {
             if (_instance is null)
             {
-                _instance = new Singltone();
+                _instance = new DataPictureBox();
             }
 
             return _instance;
@@ -69,10 +60,6 @@ namespace ArrowLine
 
         }
 
-        //public void Clear()
-        //{
-        //    _bitmap = new Bitmap(_pictureBox.Width, _pictureBox.Height);
-        //}
 
     }
 }

@@ -12,18 +12,19 @@ namespace ArrowLine
 {
     public partial class Form1 : Form
     {
-        Singltone singltone;
+        DataPictureBox singltone;
         string buttonName;
         bool isButtonSelectPressed = false;
         private bool _isMoving = false;
         private bool isArrow = true;
-        Point startPointSelection = new Point();
-        Point endPointSelection = new Point();
+        Point startPoint = new Point();
+        Point endPoint = new Point();
         private Brush _highlightBrush;
         private Pen _highlightPen;
         AbstractFigure crntFigure;
         AbstractTable table;
         List<AbstractTable> figures;
+        IMouseHandler mouseHandler;
 
         public WorkingMode Mode
         {
@@ -54,32 +55,32 @@ namespace ArrowLine
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            singltone = Singltone.GetInstance();
+            singltone = DataPictureBox.GetInstance();
             singltone.SetPictureBox(pictureBox1);
             figures = new List<AbstractTable>();
-            crntFigure = new SolidLineArrow(startPointSelection, endPointSelection);
+            crntFigure = new SolidLineArrow(startPoint, endPoint);
             table = new InterfaceTable();
         }
 
         private void pictureBox1_MouseDown(object sender, MouseEventArgs e)
         {
              ChooseButton();
+            _isMoving = true;
 
-            IMouseHandler mouseHandler = new DrawMouseHandler();
+
             mouseHandler.OnMouseDown(e);
             //switch (e.Button)
             //{
             //    case MouseButtons.Left:
             //        {
-            //            _isMoving = true;
 
-            //            //else
-            //            //{
 
-            //            //    //crntFigure._startPoint = e.Location;
-            //            //    //crntFigure._endPoint = e.Location;
-            //            //    table._startPoint = e.Location;
-            //            //}
+
+
+            //            crntFigure.startPoint = e.Location;
+            //            crntFigure.endPoint = e.Location;
+            //            table.startPoint = e.Location;
+
 
             //            break;
             //        }
@@ -93,7 +94,7 @@ namespace ArrowLine
 
             if (isButtonSelectPressed)
             {
-                startPointSelection = e.Location;
+                startPoint = e.Location;
                 AbstractTable selectedObject = null;
 
                 foreach (var item in figures)
@@ -136,10 +137,10 @@ namespace ArrowLine
 
                 case WorkingMode.Select: // Множественное выделение объектов
                     Rectangle r = new Rectangle(
-                       Math.Min(startPointSelection.X, endPointSelection.X),
-                       Math.Min(startPointSelection.Y, endPointSelection.Y),
-                       Math.Abs(startPointSelection.X - endPointSelection.X),
-                       Math.Abs(startPointSelection.Y - endPointSelection.Y));
+                       Math.Min(startPoint.X, endPoint.X),
+                       Math.Min(startPoint.Y, endPoint.Y),
+                       Math.Abs(startPoint.X - endPoint.X),
+                       Math.Abs(startPoint.Y - endPoint.Y));
 
                     foreach (AbstractTable item in figures)
                         item.Selected = item.HitTest(r);
@@ -153,9 +154,9 @@ namespace ArrowLine
         {
             if (_isMoving)
             {
-                crntFigure._endPoint = e.Location;
-                endPointSelection = e.Location;
-                table._startPoint = e.Location;
+                crntFigure.endPoint = e.Location;
+                endPoint = e.Location;
+                //table.singltone.startPoint = e.Location;
                 pictureBox1.Invalidate();
             }
         }
@@ -174,10 +175,10 @@ namespace ArrowLine
                     case WorkingMode.Select:
 
                         Rectangle r = new Rectangle(
-                         Math.Min(startPointSelection.X, endPointSelection.X),
-                       Math.Min(startPointSelection.Y, endPointSelection.Y),
-                       Math.Abs(startPointSelection.X - endPointSelection.X),
-                       Math.Abs(startPointSelection.Y - endPointSelection.Y));
+                         Math.Min(startPoint.X, endPoint.X),
+                       Math.Min(startPoint.Y, endPoint.Y),
+                       Math.Abs(startPoint.X - endPoint.X),
+                       Math.Abs(startPoint.Y - endPoint.Y));
 
                         e.Graphics.FillRectangle(_highlightBrush, r);
                         e.Graphics.DrawRectangle(_highlightPen, r);
@@ -243,6 +244,7 @@ namespace ArrowLine
             toolStripGroupButtons.BackgroundImage = toolStripButton.BackgroundImage;
             isArrow = true;
             buttonName = toolStripButton.Name;
+            mouseHandler = new DrawMouseHandler();
 
             //ChooseButton();
 
@@ -274,7 +276,7 @@ namespace ArrowLine
                     crntFigure = new ImplementationArrow();
                     break;
                 case nameof(toolStripButtonTwoAngleLine):
-                    crntFigure = new TwoAngleLineArrow(crntFigure._startPoint, crntFigure._endPoint);
+                    crntFigure = new TwoAngleLineArrow();
                     break;
                 case "table":
                     table = new InterfaceTable();
@@ -288,15 +290,15 @@ namespace ArrowLine
             Button button = (Button)sender;
             isArrow = false;
             isButtonSelectPressed = false;
-            table = new InterfaceTable(table._startPoint);
+            table = new InterfaceTable();
             buttonName = button.Name;
+            mouseHandler = new DrawMouseHandler();
+            //foreach (var item in figures)
+            //{
+            //    item.Selected = false;
+            //}
 
-            foreach (var item in figures)
-            {
-                item.Selected = false;
-            }
-
-            pictureBox1.Refresh();
+            //pictureBox1.Refresh();
         }
 
         private void buttonSelect_Click(object sender, EventArgs e)

@@ -6,23 +6,14 @@ namespace ArrowLine.Line
     {
         public SolidLineArrow(Point startPoint, Point endPoint)
         {
-            _startPoint = startPoint;
-            _endPoint = endPoint;
+            this.startPoint = startPoint;
+            this.endPoint = endPoint;
         }
 
         public override void Draw()
         {
             singltone.graphics.DrawLines(singltone.pen, CreateArrowLine());
            
-        }
-
-        public override Point[] CreateArrowLine()
-        {
-            return new Point[] {
-                _startPoint,
-                new Point(_startPoint.X, _endPoint.Y),
-                _endPoint
-            };
         }
     }
 }
