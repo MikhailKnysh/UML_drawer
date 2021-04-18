@@ -7,7 +7,7 @@
     <ProjectGuid>{C3866F9D-F126-4FED-AAA4-9341F9C68B47}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <RootNamespace>ArrowLine</RootNamespace>
-    <AssemblyName>ArrowLine</AssemblyName>
+    <AssemblyName>p</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -65,8 +65,9 @@
     <Compile Include="Arrow\CompositionStartArrow.cs" />
     <Compile Include="Arrow\ImplementationArrow.cs" />
     <Compile Include="Arrow\InheritanceArrow.cs" />
+    <Compile Include="DrawMouseHandler.cs" />
+    <Compile Include="IMouseHandler.cs" />
     <Compile Include="LineInTable.cs" />
-    <Compile Include="AbstractMiveable.cs" />
     <Compile Include="Line\DashLineArrow.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
@@ -78,9 +79,12 @@
     <Compile Include="Line\TwoAngleLineArrow.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SelectMouseHandler.cs" />
+    <Compile Include="Singltone.cs" />
     <Compile Include="Table\InterfaceTable.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="WorkingMode.cs" />
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
