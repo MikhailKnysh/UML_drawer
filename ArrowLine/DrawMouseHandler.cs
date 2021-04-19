@@ -1,10 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Drawing;
 using System.Windows.Forms;
-using ArrowLine.Line;
-using ArrowLine.Arrow;
+using ArrowLine.Table;
 
 namespace ArrowLine
 {
@@ -12,44 +9,49 @@ namespace ArrowLine
     {
         public DataPictureBox singltone = DataPictureBox.GetInstance();
 
-        Form1 form1 = new Form1();
-        public AbstractFigure currentFigure= new AgregationEndArrow();
-        public void OnMouseDown(MouseEventArgs e)
+        //Form1 form1 = new Form1();
+        //public AbstractFigure currentFigure= new AgregationEndArrow();
+        //public AbstractTable table = new InterfaceTable();
+        
+
+        public void OnMouseDown(AbstractFigure currentFigure, MouseEventArgs e, Form form, ContextMenuStrip contextMenuStrip)
         {
-            
+
             switch (e.Button)
             {
                 case MouseButtons.Left:
                     {
                         currentFigure.startPoint = e.Location;
                         currentFigure.endPoint = e.Location;
+                        //table.startPoint = e.Location;
                     }
                     break;
                 case MouseButtons.Right:
                     {
-                        form1.ContextMenuStrip.Show(form1, new Point(e.X + 120, e.Y));
-                       
+                        singltone.isMoving = false;
+                        contextMenuStrip.Show(form, new Point(e.X + 120, e.Y));
                         break;
                     }
             }
-            //    table.startPoint = e.Location;
         }
 
-        
-
-        public void OnMouseMove()
+        public void OnMouseMove(AbstractFigure currentFigure, MouseEventArgs e)
         {
-            throw new NotImplementedException();
+            currentFigure.endPoint = e.Location;
+
         }
 
-        public void OnMouseUp()
+        public void OnMouseUp(AbstractFigure currentFigure)
         {
-            throw new NotImplementedException();
+            if (currentFigure != null)
+            {
+                singltone.tables.Add(currentFigure);
+            }
         }
 
-        public void OnPaint()
+        public void OnPaint(AbstractFigure currentFigure)
         {
-            throw new NotImplementedException();
+            currentFigure.Draw();
         }
     }
 }

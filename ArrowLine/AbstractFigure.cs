@@ -11,6 +11,11 @@ namespace ArrowLine
         public Point startPoint;
         public Point endPoint;
         protected Region objectRegion;
+        Rectangle objectRectangle;
+
+
+
+
         public abstract void Draw();
         public void Delta()
         {
@@ -24,5 +29,14 @@ namespace ArrowLine
                 endPoint.Y = startPoint.Y;
             }
         }
+
+        public virtual void AddField()
+        { }
+
+        public virtual void AddProperty()
+        { }
+
+        public virtual void AddMethod()
+        { }
     }
 }

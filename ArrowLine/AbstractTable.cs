@@ -32,8 +32,8 @@ namespace ArrowLine
 
         public AbstractTable()
         {
-            objectRectangle = new Rectangle();
-            objectRegion = new Region();
+            //objectRectangle = new Rectangle();
+            //objectRegion = new Region();
 
             font = new Font("Arial", 12);
             format = new StringFormat();
@@ -85,17 +85,9 @@ namespace ArrowLine
                 singltone.graphics.DrawRectangle(Pens.CadetBlue, objectRectangle);
             }
         }
-        public virtual bool HitTest(Point pt)
-        {
-            return objectRegion.IsVisible(pt);
-        }
+       
 
-        public virtual bool HitTest(Rectangle r)
-        {
-            return objectRegion.IsVisible(r);
-        }
-
-        public virtual void AddField()
+        public override void AddField()
         {
             stepDownPropertyPoint += 20;
             stepDownMethodPoint += 20;
@@ -129,7 +121,7 @@ namespace ArrowLine
             DrawHorizontalLine(lineIndex: 1, stepDownFieldPoint);
         }
 
-        public virtual void AddProperty()
+        public override void AddProperty()
         {
             stepDownMethodPoint += 20;
 
@@ -155,7 +147,7 @@ namespace ArrowLine
             DrawHorizontalLine(lineIndex: 2, stepDownPropertyPoint);
         }
 
-        public virtual void AddMethod()
+        public override void AddMethod()
         {
             format.Alignment = StringAlignment.Near;
 

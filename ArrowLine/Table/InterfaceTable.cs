@@ -19,14 +19,14 @@ namespace ArrowLine.Table
         //    _endPoint = endPoint;
         //}
 
-        public override Rectangle ObjectRectangle
-        {
-            get { return objectRectangle; }
-            set
-            { objectRectangle = value;
-                objectRegion = new Region(objectRectangle);
-            }
-        }
+        //public override Rectangle ObjectRectangle
+        //{
+        //    get { return objectRectangle; }
+        //    set
+        //    { objectRectangle = value;
+        //        objectRegion = new Region(objectRectangle);
+        //    }
+        //}
 
 
         //public override void AddProperty()

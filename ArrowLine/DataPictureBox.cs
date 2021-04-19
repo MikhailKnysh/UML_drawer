@@ -1,4 +1,5 @@
-﻿using System.Drawing;
+﻿using System.Collections.Generic;
+using System.Drawing;
 using System.Windows.Forms;
 
 namespace ArrowLine
@@ -13,6 +14,11 @@ namespace ArrowLine
         private Bitmap _tmpbitmap;
         // public Color color { get; set; }
         //public SolidBrush solidBrush { get; set; }
+
+        public List<AbstractFigure> arrows;
+        public List<AbstractFigure> tables;
+
+        public bool isMoving { get; set; }
 
         private DataPictureBox()
         {
@@ -57,9 +63,11 @@ namespace ArrowLine
         {
             _pictureBox.Image = _tmpbitmap;
             graphics = Graphics.FromImage(_tmpbitmap);
-
         }
 
-
+        public void InitialList()
+        {
+            tables = new List<AbstractFigure>();
+        }
     }
 }

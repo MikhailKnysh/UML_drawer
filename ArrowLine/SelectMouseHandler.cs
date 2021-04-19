@@ -9,24 +9,22 @@ namespace ArrowLine
 {
     public class SelectMouseHandler : IMouseHandler
     {
-        public AbstractFigure currentFigure { get ; set ; }
-
-        public void OnMouseDown(MouseEventArgs e)
+        public void OnMouseDown(AbstractFigure abstractFigure,MouseEventArgs e, Form form, ContextMenuStrip contextMenuStrip)
         {
             throw new NotImplementedException();
         }
 
-        public void OnMouseMove()
+        public void OnMouseMove(AbstractFigure currentFigure, MouseEventArgs e)
         {
             throw new NotImplementedException();
         }
 
-        public void OnMouseUp()
+        public void OnMouseUp(AbstractFigure currentFigure)
         {
             throw new NotImplementedException();
         }
 
-        public void OnPaint()
+        public void OnPaint(AbstractFigure currentFigure)
         {
             throw new NotImplementedException();
         }

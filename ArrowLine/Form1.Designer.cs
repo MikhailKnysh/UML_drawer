@@ -46,9 +46,6 @@ namespace ArrowLine
             this.toolStripButtonTwoAngleLine = new System.Windows.Forms.ToolStripButton();
             this.button2 = new System.Windows.Forms.Button();
             this.buttonSelect = new System.Windows.Forms.Button();
-            this.F = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
-            this.button5 = new System.Windows.Forms.Button();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.toolStripMenuItemAddField = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItemAddProperty = new System.Windows.Forms.ToolStripMenuItem();
@@ -90,7 +87,7 @@ namespace ArrowLine
             // 
             this.button1.BackColor = System.Drawing.Color.Black;
             this.button1.Location = new System.Drawing.Point(16, 14);
-            this.button1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.button1.Margin = new System.Windows.Forms.Padding(4);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(79, 42);
             this.button1.TabIndex = 11;
@@ -251,70 +248,34 @@ namespace ArrowLine
             this.buttonSelect.UseVisualStyleBackColor = true;
             this.buttonSelect.Click += new System.EventHandler(this.buttonSelect_Click);
             // 
-            // F
-            // 
-            this.F.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.F.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.F.Location = new System.Drawing.Point(2, 308);
-            this.F.Name = "F";
-            this.F.Size = new System.Drawing.Size(111, 25);
-            this.F.TabIndex = 15;
-            this.F.Text = "Add field";
-            this.F.UseVisualStyleBackColor = true;
-            this.F.Click += new System.EventHandler(this.F_Click);
-            // 
-            // button4
-            // 
-            this.button4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button4.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.button4.Location = new System.Drawing.Point(2, 339);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(111, 25);
-            this.button4.TabIndex = 16;
-            this.button4.Text = "Add prop";
-            this.button4.UseVisualStyleBackColor = true;
-            this.button4.Click += new System.EventHandler(this.button4_Click);
-            // 
-            // button5
-            // 
-            this.button5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button5.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.button5.Location = new System.Drawing.Point(2, 370);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(111, 25);
-            this.button5.TabIndex = 17;
-            this.button5.TabStop = false;
-            this.button5.Text = "Add method";
-            this.button5.UseVisualStyleBackColor = true;
-            this.button5.Click += new System.EventHandler(this.button5_Click);
-            // 
             // contextMenuStrip1
             // 
+            this.contextMenuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripMenuItemAddField,
             this.toolStripMenuItemAddProperty,
             this.toolStripMenuItemAddMethod});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(181, 92);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(168, 76);
             // 
             // toolStripMenuItemAddField
             // 
             this.toolStripMenuItemAddField.Name = "toolStripMenuItemAddField";
-            this.toolStripMenuItemAddField.Size = new System.Drawing.Size(180, 22);
+            this.toolStripMenuItemAddField.Size = new System.Drawing.Size(167, 24);
             this.toolStripMenuItemAddField.Text = "Add field";
             this.toolStripMenuItemAddField.Click += new System.EventHandler(this.toolStripMenuItemAddField_Click);
             // 
             // toolStripMenuItemAddProperty
             // 
             this.toolStripMenuItemAddProperty.Name = "toolStripMenuItemAddProperty";
-            this.toolStripMenuItemAddProperty.Size = new System.Drawing.Size(180, 22);
+            this.toolStripMenuItemAddProperty.Size = new System.Drawing.Size(167, 24);
             this.toolStripMenuItemAddProperty.Text = "Add property";
             this.toolStripMenuItemAddProperty.Click += new System.EventHandler(this.toolStripMenuItemAddProperty_Click);
             // 
             // toolStripMenuItemAddMethod
             // 
             this.toolStripMenuItemAddMethod.Name = "toolStripMenuItemAddMethod";
-            this.toolStripMenuItemAddMethod.Size = new System.Drawing.Size(180, 22);
+            this.toolStripMenuItemAddMethod.Size = new System.Drawing.Size(167, 24);
             this.toolStripMenuItemAddMethod.Text = "Add method";
             this.toolStripMenuItemAddMethod.Click += new System.EventHandler(this.toolStripMenuItemAddMethod_Click);
             // 
@@ -324,9 +285,6 @@ namespace ArrowLine
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Coral;
             this.ClientSize = new System.Drawing.Size(987, 561);
-            this.Controls.Add(this.button5);
-            this.Controls.Add(this.button4);
-            this.Controls.Add(this.F);
             this.Controls.Add(this.buttonSelect);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.toolStripGroupButtons);
@@ -365,10 +323,7 @@ namespace ArrowLine
         private System.Windows.Forms.ToolStripButton toolStripButtonStartRhombBlack;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button buttonSelect;
-        private System.Windows.Forms.Button F;
-        private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.Button button5;
-        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
+        public System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemAddField;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemAddProperty;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemAddMethod;
