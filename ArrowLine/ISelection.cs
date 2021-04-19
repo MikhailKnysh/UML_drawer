@@ -10,13 +10,9 @@ namespace ArrowLine
     interface ISelection
     {
         bool HitTest(Point pt);
-        //{
-        //    return objectRegion.IsVisible(pt);
-        //}
 
-    bool HitTest(Rectangle r);
-        //{
-        //    return objectRegion.IsVisible(r);
-        //}
+        bool HitTest(Rectangle r);
+
+        void DrawOverlay();
     }
 }

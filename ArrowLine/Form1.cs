@@ -28,6 +28,7 @@ namespace ArrowLine
         IMouseHandler mouseHandler;
 
         IFigureFactory currentFactory;//
+            ISelection selection;
 
         public WorkingMode Mode
         {
@@ -67,7 +68,7 @@ namespace ArrowLine
             singltone.isMoving = false;
             //table = new InterfaceTable();
 
-
+            selection = new Selection();
             IMouseHandler mouseHandler = new DrawMouseHandler();
         }
 
@@ -76,9 +77,6 @@ namespace ArrowLine
              ChooseButton();
             singltone.isMoving = true;
 
-            crntFigure = currentFactory.CreateFigure();
-
-            mouseHandler.OnMouseDown(crntFigure, e, this, contextMenuStrip1);
             //switch (e.Button)
             //{
             //    case MouseButtons.Left:
@@ -102,26 +100,22 @@ namespace ArrowLine
             //        }
             //}
 
-            //if (isButtonSelectPressed)
-            //{
-            //    startPoint = e.Location;
-            //    AbstractTable selectedObject = null;
+            if (isButtonSelectPressed)
+            {
+                startPoint = e.Location;
+               
+                if (selection.HitTest(e.Location))
+                {
+                    selection.DrawOverlay();
+                }
+            }
+            else
+            {
+            crntFigure = currentFactory.CreateFigure();
 
-            //    foreach (var item in figures)
-            //    {
-            //        item.Selected = false;
+            mouseHandler.OnMouseDown(crntFigure, e, this, contextMenuStrip1);
 
-            //        if (item.HitTest(e.Location))
-            //        {
-            //            selectedObject = item;
-            //        }
-            //    }
-
-            //    if (selectedObject != null)
-            //    {
-            //        selectedObject.Selected = true;
-            //    }
-            //}
+            }
 
             pictureBox1.Invalidate();
         }
