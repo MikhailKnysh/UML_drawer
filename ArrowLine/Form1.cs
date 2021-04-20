@@ -17,7 +17,7 @@ namespace ArrowLine
         private bool _isMoving = false;
         private bool isArrow = true;
         private StringDataForm stringDataForm;
-        private string stringDataTable;
+        public string stringDataTable;
         private IDTO _idto;
 
         private AbstractFigure arrow;
@@ -160,9 +160,12 @@ namespace ArrowLine
 
         private void F_Click(object sender, EventArgs e)
         {
+
+
             _tmpBitmap = (Bitmap)_bitmap.Clone();
             _graphics = Graphics.FromImage(_tmpBitmap);
             pictureBox1.Image = _tmpBitmap;
+
 
             table.AddField(_pen, _graphics);
 
@@ -193,14 +196,14 @@ namespace ArrowLine
 
         private void toolStripMenuItemAddField_Click(object sender, EventArgs e)
         {
-            _tmpBitmap = (Bitmap)_bitmap.Clone();
-            _graphics = Graphics.FromImage(_tmpBitmap);
-            pictureBox1.Image = _tmpBitmap;
-
             stringDataForm = new StringDataForm(labelData: "Field");
             stringDataForm.ShowDialog();
             _idto = stringDataForm.Create();
-            MessageBox.Show(_idto.ToString());
+            table.stringDataTable = _idto.ToString();
+
+            _tmpBitmap = (Bitmap)_bitmap.Clone();
+            _graphics = Graphics.FromImage(_tmpBitmap);
+            pictureBox1.Image = _tmpBitmap;
 
             table.AddField(_pen, _graphics);
 
@@ -209,6 +212,11 @@ namespace ArrowLine
 
         private void toolStripMenuItemAddProperty_Click(object sender, EventArgs e)
         {
+            stringDataForm = new StringDataForm(labelData: "Property");
+            stringDataForm.ShowDialog();
+            _idto = stringDataForm.Create();
+            table.stringDataTable = _idto.ToString();
+
             _tmpBitmap = (Bitmap)_bitmap.Clone();
             _graphics = Graphics.FromImage(_tmpBitmap);
             pictureBox1.Image = _tmpBitmap;
@@ -220,6 +228,11 @@ namespace ArrowLine
 
         private void toolStripMenuItemAddMethod_Click(object sender, EventArgs e)
         {
+            stringDataForm = new StringDataForm(labelData: "Method");
+            stringDataForm.ShowDialog();
+            _idto = stringDataForm.Create();
+            table.stringDataTable = _idto.ToString();
+
             _tmpBitmap = (Bitmap)_bitmap.Clone();
             _graphics = Graphics.FromImage(_tmpBitmap);
             pictureBox1.Image = _tmpBitmap;

@@ -70,10 +70,6 @@ namespace ArrowLine
             // 
             this.comboBoxAccessModifier.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.comboBoxAccessModifier.FormattingEnabled = true;
-            this.comboBoxAccessModifier.Items.AddRange(new object[] {
-            "+",
-            "#",
-            "-"});
             this.comboBoxAccessModifier.Location = new System.Drawing.Point(4, 19);
             this.comboBoxAccessModifier.Name = "comboBoxAccessModifier";
             this.comboBoxAccessModifier.Size = new System.Drawing.Size(36, 26);
@@ -118,10 +114,6 @@ namespace ArrowLine
             // 
             this.comboBoxGetAccessModifier.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.comboBoxGetAccessModifier.FormattingEnabled = true;
-            this.comboBoxGetAccessModifier.Items.AddRange(new object[] {
-            "+",
-            "#",
-            "-"});
             this.comboBoxGetAccessModifier.Location = new System.Drawing.Point(282, 20);
             this.comboBoxGetAccessModifier.Name = "comboBoxGetAccessModifier";
             this.comboBoxGetAccessModifier.Size = new System.Drawing.Size(36, 26);
@@ -131,10 +123,6 @@ namespace ArrowLine
             // 
             this.comboBoxSetAccessModifier.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.comboBoxSetAccessModifier.FormattingEnabled = true;
-            this.comboBoxSetAccessModifier.Items.AddRange(new object[] {
-            "+",
-            "#",
-            "-"});
             this.comboBoxSetAccessModifier.Location = new System.Drawing.Point(370, 20);
             this.comboBoxSetAccessModifier.Name = "comboBoxSetAccessModifier";
             this.comboBoxSetAccessModifier.Size = new System.Drawing.Size(36, 26);

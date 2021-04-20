@@ -29,9 +29,10 @@ namespace ArrowLine
         public StringFormat format;
         public Pen whitePen;
         public SolidBrush solidBrush;
-
+        public string stringDataTable;
         public AbstractTable()
         {
+          //  _stringDataTable = stringDataTable;
             font = new Font("Arial", 12);
             format = new StringFormat();
             whitePen = new Pen(Color.White, 2);////////////////
@@ -76,10 +77,10 @@ namespace ArrowLine
                 DrawHorizontalLine(pen, graphics, lineIndex: 2, stepDownPropertyPoint);
             }
 
-            DrawStringRectangle(graphics, font, format, "Field", heightStringRectangle,
+            DrawStringRectangle(graphics, font, format, stringDataTable, heightStringRectangle,
                 stepDownPoint: stepDownFieldPoint += 20);
 
-            fields.Add("Field");
+            fields.Add(stringDataTable);
             fieldRectangles.Add(stringRectangle);
 
             objectRectangle.Height += heightStringRectangle;
@@ -102,10 +103,10 @@ namespace ArrowLine
                 ReDrawArea(graphics, methodRectangles, methods);
             }
 
-            DrawStringRectangle(graphics, font, format, "Property", heightStringRectangle,
+            DrawStringRectangle(graphics, font, format, stringDataTable, heightStringRectangle,
                 stepDownPoint: stepDownPropertyPoint += 20);
 
-            properties.Add("Property");
+            properties.Add(stringDataTable);
             propertieRectangles.Add(stringRectangle);
 
             objectRectangle.Height += heightStringRectangle;
@@ -120,10 +121,10 @@ namespace ArrowLine
 
             graphics.DrawRectangle(whitePen, objectRectangle);
 
-            DrawStringRectangle(graphics, font, format, "Method", heightStringRectangle,
+            DrawStringRectangle(graphics, font, format, stringDataTable, heightStringRectangle,
                 stepDownPoint: stepDownMethodPoint += 20);
 
-            methods.Add("Method");
+            methods.Add(stringDataTable);
             methodRectangles.Add(stringRectangle);
 
             objectRectangle.Height += heightStringRectangle;

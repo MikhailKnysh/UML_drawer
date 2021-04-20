@@ -4,13 +4,21 @@ namespace ArrowLine.Table.StringData
     public class Field : IDTO
     {
         private string _accessModifier;
-        private string _name = "field";
+        private string _name;
         private string _typeToReturn;
 
         public Field(string accessModifier, string name, string typeToReturn)
         {
             _accessModifier = accessModifier;
-            _name = name;
+            if (!(name == string.Empty))
+            {
+                _name = name;
+            }
+            else
+            {
+                _name = "field";
+            }
+
             _typeToReturn = typeToReturn;
         }
 

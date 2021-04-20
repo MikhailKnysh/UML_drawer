@@ -4,13 +4,22 @@ namespace ArrowLine.Table.StringData
     public class Method : IDTO
     {
         private string _accessModifier;
-        private string _signature = "method";
+        private string _signature;
         private string _typeToReturn;
 
         public Method(string accessModifier, string name, string typeToReturn)
         {
             _accessModifier = accessModifier;
-            _signature = name;
+
+            if (!(name == string.Empty))
+            {
+                _signature = name;
+            }
+            else
+            {
+                _signature = "method";
+            }
+
             _typeToReturn = typeToReturn;
         }
 

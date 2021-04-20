@@ -11,6 +11,7 @@ namespace ArrowLine.Table
 
         public InterfaceTable(Point startPoint)
         {
+
             this.startPoint = startPoint;
         }
 
