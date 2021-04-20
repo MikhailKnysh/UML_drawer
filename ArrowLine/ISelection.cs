@@ -9,10 +9,11 @@ namespace ArrowLine
 {
     interface ISelection
     {
+     
         bool HitTest(Point pt);
 
         bool HitTest(Rectangle r);
 
-        void DrawOverlay();
+        void DrawOverlay(Brush brush, AbstractFigure objectRectangle);
     }
 }

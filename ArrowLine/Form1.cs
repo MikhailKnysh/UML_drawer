@@ -23,12 +23,13 @@ namespace ArrowLine
         private Pen _highlightPen;
         AbstractFigure crntFigure;
         AbstractTable table;
+        List<AbstractFigure> selectionObject;
         //List<AbstractTable> figures;
         List<AbstractFigure> figurs;
         IMouseHandler mouseHandler;
 
         IFigureFactory currentFactory;//
-            ISelection selection;
+        ISelection selection;
 
         public WorkingMode Mode
         {
@@ -67,14 +68,13 @@ namespace ArrowLine
             crntFigure = new SolidLineArrow(startPoint, endPoint);
             singltone.isMoving = false;
             //table = new InterfaceTable();
-
             selection = new Selection();
             IMouseHandler mouseHandler = new DrawMouseHandler();
         }
 
         private void pictureBox1_MouseDown(object sender, MouseEventArgs e)
         {
-             ChooseButton();
+            ChooseButton();
             singltone.isMoving = true;
 
             //switch (e.Button)
@@ -102,18 +102,29 @@ namespace ArrowLine
 
             if (isButtonSelectPressed)
             {
-                startPoint = e.Location;
-               
+                //startPoint = e.Location;
+                if (selectionObject != null)
+                {
+                    DrawSelection(Brushes.White, selectionObject);
+                    selectionObject = null;
+
+                    foreach (var item in singltone.tables)
+                    {
+                        item.Selected = false;
+                    }
+                }
+
                 if (selection.HitTest(e.Location))
                 {
-                    selection.DrawOverlay();
+                    selectionObject = singltone.tables.Where(item => item.Selected == true).ToList();
+
                 }
             }
             else
             {
-            crntFigure = currentFactory.CreateFigure();
+                crntFigure = currentFactory.CreateFigure();
 
-            mouseHandler.OnMouseDown(crntFigure, e, this, contextMenuStrip1);
+                mouseHandler.OnMouseDown(crntFigure, e, this, contextMenuStrip1);
 
             }
 
@@ -122,10 +133,10 @@ namespace ArrowLine
 
         private void pictureBox1_MouseUp(object sender, MouseEventArgs e)
         {
-           //foreach(var item in figures)
-           // {
-           //     item.Selected = false;
-           // }
+            //foreach(var item in figures)
+            // {
+            //     item.Selected = false;
+            // }
 
             singltone.isMoving = false;
             singltone.SetBitmap();
@@ -141,16 +152,24 @@ namespace ArrowLine
                     //}
                     break;
 
-                //case WorkingMode.Select: // Множественное выделение объектов
-                //    Rectangle r = new Rectangle(
-                //       Math.Min(startPoint.X, endPoint.X),
-                //       Math.Min(startPoint.Y, endPoint.Y),
-                //       Math.Abs(startPoint.X - endPoint.X),
-                //       Math.Abs(startPoint.Y - endPoint.Y));
+                case WorkingMode.Select: // Множественное выделение объектов
+                    Rectangle r = new Rectangle(
+                       Math.Min(startPoint.X, endPoint.X),
+                       Math.Min(startPoint.Y, endPoint.Y),
+                       Math.Abs(startPoint.X - endPoint.X),
+                       Math.Abs(startPoint.Y - endPoint.Y));
 
-                //    foreach (AbstractTable item in figurs)
-                //        item.Selected = item.HitTest(r);
-                //    break;
+
+                    if (selection.HitTest(r) == true)
+                    {
+                        selectionObject = singltone.tables.Where(item => item.Selected == true).ToList();
+                    }
+                    if (selectionObject != null)
+                    {
+                        DrawSelection(Brushes.Black, selectionObject);
+                    }
+
+                    break;
             }
 
             pictureBox1.Refresh();
@@ -172,11 +191,27 @@ namespace ArrowLine
         {
             if (singltone.isMoving)
             {
-                //_tmpBitmap = (Bitmap)_bitmap.Clone();
-                //_graphics = Graphics.FromImage(_tmpBitmap);
-                //pictureBox1.Image = _tmpBitmap;
-                singltone.UpdateTmpBitmap();
-                mouseHandler.OnPaint(crntFigure);
+                if (isButtonSelectPressed )
+                {
+
+                    Rectangle r = new Rectangle(
+                     Math.Min(startPoint.X, endPoint.X),
+                   Math.Min(startPoint.Y, endPoint.Y),
+                   Math.Abs(startPoint.X - endPoint.X),
+                   Math.Abs(startPoint.Y - endPoint.Y));
+
+                    e.Graphics.FillRectangle(_highlightBrush, r);
+                    e.Graphics.DrawRectangle(_highlightPen, r);
+
+                    //if (selectionObject != null)
+                    //{
+                    //    DrawSelection(Brushes.Black, selectionObject);
+                    //}
+                }
+                else
+                {
+                    mouseHandler.OnPaint(crntFigure);
+                }
 
                 //switch (Mode)
                 //{
@@ -213,21 +248,28 @@ namespace ArrowLine
                 //switch(a.Button)
                 //{
                 //    case MouseButtons.Left:
-               // crntFigure.Draw();
-                       // break;
+                // crntFigure.Draw();
+                // break;
 
                 //}
 
 
-                       // break;
-                }
+                // break;
+            }
 
-                singltone.UpdatePictureBox();
-               
-                GC.Collect();
+            singltone.UpdatePictureBox();
+
+            GC.Collect();
             //}
         }
 
+        private void DrawSelection(Brush brush, List<AbstractFigure> abstractFigures)
+        {
+            foreach (var abstractFigure in abstractFigures)
+            {
+                selection.DrawOverlay(brush, abstractFigure);
+            }
+        }
         private void ButtonColor_Click(object sender, EventArgs e)
         {
             Button btnColor = (Button)sender;
@@ -291,9 +333,9 @@ namespace ArrowLine
                 case nameof(toolStripButtonTwoAngleLine):
                     crntFigure = new TwoAngleLineArrow();
                     break;
-                //case "table":
-                //    table = new InterfaceTable();
-                //    break;
+                    //case "table":
+                    //    table = new InterfaceTable();
+                    //    break;
             }
 
         }
@@ -306,7 +348,7 @@ namespace ArrowLine
             //table = new InterfaceTable();
 
             currentFactory = new InterfaceTableFactory();//
-           // table = (AbstractTable)crntFigure;
+                                                         // table = (AbstractTable)crntFigure;
 
             buttonName = button.Name;
             mouseHandler = new DrawMouseHandler();

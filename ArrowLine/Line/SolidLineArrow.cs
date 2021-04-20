@@ -12,7 +12,7 @@ namespace ArrowLine.Line
 
         public override void Draw()
         {
-            singltone.graphics.DrawLines(singltone.pen, CreateArrowLine());
+            singltone.Graphics.DrawLines(singltone.pen, CreateArrowLine());
            
         }
     }

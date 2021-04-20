@@ -10,7 +10,7 @@ namespace ArrowLine
     public class Selection : AbstractFigure, ISelection
     {
         public DataPictureBox singltone = DataPictureBox.GetInstance();
-        AbstractFigure objectRectangle;
+
         public override void Draw()
         {
             throw new NotImplementedException();
@@ -18,12 +18,12 @@ namespace ArrowLine
 
         public bool HitTest(Point pt)
         {
-            foreach(AbstractFigure item in singltone.tables)
+            foreach (AbstractFigure item in singltone.tables)
             {
-                if(pt.X > item.startPoint.X && pt.X < item.startPoint.X + 140 
+                if (pt.X > item.startPoint.X && pt.X < item.startPoint.X + 140
                     && pt.Y > item.startPoint.Y && pt.Y < item.startPoint.Y + 60)
                 {
-                    objectRectangle = item;
+                    item.Selected = true;
                     return true;
                 }
             }
@@ -32,26 +32,53 @@ namespace ArrowLine
 
         public bool HitTest(Rectangle r)
         {
-            throw new NotImplementedException();
+            foreach (AbstractFigure item in singltone.tables)
+            {
+                if (r.Contains(new Rectangle(item.startPoint.X, item.startPoint.Y, 140, 60)))
+                {
+                    item.Selected = true;
+                    
+                }
+            }
+            foreach (AbstractFigure item in singltone.tables)
+            {
+                if (item.Selected==true)
+                {
+                    return true;
+                }
+                
+            }
+            return false;
         }
-        public void DrawOverlay()
+        public List<Rectangle> RectanglesPoint(AbstractFigure objectRectangle)
+        {
+            return new List<Rectangle>()
+            {
+                new Rectangle(objectRectangle.startPoint.X - 8, objectRectangle.startPoint.Y - 8, 8, 8),
+                new Rectangle(objectRectangle.startPoint.X + 140, objectRectangle.startPoint.Y - 8, 8, 8),
+                new Rectangle(objectRectangle.startPoint.X - 8, objectRectangle.startPoint.Y + 60, 8, 8),
+                new Rectangle(objectRectangle.startPoint.X + 140, objectRectangle.startPoint.Y + 60, 8, 8)
+
+            };
+        }
+
+        public void DrawOverlay(Brush brushes, AbstractFigure objectRectangle)
         {
 
-            //if (selected)
-            //{
-                singltone.graphics.FillRectangle(Brushes.Black, new Rectangle(objectRectangle.startPoint.X - 8, objectRectangle.startPoint.Y - 8, 8, 8));
-                singltone.graphics.FillRectangle(Brushes.Black, new Rectangle(objectRectangle.startPoint.X + 140, objectRectangle.startPoint.Y - 8, 8, 8));
-                singltone.graphics.FillRectangle(Brushes.Black, new Rectangle(objectRectangle.startPoint.X - 8, objectRectangle.startPoint.Y + 60, 8, 8));
-                singltone.graphics.FillRectangle(Brushes.Black, new Rectangle(objectRectangle.startPoint.X + 140, objectRectangle.startPoint.Y + 60, 8, 8));
+            foreach (Rectangle rectangle in RectanglesPoint(objectRectangle))
+            {
+                singltone.Graphics.FillRectangle(brushes, rectangle);
+
+            }
 
 
-                //singltone.graphics.FillRectangle(Brushes.Black, new Rectangle(objectRectangle.Left + objectRectangle.Width / 2 - 4, objectRectangle.Top - 8, 8, 8));
-                //singltone.graphics.FillRectangle(Brushes.Black, new Rectangle(objectRectangle.Left - 8, objectRectangle.Top + objectRectangle.Height / 2 - 4, 8, 8));
-                //singltone.graphics.FillRectangle(Brushes.Black, new Rectangle(objectRectangle.Left + objectRectangle.Width / 2 - 4, objectRectangle.Bottom, 8, 8));
-                //singltone.graphics.FillRectangle(Brushes.Black, new Rectangle(objectRectangle.Right, objectRectangle.Top + objectRectangle.Height / 2 - 4, 8, 8));
+            //singltone.graphics.FillRectangle(Brushes.Black, new Rectangle(objectRectangle.Left + objectRectangle.Width / 2 - 4, objectRectangle.Top - 8, 8, 8));
+            //singltone.graphics.FillRectangle(Brushes.Black, new Rectangle(objectRectangle.Left - 8, objectRectangle.Top + objectRectangle.Height / 2 - 4, 8, 8));
+            //singltone.graphics.FillRectangle(Brushes.Black, new Rectangle(objectRectangle.Left + objectRectangle.Width / 2 - 4, objectRectangle.Bottom, 8, 8));
+            //singltone.graphics.FillRectangle(Brushes.Black, new Rectangle(objectRectangle.Right, objectRectangle.Top + objectRectangle.Height / 2 - 4, 8, 8));
 
-               // singltone.graphics.DrawRectangle(Pens.CadetBlue, objectRectangle);
-           // }
+            // singltone.graphics.DrawRectangle(Pens.CadetBlue, objectRectangle);
+
         }
     }
 }

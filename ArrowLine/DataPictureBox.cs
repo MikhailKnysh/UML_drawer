@@ -7,7 +7,7 @@ namespace ArrowLine
     public class DataPictureBox
     {
         private static DataPictureBox _instance;
-        public Graphics graphics { get; set; }
+        public Graphics Graphics { get; set; }
         public Pen pen { get; set; }
         private PictureBox _pictureBox;
         private Bitmap _bitmap;
@@ -41,7 +41,7 @@ namespace ArrowLine
             _pictureBox = pictureBox1;
             _bitmap = new Bitmap(_pictureBox.Width, _pictureBox.Height);
             _tmpbitmap = (Bitmap)_bitmap.Clone();
-            graphics = Graphics.FromImage(_bitmap);
+            Graphics = Graphics.FromImage(_bitmap);
             pictureBox1.Image = _bitmap;
             _pictureBox.BackColor = Color.White;
             _pictureBox.Image = _tmpbitmap;
@@ -50,7 +50,7 @@ namespace ArrowLine
         public void UpdateTmpBitmap()
         {
             _tmpbitmap = (Bitmap)_bitmap.Clone();
-            graphics = Graphics.FromImage(_tmpbitmap);
+            Graphics = Graphics.FromImage(_tmpbitmap);
             _pictureBox.Image = _tmpbitmap;
         }
 
@@ -62,7 +62,7 @@ namespace ArrowLine
         public void UpdatePictureBox()
         {
             _pictureBox.Image = _tmpbitmap;
-            graphics = Graphics.FromImage(_tmpbitmap);
+            Graphics = Graphics.FromImage(_tmpbitmap);
         }
 
         public void InitialList()

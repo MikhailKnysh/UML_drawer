@@ -46,7 +46,7 @@ namespace ArrowLine.Table
             DrawHorizontalLine(lineIndex: 0, stepDownLine - 2);
 
             objectRectangle = new Rectangle(startPoint.X, startPoint.Y, width, height);
-            singltone.graphics.DrawRectangle(singltone.pen, objectRectangle);
+            singltone.Graphics.DrawRectangle(singltone.pen, objectRectangle);
         }
 
         protected override void Move()

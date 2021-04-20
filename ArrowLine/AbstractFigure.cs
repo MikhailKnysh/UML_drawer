@@ -11,7 +11,7 @@ namespace ArrowLine
         public Point startPoint;
         public Point endPoint;
         protected Region objectRegion;
-        Rectangle objectRectangle;
+        public bool Selected { get; set; }
 
 
 

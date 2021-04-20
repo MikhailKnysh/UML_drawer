@@ -75,7 +75,7 @@ namespace ArrowLine
             stepDownMethodPoint += 20;
             format.Alignment = StringAlignment.Near;
 
-            singltone.graphics.DrawRectangle(whitePen, objectRectangle);
+            singltone.Graphics.DrawRectangle(whitePen, objectRectangle);
 
             if (methodRectangles.Count != 0)
             {
@@ -98,7 +98,7 @@ namespace ArrowLine
             fieldRectangles.Add(stringRectangle);
 
             objectRectangle.Height += heightStringRectangle;
-            singltone.graphics.DrawRectangle(singltone.pen, objectRectangle);
+            singltone.Graphics.DrawRectangle(singltone.pen, objectRectangle);
 
             DrawHorizontalLine(lineIndex: 1, stepDownFieldPoint);
         }
@@ -109,7 +109,7 @@ namespace ArrowLine
 
             format.Alignment = StringAlignment.Near;
 
-            singltone.graphics.DrawRectangle(whitePen, objectRectangle);
+            singltone.Graphics.DrawRectangle(whitePen, objectRectangle);
 
             if (methodRectangles.Count != 0)
             {
@@ -124,7 +124,7 @@ namespace ArrowLine
             propertieRectangles.Add(stringRectangle);
 
             objectRectangle.Height += heightStringRectangle;
-            singltone.graphics.DrawRectangle(singltone.pen, objectRectangle);
+            singltone.Graphics.DrawRectangle(singltone.pen, objectRectangle);
 
             DrawHorizontalLine(lineIndex: 2, stepDownPropertyPoint);
         }
@@ -133,7 +133,7 @@ namespace ArrowLine
         {
             format.Alignment = StringAlignment.Near;
 
-            singltone.graphics.DrawRectangle(whitePen, objectRectangle);
+            singltone.Graphics.DrawRectangle(whitePen, objectRectangle);
 
             DrawStringRectangle(font, format, "Method", heightStringRectangle,
                 stepDownPoint: stepDownMethodPoint += 20);
@@ -142,7 +142,7 @@ namespace ArrowLine
             methodRectangles.Add(stringRectangle);
 
             objectRectangle.Height += heightStringRectangle;
-            singltone.graphics.DrawRectangle(singltone.pen, objectRectangle);
+            singltone.Graphics.DrawRectangle(singltone.pen, objectRectangle);
         }
 
         protected abstract void Resize();
@@ -152,8 +152,8 @@ namespace ArrowLine
         {
             stringRectangle = new Rectangle(startPoint.X, startPoint.Y + stepDownPoint, width, heightStringRectangle);
 
-            singltone.graphics.DrawRectangle(whitePen, startPoint.X,startPoint.Y + stepDownPoint, width, heightStringRectangle);
-            singltone.graphics.DrawString(text, font, solidBrush, stringRectangle, format);
+            singltone.Graphics.DrawRectangle(whitePen, startPoint.X,startPoint.Y + stepDownPoint, width, heightStringRectangle);
+            singltone.Graphics.DrawString(text, font, solidBrush, stringRectangle, format);
         }
 
         protected virtual void ReDrawArea(List<Rectangle> stringRectangles, List<string> stringData)
@@ -165,8 +165,8 @@ namespace ArrowLine
 
                 stringRectangles[i] = stringRectangle;
 
-                singltone.graphics.DrawRectangle(whitePen, stringRectangles[i].X, stringRectangles[i].Y, width, heightStringRectangle);
-                singltone.graphics.DrawString(stringData[i], font, solidBrush, stringRectangles[i], format);
+                singltone.Graphics.DrawRectangle(whitePen, stringRectangles[i].X, stringRectangles[i].Y, width, heightStringRectangle);
+                singltone.Graphics.DrawString(stringData[i], font, solidBrush, stringRectangles[i], format);
             }
         }
 
@@ -188,8 +188,8 @@ namespace ArrowLine
 
             SolidBrush shadowBrush = new SolidBrush(Color.White);
 
-            singltone.graphics.DrawPolygon(whitePen, points);
-            singltone.graphics.FillPolygon(shadowBrush, points);
+            singltone.Graphics.DrawPolygon(whitePen, points);
+            singltone.Graphics.FillPolygon(shadowBrush, points);
         }
 
         protected virtual void DrawHorizontalLine(int lineIndex, int stepDownPoint)
@@ -198,7 +198,7 @@ namespace ArrowLine
             linesInTable[lineIndex]._startLinePoint.Y = startPoint.Y + stepDownPoint + heightStringRectangle;
             linesInTable[lineIndex]._endLinePoint.X = startPoint.X + width;
             linesInTable[lineIndex]._endLinePoint.Y = startPoint.Y + stepDownPoint + heightStringRectangle;
-            singltone.graphics.DrawLine(singltone.pen, linesInTable[lineIndex]._startLinePoint, linesInTable[lineIndex]._endLinePoint);
+            singltone.Graphics.DrawLine(singltone.pen, linesInTable[lineIndex]._startLinePoint, linesInTable[lineIndex]._endLinePoint);
         }
     }
 }
