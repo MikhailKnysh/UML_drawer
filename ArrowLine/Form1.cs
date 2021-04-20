@@ -15,14 +15,17 @@ namespace ArrowLine
         private Pen _pen;
         private bool _isMoving = false;
         private bool isArrow = true;
+        //private StringDataForm stringDataForm;
 
-        AbstractFigure arrow;
-        AbstractTable table;
+        private AbstractFigure arrow;
+        private AbstractTable table;
 
         public Form1()
         {
             InitializeComponent();
         }
+
+        //public Form1(StringDataForm resultForm) => InitializeComponent();
 
         private void Form1_Load(object sender, EventArgs e)
         {
@@ -190,6 +193,8 @@ namespace ArrowLine
             _tmpBitmap = (Bitmap)_bitmap.Clone();
             _graphics = Graphics.FromImage(_tmpBitmap);
             pictureBox1.Image = _tmpBitmap;
+
+            //stringDataForm = new StringDataForm(labelData: "Field");
 
             table.AddField(_pen, _graphics);
 
