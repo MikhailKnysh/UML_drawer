@@ -1,6 +1,7 @@
 ﻿using ArrowLine.Arrow;
 using ArrowLine.Line;
 using ArrowLine.Table;
+using ArrowLine.Table.StringData;
 using System;
 using System.Drawing;
 using System.Windows.Forms;
@@ -15,7 +16,9 @@ namespace ArrowLine
         private Pen _pen;
         private bool _isMoving = false;
         private bool isArrow = true;
-        //private StringDataForm stringDataForm;
+        private StringDataForm stringDataForm;
+        private string stringDataTable;
+        private IDTO _idto;
 
         private AbstractFigure arrow;
         private AbstractTable table;
@@ -194,7 +197,10 @@ namespace ArrowLine
             _graphics = Graphics.FromImage(_tmpBitmap);
             pictureBox1.Image = _tmpBitmap;
 
-            //stringDataForm = new StringDataForm(labelData: "Field");
+            stringDataForm = new StringDataForm(labelData: "Field");
+            stringDataForm.ShowDialog();
+            _idto = stringDataForm.Create();
+            MessageBox.Show(_idto.ToString());
 
             table.AddField(_pen, _graphics);
 

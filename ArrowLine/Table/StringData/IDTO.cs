@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ArrowLine.Table.StringData
 {
-    interface IDTO
+    public interface IDTO
     {
 
     }

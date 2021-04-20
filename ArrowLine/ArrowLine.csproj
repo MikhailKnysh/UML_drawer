@@ -95,7 +95,9 @@
     <Compile Include="Table\InterfaceTable.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Table\StringData\Field.cs" />
     <Compile Include="Table\StringData\IDTO.cs" />
+    <Compile Include="Table\StringData\Method.cs" />
     <Compile Include="Table\StringData\Property.cs" />
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>

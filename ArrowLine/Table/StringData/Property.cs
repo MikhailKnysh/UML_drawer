@@ -1,25 +1,24 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace ArrowLine.Table.StringData
+﻿namespace ArrowLine.Table.StringData
 {
     public class Property : IDTO
     {
-        public string AccessModifier { get; set; }
-        public string Name { get; set; }
-        public string GetAccessModifier { get; set; }
-        public string SetAccessModifier { get; set; }
+        private string _accessModifier;
+        private string _name = "property";
+        private string _getAccessModifier;
+        private string _setAccessModifier;
 
-        public Property()
+        public Property(string accessModifier, string name, string getAccessModifier, string setAccessModifier)
         {
+            _accessModifier = accessModifier;
+            _name = name;
+            _getAccessModifier = getAccessModifier;
+            _setAccessModifier = setAccessModifier;
         }
 
         public override string ToString()
         {
-            return string.Empty;
+            return _accessModifier + " " + _name + " {" + _getAccessModifier
+                + "get; " + _setAccessModifier + "set; }";
         }
     }
 }

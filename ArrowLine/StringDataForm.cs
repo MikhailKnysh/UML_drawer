@@ -1,9 +1,7 @@
 ﻿using ArrowLine.Table;
-using EnumsNET;
+using ArrowLine.Table.StringData;
 using System;
-using System.ComponentModel;
 using System.Linq;
-using System.Text;
 using System.Windows.Forms;
 
 namespace ArrowLine
@@ -11,14 +9,31 @@ namespace ArrowLine
     public partial class StringDataForm : Form
     {
         private string _labelData;
-        private StringBuilder _stringBuilder;
 
-        public StringDataForm(/*string labelData*/)
+        public StringDataForm(string labelData)
         {
             InitializeComponent();
 
-            _stringBuilder = new StringBuilder();
-            this._labelData = "Property";
+            _labelData = labelData;
+        }
+
+        public IDTO Create()
+        {
+            if (_labelData.Equals("Field"))
+            {
+                return new Field(comboBoxAccessModifier.Text, textBoxSignature.Text,
+                    textBoxTypeToReturn.Text);
+            }
+            else if(_labelData.Equals("Property"))
+            {
+                return new Property(comboBoxPropAccessModifier.Text, textBoxPropName.Text,
+                    comboBoxGetAccessModifier.Text, comboBoxSetAccessModifier.Text);
+            }
+            else
+            {
+                return new Method(comboBoxAccessModifier.Text, textBoxSignature.Text,
+                    textBoxTypeToReturn.Text);
+            }
         }
 
         private void Form2_Load(object sender, EventArgs e)
@@ -51,27 +66,7 @@ namespace ArrowLine
 
         private void buttonOk_Click(object sender, EventArgs e)
         {
-            if (_labelData.Equals("Property"))
-            {
-                _stringBuilder
-                    .Append(comboBoxPropAccessModifier.Text)
-                    .Append(textBoxPropName.Text)
-                    .Append(labelOpenBkt.Text)
-                    .Append(comboBoxGetAccessModifier.Text)
-                    .Append(labelGet.Text)
-                    .Append(comboBoxSetAccessModifier.Text)
-                    .Append(labelSet.Text);
-            }
-            else
-            {
-                _stringBuilder
-                    .Append(comboBoxAccessModifier.Text)
-                    .Append(textBoxSignature.Text)
-                    .Append(labelColon.Text)
-                    .Append(textBoxTypeToReturn.Text);
-            }
+            Close();
         }
-
-        //private string 
     }
 }
