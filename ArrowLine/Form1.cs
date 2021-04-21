@@ -48,9 +48,10 @@ namespace ArrowLine
             selection = new Selection();
             IMouseHandler mouseHandler = new DrawMouseHandler();
         }
-
+        Point tmp;
         private void pictureBox1_MouseDown(object sender, MouseEventArgs e)
         {
+            
             ChooseButton();
 
             if (isButtonSelectPressed)
@@ -81,13 +82,14 @@ namespace ArrowLine
                         break;
                     case MouseButtons.Right:
                         {
-                            if (selectionObject != null)
-                            {
-                                foreach (AbstractFigure item in selectionObject)
-                                {
-                                    item.startPoint = new Point(Cursor.Position.X, Cursor.Position.Y);
-                                }
-                            }
+                            tmp = e.Location;
+                            //if (selectionObject != null)
+                            //{
+                            //    //foreach (AbstractFigure item in selectionObject)
+                            //    //{
+                            //    //    item.startPoint = new Point(Cursor.Position.X, Cursor.Position.Y);
+                            //    //}
+                            //}
                             break;
                         }
                 }
@@ -137,14 +139,27 @@ namespace ArrowLine
                             DrawSelection(Brushes.Black, selectionObject);
                         }
                         break;
+
                     case MouseButtons.Right:
-                        //if (selectionObject != null)
-                        //{
-                        //    foreach (AbstractFigure item in selectionObject)
-                        //    {
-                        //        item.startPoint = new Point(Cursor.Position.X, Cursor.Position.Y);
-                        //    }
-                        //}
+                        if (selectionObject != null)
+                        {
+                            //foreach (AbstractFigure item in selectionObject)
+                            //{
+                            //    singltone.tables.Remove(item);
+                            //}
+
+                            singltone.RebaseBitmap();
+
+                            int count = 0;
+
+                            foreach(var item in singltone.tables)
+                            {
+                                item.Draw();
+                                //singltone.tables.Add(item);
+                          
+                            }
+
+                        }
                         break;
                 }
             }
@@ -152,40 +167,52 @@ namespace ArrowLine
             {
                 mouseHandler.OnMouseUp(crntFigure);
             }
-
+            singltone.UpdatePictureBox();
             pictureBox1.Refresh();
         }
 
         private void pictureBox1_MouseMove(object sender, MouseEventArgs e)
         {
-            if (singltone.isMoving)
+            // if (singltone.isMoving)
+            //{
+            if (e.Button == MouseButtons.Left || e.Button == MouseButtons.Right)
             {
-                    endPoint = e.Location;
-
                 if (isButtonSelectPressed)
                 {
+                    endPoint = e.Location;
 
-
-                    if (selectionObject != null)
+                    switch (e.Button)
                     {
-                        foreach (AbstractFigure item in selectionObject)
-                        {
-                            item.Move(e.X - item.endPoint.X, e.Y - item.endPoint.Y);
-                        }
-                    }
+                        case MouseButtons.Left:
+                            break;
+                        case MouseButtons.Right:
+                            if (selectionObject != null)
+                            {
+                                foreach (AbstractFigure item in selectionObject)
+                                {
+                                    item.Move(e.X - tmp.X, e.Y - tmp.Y);
+                                    item.Draw();
+                                }
+                            }
+                            tmp = e.Location;
 
-                    foreach (var item in singltone.tables)
-                    {
-                        item.Selected = false;
+                            foreach (var item in singltone.tables)
+                            {
+                                item.Selected = false;
+                            }
+                            break;
                     }
                 }
                 else
                 {
                     mouseHandler.OnMouseMove(crntFigure, e);
+
                 }
 
-                pictureBox1.Invalidate();
+                singltone.UpdateTmpBitmap();
             }
+                //pictureBox1.Invalidate();
+            //}
         }
 
         private void pictureBox1_Paint(object sender, PaintEventArgs e)
@@ -194,7 +221,7 @@ namespace ArrowLine
             {
                 if (isButtonSelectPressed)
                 {
-                   
+
                     Rectangle r = new Rectangle(
                       Math.Min(startPoint.X, endPoint.X),
                       Math.Min(startPoint.Y, endPoint.Y),
