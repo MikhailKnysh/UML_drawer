@@ -1,6 +1,7 @@
 ﻿using ArrowLine.Arrow;
 using ArrowLine.Line;
 using ArrowLine.Table;
+using ArrowLine.Table.StringData;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -21,11 +22,16 @@ namespace ArrowLine
         IMouseHandler mouseHandler;
         IFigureFactory currentFactory;
         ISelection selection;
+        private StringDataForm stringDataForm;
+        public string stringDataTable;
+        private IDTO _idto;
 
         public Form1()
         {
             InitializeComponent();
         }
+
+        //public Form1(StringDataForm resultForm) => InitializeComponent();
 
         private void Form1_Load(object sender, EventArgs e)
         {
@@ -162,6 +168,10 @@ namespace ArrowLine
         private void toolStripMenuItemAddField_Click(object sender, EventArgs e)
         {
             singltone.UpdateTmpBitmap();
+            stringDataForm = new StringDataForm(labelData: "Field");
+            stringDataForm.ShowDialog();
+            _idto = stringDataForm.Create();
+            table.stringDataTable = _idto.ToString();
 
             crntFigure.AddField();
 
@@ -171,6 +181,10 @@ namespace ArrowLine
         private void toolStripMenuItemAddProperty_Click(object sender, EventArgs e)
         {
             singltone.UpdateTmpBitmap();
+            stringDataForm = new StringDataForm(labelData: "Property");
+            stringDataForm.ShowDialog();
+            _idto = stringDataForm.Create();
+            table.stringDataTable = _idto.ToString();
 
             crntFigure.AddProperty();
 
@@ -180,6 +194,10 @@ namespace ArrowLine
         private void toolStripMenuItemAddMethod_Click(object sender, EventArgs e)
         {
             singltone.UpdateTmpBitmap();
+            stringDataForm = new StringDataForm(labelData: "Method");
+            stringDataForm.ShowDialog();
+            _idto = stringDataForm.Create();
+            table.stringDataTable = _idto.ToString();
 
             crntFigure.AddMethod();
 

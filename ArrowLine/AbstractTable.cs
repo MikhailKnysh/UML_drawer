@@ -27,14 +27,17 @@ namespace ArrowLine
         public Font font;
         public StringFormat format;
         public Pen whitePen;
+        public Pen blackPen;///////////
         public SolidBrush solidBrush;
+        public string stringDataTable;
 
         public AbstractTable()
         {
-            font = new Font("Arial", 12);
+            font = new Font("Arial", 12, FontStyle.Regular);
             format = new StringFormat();
-            whitePen = new Pen(Color.White, 2);////////////////
+            whitePen = new Pen(Color.White, 3);////////////////
             solidBrush = new SolidBrush(Color.Black);//////Pen.Color
+            blackPen = new Pen(Color.Black, 1);////////////////
             linesInTable = new List<LineInTable>();
             fields = new List<string>();
             fieldRectangles = new List<Rectangle>();
@@ -62,28 +65,26 @@ namespace ArrowLine
 
             if (methodRectangles.Count != 0)
             {
-                ClearArea(methodRectangles);
-                ReDrawArea(methodRectangles, methods);
+                ReDrawArea(graphics, methodRectangles, methods);
             }
 
             if (propertieRectangles.Count != 0)
             {
-                ClearArea(propertieRectangles);
-                ReDrawArea(propertieRectangles, properties);
-
-                DrawHorizontalLine(lineIndex: 2, stepDownPropertyPoint);
+                ReDrawArea(graphics, propertieRectangles, properties);
+                DrawHorizontalLine(pen, graphics, lineIndex: 2, stepDownPropertyPoint + 1);
             }
 
-            DrawStringRectangle(font, format, "Field", heightStringRectangle,
-                stepDownPoint: stepDownFieldPoint += 20);
-
-            fields.Add("Field");
+            fields.Add(stringDataTable);
             fieldRectangles.Add(stringRectangle);
+
+            DrawStringRectangle(graphics, font, format, stringDataTable, heightStringRectangle,
+                stepDownPoint: stepDownFieldPoint += 20);
 
             objectRectangle.Height += heightStringRectangle;
             singltone.Graphics.DrawRectangle(singltone.pen, objectRectangle);
 
             DrawHorizontalLine(lineIndex: 1, stepDownFieldPoint);
+            DrawHorizontalLine(pen, graphics, lineIndex: 1, stepDownFieldPoint + 1);
         }
 
         public override void AddProperty()
@@ -96,20 +97,19 @@ namespace ArrowLine
 
             if (methodRectangles.Count != 0)
             {
-                ClearArea(methodRectangles);
-                ReDrawArea(methodRectangles, methods);
+                ReDrawArea(graphics, methodRectangles, methods);
             }
 
-            DrawStringRectangle(font, format, "Property", heightStringRectangle,
+            DrawStringRectangle(graphics, font, format, stringDataTable, heightStringRectangle,
                 stepDownPoint: stepDownPropertyPoint += 20);
 
-            properties.Add("Property");
+            properties.Add(stringDataTable);
             propertieRectangles.Add(stringRectangle);
 
             objectRectangle.Height += heightStringRectangle;
             singltone.Graphics.DrawRectangle(singltone.pen, objectRectangle);
 
-            DrawHorizontalLine(lineIndex: 2, stepDownPropertyPoint);
+            DrawHorizontalLine(pen, graphics, lineIndex: 2, stepDownPropertyPoint + 1);
         }
 
         public override void AddMethod()
@@ -118,10 +118,10 @@ namespace ArrowLine
 
             singltone.Graphics.DrawRectangle(whitePen, objectRectangle);
 
-            DrawStringRectangle(font, format, "Method", heightStringRectangle,
+            DrawStringRectangle(graphics, font, format, stringDataTable, heightStringRectangle,
                 stepDownPoint: stepDownMethodPoint += 20);
 
-            methods.Add("Method");
+            methods.Add(stringDataTable);
             methodRectangles.Add(stringRectangle);
 
             objectRectangle.Height += heightStringRectangle;
@@ -135,8 +135,8 @@ namespace ArrowLine
         {
             stringRectangle = new Rectangle(startPoint.X, startPoint.Y + stepDownPoint, width, heightStringRectangle);
 
-            singltone.Graphics.DrawRectangle(whitePen, startPoint.X,startPoint.Y + stepDownPoint, width, heightStringRectangle);
-            singltone.Graphics.DrawString(text, font, solidBrush, stringRectangle, format);
+            graphics.FillRectangle(new SolidBrush(Color.White), stringRectangle);
+            graphics.DrawString(text, font, solidBrush, stringRectangle, format);
         }
 
         protected virtual void ReDrawArea(List<Rectangle> stringRectangles, List<string> stringData)
@@ -148,31 +148,9 @@ namespace ArrowLine
 
                 stringRectangles[i] = stringRectangle;
 
-                singltone.Graphics.DrawRectangle(whitePen, stringRectangles[i].X, stringRectangles[i].Y, width, heightStringRectangle);
-                singltone.Graphics.DrawString(stringData[i], font, solidBrush, stringRectangles[i], format);
+                graphics.FillRectangle(new SolidBrush(Color.White), stringRectangles[i].X, stringRectangles[i].Y, width, heightStringRectangle);
+                graphics.DrawString(stringData[i], font, solidBrush, stringRectangles[i], format);
             }
-        }
-
-        protected virtual void ClearArea(List<Rectangle> stringRectangles)
-        {
-            Point[] points = new Point[] {
-                new Point(stringRectangles[0].X,
-                    stringRectangles[0].Y),
-
-                new Point(stringRectangles[0].X + width,
-                    stringRectangles[0].Y),
-
-                new Point(stringRectangles[stringRectangles.Count - 1].X + width,
-                    stringRectangles[stringRectangles.Count - 1].Y + 20),
-
-                new Point(stringRectangles[stringRectangles.Count - 1].X,
-                    stringRectangles[stringRectangles.Count - 1].Y + 20),
-            };
-
-            SolidBrush shadowBrush = new SolidBrush(Color.White);
-
-            singltone.Graphics.DrawPolygon(whitePen, points);
-            singltone.Graphics.FillPolygon(shadowBrush, points);
         }
 
         protected virtual void DrawHorizontalLine(int lineIndex, int stepDownPoint)
