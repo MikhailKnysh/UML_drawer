@@ -32,10 +32,9 @@ namespace ArrowLine
 
         public AbstractTable()
         {
-          //  _stringDataTable = stringDataTable;
             font = new Font("Arial", 12, FontStyle.Regular);
             format = new StringFormat();
-            whitePen = new Pen(Color.White,3);////////////////
+            whitePen = new Pen(Color.White, 3);////////////////
             solidBrush = new SolidBrush(Color.Black);//////Pen.Color
             blackPen = new Pen(Color.Black, 1);////////////////
             linesInTable = new List<LineInTable>();
@@ -64,7 +63,6 @@ namespace ArrowLine
 
             graphics.DrawRectangle(whitePen, objectRectangle);
 
-          
             if (methodRectangles.Count != 0)
             {
                 ReDrawArea(graphics, methodRectangles, methods);
@@ -73,24 +71,19 @@ namespace ArrowLine
             if (propertieRectangles.Count != 0)
             {
                 ReDrawArea(graphics, propertieRectangles, properties);
-
-                DrawHorizontalLine(pen, graphics, lineIndex: 2, stepDownPropertyPoint+1);
+                DrawHorizontalLine(pen, graphics, lineIndex: 2, stepDownPropertyPoint + 1);
             }
 
-         
             fields.Add(stringDataTable);
             fieldRectangles.Add(stringRectangle);
 
             DrawStringRectangle(graphics, font, format, stringDataTable, heightStringRectangle,
-           stepDownPoint: stepDownFieldPoint += 20);
-
+                stepDownPoint: stepDownFieldPoint += 20);
 
             objectRectangle.Height += heightStringRectangle;
             graphics.DrawRectangle(pen, objectRectangle);
 
-            DrawHorizontalLine(pen, graphics, lineIndex: 1, stepDownFieldPoint+1);
-
-
+            DrawHorizontalLine(pen, graphics, lineIndex: 1, stepDownFieldPoint + 1);
         }
 
         public virtual void AddProperty(Pen pen, Graphics graphics)
@@ -115,7 +108,7 @@ namespace ArrowLine
             objectRectangle.Height += heightStringRectangle;
             graphics.DrawRectangle(pen, objectRectangle);
 
-            DrawHorizontalLine(pen, graphics, lineIndex: 2, stepDownPropertyPoint+1);
+            DrawHorizontalLine(pen, graphics, lineIndex: 2, stepDownPropertyPoint + 1);
         }
 
         public virtual void AddMethod(Pen pen, Graphics graphics)
