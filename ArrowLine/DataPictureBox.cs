@@ -69,5 +69,12 @@ namespace ArrowLine
         {
             tables = new List<AbstractFigure>();
         }
+
+        public void RebaseBitmap()
+        {
+            _bitmap = new Bitmap(_pictureBox.Width, _pictureBox.Height);
+            Graphics = Graphics.FromImage(_bitmap);
+            Graphics.Clear(Color.White);
+        }
     }
 }
