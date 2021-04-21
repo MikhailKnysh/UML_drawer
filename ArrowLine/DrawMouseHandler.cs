@@ -11,7 +11,6 @@ namespace ArrowLine
 
         public void OnMouseDown(AbstractFigure currentFigure, MouseEventArgs e, Form form, ContextMenuStrip contextMenuStrip)
         {
-
             switch (e.Button)
             {
                 case MouseButtons.Left:
@@ -35,7 +34,7 @@ namespace ArrowLine
 
         }
 
-        public void OnMouseUp(AbstractFigure currentFigure)
+        public void OnMouseUp(AbstractFigure currentFigure, MouseEventArgs e)
         {
             if (currentFigure != null)
             {
@@ -43,7 +42,7 @@ namespace ArrowLine
             }
         }
 
-        public void OnPaint(AbstractFigure currentFigure)
+        public void OnPaint(AbstractFigure currentFigure, PaintEventArgs e)
         {
             currentFigure.Draw();
         }
