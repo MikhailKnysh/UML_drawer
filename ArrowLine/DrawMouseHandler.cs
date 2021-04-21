@@ -9,11 +9,6 @@ namespace ArrowLine
     {
         public DataPictureBox singltone = DataPictureBox.GetInstance();
 
-        //Form1 form1 = new Form1();
-        //public AbstractFigure currentFigure= new AgregationEndArrow();
-        //public AbstractTable table = new InterfaceTable();
-        
-
         public void OnMouseDown(AbstractFigure currentFigure, MouseEventArgs e, Form form, ContextMenuStrip contextMenuStrip)
         {
 
@@ -23,7 +18,6 @@ namespace ArrowLine
                     {
                         currentFigure.startPoint = e.Location;
                         currentFigure.endPoint = e.Location;
-                        //table.startPoint = e.Location;
                     }
                     break;
                 case MouseButtons.Right:

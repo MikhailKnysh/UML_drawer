@@ -6,9 +6,8 @@ using System.Threading.Tasks;
 
 namespace ArrowLine
 {
-    public enum WorkingMode
+    interface IMoveable1
     {
-        Select,
-        Draw
+        void Move(int deltaX, int deltaY);
     }
 }
