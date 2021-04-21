@@ -1,13 +1,13 @@
-﻿using System;
-using System.Drawing;
+﻿using System.Drawing;
 using System.Windows.Forms;
-using ArrowLine.Table;
+using ArrowLine.Table.StringData;
 
 namespace ArrowLine
 {
     public class DrawMouseHandler : IMouseHandler
     {
         public DataPictureBox singltone = DataPictureBox.GetInstance();
+        private IDTO _idto;
 
         public void OnMouseDown(AbstractFigure currentFigure, MouseEventArgs e, Form form, ContextMenuStrip contextMenuStrip)
         {
@@ -46,5 +46,41 @@ namespace ArrowLine
         {
             currentFigure.Draw();
         }
+
+        public IDTO OnToolStripMenuItemAddField_Click(StringDataForm stringDataForm)
+        {
+            stringDataForm.ShowDialog();
+            _idto = stringDataForm.Create();
+            return _idto;
+        }
+        //private void ChooseButton()
+        //{
+        //    switch (buttonName)
+        //    {
+        //        case nameof(toolStripButtonCloseArrow):
+        //            currentFactory = new InharitanceArrowFactory();
+        //            break;
+        //        case nameof(toolStripButtonEndRhomb):
+        //            currentFactory = new AgregationEndArrowFactory();
+        //            break;
+        //        case nameof(toolStripButtonEndRhombBlack):
+        //            currentFactory = new CompositionEndArrowFactory();
+        //            break;
+        //        case nameof(toolStripButtonStartRhomb1):
+        //            currentFactory = new AgregationStartArrowFactory();
+        //            break;
+        //        case nameof(toolStripButtonStartRhombBlack):
+        //            currentFactory = new CompositionStartArrowFactory();
+        //            break;
+        //        case nameof(toolStripButtonOpenArrow):
+        //            currentFactory = new AssociationArrowFactory();
+        //            break;
+        //        case nameof(toolStripButtonCloseArrowDash):
+        //            currentFactory = new ImplementationArrowFactory();
+        //            break;
+        //        case nameof(toolStripButtonTwoAngleLine):
+        //            crntFigure = new TwoAngleLineArrow();
+        //            break;
+        //    }
     }
 }

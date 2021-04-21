@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ArrowLine.Table.StringData;
+using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Drawing.Drawing2D;
@@ -143,6 +144,11 @@ namespace ArrowLine
                 e.Graphics.FillRectangle(_highlightBrush, r);
                 e.Graphics.DrawRectangle(_highlightPen, r);
 
+        }
+
+        public IDTO OnToolStripMenuItemAddField_Click(StringDataForm stringDataForm)
+        {
+            throw new NotImplementedException();
         }
 
         private void DrawSelection(Brush brush, List<AbstractFigure> abstractFigures)

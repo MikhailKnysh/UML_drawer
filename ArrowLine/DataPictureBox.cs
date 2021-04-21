@@ -20,11 +20,6 @@ namespace ArrowLine
 
         public bool isMoving { get; set; }
 
-        private DataPictureBox()
-        {
-          
-        }
-
         public static DataPictureBox GetInstance()
         {
             if (_instance is null)

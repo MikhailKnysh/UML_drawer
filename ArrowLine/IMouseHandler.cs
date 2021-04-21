@@ -1,4 +1,5 @@
-﻿using System.Windows.Forms;
+﻿using ArrowLine.Table.StringData;
+using System.Windows.Forms;
 
 namespace ArrowLine
 {
@@ -10,6 +11,7 @@ namespace ArrowLine
         void OnMouseUp(AbstractFigure currentFigure, MouseEventArgs e);
 
         void OnPaint(AbstractFigure currentFigure, PaintEventArgs e);
+        IDTO OnToolStripMenuItemAddField_Click(StringDataForm stringDataForm);
 
 
     }

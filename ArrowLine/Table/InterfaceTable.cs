@@ -7,43 +7,20 @@ namespace ArrowLine.Table
     {
         public InterfaceTable()
         {
+           
         }
 
-        public InterfaceTable(Point startPoint)
-        {
-
-            this.startPoint = startPoint;
-        }
-
-        //public override Rectangle ObjectRectangle
-        //{
-        //    get { return objectRectangle; }
-        //    set
-        //    { objectRectangle = value;
-        //        objectRegion = new Region(objectRectangle);
-        //    }
-        //}
-
-
-        //public override void AddProperty()
-        //{
-        //    throw new NotImplementedException();
-        //}
-
-        //protected override void AddMethod()
-        //{
-        //    throw new NotImplementedException();
-        //}
 
         public override void Draw()
         {
+            CreateBaseRactangle();
             DrawStringRectangle(font, format, "<< Interface >>", heightStringRectangle, stepDownPoint: 0);
             DrawStringRectangle(font, format, "Title", heightStringRectangle, stepDownPoint: 20);
             DrawHorizontalLine(lineIndex: 0, stepDownLine - 2);
 
-            objectRectangle = new Rectangle(startPoint.X, startPoint.Y, width, height);
             singltone.Graphics.DrawRectangle(singltone.pen, objectRectangle);
         }
+       
 
         protected override void Move()
         {

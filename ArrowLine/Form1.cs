@@ -38,14 +38,17 @@ namespace ArrowLine
         }
         private void pictureBox1_MouseDown(object sender, MouseEventArgs e)
         {
+            singltone.isMoving = true;
             if (!isButtonSelectPressed)
             {
                 ChooseButton();
-                crntFigure = currentFactory.CreateFigure();
+                if (e.Button == MouseButtons.Left)
+                {
+                    crntFigure = currentFactory.CreateFigure();
+                }
             }
 
             mouseHandler.OnMouseDown(crntFigure, e, this, contextMenuStrip1);
-            singltone.isMoving = true;
         }
 
         private void pictureBox1_MouseUp(object sender, MouseEventArgs e)
@@ -74,13 +77,6 @@ namespace ArrowLine
             GC.Collect();
         }
 
-        private void DrawSelection(Brush brush, List<AbstractFigure> abstractFigures)
-        {
-            foreach (var abstractFigure in abstractFigures)
-            {
-                selection.DrawOverlay(brush, abstractFigure);
-            }
-        }
         private void ButtonColor_Click(object sender, EventArgs e)
         {
             Button btnColor = (Button)sender;
@@ -158,10 +154,9 @@ namespace ArrowLine
         private void toolStripMenuItemAddField_Click(object sender, EventArgs e)
         {
             singltone.UpdateTmpBitmap();
-            stringDataForm = new StringDataForm(labelData: "Field");
-            stringDataForm.ShowDialog();
-            _idto = stringDataForm.Create();
-            crntFigure.stringDataTable = _idto.ToString();
+
+            crntFigure.stringDataTable = mouseHandler.OnToolStripMenuItemAddField_Click(
+                new StringDataForm(labelData: "Field")).ToString();
 
             crntFigure.AddField();
 
@@ -171,10 +166,8 @@ namespace ArrowLine
         private void toolStripMenuItemAddProperty_Click(object sender, EventArgs e)
         {
             singltone.UpdateTmpBitmap();
-            stringDataForm = new StringDataForm(labelData: "Property");
-            stringDataForm.ShowDialog();
-            _idto = stringDataForm.Create();
-            crntFigure.stringDataTable = _idto.ToString();
+            crntFigure.stringDataTable = mouseHandler.OnToolStripMenuItemAddField_Click(
+               new StringDataForm(labelData: "Property")).ToString();
 
             crntFigure.AddProperty();
 
@@ -184,10 +177,8 @@ namespace ArrowLine
         private void toolStripMenuItemAddMethod_Click(object sender, EventArgs e)
         {
             singltone.UpdateTmpBitmap();
-            stringDataForm = new StringDataForm(labelData: "Method");
-            stringDataForm.ShowDialog();
-            _idto = stringDataForm.Create();
-            crntFigure.stringDataTable = _idto.ToString();
+            crntFigure.stringDataTable = mouseHandler.OnToolStripMenuItemAddField_Click(
+              new StringDataForm(labelData: "Method")).ToString();
 
             crntFigure.AddMethod();
 

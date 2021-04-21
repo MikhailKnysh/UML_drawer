@@ -52,8 +52,13 @@ namespace ArrowLine
             }
         }
        
+       public void CreateBaseRactangle()
+        {
+            objectRectangle = new Rectangle(startPoint.X, startPoint.Y, width, height);
+        }
         public override void AddField()
         {
+            
             stepDownPropertyPoint += 20;
             stepDownMethodPoint += 20;
             format.Alignment = StringAlignment.Near;
