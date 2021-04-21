@@ -16,7 +16,7 @@
             }
             else
             {
-                _name = "property";
+                _name = "Property";
             }
 
             _getAccessModifier = getAccessModifier;

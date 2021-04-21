@@ -4,12 +4,10 @@ using System.Windows.Forms;
 
 namespace ArrowLine
 {
-    public abstract class AbstractTable// : AbstractFigure
+    public abstract class AbstractTable : AbstractFigure
     {
         protected TextBox title;
         public Point startPoint;
-        protected int width = 140;
-        protected int height = 60;
         protected int heightStringRectangle = 20;
         protected int stepDownLine = 20;
         protected int stepDownFieldPoint = 20;
@@ -28,15 +26,18 @@ namespace ArrowLine
         public Font font;
         public StringFormat format;
         public Pen whitePen;
+        public Pen blackPen;///////////
         public SolidBrush solidBrush;
         public string stringDataTable;
+
         public AbstractTable()
         {
           //  _stringDataTable = stringDataTable;
-            font = new Font("Arial", 12);
+            font = new Font("Arial", 12, FontStyle.Regular);
             format = new StringFormat();
             whitePen = new Pen(Color.White, 2);////////////////
-            solidBrush = new SolidBrush(Color.Black);//////Pen.Color
+            blackPen = new Pen(Color.Black, 1);////////////////
+            solidBrush = new SolidBrush(blackPen.Color);//////Pen.Color
             linesInTable = new List<LineInTable>();
             fields = new List<string>();
             fieldRectangles = new List<Rectangle>();
@@ -77,7 +78,7 @@ namespace ArrowLine
                 DrawHorizontalLine(pen, graphics, lineIndex: 2, stepDownPropertyPoint);
             }
 
-            DrawStringRectangle(graphics, font, format, stringDataTable, heightStringRectangle,
+            DrawStringRectangle(graphics, font.Italic, format, stringDataTable, heightStringRectangle,
                 stepDownPoint: stepDownFieldPoint += 20);
 
             fields.Add(stringDataTable);
@@ -131,7 +132,7 @@ namespace ArrowLine
             graphics.DrawRectangle(pen, objectRectangle);
         }
 
-        public virtual void Draw(Pen pen, Graphics graphics)
+        public override void Draw(Pen pen, Graphics graphics)
         {
         }
         protected abstract void Resize();

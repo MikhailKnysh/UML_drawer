@@ -35,7 +35,7 @@ namespace ArrowLine
             Point startPoint = new Point();
             Point endPoint = new Point();
             _bitmap = new Bitmap(pictureBox1.Width, pictureBox1.Height);
-            _pen = new Pen(Color.Black, 2);
+            _pen = new Pen(Color.Black, 1);
             arrow = new SolidLineArrow(startPoint, endPoint);
             table = new InterfaceTable();
         }
@@ -160,12 +160,9 @@ namespace ArrowLine
 
         private void F_Click(object sender, EventArgs e)
         {
-
-
             _tmpBitmap = (Bitmap)_bitmap.Clone();
             _graphics = Graphics.FromImage(_tmpBitmap);
             pictureBox1.Image = _tmpBitmap;
-
 
             table.AddField(_pen, _graphics);
 

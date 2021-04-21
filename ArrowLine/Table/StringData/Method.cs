@@ -14,13 +14,13 @@ namespace ArrowLine.Table.StringData
             if (!(name == string.Empty))
             {
                 _signature = name;
+                _typeToReturn = typeToReturn;
             }
             else
             {
-                _signature = "method";
+                _signature = "Method()";
+                _typeToReturn = "value";
             }
-
-            _typeToReturn = typeToReturn;
         }
 
         public override string ToString()

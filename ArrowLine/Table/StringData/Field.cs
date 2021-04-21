@@ -13,13 +13,13 @@ namespace ArrowLine.Table.StringData
             if (!(name == string.Empty))
             {
                 _name = name;
+                _typeToReturn = typeToReturn;
             }
             else
             {
                 _name = "field";
+                _typeToReturn = "type";
             }
-
-            _typeToReturn = typeToReturn;
         }
 
         public override string ToString()

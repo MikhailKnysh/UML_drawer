@@ -80,9 +80,11 @@ namespace ArrowLine
             this.trackBar1.Location = new System.Drawing.Point(12, 124);
             this.trackBar1.Margin = new System.Windows.Forms.Padding(2);
             this.trackBar1.Maximum = 5;
+            this.trackBar1.Minimum = 1;
             this.trackBar1.Name = "trackBar1";
             this.trackBar1.Size = new System.Drawing.Size(78, 45);
             this.trackBar1.TabIndex = 3;
+            this.trackBar1.Value = 1;
             this.trackBar1.Scroll += new System.EventHandler(this.trackbar1_Scroll);
             // 
             // button1
@@ -283,26 +285,26 @@ namespace ArrowLine
             this.toolStripMenuItemAddProperty,
             this.toolStripMenuItemAddMethod});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(181, 92);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(145, 70);
             // 
             // toolStripMenuItemAddField
             // 
             this.toolStripMenuItemAddField.Name = "toolStripMenuItemAddField";
-            this.toolStripMenuItemAddField.Size = new System.Drawing.Size(180, 22);
+            this.toolStripMenuItemAddField.Size = new System.Drawing.Size(144, 22);
             this.toolStripMenuItemAddField.Text = "Add field";
             this.toolStripMenuItemAddField.Click += new System.EventHandler(this.toolStripMenuItemAddField_Click);
             // 
             // toolStripMenuItemAddProperty
             // 
             this.toolStripMenuItemAddProperty.Name = "toolStripMenuItemAddProperty";
-            this.toolStripMenuItemAddProperty.Size = new System.Drawing.Size(180, 22);
+            this.toolStripMenuItemAddProperty.Size = new System.Drawing.Size(144, 22);
             this.toolStripMenuItemAddProperty.Text = "Add property";
             this.toolStripMenuItemAddProperty.Click += new System.EventHandler(this.toolStripMenuItemAddProperty_Click);
             // 
             // toolStripMenuItemAddMethod
             // 
             this.toolStripMenuItemAddMethod.Name = "toolStripMenuItemAddMethod";
-            this.toolStripMenuItemAddMethod.Size = new System.Drawing.Size(180, 22);
+            this.toolStripMenuItemAddMethod.Size = new System.Drawing.Size(144, 22);
             this.toolStripMenuItemAddMethod.Text = "Add method";
             this.toolStripMenuItemAddMethod.Click += new System.EventHandler(this.toolStripMenuItemAddMethod_Click);
             // 
