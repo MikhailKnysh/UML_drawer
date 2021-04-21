@@ -95,9 +95,9 @@ namespace ArrowLine
                     table.Draw(_pen, _graphics);
                 }
 
-                pictureBox1.Image = _tmpBitmap;
+              // pictureBox1.Image = _tmpBitmap;
                 GC.Collect();
-            }
+           }
         }
 
         private void ButtonColor_Click(object sender, EventArgs e)
@@ -165,9 +165,34 @@ namespace ArrowLine
             _tmpBitmap = (Bitmap)_bitmap.Clone();
             _graphics = Graphics.FromImage(_tmpBitmap);
             pictureBox1.Image = _tmpBitmap;
+            Font font = new Font("Arial", 12);
 
+           /* Pen dpen = new Pen(Color.FromArgb(128, 0, 0, 0), 1);
+            dpen.DashStyle = System.Drawing.Drawing2D.DashStyle.DashDot;
+            _graphics.DrawRectangle(dpen, new Rectangle(100, 100, 100, 100));
+            Point[] points = new Point[] {
+                new Point(100,
+                    100),
 
-            table.AddField(_pen, _graphics);
+                new Point(200,
+                    100),
+
+                new Point(200,
+                    200),
+
+                new Point(100,
+                    200),
+            };
+
+            SolidBrush shadowBrush = new SolidBrush(Color.White);
+
+            _graphics.DrawPolygon(new Pen(Color.White), points);
+            _graphics.FillPolygon(shadowBrush, points);*/
+            _graphics.DrawString("Test", font, new SolidBrush(Color.Black), new Rectangle(200, 200, 200, 200));
+            
+        
+
+        //table.AddField(_pen, _graphics);
 
             _bitmap = _tmpBitmap;
         }
