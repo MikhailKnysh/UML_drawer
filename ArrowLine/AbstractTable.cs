@@ -7,8 +7,6 @@ namespace ArrowLine
     public abstract class AbstractTable : AbstractFigure
     {
         protected TextBox title;
-        protected int width = 140;
-        protected int height = 60;
         protected int heightStringRectangle = 20;
         protected int stepDownLine = 20;
         protected int stepDownFieldPoint = 20;
@@ -29,7 +27,6 @@ namespace ArrowLine
         public Pen whitePen;
         public Pen blackPen;///////////
         public SolidBrush solidBrush;
-        public string stringDataTable;
 
         public AbstractTable()
         {
@@ -65,26 +62,26 @@ namespace ArrowLine
 
             if (methodRectangles.Count != 0)
             {
-                ReDrawArea(graphics, methodRectangles, methods);
+                ReDrawArea(methodRectangles, methods);
             }
 
             if (propertieRectangles.Count != 0)
             {
-                ReDrawArea(graphics, propertieRectangles, properties);
-                DrawHorizontalLine(pen, graphics, lineIndex: 2, stepDownPropertyPoint + 1);
+                ReDrawArea(propertieRectangles, properties);
+                DrawHorizontalLine(lineIndex: 2, stepDownPropertyPoint + 1);
             }
 
             fields.Add(stringDataTable);
             fieldRectangles.Add(stringRectangle);
 
-            DrawStringRectangle(graphics, font, format, stringDataTable, heightStringRectangle,
+            DrawStringRectangle(font, format, stringDataTable, heightStringRectangle,
                 stepDownPoint: stepDownFieldPoint += 20);
 
             objectRectangle.Height += heightStringRectangle;
             singltone.Graphics.DrawRectangle(singltone.pen, objectRectangle);
 
             DrawHorizontalLine(lineIndex: 1, stepDownFieldPoint);
-            DrawHorizontalLine(pen, graphics, lineIndex: 1, stepDownFieldPoint + 1);
+            DrawHorizontalLine(lineIndex: 1, stepDownFieldPoint + 1);
         }
 
         public override void AddProperty()
@@ -97,10 +94,10 @@ namespace ArrowLine
 
             if (methodRectangles.Count != 0)
             {
-                ReDrawArea(graphics, methodRectangles, methods);
+                ReDrawArea(methodRectangles, methods);
             }
 
-            DrawStringRectangle(graphics, font, format, stringDataTable, heightStringRectangle,
+            DrawStringRectangle(font, format, stringDataTable, heightStringRectangle,
                 stepDownPoint: stepDownPropertyPoint += 20);
 
             properties.Add(stringDataTable);
@@ -109,7 +106,7 @@ namespace ArrowLine
             objectRectangle.Height += heightStringRectangle;
             singltone.Graphics.DrawRectangle(singltone.pen, objectRectangle);
 
-            DrawHorizontalLine(pen, graphics, lineIndex: 2, stepDownPropertyPoint + 1);
+            DrawHorizontalLine(lineIndex: 2, stepDownPropertyPoint + 1);
         }
 
         public override void AddMethod()
@@ -118,7 +115,7 @@ namespace ArrowLine
 
             singltone.Graphics.DrawRectangle(whitePen, objectRectangle);
 
-            DrawStringRectangle(graphics, font, format, stringDataTable, heightStringRectangle,
+            DrawStringRectangle(font, format, stringDataTable, heightStringRectangle,
                 stepDownPoint: stepDownMethodPoint += 20);
 
             methods.Add(stringDataTable);
@@ -135,8 +132,8 @@ namespace ArrowLine
         {
             stringRectangle = new Rectangle(startPoint.X, startPoint.Y + stepDownPoint, width, heightStringRectangle);
 
-            graphics.FillRectangle(new SolidBrush(Color.White), stringRectangle);
-            graphics.DrawString(text, font, solidBrush, stringRectangle, format);
+            singltone.Graphics.FillRectangle(new SolidBrush(Color.White), stringRectangle);
+            singltone.Graphics.DrawString(text, font, solidBrush, stringRectangle, format);
         }
 
         protected virtual void ReDrawArea(List<Rectangle> stringRectangles, List<string> stringData)
@@ -148,8 +145,8 @@ namespace ArrowLine
 
                 stringRectangles[i] = stringRectangle;
 
-                graphics.FillRectangle(new SolidBrush(Color.White), stringRectangles[i].X, stringRectangles[i].Y, width, heightStringRectangle);
-                graphics.DrawString(stringData[i], font, solidBrush, stringRectangles[i], format);
+                singltone.Graphics.FillRectangle(new SolidBrush(Color.White), stringRectangles[i].X, stringRectangles[i].Y, width, heightStringRectangle);
+                singltone.Graphics.DrawString(stringData[i], font, solidBrush, stringRectangles[i], format);
             }
         }
 

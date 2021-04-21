@@ -1,12 +1,8 @@
-﻿using ArrowLine.Arrow;
-using ArrowLine.Line;
-using ArrowLine.Table;
+﻿using ArrowLine.Line;
 using ArrowLine.Table.StringData;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
-using System.Drawing.Drawing2D;
-using System.Linq;
 using System.Windows.Forms;
 
 namespace ArrowLine
@@ -16,8 +12,6 @@ namespace ArrowLine
         DataPictureBox singltone;
         string buttonName;
         bool isButtonSelectPressed = false;
-        //private bool _isMoving = false;
-        private bool isArrow = true;
         AbstractFigure crntFigure;
         IMouseHandler mouseHandler;
         IFigureFactory currentFactory;
@@ -30,8 +24,6 @@ namespace ArrowLine
         {
             InitializeComponent();
         }
-
-        //public Form1(StringDataForm resultForm) => InitializeComponent();
 
         private void Form1_Load(object sender, EventArgs e)
         {
@@ -110,7 +102,6 @@ namespace ArrowLine
             ToolStripButton toolStripButton = (ToolStripButton)sender;
 
             toolStripGroupButtons.BackgroundImage = toolStripButton.BackgroundImage;
-            isArrow = true;
             buttonName = toolStripButton.Name;
             mouseHandler = new DrawMouseHandler();
         }
@@ -149,11 +140,10 @@ namespace ArrowLine
         private void CheckTableType_Click(object sender, EventArgs e)
         {
             Button button = (Button)sender;
-            isArrow = false;
+
             isButtonSelectPressed = false;
 
-            currentFactory = new InterfaceTableFactory();//
-                                                         // table = (AbstractTable)crntFigure;
+            currentFactory = new InterfaceTableFactory();
 
             buttonName = button.Name;
             mouseHandler = new DrawMouseHandler();
@@ -171,7 +161,7 @@ namespace ArrowLine
             stringDataForm = new StringDataForm(labelData: "Field");
             stringDataForm.ShowDialog();
             _idto = stringDataForm.Create();
-            table.stringDataTable = _idto.ToString();
+            crntFigure.stringDataTable = _idto.ToString();
 
             crntFigure.AddField();
 
@@ -184,7 +174,7 @@ namespace ArrowLine
             stringDataForm = new StringDataForm(labelData: "Property");
             stringDataForm.ShowDialog();
             _idto = stringDataForm.Create();
-            table.stringDataTable = _idto.ToString();
+            crntFigure.stringDataTable = _idto.ToString();
 
             crntFigure.AddProperty();
 
@@ -197,7 +187,7 @@ namespace ArrowLine
             stringDataForm = new StringDataForm(labelData: "Method");
             stringDataForm.ShowDialog();
             _idto = stringDataForm.Create();
-            table.stringDataTable = _idto.ToString();
+            crntFigure.stringDataTable = _idto.ToString();
 
             crntFigure.AddMethod();
 
