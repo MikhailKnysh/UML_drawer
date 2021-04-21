@@ -10,11 +10,11 @@ namespace ArrowLine
         public DataPictureBox singltone = DataPictureBox.GetInstance();
         public Point startPoint;
         public Point endPoint;
-        protected Region objectRegion;
+        protected int width = 140;
+        protected int height = 60;
+        public string stringDataTable;
+
         public bool Selected { get; set; }
-
-
-
 
         public abstract void Draw();
         public void Delta()

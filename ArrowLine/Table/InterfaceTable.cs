@@ -9,15 +9,11 @@ namespace ArrowLine.Table
         {
         }
 
-        //public InterfaceTable(Point startPoint)
-        //{
-        //    singltone.startPoint = startPoint;
-        //}
-        //public InterfaceTable(Point startPoint, Point endPoint)
-        //{
-        //    _startPoint = startPoint;
-        //    _endPoint = endPoint;
-        //}
+        public InterfaceTable(Point startPoint)
+        {
+
+            this.startPoint = startPoint;
+        }
 
         //public override Rectangle ObjectRectangle
         //{
