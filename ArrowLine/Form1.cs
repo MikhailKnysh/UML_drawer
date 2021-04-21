@@ -77,32 +77,10 @@ namespace ArrowLine
             ChooseButton();
             singltone.isMoving = true;
 
-            //switch (e.Button)
-            //{
-            //    case MouseButtons.Left:
-            //        {
-
-
-
-
-            //            crntFigure.startPoint = e.Location;
-            //            crntFigure.endPoint = e.Location;
-            //            table.startPoint = e.Location;
-
-
-            //            break;
-            //        }
-            //    case MouseButtons.Right:
-            //        {
-
-            //            contextMenuStrip1.Show(this, new Point(e.X + 120, e.Y));
-            //            break;
-            //        }
-            //}
-
             if (isButtonSelectPressed)
             {
-                //startPoint = e.Location;
+                startPoint = e.Location;
+                endPoint = startPoint;
                 if (selectionObject != null)
                 {
                     DrawSelection(Brushes.White, selectionObject);
@@ -133,11 +111,6 @@ namespace ArrowLine
 
         private void pictureBox1_MouseUp(object sender, MouseEventArgs e)
         {
-            //foreach(var item in figures)
-            // {
-            //     item.Selected = false;
-            // }
-
             singltone.isMoving = false;
             singltone.SetBitmap();
 
@@ -146,10 +119,7 @@ namespace ArrowLine
                 case WorkingMode.Draw:
 
                     mouseHandler.OnMouseUp(crntFigure);
-                    //if (table != null)
-                    //{
-                    //    figurs.Add(table);
-                    //}
+                  
                     break;
 
                 case WorkingMode.Select: // Множественное выделение объектов
@@ -180,9 +150,7 @@ namespace ArrowLine
             if (singltone.isMoving)
             {
                 mouseHandler.OnMouseMove(crntFigure, e);
-                //crntFigure.endPoint = e.Location;
                 endPoint = e.Location;
-                //table.singltone.startPoint = e.Location;
                 pictureBox1.Invalidate();
             }
         }
@@ -203,10 +171,7 @@ namespace ArrowLine
                     e.Graphics.FillRectangle(_highlightBrush, r);
                     e.Graphics.DrawRectangle(_highlightPen, r);
 
-                    //if (selectionObject != null)
-                    //{
-                    //    DrawSelection(Brushes.Black, selectionObject);
-                    //}
+                 
                 }
                 else
                 {
@@ -303,39 +268,29 @@ namespace ArrowLine
             switch (buttonName)
             {
                 case nameof(toolStripButtonCloseArrow):
-                    //crntFigure = new InheritanceArrow();
-                    currentFactory = new InharitanceArrowFactory();//
+                    currentFactory = new InharitanceArrowFactory();
                     break;
                 case nameof(toolStripButtonEndRhomb):
-                    //crntFigure = new AgregationEndArrow();
-                    currentFactory = new AgregationEndArrowFactory();//
+                    currentFactory = new AgregationEndArrowFactory();
                     break;
                 case nameof(toolStripButtonEndRhombBlack):
-                    //crntFigure = new CompositionEndArrow();
-                    currentFactory = new CompositionEndArrowFactory();//
+                    currentFactory = new CompositionEndArrowFactory();
                     break;
                 case nameof(toolStripButtonStartRhomb1):
-                    //crntFigure = new AgregationStartArrow();
-                    currentFactory = new AgregationStartArrowFactory();//
+                    currentFactory = new AgregationStartArrowFactory();
                     break;
                 case nameof(toolStripButtonStartRhombBlack):
-                    //crntFigure = new CompositionStartArrow();
-                    currentFactory = new CompositionStartArrowFactory();//
+                    currentFactory = new CompositionStartArrowFactory();
                     break;
                 case nameof(toolStripButtonOpenArrow):
-                    //crntFigure = new AssociationArrow();
-                    currentFactory = new AssociationArrowFactory();//
+                    currentFactory = new AssociationArrowFactory();
                     break;
                 case nameof(toolStripButtonCloseArrowDash):
-                    //crntFigure = new ImplementationArrow();
-                    currentFactory = new ImplementationArrowFactory();//
+                    currentFactory = new ImplementationArrowFactory();
                     break;
                 case nameof(toolStripButtonTwoAngleLine):
                     crntFigure = new TwoAngleLineArrow();
                     break;
-                    //case "table":
-                    //    table = new InterfaceTable();
-                    //    break;
             }
 
         }
