@@ -76,11 +76,11 @@ namespace ArrowLine
             // 
             // trackBar1
             // 
-            this.trackBar1.LargeChange = 3;
+            this.trackBar1.LargeChange = 1;
             this.trackBar1.Location = new System.Drawing.Point(12, 124);
             this.trackBar1.Margin = new System.Windows.Forms.Padding(2);
-            this.trackBar1.Maximum = 5;
             this.trackBar1.Minimum = 1;
+            this.trackBar1.Maximum = 3;
             this.trackBar1.Name = "trackBar1";
             this.trackBar1.Size = new System.Drawing.Size(78, 45);
             this.trackBar1.TabIndex = 3;
