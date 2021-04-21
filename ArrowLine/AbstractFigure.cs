@@ -5,7 +5,7 @@ namespace ArrowLine
 {
     //make as interface
 
-    public abstract class AbstractFigure
+    public abstract class AbstractFigure : IMoveable1
     {
         public DataPictureBox singltone = DataPictureBox.GetInstance();
         public Point startPoint;
@@ -38,5 +38,11 @@ namespace ArrowLine
 
         public virtual void AddMethod()
         { }
+
+        public void Move(int deltaX, int deltaY)
+        {
+            startPoint = new Point(startPoint.X + deltaX, startPoint.Y + deltaY);
+            endPoint = new Point(endPoint.X + deltaX, endPoint.Y + deltaY);
+        }
     }
 }

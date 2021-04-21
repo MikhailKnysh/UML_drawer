@@ -74,6 +74,7 @@
     <Compile Include="DrawMouseHandler.cs" />
     <Compile Include="IFigureFactory.cs" />
     <Compile Include="IMouseHandler.cs" />
+    <Compile Include="IMoveable1.cs" />
     <Compile Include="ImplementationArrowFactory.cs" />
     <Compile Include="InharitanceArrowFactory.cs" />
     <Compile Include="InterfaceTableFactory.cs" />
@@ -96,7 +97,6 @@
     <Compile Include="Table\InterfaceTable.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="WorkingMode.cs" />
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>

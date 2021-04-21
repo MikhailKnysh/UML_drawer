@@ -14,7 +14,6 @@ namespace ArrowLine
         protected int stepDownFieldPoint = 20;
         protected int stepDownPropertyPoint = 22;
         protected int stepDownMethodPoint = 24;
-        protected bool selected;
         protected List<string> fields;
         protected List<string> properties;
         protected List<string> methods;
@@ -32,9 +31,6 @@ namespace ArrowLine
 
         public AbstractTable()
         {
-            //objectRectangle = new Rectangle();
-            //objectRegion = new Region();
-
             font = new Font("Arial", 12);
             format = new StringFormat();
             whitePen = new Pen(Color.White, 2);////////////////
@@ -55,20 +51,7 @@ namespace ArrowLine
                 linesInTable.Add(lineInTable);
             }
         }
-        public virtual Rectangle ObjectRectangle
-        {
-            get { return objectRectangle; }
-            set { objectRectangle = value; }
-        }
-        public bool Selected
-        {
-            get { return selected; }
-            set { selected = value; }
-        }
-
        
-       
-
         public override void AddField()
         {
             stepDownPropertyPoint += 20;
