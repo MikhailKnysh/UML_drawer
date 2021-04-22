@@ -72,15 +72,6 @@ namespace ArrowLine
                 singltone.Graphics.FillRectangle(brushes, rectangle);
 
             }
-
-
-            //singltone.graphics.FillRectangle(Brushes.Black, new Rectangle(objectRectangle.Left + objectRectangle.Width / 2 - 4, objectRectangle.Top - 8, 8, 8));
-            //singltone.graphics.FillRectangle(Brushes.Black, new Rectangle(objectRectangle.Left - 8, objectRectangle.Top + objectRectangle.Height / 2 - 4, 8, 8));
-            //singltone.graphics.FillRectangle(Brushes.Black, new Rectangle(objectRectangle.Left + objectRectangle.Width / 2 - 4, objectRectangle.Bottom, 8, 8));
-            //singltone.graphics.FillRectangle(Brushes.Black, new Rectangle(objectRectangle.Right, objectRectangle.Top + objectRectangle.Height / 2 - 4, 8, 8));
-
-            // singltone.graphics.DrawRectangle(Pens.CadetBlue, objectRectangle);
-
         }
     }
 }

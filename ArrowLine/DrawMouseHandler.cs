@@ -54,34 +54,5 @@ namespace ArrowLine
             _idto = stringDataForm.Create();
             return _idto;
         }
-        //private void ChooseButton()
-        //{
-        //    switch (buttonName)
-        //    {
-        //        case nameof(toolStripButtonCloseArrow):
-        //            currentFactory = new InharitanceArrowFactory();
-        //            break;
-        //        case nameof(toolStripButtonEndRhomb):
-        //            currentFactory = new AgregationEndArrowFactory();
-        //            break;
-        //        case nameof(toolStripButtonEndRhombBlack):
-        //            currentFactory = new CompositionEndArrowFactory();
-        //            break;
-        //        case nameof(toolStripButtonStartRhomb1):
-        //            currentFactory = new AgregationStartArrowFactory();
-        //            break;
-        //        case nameof(toolStripButtonStartRhombBlack):
-        //            currentFactory = new CompositionStartArrowFactory();
-        //            break;
-        //        case nameof(toolStripButtonOpenArrow):
-        //            currentFactory = new AssociationArrowFactory();
-        //            break;
-        //        case nameof(toolStripButtonCloseArrowDash):
-        //            currentFactory = new ImplementationArrowFactory();
-        //            break;
-        //        case nameof(toolStripButtonTwoAngleLine):
-        //            crntFigure = new TwoAngleLineArrow();
-        //            break;
-        //    }
     }
 }

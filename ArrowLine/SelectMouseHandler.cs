@@ -79,9 +79,13 @@ namespace ArrowLine
                         {
                             foreach (AbstractFigure item in selectionObject)
                             {
+                                if(item is AbstractTable)
+                                {
+
                                 item.Move(e.X - tmpPoint.X, e.Y - tmpPoint.Y);
                                 item.ReDrawRectangleBody();
                                 item.Draw();
+                                }
                             }
                         }
 
