@@ -70,6 +70,7 @@ namespace ArrowLine
             _bitmap = new Bitmap(_pictureBox.Width, _pictureBox.Height);
             Graphics = Graphics.FromImage(_bitmap);
             Graphics.Clear(Color.White);
+            _pictureBox.Image = _bitmap;
         }
     }
 }

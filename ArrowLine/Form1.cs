@@ -17,7 +17,7 @@ namespace ArrowLine
         IMouseHandler mouseHandler;
         IFigureFactory currentFactory;
         public string stringDataTable;
-        
+
 
         public Form1()
         {
@@ -34,9 +34,11 @@ namespace ArrowLine
             singltone.isMoving = false;
             mouseHandler = new SelectMouseHandler();
         }
+
         private void pictureBox1_MouseDown(object sender, MouseEventArgs e)
         {
             singltone.isMoving = true;
+
             if (!isButtonSelectPressed)
             {
                 ChooseButton();
@@ -47,6 +49,7 @@ namespace ArrowLine
             }
 
             mouseHandler.OnMouseDown(crntFigure, e, this, contextMenuStrip1);
+            singltone.UpdatePictureBox();
         }
 
         private void pictureBox1_MouseUp(object sender, MouseEventArgs e)
@@ -69,10 +72,8 @@ namespace ArrowLine
             if (singltone.isMoving)
             {
                 mouseHandler.OnPaint(crntFigure, e);
+                singltone.UpdatePictureBox();
             }
-
-            singltone.UpdatePictureBox();
-            
         }
 
         private void ButtonColor_Click(object sender, EventArgs e)
@@ -81,11 +82,11 @@ namespace ArrowLine
 
             if (colorDialog1.ShowDialog() == DialogResult.OK)
             {
-            btnColor.BackColor = colorDialog1.Color;
-            singltone.pen.Color = colorDialog1.Color;
+                btnColor.BackColor = colorDialog1.Color;
+                singltone.pen.Color = colorDialog1.Color;
 
             }
-            
+
         }
 
         private void trackbar1_Scroll(object sender, EventArgs e)

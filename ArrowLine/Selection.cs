@@ -17,8 +17,8 @@ namespace ArrowLine
         {
             foreach (AbstractFigure item in singltone.tables)
             {
-                if (pt.X > item.startPoint.X && pt.X < item.startPoint.X + 140
-                    && pt.Y > item.startPoint.Y && pt.Y < item.startPoint.Y + 60)
+                if (pt.X > item.startPoint.X && pt.X < item.startPoint.X + item.width
+                    && pt.Y > item.startPoint.Y && pt.Y < item.startPoint.Y + item.height && (item is AbstractTable))
                 {
                     item.Selected = true;
                     return true;
@@ -31,7 +31,7 @@ namespace ArrowLine
         {
             foreach (AbstractFigure item in singltone.tables)
             {
-                if (r.Contains(new Rectangle(item.startPoint.X, item.startPoint.Y, 140, 60)))
+                if (r.Contains(new Rectangle(item.startPoint.X, item.startPoint.Y, item.width, item.height)) && (item is AbstractTable))
                 {
                     item.Selected = true;
                     
@@ -54,7 +54,12 @@ namespace ArrowLine
                 new Rectangle(objectRectangle.startPoint.X - 8, objectRectangle.startPoint.Y - 8, 8, 8),
                 new Rectangle(objectRectangle.startPoint.X + objectRectangle.width, objectRectangle.startPoint.Y - 8, 8, 8),
                 new Rectangle(objectRectangle.startPoint.X - 8, objectRectangle.startPoint.Y + objectRectangle.height, 8, 8),
-                new Rectangle(objectRectangle.startPoint.X + objectRectangle.width, objectRectangle.startPoint.Y + objectRectangle.height, 8, 8)
+                new Rectangle(objectRectangle.startPoint.X + objectRectangle.width, objectRectangle.startPoint.Y + objectRectangle.height, 8, 8),
+
+                new Rectangle(objectRectangle.startPoint.X + objectRectangle.width/2 - 4, objectRectangle.startPoint.Y - 9, 8, 8),
+                new Rectangle(objectRectangle.startPoint.X - 9, objectRectangle.startPoint.Y + objectRectangle.height/2 - 4, 8, 8),
+                new Rectangle(objectRectangle.startPoint.X + objectRectangle.width/2 - 4, objectRectangle.startPoint.Y + objectRectangle.height + 1, 8, 8 ),
+                new Rectangle(objectRectangle.startPoint.X + objectRectangle.width + 1, objectRectangle.startPoint.Y + objectRectangle.height/2 - 4, 8, 8)
 
             };
         }

@@ -39,20 +39,12 @@ namespace ArrowLine
         {
             if (currentFigure != null && e.Button == MouseButtons.Left)
             {
-                if (isArrow)
-                {
-                    singltone.arrows.Add(currentFigure);
-                }
-                else
-                {
-                    singltone.tables.Add(currentFigure);
-                }
+                singltone.tables.Add(currentFigure);
             }
         }
 
         public void OnPaint(AbstractFigure currentFigure, PaintEventArgs e)
         {
-
             currentFigure.Draw();
         }
 

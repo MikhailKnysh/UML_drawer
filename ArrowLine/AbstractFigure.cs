@@ -15,6 +15,7 @@ namespace ArrowLine
         public string stringDataTable;
 
         public bool Selected { get; set; }
+        public bool IsArrow { get; set; }
 
         public abstract void Draw();
         public void Delta()
