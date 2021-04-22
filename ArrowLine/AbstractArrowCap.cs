@@ -8,5 +8,20 @@ namespace ArrowLine
 
         public abstract Point[] CreateArrowObject();
 
+       // private Point _endPoint;
+
+        //public Point endPoint
+        //{
+        //    get
+        //    {
+        //        return _endPoint;
+        //    }
+        //    set
+        //    {
+        //        _endPoint = value;
+        //    }
+        //}
+
+
     }
 }

@@ -8,8 +8,21 @@ namespace ArrowLine
     public abstract class AbstractFigure : IMoveable1
     {
         public DataPictureBox singltone = DataPictureBox.GetInstance();
-        public Point startPoint;
-        public Point endPoint;
+        public Point startPoint { get; set; }
+        public Point endPoint { get; set; }
+        //public Point endPoint
+        //{
+        //    get
+        //    {
+        //        return _endPoint;
+        //    }
+        //    set
+        //    {
+        //        _endPoint = value;
+        //    }
+        //}
+
+        //private Point _endPoint;
         public int width = 140;
         public int height = 60;
         public string stringDataTable;
@@ -20,14 +33,16 @@ namespace ArrowLine
         public abstract void Draw();
         public void Delta()
         {
+            
             if (Math.Abs(startPoint.X - endPoint.X) < 20)
             {
-
-                endPoint.X = startPoint.X;
+                endPoint = new Point(startPoint.X, endPoint.Y);
+                //endPoint.X = startPoint.X;
             }
             else if (Math.Abs(startPoint.Y - endPoint.Y) < 20)
             {
-                endPoint.Y = startPoint.Y;
+                endPoint = new Point(endPoint.X, startPoint.Y);
+                //endPoint.Y = startPoint.Y;
             }
         }
 

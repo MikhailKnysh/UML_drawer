@@ -31,7 +31,10 @@ namespace ArrowLine
 
         public void OnMouseMove(AbstractFigure currentFigure, MouseEventArgs e)
         {
-            currentFigure.endPoint = e.Location;
+            if (e.Button == MouseButtons.Left)
+            {
+                currentFigure.endPoint = e.Location;
+            }
 
         }
 
