@@ -83,6 +83,7 @@ namespace ArrowLine
                 stepDownPoint: stepDownFieldPoint += 20);
 
             objectRectangle.Height += heightStringRectangle;
+            height += 20;
             singltone.Graphics.DrawRectangle(singltone.pen, objectRectangle);
 
             DrawHorizontalLine(lineIndex: 1, stepDownFieldPoint);
@@ -109,6 +110,7 @@ namespace ArrowLine
             propertieRectangles.Add(stringRectangle);
 
             objectRectangle.Height += heightStringRectangle;
+            height += 20;
             singltone.Graphics.DrawRectangle(singltone.pen, objectRectangle);
 
             DrawHorizontalLine(lineIndex: 2, stepDownPropertyPoint + 1);
@@ -127,6 +129,7 @@ namespace ArrowLine
             methodRectangles.Add(stringRectangle);
 
             objectRectangle.Height += heightStringRectangle;
+            height += 20;
             singltone.Graphics.DrawRectangle(singltone.pen, objectRectangle);
         }
 
@@ -136,7 +139,6 @@ namespace ArrowLine
             Font font, StringFormat format, string text, int heightStringRectangle, int stepDownPoint)
         {
             stringRectangle = new Rectangle(startPoint.X, startPoint.Y + stepDownPoint, width, heightStringRectangle);
-
             singltone.Graphics.FillRectangle(new SolidBrush(Color.White), stringRectangle);
             singltone.Graphics.DrawString(text, font, solidBrush, stringRectangle, format);
         }

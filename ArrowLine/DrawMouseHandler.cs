@@ -6,6 +6,7 @@ namespace ArrowLine
 {
     public class DrawMouseHandler : IMouseHandler
     {
+        public bool isArrow;
         public DataPictureBox singltone = DataPictureBox.GetInstance();
         private IDTO _idto;
 
@@ -36,14 +37,22 @@ namespace ArrowLine
 
         public void OnMouseUp(AbstractFigure currentFigure, MouseEventArgs e)
         {
-            if (currentFigure != null)
+            if (currentFigure != null && e.Button == MouseButtons.Left)
             {
-                singltone.tables.Add(currentFigure);
+                if (isArrow)
+                {
+                    singltone.arrows.Add(currentFigure);
+                }
+                else
+                {
+                    singltone.tables.Add(currentFigure);
+                }
             }
         }
 
         public void OnPaint(AbstractFigure currentFigure, PaintEventArgs e)
         {
+
             currentFigure.Draw();
         }
 

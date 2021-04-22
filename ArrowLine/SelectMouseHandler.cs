@@ -107,7 +107,6 @@ namespace ArrowLine
                           Math.Abs(startPoint.X - endPoint.X),
                           Math.Abs(startPoint.Y - endPoint.Y));
 
-
                     if (selection.HitTest(r) == true)
                     {
                         selectionObject = singltone.tables.Where(item => item.Selected == true).ToList();

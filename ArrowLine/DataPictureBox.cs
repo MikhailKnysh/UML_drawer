@@ -8,7 +8,7 @@ namespace ArrowLine
     {
         private static DataPictureBox _instance;
         public Graphics Graphics { get; set; }
-        public Pen pen { get; set; }
+        public Pen pen;
         private PictureBox _pictureBox;
         private Bitmap _bitmap;
         private Bitmap _tmpbitmap;

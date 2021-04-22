@@ -4,14 +4,14 @@ using System.Drawing;
 
 namespace ArrowLine
 {
-    public class Selection : AbstractFigure, ISelection
+    public class Selection : ISelection
     {
         public DataPictureBox singltone = DataPictureBox.GetInstance();
 
-        public override void Draw()
-        {
-            throw new NotImplementedException();
-        }
+        //public override void Draw()
+        //{
+        //    throw new NotImplementedException();
+        //}
 
         public bool HitTest(Point pt)
         {
@@ -52,9 +52,9 @@ namespace ArrowLine
             return new List<Rectangle>()
             {
                 new Rectangle(objectRectangle.startPoint.X - 8, objectRectangle.startPoint.Y - 8, 8, 8),
-                new Rectangle(objectRectangle.startPoint.X + 140, objectRectangle.startPoint.Y - 8, 8, 8),
-                new Rectangle(objectRectangle.startPoint.X - 8, objectRectangle.startPoint.Y + 60, 8, 8),
-                new Rectangle(objectRectangle.startPoint.X + 140, objectRectangle.startPoint.Y + 60, 8, 8)
+                new Rectangle(objectRectangle.startPoint.X + objectRectangle.width, objectRectangle.startPoint.Y - 8, 8, 8),
+                new Rectangle(objectRectangle.startPoint.X - 8, objectRectangle.startPoint.Y + objectRectangle.height, 8, 8),
+                new Rectangle(objectRectangle.startPoint.X + objectRectangle.width, objectRectangle.startPoint.Y + objectRectangle.height, 8, 8)
 
             };
         }

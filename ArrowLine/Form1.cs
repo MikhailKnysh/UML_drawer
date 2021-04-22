@@ -11,14 +11,13 @@ namespace ArrowLine
     {
         DataPictureBox singltone;
         string buttonName;
+        Pen pen;
         bool isButtonSelectPressed = false;
         AbstractFigure crntFigure;
         IMouseHandler mouseHandler;
         IFigureFactory currentFactory;
-        ISelection selection;
-        private StringDataForm stringDataForm;
         public string stringDataTable;
-        private IDTO _idto;
+        
 
         public Form1()
         {
@@ -33,7 +32,6 @@ namespace ArrowLine
             currentFactory = new InterfaceTableFactory();
             crntFigure = currentFactory.CreateFigure();
             singltone.isMoving = false;
-            selection = new Selection();
             mouseHandler = new SelectMouseHandler();
         }
         private void pictureBox1_MouseDown(object sender, MouseEventArgs e)
@@ -74,16 +72,20 @@ namespace ArrowLine
             }
 
             singltone.UpdatePictureBox();
-            GC.Collect();
+            
         }
 
         private void ButtonColor_Click(object sender, EventArgs e)
         {
-            Button btnColor = (Button)sender;
+            Button btnColor = sender as Button;
 
-            colorDialog1.ShowDialog();
+            if (colorDialog1.ShowDialog() == DialogResult.OK)
+            {
             btnColor.BackColor = colorDialog1.Color;
             singltone.pen.Color = colorDialog1.Color;
+
+            }
+            
         }
 
         private void trackbar1_Scroll(object sender, EventArgs e)
@@ -159,6 +161,7 @@ namespace ArrowLine
                 new StringDataForm(labelData: "Field")).ToString();
 
             crntFigure.AddField();
+
 
             singltone.SetBitmap();
         }
