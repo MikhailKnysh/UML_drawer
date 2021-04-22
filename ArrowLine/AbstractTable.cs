@@ -56,14 +56,16 @@ namespace ArrowLine
         {
             objectRectangle = new Rectangle(startPoint.X, startPoint.Y, width, height);
         }
+
         public override void AddField()
         {
-
             stepDownPropertyPoint += 20;
             stepDownMethodPoint += 20;
             format.Alignment = StringAlignment.Near;
 
             singltone.Graphics.DrawRectangle(whitePen, objectRectangle);
+
+            IncreaseFrame();
 
             if (methodRectangles.Count != 0)
             {
@@ -84,6 +86,7 @@ namespace ArrowLine
 
             height += heightStringRectangle;
             objectRectangle.Height += heightStringRectangle;
+
             singltone.Graphics.DrawRectangle(singltone.pen, objectRectangle);
 
             DrawHorizontalLine(lineIndex: 1, stepDownFieldPoint + 1);
@@ -155,6 +158,7 @@ namespace ArrowLine
                 singltone.Graphics.DrawString(stringData[i], font, solidBrush, stringRectangles[i], format);
             }
         }
+
         public override void ReDrawRectangleBody()
         {
             int tmpStepDownPoint = 40;
@@ -171,7 +175,7 @@ namespace ArrowLine
 
             }
 
-             DrawHorizontalLine(lineIndex: 1, stepDownFieldPoint + 1);
+            DrawHorizontalLine(lineIndex: 1, stepDownFieldPoint + 1);
 
             for (int i = 0; i < propertieRectangles.Count; i++)
             {
@@ -207,6 +211,18 @@ namespace ArrowLine
             singltone.Graphics.DrawLine(singltone.pen, linesInTable[lineIndex]._startLinePoint, linesInTable[lineIndex]._endLinePoint);
         }
 
+        protected virtual void IncreaseFrame()
+        {
+            float stringWidth = singltone.Graphics.MeasureString(stringDataTable, font).Width;
 
+            if (stringWidth > width)
+            {
+                width = (int)stringWidth;
+            }
+
+            objectRectangle.Width = width;
+
+            DrawHorizontalLine(lineIndex: 0, stepDownLine - 2);
+        }
     }
 }

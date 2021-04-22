@@ -17,7 +17,7 @@ namespace ArrowLine
         {
             foreach (AbstractFigure item in singltone.tables)
             {
-                if (pt.X > item.startPoint.X && pt.X < item.startPoint.X + width
+                if (pt.X > item.startPoint.X && pt.X < item.startPoint.X + width 
                     && pt.Y > item.startPoint.Y && pt.Y < item.startPoint.Y + height)
                 {
                     item.Selected = true;
@@ -52,9 +52,9 @@ namespace ArrowLine
             return new List<Rectangle>()
             {
                 new Rectangle(objectRectangle.startPoint.X - 8, objectRectangle.startPoint.Y - 8, 8, 8),
-                new Rectangle(objectRectangle.startPoint.X + width, objectRectangle.startPoint.Y - 8, 8, 8),
+                new Rectangle(objectRectangle.startPoint.X + objectRectangle.width, objectRectangle.startPoint.Y - 8, 8, 8),
                 new Rectangle(objectRectangle.startPoint.X - 8, objectRectangle.startPoint.Y + objectRectangle.height, 8, 8),
-                new Rectangle(objectRectangle.startPoint.X + width, objectRectangle.startPoint.Y + objectRectangle.height, 8, 8)
+                new Rectangle(objectRectangle.startPoint.X + objectRectangle.width, objectRectangle.startPoint.Y + objectRectangle.height, 8, 8)
 
             };
         }
