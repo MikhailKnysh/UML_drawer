@@ -57,7 +57,7 @@ namespace ArrowLine
         public void UpdatePictureBox()
         {
             _pictureBox.Image = _tmpbitmap;
-            Graphics = Graphics.FromImage(_tmpbitmap);
+          // Graphics = Graphics.FromImage(_tmpbitmap);
         }
 
         public void InitialList()
