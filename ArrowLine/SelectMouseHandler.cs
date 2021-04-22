@@ -80,6 +80,7 @@ namespace ArrowLine
                             foreach (AbstractFigure item in selectionObject)
                             {
                                 item.Move(e.X - tmpPoint.X, e.Y - tmpPoint.Y);
+                                item.ReDrawRectangleBody();
                                 item.Draw();
                             }
                         }
@@ -126,6 +127,7 @@ namespace ArrowLine
 
                         foreach (var item in singltone.tables)
                         {
+                            item.ReDrawRectangleBody();
                             item.Draw();
                         }
                     }
