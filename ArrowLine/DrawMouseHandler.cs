@@ -9,6 +9,7 @@ namespace ArrowLine
     public class DrawMouseHandler : IMouseHandler
     {
         public bool isArrow;
+
         public DataPictureBox singltone = DataPictureBox.GetInstance();
         private IDTO _idto;
 
@@ -20,6 +21,7 @@ namespace ArrowLine
                     {
                         if (currentFigure.Type == FigureType.Arrow)
                         {
+                            bool result = false;
                             foreach (var item in singltone.tables)
                             {
                                 if (item.Type == FigureType.Table)
@@ -50,9 +52,17 @@ namespace ArrowLine
                                             currentFigure.startPoint = new Point(item.startPoint.X + item.width / 2,
                                                item.startPoint.Y + item.height);
                                         }
+                                        result = true;
+                                        return;
                                     }
+                                    
                                 }
                             }
+                            if (!result)
+                            {
+                                return;
+                            }
+
                         }
                         else
                         {
