@@ -6,22 +6,22 @@ namespace ArrowLine.CapArrow
     {
         public WhiteRhombStartCapArrow(Point startPoint, Point endPoint)
         {
-            _startPoint = startPoint;
-            _endPoint = endPoint;
+            this.startPoint = startPoint;
+            this.endPoint = endPoint;
         }
 
         public override Point[] CreateArrowObject()
         {
             Point[] _CustomCapArrow = new Point[]
             {
-                new Point(_startPoint.X, _startPoint.Y),
-                new Point(_startPoint.X, _startPoint.Y),
-                _startPoint,
-                new Point(_startPoint.X, _startPoint.Y),
-                _startPoint,
+                new Point(startPoint.X, startPoint.Y),
+                new Point(startPoint.X, startPoint.Y),
+                startPoint,
+                new Point(startPoint.X, startPoint.Y),
+                startPoint,
             };
 
-            if (_startPoint.X < _endPoint.X && _startPoint.Y == _endPoint.Y)
+            if (startPoint.X < endPoint.X && startPoint.Y == endPoint.Y)
             {
 
                 _CustomCapArrow[1].X += _arrowSize;
@@ -32,7 +32,7 @@ namespace ArrowLine.CapArrow
                 _CustomCapArrow[3].X += _arrowSize;
                 _CustomCapArrow[3].Y += _arrowSize;
             }
-            else if (_startPoint.Y > _endPoint.Y && _startPoint.X == _endPoint.X)
+            else if (startPoint.Y > endPoint.Y && startPoint.X == endPoint.X)
             {
                 _CustomCapArrow[1].X -= _arrowSize;
                 _CustomCapArrow[1].Y -= _arrowSize;
@@ -42,7 +42,7 @@ namespace ArrowLine.CapArrow
                 _CustomCapArrow[3].X += _arrowSize;
                 _CustomCapArrow[3].Y -= _arrowSize;
             }
-            else if (_startPoint.X > _endPoint.X && _startPoint.Y == _endPoint.Y)
+            else if (startPoint.X > endPoint.X && startPoint.Y == endPoint.Y)
             {
                 _CustomCapArrow[1].X -= _arrowSize;
                 _CustomCapArrow[1].Y -= _arrowSize;
@@ -66,12 +66,12 @@ namespace ArrowLine.CapArrow
             return _CustomCapArrow;
         }
 
-        public override void Draw(Pen pen, Graphics graphics)
+        public override void Draw()
         {
             SolidBrush shadowBrush = new SolidBrush(Color.White);
 
-            graphics.DrawPolygon(pen, CreateArrowObject());
-            graphics.FillPolygon(shadowBrush, CreateArrowObject());
+            singltone.Graphics.DrawPolygon(singltone.pen, CreateArrowObject());
+            singltone.Graphics.FillPolygon(shadowBrush, CreateArrowObject());
         }
     }
 }

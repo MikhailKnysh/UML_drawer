@@ -6,20 +6,20 @@ namespace ArrowLine.CapArrow
     {
         public OpenCapArrow(Point startPoint, Point endPoint)
         {
-            _startPoint = startPoint;
-            _endPoint = endPoint;
+            this.startPoint = startPoint;
+            this.endPoint = endPoint;
         }
 
         public override Point[] CreateArrowObject()
         {
             Point[] _CustomCapArrow = new Point[]
               {
-                new Point(_endPoint.X, _endPoint.Y),
-                _endPoint,
-                new Point(_endPoint.X, _endPoint.Y)
+                new Point(endPoint.X, endPoint.Y),
+                endPoint,
+                new Point(endPoint.X, endPoint.Y)
               };
 
-            if (_startPoint.X < _endPoint.X)
+            if (startPoint.X < endPoint.X)
             {
                 _CustomCapArrow[0].Y -= _arrowSize;
                 _CustomCapArrow[0].X -= _arrowSize;
@@ -27,7 +27,7 @@ namespace ArrowLine.CapArrow
                 _CustomCapArrow[2].Y += _arrowSize;
                 _CustomCapArrow[2].X -= _arrowSize;
             }
-            else if (_startPoint.Y > _endPoint.Y && _startPoint.X == _endPoint.X)
+            else if (startPoint.Y > endPoint.Y && startPoint.X == endPoint.X)
             {
                 _CustomCapArrow[0].Y += _arrowSize;
                 _CustomCapArrow[0].X -= _arrowSize;
@@ -35,7 +35,7 @@ namespace ArrowLine.CapArrow
                 _CustomCapArrow[2].Y += _arrowSize;
                 _CustomCapArrow[2].X += _arrowSize;
             }
-            else if (_startPoint.X > _endPoint.X)
+            else if (startPoint.X > endPoint.X)
             {
                 _CustomCapArrow[0].Y -= _arrowSize;
                 _CustomCapArrow[0].X += _arrowSize;
@@ -55,9 +55,9 @@ namespace ArrowLine.CapArrow
             return _CustomCapArrow;
         }
 
-        public override void Draw(Pen pen, Graphics graphics)
+        public override void Draw()
         {
-            graphics.DrawLines(pen, CreateArrowObject());
+            singltone.Graphics.DrawLines(singltone.pen, CreateArrowObject());
         }
     }
 }

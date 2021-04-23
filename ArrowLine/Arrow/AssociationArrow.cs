@@ -1,28 +1,83 @@
 ﻿using ArrowLine.CapArrow;
 using ArrowLine.Line;
-using System.Drawing;
-using System;
 
 namespace ArrowLine.Arrow
 {
-    class AssociationArrow : AbstractArrow
+     public class AssociationArrow : AbstractFigure
     {
-        public override void Draw(Pen pen, Graphics graphics)
+        AbstractLine line;
+        AbstractArrowCap arrowCap;
+        int _arrowSize = 10;
+
+        public AssociationArrow(FigureType type)
         {
-            if (Math.Abs(_startPoint.X - _endPoint.X) < 20)
-            {
-                _endPoint.X = _startPoint.X;
-            }
-            else if (Math.Abs(_startPoint.Y - _endPoint.Y) < 20)
-            {
-                _endPoint.Y = _startPoint.Y;
-            }
+            line = new SolidLineArrow(startPoint, endPoint);
+            arrowCap = new OpenCapArrow(startPoint, endPoint);
+            Type = type;
+        }
+        //public  Point[] CreateArrowLine()
+        //{
+        //    return new Point[] {
+        //        startPoint,
+        //        new Point(startPoint.X, endPoint.Y),
+        //        endPoint
+        //    };
+        //}
+        //public Point[] CreateArrowObject()
+        //{
+        //    Point[] _CustomCapArrow = new Point[]
+        //      {
+        //        new Point(endPoint.X, endPoint.Y),
+        //        endPoint,
+        //        new Point(endPoint.X, endPoint.Y)
+        //      };
 
-            AbstractLine line = new SolidLineArrow(_startPoint, _endPoint);
-            line.Draw(pen, graphics);
+        //    if (startPoint.X < endPoint.X)
+        //    {
+        //        _CustomCapArrow[0].Y -= _arrowSize;
+        //        _CustomCapArrow[0].X -= _arrowSize;
 
-            AbstractArrowCap arrowCap = new OpenCapArrow(_startPoint, _endPoint);
-            arrowCap.Draw(pen, graphics);
+        //        _CustomCapArrow[2].Y += _arrowSize;
+        //        _CustomCapArrow[2].X -= _arrowSize;
+        //    }
+        //    else if (startPoint.Y > endPoint.Y && startPoint.X == endPoint.X)
+        //    {
+        //        _CustomCapArrow[0].Y += _arrowSize;
+        //        _CustomCapArrow[0].X -= _arrowSize;
+
+        //        _CustomCapArrow[2].Y += _arrowSize;
+        //        _CustomCapArrow[2].X += _arrowSize;
+        //    }
+        //    else if (startPoint.X > endPoint.X)
+        //    {
+        //        _CustomCapArrow[0].Y -= _arrowSize;
+        //        _CustomCapArrow[0].X += _arrowSize;
+
+        //        _CustomCapArrow[2].Y += _arrowSize;
+        //        _CustomCapArrow[2].X += _arrowSize;
+        //    }
+        //    else
+        //    {
+        //        _CustomCapArrow[0].Y -= _arrowSize;
+        //        _CustomCapArrow[0].X += _arrowSize;
+
+        //        _CustomCapArrow[2].Y -= _arrowSize;
+        //        _CustomCapArrow[2].X -= _arrowSize;
+        //    }
+
+        //    return _CustomCapArrow;
+        //}
+
+        public override void Draw()
+        {
+            line.startPoint = startPoint;
+            line.endPoint = endPoint;
+            arrowCap.startPoint = startPoint;
+            arrowCap.endPoint = endPoint;
+            Delta();
+
+            singltone.Graphics.DrawLines(singltone.pen, line.CreateArrowLine());
+            singltone.Graphics.DrawLines(singltone.pen, arrowCap.CreateArrowObject());
         }
     }
 }

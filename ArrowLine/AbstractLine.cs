@@ -2,8 +2,16 @@
 
 namespace ArrowLine
 {
-    public abstract class AbstractLine: AbstractArrow
+    public abstract class AbstractLine : AbstractFigure
     {
-        public abstract Point[] CreateArrowLine();
+
+        public virtual Point[] CreateArrowLine()
+        {
+            return new Point[] {
+                startPoint,
+                new Point(startPoint.X, endPoint.Y),
+                endPoint
+            };
+        }
     }
 }

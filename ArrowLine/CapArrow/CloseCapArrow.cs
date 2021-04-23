@@ -6,34 +6,34 @@ namespace ArrowLine.CapArrow
     {
         public CloseCapArrow(Point startPoint, Point endPoint)
         {
-            _startPoint = startPoint;
-            _endPoint = endPoint;
+            this.startPoint = startPoint;
+            this.endPoint = endPoint;
         }
 
         public override Point[] CreateArrowObject()
         {
             Point[] _CustomCapArrow = new Point[]
             {
-                _endPoint,
-                new Point(_endPoint.X, _endPoint.Y),
-                new Point(_endPoint.X, _endPoint.Y),
-                new Point(_endPoint.X, _endPoint.Y),
-                _endPoint,
+                endPoint,
+                new Point(endPoint.X, endPoint.Y),
+                new Point(endPoint.X, endPoint.Y),
+                new Point(endPoint.X, endPoint.Y),
+                endPoint,
             };
 
-            if (_startPoint.X < _endPoint.X)
+            if (startPoint.X < endPoint.X)
             {
                 _CustomCapArrow[1].Y -= _arrowSize;
                 _CustomCapArrow[2].X += _arrowSize;
                 _CustomCapArrow[3].Y += _arrowSize;
             }
-            else if (_startPoint.Y > _endPoint.Y && _startPoint.X == _endPoint.X)
+            else if (startPoint.Y > endPoint.Y && startPoint.X == endPoint.X)
             {
                 _CustomCapArrow[1].X -= _arrowSize;
                 _CustomCapArrow[2].Y -= _arrowSize;
                 _CustomCapArrow[3].X += _arrowSize;
             }
-            else if (_startPoint.X > _endPoint.X)
+            else if (startPoint.X > endPoint.X)
             {
                 _CustomCapArrow[1].Y -= _arrowSize;
                 _CustomCapArrow[2].X -= _arrowSize;
@@ -49,10 +49,10 @@ namespace ArrowLine.CapArrow
             return _CustomCapArrow;
         }
 
-        public override void Draw(Pen pen, Graphics graphics)
+        public override void Draw()
         {
 
-            graphics.DrawLines(pen, CreateArrowObject());
+            singltone.Graphics.DrawLines(singltone.pen, CreateArrowObject());
         }
     }
 }

@@ -1,28 +1,23 @@
 ﻿using ArrowLine.CapArrow;
 using ArrowLine.Line;
-using System.Drawing;
-using System;
 
 namespace ArrowLine.Arrow
 {
-    class AgregationEndArrow : AbstractArrow
+    public class AgregationEndArrow : AbstractFigure
     {
-        public override void Draw(Pen pen, Graphics graphics)
+        public AgregationEndArrow(FigureType type)
         {
-            if (Math.Abs(_startPoint.X - _endPoint.X) < 20)
-            {
-                _endPoint.X = _startPoint.X;
-            }
-            else if (Math.Abs(_startPoint.Y - _endPoint.Y) < 20)
-            {
-                _endPoint.Y = _startPoint.Y;
-            }
+            Type = type;
+        }
+        public override void Draw()
+        {
+            Delta();
 
-            AbstractLine line = new SolidLineArrow(_startPoint, _endPoint);
-            line.Draw(pen, graphics);
+            AbstractLine line = new SolidLineArrow(startPoint,endPoint);
+            line.Draw();
 
-            AbstractArrowCap arrowCapRhomb = new WhiteRhombEndCapArrow(_startPoint, _endPoint);
-            arrowCapRhomb.Draw(pen, graphics);
+            AbstractArrowCap arrowCapRhomb = new WhiteRhombEndCapArrow(startPoint, endPoint);
+            arrowCapRhomb.Draw();
         }
     }
 }

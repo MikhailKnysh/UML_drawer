@@ -1,20 +1,19 @@
-﻿using ArrowLine.Arrow;
-using ArrowLine.Line;
+﻿using ArrowLine.Line;
 using System;
-using System.Drawing;
 using System.Windows.Forms;
 
 namespace ArrowLine
 {
     public partial class Form1 : Form
     {
-        private Bitmap _bitmap;
-        private Bitmap _tmpBitmap;
-        private Graphics _graphics;
-        private Pen _pen;
-        private bool _isMoving = false;
-
-        AbstractArrow arrow;
+        DataPictureBox singltone;
+        string buttonName;
+        bool isButtonSelectPressed = false;
+        bool isArrowButtonPressed = true;
+        AbstractFigure crntFigure;
+        IMouseHandler mouseHandler;
+        IFigureFactory currentFactory;
+        public string stringDataTable;
 
 
         public Form1()
@@ -24,98 +23,209 @@ namespace ArrowLine
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            Point startPoint = new Point();
-            Point endPoint = new Point();
-
-            _bitmap = new Bitmap(pictureBox1.Width, pictureBox1.Height);
-            _pen = new Pen(Color.Black, 2);
-            arrow = new SolidLineArrow(startPoint,endPoint)
-                ;
+            singltone = DataPictureBox.GetInstance();
+            singltone.SetPictureBox(pictureBox1);
+            singltone.InitialList();
+            currentFactory = new InterfaceTableFactory();
+            crntFigure = currentFactory.CreateFigure();
+            singltone.isMoving = false;
+            mouseHandler = new SelectMouseHandler();
         }
 
         private void pictureBox1_MouseDown(object sender, MouseEventArgs e)
         {
-            _isMoving = true;
-            arrow._startPoint = e.Location;
+            singltone.isMoving = true;
+
+            if (!isButtonSelectPressed)
+            {
+                if (isArrowButtonPressed)
+                {
+                    ChooseArrowButton();
+                }
+                else
+                {
+                    ChooseTableButton();
+                }
+
+                if (e.Button == MouseButtons.Left)
+                {
+                    crntFigure = currentFactory.CreateFigure();
+                }
+            }
+
+            mouseHandler.OnMouseDown(crntFigure, e, this, contextMenuStrip1);
+            singltone.UpdatePictureBox();
         }
 
         private void pictureBox1_MouseUp(object sender, MouseEventArgs e)
         {
-            _isMoving = false;
-            _bitmap = _tmpBitmap;
+            singltone.isMoving = false;
+            singltone.SetBitmap();
+            mouseHandler.OnMouseUp(crntFigure, e);
+            singltone.UpdatePictureBox();
         }
 
         private void pictureBox1_MouseMove(object sender, MouseEventArgs e)
         {
-            if (_isMoving)
+            if(e.Button == MouseButtons.Right)
             {
-                arrow._endPoint = e.Location;
-                pictureBox1.Invalidate();
+
             }
+            singltone.UpdateTmpBitmap();
+            mouseHandler.OnMouseMove(crntFigure, e);
+            
+            singltone.UpdatePictureBox();
         }
 
         private void pictureBox1_Paint(object sender, PaintEventArgs e)
         {
-            if (_isMoving)
+            if (singltone.isMoving)
             {
-                _tmpBitmap = (Bitmap)_bitmap.Clone();
-                _graphics = Graphics.FromImage(_tmpBitmap);
-                pictureBox1.Image = _tmpBitmap;
-
-                arrow.Draw(_pen, _graphics);
-
-                pictureBox1.Image = _tmpBitmap;
-                GC.Collect();
+                mouseHandler.OnPaint(crntFigure, e);
+                singltone.UpdatePictureBox();
             }
         }
 
         private void ButtonColor_Click(object sender, EventArgs e)
         {
-            Button btnColor = (Button)sender;
-            colorDialog1.ShowDialog();
-            btnColor.BackColor = colorDialog1.Color;
-            _pen.Color = colorDialog1.Color;
+            Button btnColor = sender as Button;
+
+            if (colorDialog1.ShowDialog() == DialogResult.OK)
+            {
+                btnColor.BackColor = colorDialog1.Color;
+                singltone.pen.Color = colorDialog1.Color;
+
+            }
 
         }
 
         private void trackbar1_Scroll(object sender, EventArgs e)
         {
-            _pen.Width = trackBar1.Value;
+            singltone.pen.Width = trackBar1.Value;
         }
 
-        private void CheckButtonPressed_Click(object sender, EventArgs e)
+        private void CheckArrowButtonPressed_Click(object sender, EventArgs e)
         {
+            isButtonSelectPressed = false;
+            isArrowButtonPressed = true;
+
             ToolStripButton toolStripButton = (ToolStripButton)sender;
-            
-            toolStripGroupButtons.BackgroundImage = toolStripButton.BackgroundImage;
-            
-            switch (toolStripButton.Name)
+
+            toolStripGroupButtonsArrow.BackgroundImage = toolStripButton.BackgroundImage;
+            buttonName = toolStripButton.Name;
+            mouseHandler = new DrawMouseHandler();
+        }
+
+        private void ChooseArrowButton()
+        {
+            switch (buttonName)
             {
                 case nameof(toolStripButtonCloseArrow):
-                    arrow = new InheritanceArrow();
+                    currentFactory = new InharitanceArrowFactory();
                     break;
                 case nameof(toolStripButtonEndRhomb):
-                    arrow = new AgregationEndArrow();
+                    currentFactory = new AgregationEndArrowFactory();
                     break;
                 case nameof(toolStripButtonEndRhombBlack):
-                    arrow = new CompositionEndArrow();
+                    currentFactory = new CompositionEndArrowFactory();
                     break;
                 case nameof(toolStripButtonStartRhomb1):
-                    arrow = new AgregationStartArrow();
+                    currentFactory = new AgregationStartArrowFactory();
                     break;
                 case nameof(toolStripButtonStartRhombBlack):
-                    arrow = new CompositionStartArrow();
+                    currentFactory = new CompositionStartArrowFactory();
                     break;
                 case nameof(toolStripButtonOpenArrow):
-                    arrow = new AssociationArrow();
+                    currentFactory = new AssociationArrowFactory();
                     break;
                 case nameof(toolStripButtonCloseArrowDash):
-                    arrow = new ImplementationArrow();
+                    currentFactory = new ImplementationArrowFactory();
                     break;
                 case nameof(toolStripButtonTwoAngleLine):
-                    arrow = new TwoAngleLineArrow(arrow._startPoint, arrow._endPoint);
+                    crntFigure = new TwoAngleLineArrow();
                     break;
             }
+        }
+
+        private void ChooseTableButton()
+        {
+            switch (buttonName)
+            {
+                case nameof(toolStripButtonClassTable):
+                    currentFactory = new ClassTableFactory();
+                    break;
+                case nameof(toolStripButtonInterfaceTable):
+                    currentFactory = new InterfaceTableFactory();
+                    break;
+                case nameof(toolStripButtonStackTable):
+                    currentFactory = new StackTableFactory();
+                    break;
+            }
+        }
+
+        private void buttonSelect_Click(object sender, EventArgs e)
+        {
+            isButtonSelectPressed = true;
+            mouseHandler = new SelectMouseHandler();
+        }
+
+        private void toolStripMenuItemAddField_Click(object sender, EventArgs e)
+        {
+            singltone.UpdateTmpBitmap();
+
+            crntFigure.stringDataTable = mouseHandler.OnToolStripMenuItemAddStringDataTable_Click(
+                new StringDataForm(labelData: "Field")).ToString();
+
+            crntFigure.AddField();
+
+
+            singltone.SetBitmap();
+        }
+
+        private void toolStripMenuItemAddProperty_Click(object sender, EventArgs e)
+        {
+            singltone.UpdateTmpBitmap();
+            crntFigure.stringDataTable = mouseHandler.OnToolStripMenuItemAddStringDataTable_Click(
+               new StringDataForm(labelData: "Property")).ToString();
+
+            crntFigure.AddProperty();
+
+            singltone.SetBitmap();
+        }
+
+        private void toolStripMenuItemAddMethod_Click(object sender, EventArgs e)
+        {
+            singltone.UpdateTmpBitmap();
+            crntFigure.stringDataTable = mouseHandler.OnToolStripMenuItemAddStringDataTable_Click(
+              new StringDataForm(labelData: "Method")).ToString();
+
+            crntFigure.AddMethod();
+
+            singltone.SetBitmap();
+        }
+
+        private void toolStripMenuItemRename_Click(object sender, EventArgs e)
+        {
+            singltone.UpdateTmpBitmap();
+
+            crntFigure.title = mouseHandler.OnToolStripMenuItemAddStringDataTable_Click(
+                new StringDataForm(labelData: "Title")).ToString();
+
+            crntFigure.Draw();
+
+            singltone.SetBitmap();
+        }
+
+        private void CheckButtonPressedTable_Click(object sender, EventArgs e)
+        {
+            ToolStripButton toolStripButton = (ToolStripButton)sender;
+
+            isButtonSelectPressed = false;
+            isArrowButtonPressed = false;
+
+            toolStripGroupButtonsTable.BackgroundImage = toolStripButton.BackgroundImage;
+            buttonName = toolStripButton.Name;
+            mouseHandler = new DrawMouseHandler();
         }
     }
 }
