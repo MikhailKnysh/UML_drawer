@@ -31,18 +31,13 @@ namespace ArrowLine.Table
         {
             Rectangle backRectangle;
 
-            for (int i = 20; i >= 10; i-=10)
+            for (int i = 20; i >= 10; i -= 10)
             {
                 backRectangle = new Rectangle(startPoint.X - i, startPoint.Y - i, width, height);
 
                 singltone.Graphics.FillRectangle(new SolidBrush(Color.White), backRectangle);
                 singltone.Graphics.DrawRectangle(singltone.pen, backRectangle);
             }
-        }
-
-        protected override void Resize()
-        {
-            throw new NotImplementedException();
         }
     }
 }
