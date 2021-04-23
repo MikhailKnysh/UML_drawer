@@ -53,7 +53,7 @@ namespace ArrowLine
                                         }
                                         return;
                                     }
-                                    
+
                                 }
                             }
                         }
@@ -114,33 +114,33 @@ namespace ArrowLine
                     }
                 }
                 else
-                    {
-                        currentFigure.endPoint = e.Location;
-                    }
+                {
+                    currentFigure.endPoint = e.Location;
                 }
             }
-
-                public void OnMouseUp(AbstractFigure currentFigure, MouseEventArgs e)
-                {
-                    if (currentFigure != null && e.Button == MouseButtons.Left && currentFigure.startPoint.X != 0 && currentFigure.startPoint.Y != 0)
-                    {
-                        singltone.tables.Add(currentFigure);
-                    }
-                }
-
-                public void OnPaint(AbstractFigure currentFigure, PaintEventArgs e)
-                {
-                    if (currentFigure.startPoint.X != 0 && currentFigure.startPoint.Y != 0)
-                    {
-                        currentFigure.Draw();
-                    }
-                }
-
-                {
-                    stringDataForm.ShowDialog();
-                    _idto = stringDataForm.Create();
-                    return _idto;
-                }
-            }
-        public IDTO OnToolStripMenuItemAddStringDataTable_Click(StringDataForm stringDataForm)
         }
+
+        public void OnMouseUp(AbstractFigure currentFigure, MouseEventArgs e)
+        {
+            if (currentFigure != null && e.Button == MouseButtons.Left && currentFigure.startPoint.X != 0 && currentFigure.startPoint.Y != 0)
+            {
+                singltone.tables.Add(currentFigure);
+            }
+        }
+
+        public void OnPaint(AbstractFigure currentFigure, PaintEventArgs e)
+        {
+            if (currentFigure.startPoint.X != 0 && currentFigure.startPoint.Y != 0)
+            {
+                currentFigure.Draw();
+            }
+        }
+
+        public IDTO OnToolStripMenuItemAddStringDataTable_Click(StringDataForm stringDataForm)
+        {
+            stringDataForm.ShowDialog();
+            _idto = stringDataForm.Create();
+            return _idto;
+        }
+    }
+}

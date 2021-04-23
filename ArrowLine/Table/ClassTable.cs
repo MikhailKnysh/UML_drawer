@@ -5,8 +5,9 @@ namespace ArrowLine.Table
 {
     public class ClassTable : AbstractTable
     {
-        public ClassTable()
+        public ClassTable(FigureType type)
         {
+            Type = type;
         }
 
         public override void Draw()
@@ -25,11 +26,6 @@ namespace ArrowLine.Table
             singltone.Graphics.DrawRectangle(singltone.pen, objectRectangle);
 
             format.Alignment = StringAlignment.Near;
-        }
-
-        protected override void Resize()
-        {
-            throw new NotImplementedException();
         }
     }
 }

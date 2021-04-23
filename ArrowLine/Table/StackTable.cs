@@ -5,6 +5,11 @@ namespace ArrowLine.Table
 {
     class StackTable : AbstractTable
     {
+        public StackTable(FigureType type)
+        {
+            Type = type;
+        }
+
         public override void Draw()
         {
             format.Alignment = StringAlignment.Center;

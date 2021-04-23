@@ -166,8 +166,6 @@ namespace ArrowLine
             singltone.Graphics.DrawRectangle(singltone.pen, objectRectangle);
         }
 
-        protected abstract void Resize();
-
         protected virtual void DrawStringRectangle(
             Font font, StringFormat format, string text, int heightStringRectangle, int stepDownPoint)
         {

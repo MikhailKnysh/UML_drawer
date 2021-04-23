@@ -31,10 +31,5 @@ namespace ArrowLine.Table
 
             format.Alignment = StringAlignment.Near;
         }
-
-        protected override void Resize()
-        {
-            throw new NotImplementedException();
-        }
     }
 }

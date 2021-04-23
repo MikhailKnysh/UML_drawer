@@ -6,7 +6,7 @@ namespace ArrowLine
     {
         public AbstractFigure CreateFigure()
         {
-            return new ClassTable();
+            return new ClassTable(FigureType.Table);
         }
     }
 }
