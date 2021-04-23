@@ -3,7 +3,7 @@ using ArrowLine.Line;
 
 namespace ArrowLine.Arrow
 {
-    class AgregationEndArrow : AbstractFigure
+    public class AgregationEndArrow : AbstractFigure
     {
         public AgregationEndArrow(FigureType type)
         {

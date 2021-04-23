@@ -18,6 +18,10 @@ namespace ArrowLine.Table
             DrawStringRectangle(font, format, "Title", heightStringRectangle, stepDownPoint: 20);
             DrawHorizontalLine(lineIndex: 0, stepDownLine - 2);
 
+            foreach (var item in RectanglesPoint(this))
+            {
+                singltone.Graphics.FillRectangle(Brushes.Red, item);
+            }
             singltone.Graphics.DrawRectangle(singltone.pen, objectRectangle);
         }
        

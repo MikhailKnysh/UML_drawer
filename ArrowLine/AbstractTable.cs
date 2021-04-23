@@ -52,16 +52,16 @@ namespace ArrowLine
             }
         }
 
-        private List<Rectangle> RectanglesPoint(AbstractFigure objectRectangle)
+       public List<Rectangle> RectanglesPoint(AbstractFigure objectRectangle)
         {
             return new List<Rectangle>()
             {
 
 
-                new Rectangle(objectRectangle.startPoint.X + objectRectangle.width/2 - 8, objectRectangle.startPoint.Y - 15, 15, 15),
-                new Rectangle(objectRectangle.startPoint.X - 15, objectRectangle.startPoint.Y + objectRectangle.height/2 - 8, 15, 15),
-                new Rectangle(objectRectangle.startPoint.X + objectRectangle.width/2 - 8, objectRectangle.startPoint.Y + objectRectangle.height , 15, 15 ),
-                new Rectangle(objectRectangle.startPoint.X + objectRectangle.width , objectRectangle.startPoint.Y + objectRectangle.height/2 - 8, 15, 15)
+                new Rectangle(objectRectangle.startPoint.X + objectRectangle.width/2 - 15, objectRectangle.startPoint.Y - 30, 30, 30),
+                new Rectangle(objectRectangle.startPoint.X - 30, objectRectangle.startPoint.Y + objectRectangle.height/2 - 12, 30, 30),
+                new Rectangle(objectRectangle.startPoint.X + objectRectangle.width/2 - 15, objectRectangle.startPoint.Y + objectRectangle.height , 30, 30 ),
+                new Rectangle(objectRectangle.startPoint.X + objectRectangle.width , objectRectangle.startPoint.Y + objectRectangle.height/2 - 15, 30, 30)
 
             };
         }
@@ -75,7 +75,7 @@ namespace ArrowLine
                     return true;
                 }
             }
-            return false;
+                return false;
         }
 
         public void CreateBaseRactangle()

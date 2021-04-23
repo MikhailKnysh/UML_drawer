@@ -5,13 +5,15 @@ using System;
 
 namespace ArrowLine.Arrow
 {
-    class AssociationArrow : AbstractFigure
+     public class AssociationArrow : AbstractFigure
     {
         AbstractLine line;
         AbstractArrowCap arrowCap;
 
         public AssociationArrow(FigureType type)
         {
+            line = new SolidLineArrow(startPoint, endPoint);
+            arrowCap = new OpenCapArrow(startPoint, endPoint);
             Type = type;
         }
 
@@ -19,10 +21,8 @@ namespace ArrowLine.Arrow
         {
             Delta();
 
-            line = new SolidLineArrow(startPoint, endPoint);
-            line.Draw();
-            arrowCap = new OpenCapArrow(startPoint, endPoint);
-            arrowCap.Draw();
+            singltone.Graphics.DrawLines(singltone.pen, line.CreateArrowLine());
+            singltone.Graphics.DrawLines(singltone.pen, arrowCap.CreateArrowObject());
         }
     }
 }
