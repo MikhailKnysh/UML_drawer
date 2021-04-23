@@ -68,13 +68,13 @@ namespace ArrowLine
 
         private void pictureBox1_MouseMove(object sender, MouseEventArgs e)
         {
-            if(e.Button == MouseButtons.Right)
+            if (e.Button == MouseButtons.Right)
             {
 
             }
             singltone.UpdateTmpBitmap();
             mouseHandler.OnMouseMove(crntFigure, e);
-            
+
             singltone.UpdatePictureBox();
         }
 
@@ -246,16 +246,18 @@ namespace ArrowLine
             bitmapToSave.Save("Shapes075.jpg", imageCodecInfo, encoderParameters);
         }
 
-        private static ImageCodecInfo GetEncoderInfo(String mimeType)
+        private static ImageCodecInfo GetEncoderInfo(string mimeType)
         {
-            int j;
-            ImageCodecInfo[] encoders;
-            encoders = ImageCodecInfo.GetImageEncoders();
-            for (j = 0; j < encoders.Length; ++j)
+            ImageCodecInfo[] encoders = ImageCodecInfo.GetImageEncoders();
+
+            for (int j = 0; j < encoders.Length; ++j)
             {
                 if (encoders[j].MimeType == mimeType)
+                {
                     return encoders[j];
+                }
             }
+
             return null;
         }
     }
