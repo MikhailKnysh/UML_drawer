@@ -2,11 +2,11 @@
 
 namespace ArrowLine
 {
-    public class InterfaceTableFactory : IFigureFactory
+    class ClassTableFactory : IFigureFactory
     {
         public AbstractFigure CreateFigure()
         {
-            return new InterfaceTable();
+            return new ClassTable();
         }
     }
 }

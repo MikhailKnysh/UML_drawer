@@ -1,8 +1,6 @@
 ﻿using ArrowLine.Line;
 using ArrowLine.Table.StringData;
 using System;
-using System.Collections.Generic;
-using System.Drawing;
 using System.Windows.Forms;
 
 namespace ArrowLine
@@ -41,7 +39,7 @@ namespace ArrowLine
             singltone.isMoving = true;
             if (!isButtonSelectPressed)
             {
-                ChooseButton();
+                ChooseArrowButton();
                 if (e.Button == MouseButtons.Left)
                 {
                     crntFigure = currentFactory.CreateFigure();
@@ -97,12 +95,12 @@ namespace ArrowLine
 
             ToolStripButton toolStripButton = (ToolStripButton)sender;
 
-            toolStripGroupButtons.BackgroundImage = toolStripButton.BackgroundImage;
+            toolStripGroupButtonsArrow.BackgroundImage = toolStripButton.BackgroundImage;
             buttonName = toolStripButton.Name;
             mouseHandler = new DrawMouseHandler();
         }
 
-        private void ChooseButton()
+        private void ChooseArrowButton()
         {
             switch (buttonName)
             {
@@ -155,7 +153,7 @@ namespace ArrowLine
         {
             singltone.UpdateTmpBitmap();
 
-            crntFigure.stringDataTable = mouseHandler.OnToolStripMenuItemAddField_Click(
+            crntFigure.stringDataTable = mouseHandler.OnToolStripMenuItemAddStringDataTable_Click(
                 new StringDataForm(labelData: "Field")).ToString();
 
             crntFigure.AddField();
@@ -166,7 +164,7 @@ namespace ArrowLine
         private void toolStripMenuItemAddProperty_Click(object sender, EventArgs e)
         {
             singltone.UpdateTmpBitmap();
-            crntFigure.stringDataTable = mouseHandler.OnToolStripMenuItemAddField_Click(
+            crntFigure.stringDataTable = mouseHandler.OnToolStripMenuItemAddStringDataTable_Click(
                new StringDataForm(labelData: "Property")).ToString();
 
             crntFigure.AddProperty();
@@ -177,12 +175,53 @@ namespace ArrowLine
         private void toolStripMenuItemAddMethod_Click(object sender, EventArgs e)
         {
             singltone.UpdateTmpBitmap();
-            crntFigure.stringDataTable = mouseHandler.OnToolStripMenuItemAddField_Click(
+            crntFigure.stringDataTable = mouseHandler.OnToolStripMenuItemAddStringDataTable_Click(
               new StringDataForm(labelData: "Method")).ToString();
 
             crntFigure.AddMethod();
 
             singltone.SetBitmap();
+        }
+
+        private void toolStripMenuItemRename_Click(object sender, EventArgs e)
+        {
+            singltone.UpdateTmpBitmap();
+
+            crntFigure.title = mouseHandler.OnToolStripMenuItemAddStringDataTable_Click(
+                new StringDataForm(labelData: "Title")).ToString();
+
+            crntFigure.Draw();
+
+            singltone.SetBitmap();
+        }
+
+        private void toolStripButton1_Click(object sender, EventArgs e)
+        {
+            ToolStripButton toolStripButton = (ToolStripButton)sender;
+
+            isButtonSelectPressed = false;
+
+            toolStripGroupButtonsTable.BackgroundImage = toolStripButton.BackgroundImage;
+            buttonName = toolStripButton.Name;
+            mouseHandler = new DrawMouseHandler();
+            currentFactory = new ClassTableFactory();
+        }
+
+        private void toolStripButton2_Click(object sender, EventArgs e)
+        {
+            ToolStripButton toolStripButton = (ToolStripButton)sender;
+
+            isButtonSelectPressed = false;
+
+            toolStripGroupButtonsTable.BackgroundImage = toolStripButton.BackgroundImage;
+            buttonName = toolStripButton.Name;
+            mouseHandler = new DrawMouseHandler();
+            currentFactory = new InterfaceTableFactory();
+        }
+
+        private void toolStripButton3_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

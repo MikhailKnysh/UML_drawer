@@ -13,6 +13,7 @@ namespace ArrowLine
         public int width = 140;
         public int height = 60;
         public string stringDataTable;
+        public string title = "Title";
 
         public bool Selected { get; set; }
 
@@ -21,7 +22,6 @@ namespace ArrowLine
         {
             if (Math.Abs(startPoint.X - endPoint.X) < 20)
             {
-
                 endPoint.X = startPoint.X;
             }
             else if (Math.Abs(startPoint.Y - endPoint.Y) < 20)

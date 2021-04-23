@@ -31,7 +31,6 @@ namespace ArrowLine
         public void OnMouseMove(AbstractFigure currentFigure, MouseEventArgs e)
         {
             currentFigure.endPoint = e.Location;
-
         }
 
         public void OnMouseUp(AbstractFigure currentFigure, MouseEventArgs e)
@@ -47,12 +46,13 @@ namespace ArrowLine
             currentFigure.Draw();
         }
 
-        public IDTO OnToolStripMenuItemAddField_Click(StringDataForm stringDataForm)
+        public IDTO OnToolStripMenuItemAddStringDataTable_Click(StringDataForm stringDataForm)
         {
             stringDataForm.ShowDialog();
             _idto = stringDataForm.Create();
             return _idto;
         }
+
         //private void ChooseButton()
         //{
         //    switch (buttonName)

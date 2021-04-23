@@ -1,12 +1,11 @@
 ﻿using System.Collections.Generic;
 using System.Drawing;
-using System.Windows.Forms;
 
 namespace ArrowLine
 {
     public abstract class AbstractTable : AbstractFigure
     {
-        protected TextBox title;
+        protected Rectangle titleRectangle;
         protected int heightStringRectangle = 20;
         protected int stepDownLine = 20;
         protected int stepDownFieldPoint = 20;
@@ -32,7 +31,7 @@ namespace ArrowLine
         {
             font = new Font("Arial", 12, FontStyle.Regular);
             format = new StringFormat();
-            whitePen = new Pen(Color.White, 3);////////////////
+            whitePen = new Pen(Color.White, singltone.pen.Width);////////////////
             solidBrush = new SolidBrush(Color.Black);//////Pen.Color
             blackPen = new Pen(Color.Black, 1);////////////////
             linesInTable = new List<LineInTable>();
@@ -100,6 +99,8 @@ namespace ArrowLine
 
             singltone.Graphics.DrawRectangle(whitePen, objectRectangle);
 
+            IncreaseFrame();
+
             if (methodRectangles.Count != 0)
             {
                 ReDrawArea(methodRectangles, methods);
@@ -124,6 +125,8 @@ namespace ArrowLine
 
             singltone.Graphics.DrawRectangle(whitePen, objectRectangle);
 
+            IncreaseFrame();
+
             DrawStringRectangle(font, format, stringDataTable, heightStringRectangle,
                 stepDownPoint: stepDownMethodPoint += 20);
 
@@ -136,7 +139,7 @@ namespace ArrowLine
         }
 
         protected abstract void Resize();
-        protected abstract void Move();
+
         protected virtual void DrawStringRectangle(
             Font font, StringFormat format, string text, int heightStringRectangle, int stepDownPoint)
         {
@@ -172,10 +175,9 @@ namespace ArrowLine
 
                 singltone.Graphics.FillRectangle(new SolidBrush(Color.White), fieldRectangles[i].X, fieldRectangles[i].Y, width, heightStringRectangle);
                 singltone.Graphics.DrawString(fields[i], font, solidBrush, fieldRectangles[i], format);
-
             }
 
-            DrawHorizontalLine(lineIndex: 1, stepDownFieldPoint + 1);
+            DrawHorizontalLine(lineIndex: 1, stepDownFieldPoint);
 
             for (int i = 0; i < propertieRectangles.Count; i++)
             {
@@ -188,7 +190,7 @@ namespace ArrowLine
 
             }
 
-            DrawHorizontalLine(lineIndex: 2, stepDownPropertyPoint + 1);
+            DrawHorizontalLine(lineIndex: 2, stepDownPropertyPoint);
 
             for (int i = 0; i < methodRectangles.Count; i++)
             {
@@ -214,15 +216,17 @@ namespace ArrowLine
         protected virtual void IncreaseFrame()
         {
             float stringWidth = singltone.Graphics.MeasureString(stringDataTable, font).Width;
+            float titleWidth = singltone.Graphics.MeasureString(title, font).Width;
 
-            if (stringWidth > width)
+            if (stringWidth > width || titleWidth > width)
             {
-                width = (int)stringWidth;
+                width = (int)stringWidth + 2;
+                DrawHorizontalLine(lineIndex: 0, stepDownLine - 2);
+                DrawHorizontalLine(lineIndex: 1, stepDownFieldPoint + 1);
+                DrawHorizontalLine(lineIndex: 2, stepDownPropertyPoint + 1);
             }
 
             objectRectangle.Width = width;
-
-            DrawHorizontalLine(lineIndex: 0, stepDownLine - 2);
         }
     }
 }
