@@ -50,6 +50,10 @@ namespace ArrowLine
             this.toolStripMenuItemAddField = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItemAddProperty = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItemAddMethod = new System.Windows.Forms.ToolStripMenuItem();
+            this.buttonSave = new System.Windows.Forms.Button();
+            this.buttonOpen = new System.Windows.Forms.Button();
+            this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
+            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).BeginInit();
             this.toolStripGroupButtons.SuspendLayout();
@@ -77,8 +81,8 @@ namespace ArrowLine
             this.trackBar1.LargeChange = 1;
             this.trackBar1.Location = new System.Drawing.Point(12, 124);
             this.trackBar1.Margin = new System.Windows.Forms.Padding(2);
-            this.trackBar1.Minimum = 1;
             this.trackBar1.Maximum = 3;
+            this.trackBar1.Minimum = 1;
             this.trackBar1.Name = "trackBar1";
             this.trackBar1.Size = new System.Drawing.Size(104, 56);
             this.trackBar1.TabIndex = 3;
@@ -231,7 +235,7 @@ namespace ArrowLine
             // 
             this.button2.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button2.BackgroundImage")));
             this.button2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.button2.Location = new System.Drawing.Point(16, 213);
+            this.button2.Location = new System.Drawing.Point(9, 152);
             this.button2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(107, 134);
@@ -242,7 +246,7 @@ namespace ArrowLine
             // 
             // buttonSelect
             // 
-            this.buttonSelect.Location = new System.Drawing.Point(18, 406);
+            this.buttonSelect.Location = new System.Drawing.Point(32, 319);
             this.buttonSelect.Name = "buttonSelect";
             this.buttonSelect.Size = new System.Drawing.Size(101, 66);
             this.buttonSelect.TabIndex = 15;
@@ -258,28 +262,57 @@ namespace ArrowLine
             this.toolStripMenuItemAddProperty,
             this.toolStripMenuItemAddMethod});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(145, 70);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(168, 76);
             // 
             // toolStripMenuItemAddField
             // 
             this.toolStripMenuItemAddField.Name = "toolStripMenuItemAddField";
-            this.toolStripMenuItemAddField.Size = new System.Drawing.Size(144, 22);
+            this.toolStripMenuItemAddField.Size = new System.Drawing.Size(167, 24);
             this.toolStripMenuItemAddField.Text = "Add field";
             this.toolStripMenuItemAddField.Click += new System.EventHandler(this.toolStripMenuItemAddField_Click);
             // 
             // toolStripMenuItemAddProperty
             // 
             this.toolStripMenuItemAddProperty.Name = "toolStripMenuItemAddProperty";
-            this.toolStripMenuItemAddProperty.Size = new System.Drawing.Size(144, 22);
+            this.toolStripMenuItemAddProperty.Size = new System.Drawing.Size(167, 24);
             this.toolStripMenuItemAddProperty.Text = "Add property";
             this.toolStripMenuItemAddProperty.Click += new System.EventHandler(this.toolStripMenuItemAddProperty_Click);
             // 
             // toolStripMenuItemAddMethod
             // 
             this.toolStripMenuItemAddMethod.Name = "toolStripMenuItemAddMethod";
-            this.toolStripMenuItemAddMethod.Size = new System.Drawing.Size(144, 22);
+            this.toolStripMenuItemAddMethod.Size = new System.Drawing.Size(167, 24);
             this.toolStripMenuItemAddMethod.Text = "Add method";
             this.toolStripMenuItemAddMethod.Click += new System.EventHandler(this.toolStripMenuItemAddMethod_Click);
+            // 
+            // buttonSave
+            // 
+            this.buttonSave.Location = new System.Drawing.Point(17, 421);
+            this.buttonSave.Name = "buttonSave";
+            this.buttonSave.Size = new System.Drawing.Size(115, 49);
+            this.buttonSave.TabIndex = 16;
+            this.buttonSave.Text = "Save";
+            this.buttonSave.UseVisualStyleBackColor = true;
+            this.buttonSave.Click += new System.EventHandler(this.buttonSave_Click);
+            // 
+            // buttonOpen
+            // 
+            this.buttonOpen.Location = new System.Drawing.Point(24, 495);
+            this.buttonOpen.Name = "buttonOpen";
+            this.buttonOpen.Size = new System.Drawing.Size(107, 39);
+            this.buttonOpen.TabIndex = 17;
+            this.buttonOpen.Text = "Open";
+            this.buttonOpen.UseVisualStyleBackColor = true;
+            this.buttonOpen.Click += new System.EventHandler(this.buttonOpen_Click);
+            // 
+            // saveFileDialog1
+            // 
+            this.saveFileDialog1.Filter = "UmlDiagrams|*.smst";
+            // 
+            // openFileDialog1
+            // 
+            this.openFileDialog1.FileName = "openFileDialog1";
+            this.openFileDialog1.Filter = "UmlDiagrams|*.smst";
             // 
             // Form1
             // 
@@ -287,6 +320,8 @@ namespace ArrowLine
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Coral;
             this.ClientSize = new System.Drawing.Size(987, 561);
+            this.Controls.Add(this.buttonOpen);
+            this.Controls.Add(this.buttonSave);
             this.Controls.Add(this.buttonSelect);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.toolStripGroupButtons);
@@ -329,6 +364,10 @@ namespace ArrowLine
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemAddField;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemAddProperty;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemAddMethod;
+        private System.Windows.Forms.Button buttonSave;
+        private System.Windows.Forms.Button buttonOpen;
+        private System.Windows.Forms.SaveFileDialog saveFileDialog1;
+        private System.Windows.Forms.OpenFileDialog openFileDialog1;
     }
 }
 

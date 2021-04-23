@@ -1,6 +1,8 @@
 ﻿using ArrowLine.Line;
 using System;
 using System.Windows.Forms;
+using Newtonsoft.Json;
+using System.Collections.Generic;
 
 namespace ArrowLine
 {
@@ -58,13 +60,13 @@ namespace ArrowLine
 
         private void pictureBox1_MouseMove(object sender, MouseEventArgs e)
         {
-            if(e.Button == MouseButtons.Right)
+            if (e.Button == MouseButtons.Right)
             {
 
             }
             singltone.UpdateTmpBitmap();
             mouseHandler.OnMouseMove(crntFigure, e);
-            
+
             singltone.UpdatePictureBox();
         }
 
@@ -188,6 +190,46 @@ namespace ArrowLine
             crntFigure.AddMethod();
 
             singltone.SetBitmap();
+        }
+
+        private void buttonSave_Click(object sender, EventArgs e)
+        {
+            if (saveFileDialog1.ShowDialog() == DialogResult.OK)
+            {
+                string fileData = SerializeFile();
+                SaveAndLoadProject.SaveFile(saveFileDialog1.FileName, fileData);
+            }
+        }
+
+        private string SerializeFile()
+        {
+            string fileData = JsonConvert.SerializeObject(singltone.tables, Formatting.Indented,
+                 new JsonSerializerSettings
+                 {
+                     TypeNameHandling = TypeNameHandling.All
+                 });
+            return fileData;
+        }
+
+        private void buttonOpen_Click(object sender, EventArgs e)
+        {
+            if (openFileDialog1.ShowDialog() == DialogResult.OK)
+            {
+                string fileData = SaveAndLoadProject.OpenFile(openFileDialog1.FileName);
+                DeserializeFile(fileData);
+            }
+        }
+
+        private void DeserializeFile(string fileData)
+        {
+            if (fileData != String.Empty)
+            {
+                singltone.tables = JsonConvert.DeserializeObject<List<AbstractFigure>>(fileData,
+                    new JsonSerializerSettings
+                    {
+                        TypeNameHandling = TypeNameHandling.All
+                    });
+            }
         }
     }
 }

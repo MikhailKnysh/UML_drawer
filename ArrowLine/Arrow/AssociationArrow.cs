@@ -10,7 +10,10 @@ namespace ArrowLine.Arrow
         AbstractLine line;
         AbstractArrowCap arrowCap;
         int _arrowSize = 10;
+        public AssociationArrow()
+        {
 
+        }
         public AssociationArrow(FigureType type)
         {
             line = new SolidLineArrow(startPoint, endPoint);

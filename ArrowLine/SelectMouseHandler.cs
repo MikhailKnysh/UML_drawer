@@ -79,12 +79,12 @@ namespace ArrowLine
                         {
                             foreach (AbstractFigure item in selectionObject)
                             {
-                                if(item is AbstractTable)
+                                if (item is AbstractTable)
                                 {
 
-                                item.Move(e.X - tmpPoint.X, e.Y - tmpPoint.Y);
-                                item.ReDrawRectangleBody();
-                                item.Draw();
+                                    item.Move(e.X - tmpPoint.X, e.Y - tmpPoint.Y);
+                                    item.ReDrawRectangleBody();
+                                    item.Draw();
                                 }
                             }
                         }
@@ -140,14 +140,14 @@ namespace ArrowLine
 
         public void OnPaint(AbstractFigure currentFigure, PaintEventArgs e)
         {
-                Rectangle r = new Rectangle(
-                  Math.Min(startPoint.X, endPoint.X),
-                  Math.Min(startPoint.Y, endPoint.Y),
-                  Math.Abs(startPoint.X - endPoint.X),
-                  Math.Abs(startPoint.Y - endPoint.Y));
+            Rectangle r = new Rectangle(
+              Math.Min(startPoint.X, endPoint.X),
+              Math.Min(startPoint.Y, endPoint.Y),
+              Math.Abs(startPoint.X - endPoint.X),
+              Math.Abs(startPoint.Y - endPoint.Y));
 
-                e.Graphics.FillRectangle(_highlightBrush, r);
-                e.Graphics.DrawRectangle(_highlightPen, r);
+            e.Graphics.FillRectangle(_highlightBrush, r);
+            e.Graphics.DrawRectangle(_highlightPen, r);
 
         }
 

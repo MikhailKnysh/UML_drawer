@@ -8,11 +8,12 @@ namespace ArrowLine
     {
         private static DataPictureBox _instance;
         public Graphics Graphics { get; set; }
-        public Pen pen;
+        protected Pen pen;
         private PictureBox _pictureBox;
         private Bitmap _bitmap;
         private Bitmap _tmpbitmap;
-        // public Color color { get; set; }
+        public Color Color { get; set; }
+        public int PenWidth { get; set; } = 2;
         //public SolidBrush solidBrush { get; set; }
 
         public List<AbstractFigure> arrows;

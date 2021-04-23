@@ -36,6 +36,9 @@
     <Reference Include="Enums.NET, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7ea1c1650d506225, processorArchitecture=MSIL">
       <HintPath>..\packages\Enums.NET.4.0.0\lib\net45\Enums.NET.dll</HintPath>
     </Reference>
+    <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.13.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
@@ -86,6 +89,7 @@
     <Compile Include="InharitanceArrowFactory.cs" />
     <Compile Include="InterfaceTableFactory.cs" />
     <Compile Include="ISelection.cs" />
+    <Compile Include="SaveAndLoadProject.cs" />
     <Compile Include="StringDataForm.cs">
       <SubType>Form</SubType>
     </Compile>
