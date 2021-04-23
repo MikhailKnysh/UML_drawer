@@ -136,11 +136,11 @@ namespace ArrowLine
                     }
                 }
 
-                public IDTO OnToolStripMenuItemAddField_Click(StringDataForm stringDataForm)
                 {
                     stringDataForm.ShowDialog();
                     _idto = stringDataForm.Create();
                     return _idto;
                 }
             }
+        public IDTO OnToolStripMenuItemAddStringDataTable_Click(StringDataForm stringDataForm)
         }

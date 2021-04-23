@@ -75,6 +75,7 @@
     <Compile Include="Arrow\CompositionStartArrow.cs" />
     <Compile Include="Arrow\ImplementationArrow.cs" />
     <Compile Include="Arrow\InheritanceArrow.cs" />
+    <Compile Include="ClassTableFactory.cs" />
     <Compile Include="CompositionEndArrowFactory.cs" />
     <Compile Include="CompositionStartArrowFactory.cs" />
     <Compile Include="DataObjects.cs" />
@@ -86,6 +87,7 @@
     <Compile Include="InharitanceArrowFactory.cs" />
     <Compile Include="InterfaceTableFactory.cs" />
     <Compile Include="ISelection.cs" />
+    <Compile Include="StackTableFactory.cs" />
     <Compile Include="StringDataForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -108,14 +110,17 @@
     <Compile Include="SelectMouseHandler.cs" />
     <Compile Include="DataPictureBox.cs" />
     <Compile Include="Table\AccessModifier.cs" />
+    <Compile Include="Table\ClassTable.cs" />
     <Compile Include="Table\EnumExtensionMethod.cs" />
     <Compile Include="Table\InterfaceTable.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Table\StackTable.cs" />
     <Compile Include="Table\StringData\Field.cs" />
     <Compile Include="Table\StringData\IDTO.cs" />
     <Compile Include="Table\StringData\Method.cs" />
     <Compile Include="Table\StringData\Property.cs" />
+    <Compile Include="Table\StringData\Title.cs" />
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>

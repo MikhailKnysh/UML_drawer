@@ -20,6 +20,8 @@ namespace ArrowLine
         public int height = 60;
         public string stringDataTable;
         public FigureType Type { get; set; }
+        public string title = "Title";
+
         public bool Selected { get; set; }
         public bool IsArrow { get; set; }
 

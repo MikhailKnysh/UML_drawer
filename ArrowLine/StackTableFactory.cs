@@ -2,11 +2,11 @@
 
 namespace ArrowLine
 {
-    public class InterfaceTableFactory : IFigureFactory
+    class StackTableFactory : IFigureFactory
     {
         public AbstractFigure CreateFigure()
         {
-            return new InterfaceTable(FigureType.Table);
+            return new StackTable();
         }
     }
 }

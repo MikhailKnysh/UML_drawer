@@ -19,7 +19,11 @@ namespace ArrowLine
 
         public IDTO Create()
         {
-            if (_labelData.Equals("Field"))
+            if (_labelData.Equals("Title"))
+            {
+                return new Title(textBoxTitle.Text);
+            }
+            else if (_labelData.Equals("Field"))
             {
                 return new Field(comboBoxAccessModifier.Text, textBoxSignature.Text,
                     textBoxTypeToReturn.Text);
@@ -54,13 +58,20 @@ namespace ArrowLine
             comboBoxGetAccessModifier.SelectedIndex = 0;
             comboBoxSetAccessModifier.SelectedIndex = 0;
 
-            if (_labelData.Equals("Property"))
+            if (_labelData.Equals("Title"))
             {
                 groupBoxFieldOrMethod.Visible = false;
+                groupBoxProperty.Visible = false;
+            }
+            else if (_labelData.Equals("Property"))
+            {
+                groupBoxFieldOrMethod.Visible = false;
+                groupBoxTitle.Visible = false;
             }
             else
             {
                 groupBoxProperty.Visible = false;
+                groupBoxTitle.Visible = false;
             }
         }
 

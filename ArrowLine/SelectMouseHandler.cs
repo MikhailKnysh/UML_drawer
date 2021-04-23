@@ -151,7 +151,7 @@ namespace ArrowLine
 
         }
 
-        public IDTO OnToolStripMenuItemAddField_Click(StringDataForm stringDataForm)
+        public IDTO OnToolStripMenuItemAddStringDataTable_Click(StringDataForm stringDataForm)
         {
             throw new NotImplementedException();
         }

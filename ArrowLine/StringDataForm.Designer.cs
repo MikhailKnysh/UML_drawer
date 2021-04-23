@@ -44,8 +44,11 @@ namespace ArrowLine
             this.button1 = new System.Windows.Forms.Button();
             this.groupBoxFieldOrMethod = new System.Windows.Forms.GroupBox();
             this.groupBoxProperty = new System.Windows.Forms.GroupBox();
+            this.groupBoxTitle = new System.Windows.Forms.GroupBox();
+            this.textBoxTitle = new System.Windows.Forms.TextBox();
             this.groupBoxFieldOrMethod.SuspendLayout();
             this.groupBoxProperty.SuspendLayout();
+            this.groupBoxTitle.SuspendLayout();
             this.SuspendLayout();
             // 
             // labelTitle
@@ -196,11 +199,29 @@ namespace ArrowLine
             this.groupBoxProperty.TabIndex = 14;
             this.groupBoxProperty.TabStop = false;
             // 
+            // groupBoxTitle
+            // 
+            this.groupBoxTitle.Controls.Add(this.textBoxTitle);
+            this.groupBoxTitle.Location = new System.Drawing.Point(12, 44);
+            this.groupBoxTitle.Name = "groupBoxTitle";
+            this.groupBoxTitle.Size = new System.Drawing.Size(500, 60);
+            this.groupBoxTitle.TabIndex = 12;
+            this.groupBoxTitle.TabStop = false;
+            // 
+            // textBoxTitle
+            // 
+            this.textBoxTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.textBoxTitle.Location = new System.Drawing.Point(30, 20);
+            this.textBoxTitle.Name = "textBoxTitle";
+            this.textBoxTitle.Size = new System.Drawing.Size(200, 26);
+            this.textBoxTitle.TabIndex = 0;
+            // 
             // StringDataForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(521, 162);
+            this.Controls.Add(this.groupBoxTitle);
             this.Controls.Add(this.groupBoxProperty);
             this.Controls.Add(this.groupBoxFieldOrMethod);
             this.Controls.Add(this.button1);
@@ -212,6 +233,8 @@ namespace ArrowLine
             this.groupBoxFieldOrMethod.PerformLayout();
             this.groupBoxProperty.ResumeLayout(false);
             this.groupBoxProperty.PerformLayout();
+            this.groupBoxTitle.ResumeLayout(false);
+            this.groupBoxTitle.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -234,5 +257,7 @@ namespace ArrowLine
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.GroupBox groupBoxFieldOrMethod;
         private System.Windows.Forms.GroupBox groupBoxProperty;
+        private System.Windows.Forms.GroupBox groupBoxTitle;
+        private System.Windows.Forms.TextBox textBoxTitle;
     }
 }
