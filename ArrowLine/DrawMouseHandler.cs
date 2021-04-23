@@ -21,7 +21,6 @@ namespace ArrowLine
                     {
                         if (currentFigure.Type == FigureType.Arrow)
                         {
-                            bool result = false;
                             foreach (var item in singltone.tables)
                             {
                                 if (item.Type == FigureType.Table)
@@ -52,25 +51,17 @@ namespace ArrowLine
                                             currentFigure.startPoint = new Point(item.startPoint.X + item.width / 2,
                                                item.startPoint.Y + item.height);
                                         }
-                                        result = true;
                                         return;
                                     }
                                     
                                 }
                             }
-                            if (!result)
-                            {
-                                return;
-                            }
-
                         }
                         else
                         {
                             currentFigure.startPoint = e.Location;
                             currentFigure.endPoint = e.Location;
-
                         }
-
                     }
                     break;
                 case MouseButtons.Right:
@@ -143,8 +134,6 @@ namespace ArrowLine
                     {
                         currentFigure.Draw();
                     }
-
-
                 }
 
                 public IDTO OnToolStripMenuItemAddField_Click(StringDataForm stringDataForm)
@@ -153,26 +142,5 @@ namespace ArrowLine
                     _idto = stringDataForm.Create();
                     return _idto;
                 }
-
-
-                //public bool DrawArrow(Point pt)
-                //{
-                //    foreach (var item in singltone.tables)
-                //    {
-                //        if (item is AbstractTable)
-                //        {
-                //            var rectangle = item as AbstractTable;
-                //            if (rectangle.Contain(pt))
-                //            {
-                //                return true;
-                //            }
-
-                //        }
-                //    }
-                //    return false;
-                //}
-
-
-
             }
         }
