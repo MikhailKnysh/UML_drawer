@@ -20,19 +20,19 @@ namespace ArrowLine
         protected List<LineInTable> linesInTable;
         public Rectangle objectRectangle;
         protected Rectangle stringRectangle;
-        public List<Rectangle> highlightRectangles = new List<Rectangle>();//???
+        public List<Rectangle> highlightRectangles = new List<Rectangle>();
         public Font font;
         public StringFormat format;
         public Pen whitePen;
-        public Pen blackPen;///////////
+        public Pen blackPen;
         public SolidBrush solidBrush;
 
         public AbstractTable()
         {
             font = new Font("Arial", 12, FontStyle.Regular);
             format = new StringFormat();
-            whitePen = new Pen(Color.White, singltone.pen.Width);////////////////
-            solidBrush = new SolidBrush(Color.Black);//////Pen.Color
+            whitePen = new Pen(Color.White, singltone.pen.Width);
+            solidBrush = new SolidBrush(Color.Black);
             blackPen = new Pen(singltone.pen.Color, singltone.pen.Width);
             linesInTable = new List<LineInTable>();
             fields = new List<string>();
@@ -51,7 +51,7 @@ namespace ArrowLine
             }
         }
 
-       public List<Rectangle> RectanglesPoint(AbstractFigure objectRectangle)
+        public List<Rectangle> RectanglesPoint(AbstractFigure objectRectangle)
         {
             return new List<Rectangle>()
             {
@@ -67,14 +67,14 @@ namespace ArrowLine
 
         public bool Contain(Point pt)
         {
-            foreach(var item in RectanglesPoint(this))
+            foreach (var item in RectanglesPoint(this))
             {
                 if (item.Contains(pt))
                 {
                     return true;
                 }
             }
-                return false;
+            return false;
         }
 
         public void CreateBaseRactangle()

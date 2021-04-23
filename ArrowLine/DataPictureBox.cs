@@ -7,11 +7,11 @@ namespace ArrowLine
     public class DataPictureBox
     {
         private static DataPictureBox _instance;
-        public Graphics Graphics { get; set; }
         public Pen pen;
         private PictureBox _pictureBox;
         private Bitmap _bitmap;
         private Bitmap _tmpbitmap;
+        public Graphics Graphics { get; set; }
         // public Color color { get; set; }
         //public SolidBrush solidBrush { get; set; }
 
@@ -71,6 +71,11 @@ namespace ArrowLine
             Graphics = Graphics.FromImage(_bitmap);
             Graphics.Clear(Color.White);
             _pictureBox.Image = _bitmap;
+        }
+
+        public Bitmap GetBitmap()
+        {
+            return _bitmap;
         }
     }
 }
