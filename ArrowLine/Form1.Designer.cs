@@ -44,7 +44,6 @@ namespace ArrowLine
             this.toolStripButtonOpenArrow = new System.Windows.Forms.ToolStripButton();
             this.toolStripButtonCloseArrowDash = new System.Windows.Forms.ToolStripButton();
             this.toolStripButtonTwoAngleLine = new System.Windows.Forms.ToolStripButton();
-            this.button2 = new System.Windows.Forms.Button();
             this.buttonSelect = new System.Windows.Forms.Button();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.toolStripMenuItemAddField = new System.Windows.Forms.ToolStripMenuItem();
@@ -53,9 +52,9 @@ namespace ArrowLine
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripMenuItemRename = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripGroupButtonsTable = new System.Windows.Forms.ToolStrip();
-            this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButton2 = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButton3 = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButtonClassTable = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButtonInterfaceTable = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButtonStackTable = new System.Windows.Forms.ToolStripButton();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).BeginInit();
             this.toolStripGroupButtonsArrow.SuspendLayout();
@@ -140,7 +139,7 @@ namespace ArrowLine
             this.toolStripButtonCloseArrow.Name = "toolStripButtonCloseArrow";
             this.toolStripButtonCloseArrow.Size = new System.Drawing.Size(88, 40);
             this.toolStripButtonCloseArrow.Text = "toolStripButton4";
-            this.toolStripButtonCloseArrow.Click += new System.EventHandler(this.CheckButtonPressed_Click);
+            this.toolStripButtonCloseArrow.Click += new System.EventHandler(this.CheckArrowButtonPressed_Click);
             // 
             // toolStripButtonEndRhomb
             // 
@@ -153,7 +152,7 @@ namespace ArrowLine
             this.toolStripButtonEndRhomb.Name = "toolStripButtonEndRhomb";
             this.toolStripButtonEndRhomb.Size = new System.Drawing.Size(88, 40);
             this.toolStripButtonEndRhomb.Text = "toolStripButton5";
-            this.toolStripButtonEndRhomb.Click += new System.EventHandler(this.CheckButtonPressed_Click);
+            this.toolStripButtonEndRhomb.Click += new System.EventHandler(this.CheckArrowButtonPressed_Click);
             // 
             // toolStripButtonStartRhomb1
             // 
@@ -166,7 +165,7 @@ namespace ArrowLine
             this.toolStripButtonStartRhomb1.Name = "toolStripButtonStartRhomb1";
             this.toolStripButtonStartRhomb1.Size = new System.Drawing.Size(88, 40);
             this.toolStripButtonStartRhomb1.Text = "toolStripButton6";
-            this.toolStripButtonStartRhomb1.Click += new System.EventHandler(this.CheckButtonPressed_Click);
+            this.toolStripButtonStartRhomb1.Click += new System.EventHandler(this.CheckArrowButtonPressed_Click);
             // 
             // toolStripButtonEndRhombBlack
             // 
@@ -179,7 +178,7 @@ namespace ArrowLine
             this.toolStripButtonEndRhombBlack.Name = "toolStripButtonEndRhombBlack";
             this.toolStripButtonEndRhombBlack.Size = new System.Drawing.Size(88, 40);
             this.toolStripButtonEndRhombBlack.Text = "toolStripButton7";
-            this.toolStripButtonEndRhombBlack.Click += new System.EventHandler(this.CheckButtonPressed_Click);
+            this.toolStripButtonEndRhombBlack.Click += new System.EventHandler(this.CheckArrowButtonPressed_Click);
             // 
             // toolStripButtonStartRhombBlack
             // 
@@ -192,7 +191,7 @@ namespace ArrowLine
             this.toolStripButtonStartRhombBlack.Name = "toolStripButtonStartRhombBlack";
             this.toolStripButtonStartRhombBlack.Size = new System.Drawing.Size(88, 40);
             this.toolStripButtonStartRhombBlack.Text = "toolStripButton8";
-            this.toolStripButtonStartRhombBlack.Click += new System.EventHandler(this.CheckButtonPressed_Click);
+            this.toolStripButtonStartRhombBlack.Click += new System.EventHandler(this.CheckArrowButtonPressed_Click);
             // 
             // toolStripButtonOpenArrow
             // 
@@ -205,7 +204,7 @@ namespace ArrowLine
             this.toolStripButtonOpenArrow.Name = "toolStripButtonOpenArrow";
             this.toolStripButtonOpenArrow.Size = new System.Drawing.Size(88, 40);
             this.toolStripButtonOpenArrow.Text = "toolStripButton2";
-            this.toolStripButtonOpenArrow.Click += new System.EventHandler(this.CheckButtonPressed_Click);
+            this.toolStripButtonOpenArrow.Click += new System.EventHandler(this.CheckArrowButtonPressed_Click);
             // 
             // toolStripButtonCloseArrowDash
             // 
@@ -218,7 +217,7 @@ namespace ArrowLine
             this.toolStripButtonCloseArrowDash.Name = "toolStripButtonCloseArrowDash";
             this.toolStripButtonCloseArrowDash.Size = new System.Drawing.Size(88, 40);
             this.toolStripButtonCloseArrowDash.Text = "toolStripButton3";
-            this.toolStripButtonCloseArrowDash.Click += new System.EventHandler(this.CheckButtonPressed_Click);
+            this.toolStripButtonCloseArrowDash.Click += new System.EventHandler(this.CheckArrowButtonPressed_Click);
             // 
             // toolStripButtonTwoAngleLine
             // 
@@ -231,20 +230,7 @@ namespace ArrowLine
             this.toolStripButtonTwoAngleLine.Name = "toolStripButtonTwoAngleLine";
             this.toolStripButtonTwoAngleLine.Size = new System.Drawing.Size(88, 40);
             this.toolStripButtonTwoAngleLine.Text = "toolStripButton1";
-            this.toolStripButtonTwoAngleLine.Click += new System.EventHandler(this.CheckButtonPressed_Click);
-            // 
-            // button2
-            // 
-            this.button2.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button2.BackgroundImage")));
-            this.button2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.button2.Location = new System.Drawing.Point(12, 173);
-            this.button2.Margin = new System.Windows.Forms.Padding(2);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(80, 109);
-            this.button2.TabIndex = 14;
-            this.button2.Text = "Прямокутник";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.CheckTableType_Click);
+            this.toolStripButtonTwoAngleLine.Click += new System.EventHandler(this.CheckArrowButtonPressed_Click);
             // 
             // buttonSelect
             // 
@@ -306,44 +292,44 @@ namespace ArrowLine
             // 
             this.toolStripGroupButtonsTable.Dock = System.Windows.Forms.DockStyle.None;
             this.toolStripGroupButtonsTable.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripButton1,
-            this.toolStripButton2,
-            this.toolStripButton3});
+            this.toolStripButtonClassTable,
+            this.toolStripButtonInterfaceTable,
+            this.toolStripButtonStackTable});
             this.toolStripGroupButtonsTable.Location = new System.Drawing.Point(14, 288);
             this.toolStripGroupButtonsTable.Name = "toolStripGroupButtonsTable";
             this.toolStripGroupButtonsTable.Size = new System.Drawing.Size(112, 25);
             this.toolStripGroupButtonsTable.TabIndex = 16;
             this.toolStripGroupButtonsTable.Text = "toolStrip1";
             // 
-            // toolStripButton1
+            // toolStripButtonClassTable
             // 
-            this.toolStripButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButton1.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton1.Image")));
-            this.toolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton1.Name = "toolStripButton1";
-            this.toolStripButton1.Size = new System.Drawing.Size(23, 22);
-            this.toolStripButton1.Text = "toolStripButton1";
-            this.toolStripButton1.Click += new System.EventHandler(this.CheckButtonPressedTable_Click);
+            this.toolStripButtonClassTable.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButtonClassTable.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButtonClassTable.Image")));
+            this.toolStripButtonClassTable.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButtonClassTable.Name = "toolStripButtonClassTable";
+            this.toolStripButtonClassTable.Size = new System.Drawing.Size(23, 22);
+            this.toolStripButtonClassTable.Text = "toolStripButtonClassTable";
+            this.toolStripButtonClassTable.Click += new System.EventHandler(this.CheckButtonPressedTable_Click);
             // 
-            // toolStripButton2
+            // toolStripButtonInterfaceTable
             // 
-            this.toolStripButton2.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButton2.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton2.Image")));
-            this.toolStripButton2.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton2.Name = "toolStripButton2";
-            this.toolStripButton2.Size = new System.Drawing.Size(23, 22);
-            this.toolStripButton2.Text = "toolStripButton2";
-            this.toolStripButton2.Click += new System.EventHandler(this.CheckButtonPressedTable_Click);
+            this.toolStripButtonInterfaceTable.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButtonInterfaceTable.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButtonInterfaceTable.Image")));
+            this.toolStripButtonInterfaceTable.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButtonInterfaceTable.Name = "toolStripButtonInterfaceTable";
+            this.toolStripButtonInterfaceTable.Size = new System.Drawing.Size(23, 22);
+            this.toolStripButtonInterfaceTable.Text = "toolStripButtonInterfaceTable";
+            this.toolStripButtonInterfaceTable.Click += new System.EventHandler(this.CheckButtonPressedTable_Click);
             // 
-            // toolStripButton3
+            // toolStripButtonStackTable
             // 
-            this.toolStripButton3.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButton3.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton3.Image")));
-            this.toolStripButton3.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton3.Name = "toolStripButton3";
-            this.toolStripButton3.Size = new System.Drawing.Size(23, 22);
-            this.toolStripButton3.Text = "toolStripButton3";
-            this.toolStripButton3.Click += new System.EventHandler(this.CheckButtonPressedTable_Click);
+            this.toolStripButtonStackTable.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButtonStackTable.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButtonStackTable.Image")));
+            this.toolStripButtonStackTable.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButtonStackTable.Name = "toolStripButtonStackTable";
+            this.toolStripButtonStackTable.Size = new System.Drawing.Size(23, 22);
+            this.toolStripButtonStackTable.Text = "toolStripButtonStackTable";
+            this.toolStripButtonStackTable.Click += new System.EventHandler(this.CheckButtonPressedTable_Click);
             // 
             // Form1
             // 
@@ -353,7 +339,6 @@ namespace ArrowLine
             this.ClientSize = new System.Drawing.Size(740, 456);
             this.Controls.Add(this.toolStripGroupButtonsTable);
             this.Controls.Add(this.buttonSelect);
-            this.Controls.Add(this.button2);
             this.Controls.Add(this.toolStripGroupButtonsArrow);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.trackBar1);
@@ -390,7 +375,6 @@ namespace ArrowLine
         private System.Windows.Forms.ToolStripButton toolStripButtonStartRhomb1;
         private System.Windows.Forms.ToolStripButton toolStripButtonEndRhombBlack;
         private System.Windows.Forms.ToolStripButton toolStripButtonStartRhombBlack;
-        private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button buttonSelect;
         public System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemAddField;
@@ -399,9 +383,9 @@ namespace ArrowLine
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemRename;
         private System.Windows.Forms.ToolStrip toolStripGroupButtonsTable;
-        private System.Windows.Forms.ToolStripButton toolStripButton1;
-        private System.Windows.Forms.ToolStripButton toolStripButton2;
-        private System.Windows.Forms.ToolStripButton toolStripButton3;
+        private System.Windows.Forms.ToolStripButton toolStripButtonClassTable;
+        private System.Windows.Forms.ToolStripButton toolStripButtonInterfaceTable;
+        private System.Windows.Forms.ToolStripButton toolStripButtonStackTable;
     }
 }
 

@@ -3,17 +3,17 @@ using System.Drawing;
 
 namespace ArrowLine.Table
 {
-    public class ClassTable : AbstractTable
+    class StackTable : AbstractTable
     {
-        public ClassTable()
-        {
-        }
-
         public override void Draw()
         {
             format.Alignment = StringAlignment.Center;
 
+            DrawBackRectangles();
+
+            singltone.Graphics.FillRectangle(new SolidBrush(Color.White), objectRectangle);
             CreateBaseRactangle();
+
             IncreaseFrame();
 
             DrawStringRectangle(font, format, title, heightStringRectangle, stepDownPoint: 10);
@@ -25,6 +25,19 @@ namespace ArrowLine.Table
             singltone.Graphics.DrawRectangle(singltone.pen, objectRectangle);
 
             format.Alignment = StringAlignment.Near;
+        }
+
+        private void DrawBackRectangles()
+        {
+            Rectangle backRectangle;
+
+            for (int i = 20; i >= 10; i-=10)
+            {
+                backRectangle = new Rectangle(startPoint.X - i, startPoint.Y - i, width, height);
+
+                singltone.Graphics.FillRectangle(new SolidBrush(Color.White), backRectangle);
+                singltone.Graphics.DrawRectangle(singltone.pen, backRectangle);
+            }
         }
 
         protected override void Resize()

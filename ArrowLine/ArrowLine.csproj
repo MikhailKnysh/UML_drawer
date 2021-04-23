@@ -87,6 +87,7 @@
     <Compile Include="InharitanceArrowFactory.cs" />
     <Compile Include="InterfaceTableFactory.cs" />
     <Compile Include="ISelection.cs" />
+    <Compile Include="StackTableFactory.cs" />
     <Compile Include="StringDataForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -114,6 +115,7 @@
     <Compile Include="Table\InterfaceTable.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Table\StackTable.cs" />
     <Compile Include="Table\StringData\Field.cs" />
     <Compile Include="Table\StringData\IDTO.cs" />
     <Compile Include="Table\StringData\Method.cs" />

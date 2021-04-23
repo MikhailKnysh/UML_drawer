@@ -10,13 +10,14 @@ namespace ArrowLine
         DataPictureBox singltone;
         string buttonName;
         bool isButtonSelectPressed = false;
+        bool isArrowButtonPressed = true;
         AbstractFigure crntFigure;
         IMouseHandler mouseHandler;
         IFigureFactory currentFactory;
         ISelection selection;
-        private StringDataForm stringDataForm;
+        //private StringDataForm stringDataForm;
         public string stringDataTable;
-        private IDTO _idto;
+        //private IDTO _idto;
 
         public Form1()
         {
@@ -37,9 +38,18 @@ namespace ArrowLine
         private void pictureBox1_MouseDown(object sender, MouseEventArgs e)
         {
             singltone.isMoving = true;
+
             if (!isButtonSelectPressed)
             {
-                ChooseArrowButton();
+                if (isArrowButtonPressed)
+                {
+                    ChooseArrowButton();
+                }
+                else
+                {
+                    ChooseTableButton();
+                }
+
                 if (e.Button == MouseButtons.Left)
                 {
                     crntFigure = currentFactory.CreateFigure();
@@ -89,9 +99,10 @@ namespace ArrowLine
             singltone.pen.Width = trackBar1.Value;
         }
 
-        private void CheckButtonPressed_Click(object sender, EventArgs e)
+        private void CheckArrowButtonPressed_Click(object sender, EventArgs e)
         {
             isButtonSelectPressed = false;
+            isArrowButtonPressed = true;
 
             ToolStripButton toolStripButton = (ToolStripButton)sender;
 
@@ -131,16 +142,20 @@ namespace ArrowLine
             }
         }
 
-        private void CheckTableType_Click(object sender, EventArgs e)
+        private void ChooseTableButton()
         {
-            Button button = (Button)sender;
-
-            isButtonSelectPressed = false;
-
-            currentFactory = new InterfaceTableFactory();
-
-            buttonName = button.Name;
-            mouseHandler = new DrawMouseHandler();
+            switch (buttonName)
+            {
+                case nameof(toolStripButtonClassTable):
+                    currentFactory = new ClassTableFactory();
+                    break;
+                case nameof(toolStripButtonInterfaceTable):
+                    currentFactory = new InterfaceTableFactory();
+                    break;
+                case nameof(toolStripButtonStackTable):
+                    currentFactory = new StackTableFactory();
+                    break;
+            }
         }
 
         private void buttonSelect_Click(object sender, EventArgs e)
@@ -183,33 +198,6 @@ namespace ArrowLine
             singltone.SetBitmap();
         }
 
-
-        private void CheckButtonPressedTable_Click(object sender, EventArgs e)
-        {
-            ToolStripButton toolStripButton = (ToolStripButton)sender;
-
-            isButtonSelectPressed = false;
-
-            toolStripGroupButtonsTable.BackgroundImage = toolStripButton.BackgroundImage;
-            buttonName = toolStripButton.Name;
-            mouseHandler = new DrawMouseHandler();
-        }
-        private void ChooseTableButton()
-        {
-            switch (buttonName)
-            {
-                case nameof(toolStripButtonCloseArrow):
-                    currentFactory = new ClassTableFactory();
-                    break;
-                case nameof(toolStripButtonEndRhomb):
-                    currentFactory = new InterfaceTableFactory();
-                    break;
-               /* case nameof(toolStripButtonEndRhombBlack):
-                    currentFactory = new CompositionEndArrowFactory();
-                    break;*/
-               
-            }
-        }
         private void toolStripMenuItemRename_Click(object sender, EventArgs e)
         {
             singltone.UpdateTmpBitmap();
@@ -222,34 +210,16 @@ namespace ArrowLine
             singltone.SetBitmap();
         }
 
-
-        private void toolStripButton1_Click(object sender, EventArgs e)
+        private void CheckButtonPressedTable_Click(object sender, EventArgs e)
         {
             ToolStripButton toolStripButton = (ToolStripButton)sender;
 
             isButtonSelectPressed = false;
+            isArrowButtonPressed = false;
 
             toolStripGroupButtonsTable.BackgroundImage = toolStripButton.BackgroundImage;
             buttonName = toolStripButton.Name;
             mouseHandler = new DrawMouseHandler();
-            currentFactory = new ClassTableFactory();
-        }
-
-        private void toolStripButton2_Click(object sender, EventArgs e)
-        {
-            ToolStripButton toolStripButton = (ToolStripButton)sender;
-
-            isButtonSelectPressed = false;
-
-            toolStripGroupButtonsTable.BackgroundImage = toolStripButton.BackgroundImage;
-            buttonName = toolStripButton.Name;
-            mouseHandler = new DrawMouseHandler();
-            currentFactory = new InterfaceTableFactory();
-        }
-
-        private void toolStripButton3_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }

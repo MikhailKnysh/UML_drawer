@@ -33,7 +33,7 @@ namespace ArrowLine
             format = new StringFormat();
             whitePen = new Pen(Color.White, singltone.pen.Width);////////////////
             solidBrush = new SolidBrush(Color.Black);//////Pen.Color
-            blackPen = new Pen(Color.Black, 1);////////////////
+            blackPen = new Pen(singltone.pen.Color, singltone.pen.Width);
             linesInTable = new List<LineInTable>();
             fields = new List<string>();
             fieldRectangles = new List<Rectangle>();

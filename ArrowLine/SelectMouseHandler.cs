@@ -80,8 +80,8 @@ namespace ArrowLine
                             foreach (AbstractFigure item in selectionObject)
                             {
                                 item.Move(e.X - tmpPoint.X, e.Y - tmpPoint.Y);
-                                item.ReDrawRectangleBody();
                                 item.Draw();
+                                item.ReDrawRectangleBody();
                             }
                         }
 
