@@ -46,7 +46,8 @@ namespace ArrowLine
         public virtual void AddMethod()
         { }
 
-        public virtual void ReDrawRectangleBody() { }
+        public virtual void ReDrawRectangleBody()
+        { }
         
 
         public void Move(int deltaX, int deltaY)

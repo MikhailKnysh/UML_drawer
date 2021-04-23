@@ -21,7 +21,7 @@ namespace ArrowLine
         protected List<LineInTable> linesInTable;
         public Rectangle objectRectangle;
         protected Rectangle stringRectangle;
-        public List<Rectangle> highlightRectangles = new List<Rectangle>();
+        public List<Rectangle> highlightRectangles = new List<Rectangle>();//???
         public Font font;
         public StringFormat format;
         public Pen whitePen;

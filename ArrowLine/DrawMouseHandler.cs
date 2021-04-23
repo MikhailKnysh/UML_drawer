@@ -31,7 +31,7 @@ namespace ArrowLine
                                 }
                                 else
                                 {
-                                    
+                                    currentFigure = null;
                                 }
                             }
                         }
@@ -64,7 +64,7 @@ namespace ArrowLine
 
         public void OnMouseUp(AbstractFigure currentFigure, MouseEventArgs e)
         {
-            if (currentFigure != null && e.Button == MouseButtons.Left)
+            if (currentFigure != null && e.Button == MouseButtons.Left && currentFigure.startPoint.X != 0 && currentFigure.startPoint.Y != 0)
             {
                 singltone.tables.Add(currentFigure);
             }
@@ -73,7 +73,9 @@ namespace ArrowLine
         public void OnPaint(AbstractFigure currentFigure, PaintEventArgs e)
         {
             if(currentFigure.startPoint.X != 0 && currentFigure.startPoint.Y != 0)
+            {
                 currentFigure.Draw();
+            }
 
             
         }
