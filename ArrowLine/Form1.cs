@@ -15,7 +15,6 @@ namespace ArrowLine
         IFigureFactory currentFactory;
         public string stringDataTable;
 
-
         public Form1()
         {
             InitializeComponent();
