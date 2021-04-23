@@ -58,8 +58,13 @@ namespace ArrowLine
 
         private void pictureBox1_MouseMove(object sender, MouseEventArgs e)
         {
+            if(e.Button == MouseButtons.Right)
+            {
+
+            }
             singltone.UpdateTmpBitmap();
             mouseHandler.OnMouseMove(crntFigure, e);
+            
             singltone.UpdatePictureBox();
         }
 

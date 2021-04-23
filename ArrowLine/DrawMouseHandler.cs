@@ -8,6 +8,7 @@ namespace ArrowLine
     public class DrawMouseHandler : IMouseHandler
     {
         public bool isArrow;
+
         public DataPictureBox singltone = DataPictureBox.GetInstance();
         private IDTO _idto;
 
@@ -19,6 +20,7 @@ namespace ArrowLine
                     {
                         if (currentFigure.Type == FigureType.Arrow)
                         {
+                            bool result = false;
                             foreach (var item in singltone.tables)
                             {
                                 if (item.Type == FigureType.Table)
@@ -26,14 +28,19 @@ namespace ArrowLine
                                     var rectangle = item as AbstractTable;
                                     if (rectangle.Contain(e.Location))
                                     {
+                                        result = true;
                                         currentFigure.startPoint = item.startPoint;
+                                        return;
                                     }
+                                    
                                 }
-                                else
-                                {
-                                    currentFigure = null;
-                                }
+                                
                             }
+                            if (!result)
+                            {
+                                return;
+                            }
+
                         }
                         else
                         {
@@ -64,7 +71,7 @@ namespace ArrowLine
 
         public void OnMouseUp(AbstractFigure currentFigure, MouseEventArgs e)
         {
-            if (currentFigure != null && e.Button == MouseButtons.Left && currentFigure.startPoint.X != 0 && currentFigure.startPoint.Y != 0)
+            if (currentFigure != null && e.Button == MouseButtons.Left && !(currentFigure.startPoint.IsEmpty) && !(currentFigure.endPoint.IsEmpty))
             {
                 singltone.tables.Add(currentFigure);
             }
@@ -72,12 +79,12 @@ namespace ArrowLine
 
         public void OnPaint(AbstractFigure currentFigure, PaintEventArgs e)
         {
-            if(currentFigure.startPoint.X != 0 && currentFigure.startPoint.Y != 0)
+            if (!(currentFigure.startPoint.IsEmpty) && !(currentFigure.endPoint.IsEmpty))
             {
                 currentFigure.Draw();
             }
 
-            
+
         }
 
         public IDTO OnToolStripMenuItemAddField_Click(StringDataForm stringDataForm)

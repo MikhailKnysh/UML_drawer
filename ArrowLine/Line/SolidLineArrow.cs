@@ -4,6 +4,7 @@ namespace ArrowLine.Line
 {
     public class SolidLineArrow : AbstractLine
     {
+        
         public SolidLineArrow(Point startPoint, Point endPoint)
         {
             this.startPoint = startPoint;
