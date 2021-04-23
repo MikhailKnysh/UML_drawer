@@ -183,6 +183,33 @@ namespace ArrowLine
             singltone.SetBitmap();
         }
 
+
+        private void CheckButtonPressedTable_Click(object sender, EventArgs e)
+        {
+            ToolStripButton toolStripButton = (ToolStripButton)sender;
+
+            isButtonSelectPressed = false;
+
+            toolStripGroupButtonsTable.BackgroundImage = toolStripButton.BackgroundImage;
+            buttonName = toolStripButton.Name;
+            mouseHandler = new DrawMouseHandler();
+        }
+        private void ChooseTableButton()
+        {
+            switch (buttonName)
+            {
+                case nameof(toolStripButtonCloseArrow):
+                    currentFactory = new ClassTableFactory();
+                    break;
+                case nameof(toolStripButtonEndRhomb):
+                    currentFactory = new InterfaceTableFactory();
+                    break;
+               /* case nameof(toolStripButtonEndRhombBlack):
+                    currentFactory = new CompositionEndArrowFactory();
+                    break;*/
+               
+            }
+        }
         private void toolStripMenuItemRename_Click(object sender, EventArgs e)
         {
             singltone.UpdateTmpBitmap();
@@ -194,6 +221,7 @@ namespace ArrowLine
 
             singltone.SetBitmap();
         }
+
 
         private void toolStripButton1_Click(object sender, EventArgs e)
         {

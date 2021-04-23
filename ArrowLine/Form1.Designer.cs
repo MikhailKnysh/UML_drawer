@@ -311,7 +311,7 @@ namespace ArrowLine
             this.toolStripButton3});
             this.toolStripGroupButtonsTable.Location = new System.Drawing.Point(14, 288);
             this.toolStripGroupButtonsTable.Name = "toolStripGroupButtonsTable";
-            this.toolStripGroupButtonsTable.Size = new System.Drawing.Size(81, 25);
+            this.toolStripGroupButtonsTable.Size = new System.Drawing.Size(112, 25);
             this.toolStripGroupButtonsTable.TabIndex = 16;
             this.toolStripGroupButtonsTable.Text = "toolStrip1";
             // 
@@ -323,7 +323,7 @@ namespace ArrowLine
             this.toolStripButton1.Name = "toolStripButton1";
             this.toolStripButton1.Size = new System.Drawing.Size(23, 22);
             this.toolStripButton1.Text = "toolStripButton1";
-            this.toolStripButton1.Click += new System.EventHandler(this.toolStripButton1_Click);
+            this.toolStripButton1.Click += new System.EventHandler(this.CheckButtonPressedTable_Click);
             // 
             // toolStripButton2
             // 
@@ -333,7 +333,7 @@ namespace ArrowLine
             this.toolStripButton2.Name = "toolStripButton2";
             this.toolStripButton2.Size = new System.Drawing.Size(23, 22);
             this.toolStripButton2.Text = "toolStripButton2";
-            this.toolStripButton2.Click += new System.EventHandler(this.toolStripButton2_Click);
+            this.toolStripButton2.Click += new System.EventHandler(this.CheckButtonPressedTable_Click);
             // 
             // toolStripButton3
             // 
@@ -343,7 +343,7 @@ namespace ArrowLine
             this.toolStripButton3.Name = "toolStripButton3";
             this.toolStripButton3.Size = new System.Drawing.Size(23, 22);
             this.toolStripButton3.Text = "toolStripButton3";
-            this.toolStripButton3.Click += new System.EventHandler(this.toolStripButton3_Click);
+            this.toolStripButton3.Click += new System.EventHandler(this.CheckButtonPressedTable_Click);
             // 
             // Form1
             // 
