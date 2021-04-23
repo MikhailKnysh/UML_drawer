@@ -7,6 +7,10 @@ namespace ArrowLine.Arrow
 {
     class CompositionStartArrow : AbstractFigure
     {
+        public CompositionStartArrow(FigureType type)
+        {
+            Type = type;
+        }
         public override void Draw()
         {
             Delta();

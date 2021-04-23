@@ -1,4 +1,5 @@
-﻿using System.Drawing;
+﻿using System.Collections.Generic;
+using System.Drawing;
 using System.Windows.Forms;
 using ArrowLine.Table.StringData;
 
@@ -16,8 +17,31 @@ namespace ArrowLine
             {
                 case MouseButtons.Left:
                     {
-                        currentFigure.startPoint = e.Location;
-                        currentFigure.endPoint = e.Location;
+                        if (currentFigure.Type == FigureType.Arrow)
+                        {
+                            foreach (var item in singltone.tables)
+                            {
+                                if (item.Type == FigureType.Table)
+                                {
+                                    var rectangle = item as AbstractTable;
+                                    if (rectangle.Contain(e.Location))
+                                    {
+                                        currentFigure.startPoint = item.startPoint;
+                                    }
+                                }
+                                else
+                                {
+                                    
+                                }
+                            }
+                        }
+                        else
+                        {
+                            currentFigure.startPoint = e.Location;
+                            currentFigure.endPoint = e.Location;
+
+                        }
+                        
                     }
                     break;
                 case MouseButtons.Right:
@@ -48,7 +72,10 @@ namespace ArrowLine
 
         public void OnPaint(AbstractFigure currentFigure, PaintEventArgs e)
         {
-            currentFigure.Draw();
+            if(currentFigure.startPoint.X != 0 && currentFigure.startPoint.Y != 0)
+                currentFigure.Draw();
+
+            
         }
 
         public IDTO OnToolStripMenuItemAddField_Click(StringDataForm stringDataForm)
@@ -57,5 +84,26 @@ namespace ArrowLine
             _idto = stringDataForm.Create();
             return _idto;
         }
+
+
+        //public bool DrawArrow(Point pt)
+        //{
+        //    foreach (var item in singltone.tables)
+        //    {
+        //        if (item is AbstractTable)
+        //        {
+        //            var rectangle = item as AbstractTable;
+        //            if (rectangle.Contain(pt))
+        //            {
+        //                return true;
+        //            }
+
+        //        }
+        //    }
+        //    return false;
+        //}
+
+
+
     }
 }

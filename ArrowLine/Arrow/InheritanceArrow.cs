@@ -7,6 +7,10 @@ namespace ArrowLine.Arrow
 {
     class InheritanceArrow : AbstractFigure
     {
+        public InheritanceArrow(FigureType type)
+        {
+            Type = type;
+        }
         public override void Draw()
         {
             Delta();

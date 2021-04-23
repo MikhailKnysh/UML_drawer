@@ -11,7 +11,7 @@ namespace ArrowLine
     {
         public AbstractFigure CreateFigure()
         {
-            return new InheritanceArrow();
+            return new InheritanceArrow(FigureType.Arrow);
         }
     }
 }

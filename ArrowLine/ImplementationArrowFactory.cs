@@ -12,7 +12,7 @@ namespace ArrowLine
     {
         public AbstractFigure CreateFigure()
         {
-            return new ImplementationArrow();
+            return new ImplementationArrow(FigureType.Arrow);
         }
     }
 }

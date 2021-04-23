@@ -8,6 +8,10 @@ namespace ArrowLine.Arrow
 {
     public class ImplementationArrow : AbstractFigure
     {
+        public ImplementationArrow(FigureType type)
+        {
+            Type = type;
+        }
         public override void Draw()
         {
             Delta();

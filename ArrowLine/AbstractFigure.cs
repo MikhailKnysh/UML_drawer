@@ -3,30 +3,23 @@ using System.Drawing;
 
 namespace ArrowLine
 {
-    //make as interface
+
+    public enum FigureType
+    {
+        Arrow,
+        Table
+    }
 
     public abstract class AbstractFigure : IMoveable1
     {
         public DataPictureBox singltone = DataPictureBox.GetInstance();
         public Point startPoint { get; set; }
         public Point endPoint { get; set; }
-        //public Point endPoint
-        //{
-        //    get
-        //    {
-        //        return _endPoint;
-        //    }
-        //    set
-        //    {
-        //        _endPoint = value;
-        //    }
-        //}
-
-        //private Point _endPoint;
+        
         public int width = 140;
         public int height = 60;
         public string stringDataTable;
-
+        public FigureType Type { get; set; }
         public bool Selected { get; set; }
         public bool IsArrow { get; set; }
 
@@ -37,12 +30,10 @@ namespace ArrowLine
             if (Math.Abs(startPoint.X - endPoint.X) < 20)
             {
                 endPoint = new Point(startPoint.X, endPoint.Y);
-                //endPoint.X = startPoint.X;
             }
             else if (Math.Abs(startPoint.Y - endPoint.Y) < 20)
             {
                 endPoint = new Point(endPoint.X, startPoint.Y);
-                //endPoint.Y = startPoint.Y;
             }
         }
 

@@ -7,6 +7,10 @@ namespace ArrowLine.Arrow
 {
     class AgregationStartArrow : AbstractFigure
     {
+        public AgregationStartArrow(FigureType type)
+        {
+            Type = type;
+        }
         public override void Draw()
         {
             Delta();

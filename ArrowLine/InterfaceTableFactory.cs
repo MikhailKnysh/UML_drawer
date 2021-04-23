@@ -11,7 +11,7 @@ namespace ArrowLine
     {
         public AbstractFigure CreateFigure()
         {
-            return new InterfaceTable();
+            return new InterfaceTable(FigureType.Table);
         }
     }
 }

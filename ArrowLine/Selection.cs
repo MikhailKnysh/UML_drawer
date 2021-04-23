@@ -8,11 +8,7 @@ namespace ArrowLine
     {
         public DataPictureBox singltone = DataPictureBox.GetInstance();
 
-        //public override void Draw()
-        //{
-        //    throw new NotImplementedException();
-        //}
-
+   
         public bool HitTest(Point pt)
         {
             foreach (AbstractFigure item in singltone.tables)

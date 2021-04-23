@@ -5,9 +5,9 @@ namespace ArrowLine.Table
 {
     public class InterfaceTable : AbstractTable
     {
-        public InterfaceTable()
+        public InterfaceTable(FigureType type)
         {
-           
+            Type = type;
         }
 
 

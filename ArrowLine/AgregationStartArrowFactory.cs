@@ -1,9 +1,4 @@
 ﻿using ArrowLine.Arrow;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ArrowLine
 {
@@ -11,7 +6,7 @@ namespace ArrowLine
     {
         public AbstractFigure CreateFigure()
         {
-            return new AgregationStartArrow();
+            return new AgregationStartArrow(FigureType.Arrow);
         }
     }
 }

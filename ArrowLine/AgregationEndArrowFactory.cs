@@ -11,7 +11,7 @@ namespace ArrowLine
     {
         public AbstractFigure CreateFigure()
         {
-            return new AgregationEndArrow();
+            return new AgregationEndArrow(FigureType.Arrow);
         }
     }
 }

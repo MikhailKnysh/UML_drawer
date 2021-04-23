@@ -52,6 +52,32 @@ namespace ArrowLine
             }
         }
 
+        private List<Rectangle> RectanglesPoint(AbstractFigure objectRectangle)
+        {
+            return new List<Rectangle>()
+            {
+
+
+                new Rectangle(objectRectangle.startPoint.X + objectRectangle.width/2 - 8, objectRectangle.startPoint.Y - 15, 15, 15),
+                new Rectangle(objectRectangle.startPoint.X - 15, objectRectangle.startPoint.Y + objectRectangle.height/2 - 8, 15, 15),
+                new Rectangle(objectRectangle.startPoint.X + objectRectangle.width/2 - 8, objectRectangle.startPoint.Y + objectRectangle.height , 15, 15 ),
+                new Rectangle(objectRectangle.startPoint.X + objectRectangle.width , objectRectangle.startPoint.Y + objectRectangle.height/2 - 8, 15, 15)
+
+            };
+        }
+
+        public bool Contain(Point pt)
+        {
+            foreach(var item in RectanglesPoint(this))
+            {
+                if (item.Contains(pt))
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+
         public void CreateBaseRactangle()
         {
             objectRectangle = new Rectangle(startPoint.X, startPoint.Y, width, height);

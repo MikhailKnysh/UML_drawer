@@ -1,8 +1,5 @@
 ﻿using ArrowLine.Line;
-using ArrowLine.Table.StringData;
 using System;
-using System.Collections.Generic;
-using System.Drawing;
 using System.Windows.Forms;
 
 namespace ArrowLine
@@ -11,7 +8,6 @@ namespace ArrowLine
     {
         DataPictureBox singltone;
         string buttonName;
-        Pen pen;
         bool isButtonSelectPressed = false;
         AbstractFigure crntFigure;
         IMouseHandler mouseHandler;
