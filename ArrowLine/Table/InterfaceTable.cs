@@ -22,7 +22,7 @@ namespace ArrowLine.Table
             {
                 singltone.Graphics.FillRectangle(Brushes.Red, item);
             }
-            singltone.Graphics.DrawRectangle(singltone.pen, objectRectangle);
+            singltone.Graphics.DrawRectangle(pen, objectRectangle);
         }
        
 

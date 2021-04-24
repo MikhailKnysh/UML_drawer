@@ -3,6 +3,7 @@ using System;
 using System.Windows.Forms;
 using Newtonsoft.Json;
 using System.Collections.Generic;
+using System.Drawing;
 
 namespace ArrowLine
 {
@@ -81,12 +82,13 @@ namespace ArrowLine
 
         private void ButtonColor_Click(object sender, EventArgs e)
         {
+            
             Button btnColor = sender as Button;
 
             if (colorDialog1.ShowDialog() == DialogResult.OK)
             {
-                btnColor.BackColor = colorDialog1.Color;
-                singltone.pen.Color = colorDialog1.Color;
+                //btnColor.BackColor = colorDialog1.Color;
+                //en.Color = colorDialog1.Color;
 
             }
 
@@ -94,7 +96,8 @@ namespace ArrowLine
 
         private void trackbar1_Scroll(object sender, EventArgs e)
         {
-            singltone.pen.Width = trackBar1.Value;
+            //crntFigure.pen =   new Pen(singltone.Color, singltone.PenWidth);
+            //crntFigure.pen.Width = trackBar1.Value;
         }
 
         private void CheckButtonPressed_Click(object sender, EventArgs e)

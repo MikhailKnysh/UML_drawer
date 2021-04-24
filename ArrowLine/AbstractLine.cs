@@ -4,7 +4,7 @@ namespace ArrowLine
 {
     public abstract class AbstractLine : AbstractFigure
     {
-
+        
         public virtual Point[] CreateArrowLine()
         {
             return new Point[] {

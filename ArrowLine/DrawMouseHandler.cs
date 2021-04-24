@@ -81,6 +81,7 @@ namespace ArrowLine
         {
             if (!(currentFigure.startPoint.IsEmpty) && !(currentFigure.endPoint.IsEmpty))
             {
+                
                 currentFigure.Draw();
             }
 

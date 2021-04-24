@@ -67,9 +67,9 @@ namespace ArrowLine.CapArrow
 
         public override void Draw()
         {
-            SolidBrush shadowBrush = new SolidBrush(singltone.pen.Color);
+            SolidBrush shadowBrush = new SolidBrush(pen.Color);
 
-            singltone.Graphics.DrawPolygon(singltone.pen, CreateArrowObject());
+            singltone.Graphics.DrawPolygon(pen, CreateArrowObject());
             singltone.Graphics.FillPolygon(shadowBrush, CreateArrowObject());
         }
     }

@@ -24,7 +24,7 @@ namespace ArrowLine.Line
 
         public override void Draw()
         {
-            singltone.Graphics.DrawLines(singltone.pen, CreateArrowLine());
+            singltone.Graphics.DrawLines(pen, CreateArrowLine());
         }
     }
 }

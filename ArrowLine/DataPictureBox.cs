@@ -8,7 +8,7 @@ namespace ArrowLine
     {
         private static DataPictureBox _instance;
         public Graphics Graphics { get; set; }
-        protected Pen pen;
+        //protected Pen pen;
         private PictureBox _pictureBox;
         private Bitmap _bitmap;
         private Bitmap _tmpbitmap;
@@ -33,7 +33,7 @@ namespace ArrowLine
 
         public void SetPictureBox(PictureBox pictureBox1)
         {
-            pen = new Pen(Color.Black, 2);
+            //pen = new Pen(Color.Black, 2);
             _pictureBox = pictureBox1;
             _bitmap = new Bitmap(_pictureBox.Width, _pictureBox.Height);
             _tmpbitmap = (Bitmap)_bitmap.Clone();

@@ -6,6 +6,7 @@ namespace ArrowLine
 {
     public abstract class AbstractTable : AbstractFigure
     {
+        
         protected TextBox title;
         protected int heightStringRectangle = 20;
         protected int stepDownLine = 20;
@@ -30,6 +31,7 @@ namespace ArrowLine
 
         public AbstractTable()
         {
+            pen = new Pen(Color.Black, 2);
             font = new Font("Arial", 12, FontStyle.Regular);
             format = new StringFormat();
             whitePen = new Pen(Color.White, 3);////////////////
@@ -111,7 +113,7 @@ namespace ArrowLine
             height += heightStringRectangle;
             objectRectangle.Height += heightStringRectangle;
             height += 20;
-            singltone.Graphics.DrawRectangle(singltone.pen, objectRectangle);
+            singltone.Graphics.DrawRectangle(pen, objectRectangle);
 
             DrawHorizontalLine(lineIndex: 1, stepDownFieldPoint + 1);
         }
@@ -138,7 +140,7 @@ namespace ArrowLine
             height += heightStringRectangle;
             objectRectangle.Height += heightStringRectangle;
             height += 20;
-            singltone.Graphics.DrawRectangle(singltone.pen, objectRectangle);
+            singltone.Graphics.DrawRectangle(pen, objectRectangle);
 
             DrawHorizontalLine(lineIndex: 2, stepDownPropertyPoint + 1);
         }
@@ -158,7 +160,7 @@ namespace ArrowLine
             height += heightStringRectangle;
             objectRectangle.Height += heightStringRectangle;
             height += 20;
-            singltone.Graphics.DrawRectangle(singltone.pen, objectRectangle);
+            singltone.Graphics.DrawRectangle(pen, objectRectangle);
         }
 
         protected abstract void Resize();
@@ -232,7 +234,7 @@ namespace ArrowLine
             linesInTable[lineIndex]._startLinePoint.Y = startPoint.Y + stepDownPoint + heightStringRectangle;
             linesInTable[lineIndex]._endLinePoint.X = startPoint.X + width;
             linesInTable[lineIndex]._endLinePoint.Y = startPoint.Y + stepDownPoint + heightStringRectangle;
-            singltone.Graphics.DrawLine(singltone.pen, linesInTable[lineIndex]._startLinePoint, linesInTable[lineIndex]._endLinePoint);
+            singltone.Graphics.DrawLine(pen , linesInTable[lineIndex]._startLinePoint, linesInTable[lineIndex]._endLinePoint);
         }
 
 

@@ -12,8 +12,9 @@ namespace ArrowLine.Line
         }
         public override void Draw()
         {
-            singltone.pen.DashStyle = DashStyle.Dash;
-            singltone.Graphics.DrawLines(singltone.pen, CreateArrowLine());
+            Pen pen = new Pen(singltone.Color, singltone.PenWidth);
+            pen.DashStyle = DashStyle.Dash;
+            singltone.Graphics.DrawLines(pen, CreateArrowLine());
         }
     }
 }

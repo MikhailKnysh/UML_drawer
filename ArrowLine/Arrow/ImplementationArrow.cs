@@ -14,6 +14,7 @@ namespace ArrowLine.Arrow
         }
         public override void Draw()
         {
+            Pen pen = new Pen(singltone.Color, singltone.PenWidth);
             Delta();
 
             AbstractArrowCap arrowCap = new CloseCapArrow(startPoint, endPoint);
@@ -21,7 +22,7 @@ namespace ArrowLine.Arrow
 
             AbstractLine line = new DashLineArrow(startPoint, endPoint);
             line.Draw();
-            singltone.pen.DashStyle = DashStyle.Solid;
+            pen.DashStyle = DashStyle.Solid;
         }
     }
 }
