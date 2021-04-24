@@ -5,8 +5,8 @@ using System.Drawing.Imaging;
 using System.Windows.Forms;
 using Newtonsoft.Json;
 using System.Collections.Generic;
-using System.Drawing;
 using ArrowLine.Handler;
+using ArrowLine.Abstract;
 //using ArrowLine.Selection;
 
 namespace ArrowLine
@@ -31,7 +31,7 @@ namespace ArrowLine
         {
             singltone = DataPictureBox.GetInstance();
             singltone.SetPictureBox(pictureBox1);
-            singltone.InitialList();
+            CollectionFigure.tables = new List<AbstractFigure>();
             currentFactory = new InterfaceTableFactory();
             crntFigure = currentFactory.CreateFigure();
             singltone.isMoving = false;
@@ -95,8 +95,8 @@ namespace ArrowLine
 
             if (colorDialog1.ShowDialog() == DialogResult.OK)
             {
-                //btnColor.BackColor = colorDialog1.Color;
-                //crntFigure.pen.Color = colorDialog1.Color;
+                btnColor.BackColor = colorDialog1.Color;
+                GraficPictureBox.pen.Color = colorDialog1.Color;
 
             }
 
@@ -104,8 +104,8 @@ namespace ArrowLine
 
         private void trackbar1_Scroll(object sender, EventArgs e)
         {
-            //crntFigure.pen = new Pen(singltone.Color, singltone.PenWidth);
-            //crntFigure.pen.Width = trackBar1.Value;
+            GraficPictureBox.pen = GraficPictureBox.pen;
+            GraficPictureBox.pen.Width = trackBar1.Value;
         }
 
         private void CheckArrowButtonPressed_Click(object sender, EventArgs e)
@@ -176,11 +176,11 @@ namespace ArrowLine
         private void toolStripMenuItemAddField_Click(object sender, EventArgs e)
         {
             singltone.UpdateTmpBitmap();
-
-            crntFigure.stringDataTable = mouseHandler.OnToolStripMenuItemAddStringDataTable_Click(
+            var figure = crntFigure as AbstractTable;
+            figure.stringDataTable = mouseHandler.OnToolStripMenuItemAddStringDataTable_Click(
                 new StringDataForm(labelData: "Field")).ToString();
 
-            crntFigure.AddField();
+            figure.AddField();
 
 
             singltone.SetBitmap();
@@ -189,10 +189,11 @@ namespace ArrowLine
         private void toolStripMenuItemAddProperty_Click(object sender, EventArgs e)
         {
             singltone.UpdateTmpBitmap();
-            crntFigure.stringDataTable = mouseHandler.OnToolStripMenuItemAddStringDataTable_Click(
+            var figure = crntFigure as AbstractTable;
+            figure.stringDataTable = mouseHandler.OnToolStripMenuItemAddStringDataTable_Click(
                new StringDataForm(labelData: "Property")).ToString();
 
-            crntFigure.AddProperty();
+            figure.AddProperty();
 
             singltone.SetBitmap();
         }
@@ -200,10 +201,11 @@ namespace ArrowLine
         private void toolStripMenuItemAddMethod_Click(object sender, EventArgs e)
         {
             singltone.UpdateTmpBitmap();
-            crntFigure.stringDataTable = mouseHandler.OnToolStripMenuItemAddStringDataTable_Click(
+            var figure = crntFigure as AbstractTable;
+            figure.stringDataTable = mouseHandler.OnToolStripMenuItemAddStringDataTable_Click(
               new StringDataForm(labelData: "Method")).ToString();
 
-            crntFigure.AddMethod();
+            figure.AddMethod();
 
             singltone.SetBitmap();
         }
@@ -211,8 +213,8 @@ namespace ArrowLine
         private void toolStripMenuItemRename_Click(object sender, EventArgs e)
         {
             singltone.UpdateTmpBitmap();
-
-            crntFigure.title = mouseHandler.OnToolStripMenuItemAddStringDataTable_Click(
+            var figure = crntFigure as AbstractTable;
+            figure.title = mouseHandler.OnToolStripMenuItemAddStringDataTable_Click(
                 new StringDataForm(labelData: "Title")).ToString();
 
             crntFigure.Draw();
@@ -242,7 +244,7 @@ namespace ArrowLine
 
         private string SerializeFile()
         {
-            string fileData = JsonConvert.SerializeObject(singltone.tables, Formatting.Indented,
+            string fileData = JsonConvert.SerializeObject(CollectionFigure.tables, Formatting.Indented,
                  new JsonSerializerSettings
                  {
                      TypeNameHandling = TypeNameHandling.All
@@ -263,12 +265,13 @@ namespace ArrowLine
         {
             if (fileData != String.Empty)
             {
-                singltone.tables = JsonConvert.DeserializeObject<List<AbstractFigure>>(fileData,
+                CollectionFigure.tables = JsonConvert.DeserializeObject<List<AbstractFigure>>(fileData,
                     new JsonSerializerSettings
                     {
                         TypeNameHandling = TypeNameHandling.All
                     });
             }
+            
         }
 
         private void buttonSaveImage_Click(object sender, EventArgs e)

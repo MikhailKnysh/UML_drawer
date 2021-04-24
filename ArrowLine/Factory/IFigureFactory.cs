@@ -1,4 +1,6 @@
-﻿namespace ArrowLine
+﻿using System.Drawing;
+
+namespace ArrowLine
 {
     public interface IFigureFactory
     {

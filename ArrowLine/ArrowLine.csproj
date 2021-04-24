@@ -62,6 +62,7 @@
     <Compile Include="Abstract\AbstractTable.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="CollectionFigure.cs" />
     <Compile Include="Factory\AgregationEndArrowFactory.cs" />
     <Compile Include="Factory\AgregationStartArrowFactory.cs" />
     <Compile Include="Arrow\AgregationEndArrow.cs" />
@@ -81,19 +82,17 @@
     <Compile Include="Factory\ClassTableFactory.cs" />
     <Compile Include="Factory\CompositionEndArrowFactory.cs" />
     <Compile Include="Factory\CompositionStartArrowFactory.cs" />
-    <Compile Include="DataObjects.cs" />
+    <Compile Include="GraficPictureBox.cs" />
     <Compile Include="Handler\DrawArrowMouseHandler.cs" />
     <Compile Include="Factory\IFigureFactory.cs" />
     <Compile Include="Handler\DrawRectangleHandler.cs" />
     <Compile Include="Handler\IMouseHandler.cs" />
-    <Compile Include="IMoveable1.cs" />
     <Compile Include="SaveAndLoadProject.cs" />
     <Compile Include="Factory\ImplementationArrowFactory.cs" />
     <Compile Include="Factory\InharitanceArrowFactory.cs" />
     <Compile Include="Factory\InterfaceTableFactory.cs" />
     <Compile Include="Selection\ISelection.cs" />
     <Compile Include="Factory\StackTableFactory.cs" />
-    <Compile Include="Handler\MoveMouseHandler.cs" />
     <Compile Include="StringDataForm.cs">
       <SubType>Form</SubType>
     </Compile>

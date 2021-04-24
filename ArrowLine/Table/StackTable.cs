@@ -16,7 +16,7 @@ namespace ArrowLine.Table
 
             DrawBackRectangles();
 
-            singltone.Graphics.FillRectangle(new SolidBrush(Color.White), objectRectangle);
+            GraficPictureBox.Graphics.FillRectangle(new SolidBrush(Color.White), objectRectangle);
             CreateBaseRactangle();
 
             IncreaseFrame();
@@ -27,7 +27,7 @@ namespace ArrowLine.Table
 
             DrawHorizontalLine(lineIndex: 0, stepDownLine - 2);
 
-            singltone.Graphics.DrawRectangle(pen, objectRectangle);
+            GraficPictureBox.Graphics.DrawRectangle(pen, objectRectangle);
 
             DrawKnots();
 
@@ -42,8 +42,8 @@ namespace ArrowLine.Table
             {
                 backRectangle = new Rectangle(startPoint.X - i, startPoint.Y - i, width, height);
 
-                singltone.Graphics.FillRectangle(new SolidBrush(Color.White), backRectangle);
-                singltone.Graphics.DrawRectangle(pen, backRectangle);
+                GraficPictureBox.Graphics.FillRectangle(new SolidBrush(Color.White), backRectangle);
+                GraficPictureBox.Graphics.DrawRectangle(pen, backRectangle);
             }
         }
     }

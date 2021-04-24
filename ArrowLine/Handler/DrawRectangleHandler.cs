@@ -1,4 +1,5 @@
-﻿using ArrowLine.Table.StringData;
+﻿using ArrowLine.Abstract;
+using ArrowLine.Table.StringData;
 using System.Drawing;
 using System.Windows.Forms;
 
@@ -35,7 +36,7 @@ namespace ArrowLine.Handler
         {
             if (currentFigure != null && e.Button == MouseButtons.Left)
             {
-                singltone.tables.Add(currentFigure);
+                CollectionFigure.tables.Add(currentFigure);
             }
         }
 

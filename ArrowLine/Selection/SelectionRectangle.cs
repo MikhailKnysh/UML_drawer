@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ArrowLine.Abstract;
+using System;
 using System.Collections.Generic;
 using System.Drawing;
 
@@ -12,12 +13,13 @@ namespace ArrowLine
 
         public bool HitTest(Point point)
         {
-            foreach (AbstractFigure item in singltone.tables)
+            foreach (AbstractFigure item in CollectionFigure.tables)
             {
                 if (item.Type == FigureType.Table)
                 {
-                    if (point.X > item.startPoint.X && point.X < item.startPoint.X + item.width
-                        && point.Y > item.startPoint.Y && point.Y < item.startPoint.Y + item.height && (item is AbstractTable))
+                    var itemRec = item as AbstractTable;
+                    if (point.X > itemRec.startPoint.X && point.X < itemRec.startPoint.X + itemRec.width
+                        && point.Y > itemRec.startPoint.Y && point.Y < itemRec.startPoint.Y + itemRec.height)
                     {
                         item.Selected = true;
                         return true;
@@ -46,11 +48,12 @@ namespace ArrowLine
         public bool HitTest(Rectangle rectangle)
         {
 
-            foreach (AbstractFigure item in singltone.tables)
+            foreach (AbstractFigure item in CollectionFigure.tables)
             {
                 if (item.Type == FigureType.Table)
                 {
-                    if (rectangle.Contains(new Rectangle(item.startPoint.X, item.startPoint.Y, item.width, item.height)) && (item is AbstractTable))
+                    var itemRec = item as AbstractTable;
+                    if (rectangle.Contains(new Rectangle(itemRec.startPoint.X, itemRec.startPoint.Y, itemRec.width, itemRec.height)))
                     {
                         item.Selected = true;
 
@@ -59,7 +62,7 @@ namespace ArrowLine
 
                 if(item.Type == FigureType.Arrow)
                 {
-                    foreach (AbstractFigure abstractFigure in singltone.tables)
+                    foreach (AbstractFigure abstractFigure in CollectionFigure.tables)
                     {
 
                         if (rectangle.Contains(abstractFigure.startPoint))
@@ -79,7 +82,7 @@ namespace ArrowLine
                 }
             }
 
-            foreach (AbstractFigure item in singltone.tables)
+            foreach (AbstractFigure item in CollectionFigure.tables)
             {
                 if (item.Selected == true)
                 {
@@ -93,24 +96,25 @@ namespace ArrowLine
 
         public List<Rectangle> RectanglesPoint(AbstractFigure objectRectangle)
         {
+            var objRec = objectRectangle as AbstractTable;
             return new List<Rectangle>()
             {
-                new Rectangle(objectRectangle.startPoint.X - 8, objectRectangle.startPoint.Y - 8, 8, 8),
-                new Rectangle(objectRectangle.startPoint.X + objectRectangle.width, objectRectangle.startPoint.Y - 8, 8, 8),
-                new Rectangle(objectRectangle.startPoint.X - 8, objectRectangle.startPoint.Y + objectRectangle.height, 8, 8),
-                new Rectangle(objectRectangle.startPoint.X + objectRectangle.width, objectRectangle.startPoint.Y + objectRectangle.height, 8, 8),
+                new Rectangle(objRec.startPoint.X - 8, objRec.startPoint.Y - 8, 8, 8),
+                new Rectangle(objRec.startPoint.X + objRec.width, objRec.startPoint.Y - 8, 8, 8),
+                new Rectangle(objRec.startPoint.X - 8, objRec.startPoint.Y + objRec.height, 8, 8),
+                new Rectangle(objRec.startPoint.X + objRec.width, objRec.startPoint.Y + objRec.height, 8, 8),
 
-                new Rectangle(objectRectangle.startPoint.X + objectRectangle.width/2 - 4, objectRectangle.startPoint.Y - 9, 8, 8),
-                new Rectangle(objectRectangle.startPoint.X - 9, objectRectangle.startPoint.Y + objectRectangle.height/2 - 4, 8, 8),
-                new Rectangle(objectRectangle.startPoint.X + objectRectangle.width/2 - 4, objectRectangle.startPoint.Y + objectRectangle.height + 1, 8, 8 ),
-                new Rectangle(objectRectangle.startPoint.X + objectRectangle.width + 1, objectRectangle.startPoint.Y + objectRectangle.height/2 - 4, 8, 8)
+                new Rectangle(objRec.startPoint.X + objRec.width/2 - 4, objRec.startPoint.Y - 9, 8, 8),
+                new Rectangle(objRec.startPoint.X - 9, objRec.startPoint.Y + objRec.height/2 - 4, 8, 8),
+                new Rectangle(objRec.startPoint.X + objRec.width/2 - 4, objRec.startPoint.Y + objRec.height + 1, 8, 8 ),
+                new Rectangle(objRec.startPoint.X + objRec.width + 1, objRec.startPoint.Y + objRec.height/2 - 4, 8, 8)
 
             };
         }
 
         public void DrawOverlay(Brush brushes, Point point)
         {
-            singltone.Graphics.FillRectangle(brushes, new Rectangle(point.X - 5, point.Y - 5, 10, 10));
+            GraficPictureBox.Graphics.FillRectangle(brushes, new Rectangle(point.X - 5, point.Y - 5, 10, 10));
         }
 
         public void DrawOverlay(Brush brushes, AbstractFigure objectRectangle)
@@ -118,7 +122,7 @@ namespace ArrowLine
 
             foreach (Rectangle rectangle in RectanglesPoint(objectRectangle))
             {
-                singltone.Graphics.FillRectangle(brushes, rectangle);
+                GraficPictureBox.Graphics.FillRectangle(brushes, rectangle);
 
             }
         }

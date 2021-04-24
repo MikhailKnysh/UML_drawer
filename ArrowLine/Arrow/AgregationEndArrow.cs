@@ -1,5 +1,6 @@
 ﻿using ArrowLine.CapArrow;
 using ArrowLine.Line;
+using System.Drawing;
 
 namespace ArrowLine.Arrow
 {
@@ -7,6 +8,7 @@ namespace ArrowLine.Arrow
     {
         public AgregationEndArrow(FigureType type)
         {
+            
             Type = type;
         }
         public override void Draw()

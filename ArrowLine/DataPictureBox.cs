@@ -7,17 +7,9 @@ namespace ArrowLine
     public class DataPictureBox
     {
         private static DataPictureBox _instance;
-        public Graphics Graphics { get; set; }
-        //protected Pen pen;
         private PictureBox _pictureBox;
         private Bitmap _bitmap;
         private Bitmap _tmpbitmap;
-        public Color Color { get; set; }
-        public int PenWidth { get; set; } = 2;
-        //public SolidBrush solidBrush { get; set; }
-
-        public List<AbstractFigure> arrows;
-        public List<AbstractFigure> tables;
 
         public bool isMoving { get; set; }
 
@@ -33,11 +25,11 @@ namespace ArrowLine
 
         public void SetPictureBox(PictureBox pictureBox1)
         {
-            //pen = new Pen(Color.Black, 2);
+            GraficPictureBox.pen = new Pen(Color.Black, 2);
             _pictureBox = pictureBox1;
             _bitmap = new Bitmap(_pictureBox.Width, _pictureBox.Height);
             _tmpbitmap = (Bitmap)_bitmap.Clone();
-            Graphics = Graphics.FromImage(_bitmap);
+            GraficPictureBox.Graphics = Graphics.FromImage(_bitmap);
             pictureBox1.Image = _bitmap;
             _pictureBox.BackColor = Color.White;
             _pictureBox.Image = _tmpbitmap;
@@ -46,7 +38,7 @@ namespace ArrowLine
         public void UpdateTmpBitmap()
         {
             _tmpbitmap = (Bitmap)_bitmap.Clone();
-            Graphics = Graphics.FromImage(_tmpbitmap);
+            GraficPictureBox.Graphics = Graphics.FromImage(_tmpbitmap);
             _pictureBox.Image = _tmpbitmap;
         }
 
@@ -58,19 +50,13 @@ namespace ArrowLine
         public void UpdatePictureBox()
         {
             _pictureBox.Image = _tmpbitmap;
-          // Graphics = Graphics.FromImage(_tmpbitmap);
-        }
-
-        public void InitialList()
-        {
-            tables = new List<AbstractFigure>();
         }
 
         public void RebaseBitmap()
         {
             _bitmap = new Bitmap(_pictureBox.Width, _pictureBox.Height);
-            Graphics = Graphics.FromImage(_bitmap);
-            Graphics.Clear(Color.White);
+            GraficPictureBox.Graphics = Graphics.FromImage(_bitmap);
+            GraficPictureBox.Graphics.Clear(Color.White);
             _pictureBox.Image = _bitmap;
         }
 

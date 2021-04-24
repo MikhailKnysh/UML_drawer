@@ -23,7 +23,7 @@ namespace ArrowLine.Table
 
             DrawHorizontalLine(lineIndex: 0, stepDownLine - 2);
 
-            singltone.Graphics.DrawRectangle(pen, objectRectangle);
+            GraficPictureBox.Graphics.DrawRectangle(pen, objectRectangle);
 
             DrawKnots();
 

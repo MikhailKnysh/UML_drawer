@@ -100,7 +100,7 @@ namespace ArrowLine
             // 
             this.button1.BackColor = System.Drawing.Color.Black;
             this.button1.Location = new System.Drawing.Point(16, 14);
-            this.button1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.button1.Margin = new System.Windows.Forms.Padding(4);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(79, 42);
             this.button1.TabIndex = 11;
@@ -304,7 +304,7 @@ namespace ArrowLine
             this.toolStripButtonStackTable});
             this.toolStripGroupButtonsTable.Location = new System.Drawing.Point(15, 264);
             this.toolStripGroupButtonsTable.Name = "toolStripGroupButtonsTable";
-            this.toolStripGroupButtonsTable.Size = new System.Drawing.Size(81, 25);
+            this.toolStripGroupButtonsTable.Size = new System.Drawing.Size(100, 27);
             this.toolStripGroupButtonsTable.TabIndex = 16;
             this.toolStripGroupButtonsTable.Text = "toolStrip1";
             // 
@@ -341,7 +341,7 @@ namespace ArrowLine
             // buttonSave
             // 
             this.buttonSave.Location = new System.Drawing.Point(13, 399);
-            this.buttonSave.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.buttonSave.Margin = new System.Windows.Forms.Padding(4);
             this.buttonSave.Name = "buttonSave";
             this.buttonSave.Size = new System.Drawing.Size(120, 47);
             this.buttonSave.TabIndex = 16;
@@ -351,8 +351,8 @@ namespace ArrowLine
             // 
             // buttonOpen
             // 
-            this.buttonOpen.Location = new System.Drawing.Point(32, 609);
-            this.buttonOpen.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.buttonOpen.Location = new System.Drawing.Point(7, 454);
+            this.buttonOpen.Margin = new System.Windows.Forms.Padding(4);
             this.buttonOpen.Name = "buttonOpen";
             this.buttonOpen.Size = new System.Drawing.Size(143, 48);
             this.buttonOpen.TabIndex = 17;
@@ -369,12 +369,19 @@ namespace ArrowLine
             this.openFileDialog1.FileName = "openFileDialog1";
             this.openFileDialog1.Filter = "UmlDiagrams|*.smst";
             // 
+            // buttonSaveImage
+            // 
+            this.buttonSaveImage.Location = new System.Drawing.Point(22, 558);
+            this.buttonSaveImage.Name = "buttonSaveImage";
+            this.buttonSaveImage.Size = new System.Drawing.Size(75, 23);
+            this.buttonSaveImage.TabIndex = 18;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Coral;
-            this.ClientSize = new System.Drawing.Size(987, 561);
+            this.ClientSize = new System.Drawing.Size(987, 686);
             this.Controls.Add(this.buttonOpen);
             this.Controls.Add(this.buttonSave);
             this.Controls.Add(this.buttonSaveImage);

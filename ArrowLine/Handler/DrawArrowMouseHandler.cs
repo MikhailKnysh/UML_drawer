@@ -1,4 +1,5 @@
-﻿using ArrowLine.Table.StringData;
+﻿using ArrowLine.Abstract;
+using ArrowLine.Table.StringData;
 using System;
 using System.Drawing;
 using System.Windows.Forms;
@@ -14,7 +15,7 @@ namespace ArrowLine
         public void OnMouseDown(AbstractFigure currentFigure, MouseEventArgs e, Form form, ContextMenuStrip contextMenuStrip)
         {
 
-            foreach (var item in singltone.tables)
+            foreach (var item in CollectionFigure.tables)
             {
                 if (item.Type == FigureType.Table)
                 {
@@ -22,7 +23,7 @@ namespace ArrowLine
 
                     if (rectangle.Contain(e.Location))
                     {
-                        CheckStartPointLocation(item, currentFigure, e);
+                        CheckStartPointLocation(rectangle, currentFigure, e);
                         return;
                     }
                 }
@@ -42,7 +43,7 @@ namespace ArrowLine
         {
             if (currentFigure != null && e.Button == MouseButtons.Left && currentFigure.startPoint.X != 0 && currentFigure.startPoint.Y != 0)
             {
-                singltone.tables.Add(currentFigure);
+                CollectionFigure.tables.Add(currentFigure);
             }
         }
 
@@ -60,7 +61,7 @@ namespace ArrowLine
             throw new Exception("Чот не туда зашло");
         }
 
-        private void CheckStartPointLocation(AbstractFigure  item, AbstractFigure currentFigure, MouseEventArgs e)
+        private void CheckStartPointLocation(AbstractTable  item, AbstractFigure currentFigure, MouseEventArgs e)
         {
             if (e.Location.X > item.startPoint.X + 30
                                             && (Math.Abs(e.Location.Y - item.startPoint.Y) < 30))

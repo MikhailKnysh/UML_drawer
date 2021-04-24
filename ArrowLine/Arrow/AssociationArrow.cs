@@ -26,8 +26,8 @@ namespace ArrowLine.Arrow
             arrowCap.endPoint = endPoint;
             Delta();
 
-            singltone.Graphics.DrawLines(pen, line.CreateArrowLine());
-            singltone.Graphics.DrawLines(pen, arrowCap.CreateArrowObject());
+            GraficPictureBox.Graphics.DrawLines(pen, line.CreateArrowLine());
+            GraficPictureBox.Graphics.DrawLines(pen, arrowCap.CreateArrowObject());
         }
     }
 }

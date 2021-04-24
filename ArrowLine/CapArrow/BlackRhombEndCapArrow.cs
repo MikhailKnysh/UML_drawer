@@ -69,8 +69,8 @@ namespace ArrowLine.CapArrow
         {
             SolidBrush shadowBrush = new SolidBrush(pen.Color);
 
-            singltone.Graphics.DrawPolygon(pen, CreateArrowObject());
-            singltone.Graphics.FillPolygon(shadowBrush, CreateArrowObject());
+            GraficPictureBox.Graphics.DrawPolygon(pen, CreateArrowObject());
+            GraficPictureBox.Graphics.FillPolygon(shadowBrush, CreateArrowObject());
         }
     }
 }

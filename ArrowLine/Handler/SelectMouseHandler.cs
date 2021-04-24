@@ -1,4 +1,5 @@
-﻿using ArrowLine.Table.StringData;
+﻿using ArrowLine.Abstract;
+using ArrowLine.Table.StringData;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -42,7 +43,7 @@ namespace ArrowLine
                             DrawSelection(Brushes.White, selectionObject);
                             selectionObject = null;
 
-                            foreach (var item in singltone.tables)
+                            foreach (var item in CollectionFigure.tables)
                             {
                                 item.Selected = false;
                             }
@@ -72,19 +73,22 @@ namespace ArrowLine
                         {
                             foreach (AbstractFigure item in selectionObject)
                             {
-                                if (item is AbstractTable)
-                                {
+                                
 
                                     item.Move(e.X - tmpPoint.X, e.Y - tmpPoint.Y);
-                                    item.ReDrawRectangleBody();
-                                    item.Draw();
+
+                                if(item is AbstractTable)
+                                {
+                                    (item as AbstractTable).ReDrawRectangleBody();
                                 }
+                                    item.Draw();
+                                
                             }
                         }
 
                         tmpPoint = e.Location;
 
-                        foreach (var item in singltone.tables)
+                        foreach (var item in CollectionFigure.tables)
                         {
                             item.Selected = false;
                         }
@@ -105,11 +109,9 @@ namespace ArrowLine
                           Math.Abs(startPoint.X - endPoint.X),
                           Math.Abs(startPoint.Y - endPoint.Y));
 
-
-                    
                     if (selection.HitTest(r) == true)
                     {
-                        selectionObject = singltone.tables.Where(item => item.Selected == true).ToList();
+                        selectionObject = CollectionFigure.tables.Where(item => item.Selected == true).ToList();
                     }
 
                     if (selectionObject != null)
@@ -123,9 +125,12 @@ namespace ArrowLine
                     {
                         singltone.RebaseBitmap();
 
-                        foreach (var item in singltone.tables)
+                        foreach (var item in CollectionFigure.tables)
                         {
-                            item.ReDrawRectangleBody();
+                            if (item is AbstractTable)
+                            {
+                                (item as AbstractTable).ReDrawRectangleBody();
+                            }
                             item.Draw();
                         }
                     }

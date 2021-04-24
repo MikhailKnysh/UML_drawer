@@ -4,10 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ArrowLine
+namespace ArrowLine.Abstract
 {
-    interface IMoveable1
+    public static class CollectionFigure
     {
-        void Move(int deltaX, int deltaY);
+        public static List<AbstractFigure> tables;
     }
 }
