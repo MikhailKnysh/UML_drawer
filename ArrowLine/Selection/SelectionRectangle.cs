@@ -4,7 +4,7 @@ using System.Drawing;
 
 namespace ArrowLine
 {
-    public class Selection : ISelection
+    public class SelectionRectangle : ISelection
     {
         public DataPictureBox singltone = DataPictureBox.GetInstance();
 

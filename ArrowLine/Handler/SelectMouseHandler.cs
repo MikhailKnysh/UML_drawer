@@ -4,8 +4,6 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace ArrowLine
@@ -17,7 +15,7 @@ namespace ArrowLine
         Point endPoint;
         Point tmpPoint;
         List<AbstractFigure> selectionObject;
-        ISelection selection = new Selection();
+        ISelection selection = new SelectionRectangle();
         private Brush _highlightBrush;
         private Pen _highlightPen;
 

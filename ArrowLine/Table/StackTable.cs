@@ -27,7 +27,7 @@ namespace ArrowLine.Table
 
             DrawHorizontalLine(lineIndex: 0, stepDownLine - 2);
 
-            singltone.Graphics.DrawRectangle(singltone.pen, objectRectangle);
+            singltone.Graphics.DrawRectangle(pen, objectRectangle);
 
             format.Alignment = StringAlignment.Near;
         }
@@ -41,7 +41,7 @@ namespace ArrowLine.Table
                 backRectangle = new Rectangle(startPoint.X - i, startPoint.Y - i, width, height);
 
                 singltone.Graphics.FillRectangle(new SolidBrush(Color.White), backRectangle);
-                singltone.Graphics.DrawRectangle(singltone.pen, backRectangle);
+                singltone.Graphics.DrawRectangle(pen, backRectangle);
             }
         }
     }
