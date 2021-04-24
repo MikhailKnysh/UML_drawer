@@ -38,6 +38,7 @@ namespace ArrowLine
 
                         if (selectionObject != null)
                         {
+
                             DrawSelection(Brushes.White, selectionObject);
                             selectionObject = null;
 
@@ -47,21 +48,15 @@ namespace ArrowLine
                             }
                         }
 
-                        if (selection.HitTest(e.Location))
-                        {
-                            selectionObject = singltone.tables.Where(item => item.Selected == true).ToList();
-                        }
                     }
                     break;
-
                 case MouseButtons.Right:
                     {
                         tmpPoint = e.Location;
-                        break;
                     }
+                    break;
             }
         }
-
 
         public void OnMouseMove(AbstractFigure currentFigure, MouseEventArgs e)
         {
@@ -110,6 +105,8 @@ namespace ArrowLine
                           Math.Abs(startPoint.X - endPoint.X),
                           Math.Abs(startPoint.Y - endPoint.Y));
 
+
+                    
                     if (selection.HitTest(r) == true)
                     {
                         selectionObject = singltone.tables.Where(item => item.Selected == true).ToList();
@@ -158,7 +155,15 @@ namespace ArrowLine
         {
             foreach (var abstractFigure in abstractFigures)
             {
-                selection.DrawOverlay(brush, abstractFigure);
+                if (abstractFigure.Type == FigureType.Arrow)
+                {
+                    selection.DrawOverlay(brush, startPoint);
+                }
+                if (abstractFigure.Type == FigureType.Table)
+                {
+                    selection.DrawOverlay(brush, abstractFigure);
+
+                }
             }
         }
     }

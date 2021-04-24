@@ -13,7 +13,7 @@ namespace ArrowLine
         bool HitTest(Point pt);
 
         bool HitTest(Rectangle r);
-
+        void DrawOverlay(Brush brushes, Point point);
         void DrawOverlay(Brush brush, AbstractFigure objectRectangle);
     }
 }

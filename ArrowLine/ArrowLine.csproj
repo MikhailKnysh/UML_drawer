@@ -94,7 +94,6 @@
     <Compile Include="Selection\ISelection.cs" />
     <Compile Include="Factory\StackTableFactory.cs" />
     <Compile Include="Handler\MoveMouseHandler.cs" />
-    <Compile Include="Selection\SelectionArrow.cs" />
     <Compile Include="StringDataForm.cs">
       <SubType>Form</SubType>
     </Compile>

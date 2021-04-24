@@ -7,7 +7,8 @@ namespace ArrowLine
     public class SelectionRectangle : ISelection
     {
         public DataPictureBox singltone = DataPictureBox.GetInstance();
-
+        public bool StartPoint { get; set; }
+        public bool EndPoint { get; set; }
 
         public bool HitTest(Point point)
         {
@@ -22,33 +23,62 @@ namespace ArrowLine
                         return true;
                     }
                 }
-                if(item.Type == FigureType.Arrow)
+
+                if (item.Type == FigureType.Arrow)
                 {
                     if (new Rectangle(item.startPoint.X - 5, item.startPoint.Y - 5, 10, 10).Contains(point))
                     {
-                        return true;
+                        StartPoint = true;
+                        item.Selected = true;
+                       
                     }
                     if (new Rectangle(item.endPoint.X - 5, item.endPoint.Y - 5, 10, 10).Contains(point))
                     {
-                        return true;
+                        EndPoint = true;
+                        item.Selected = true;
+                       
                     }
-
                 }
-
             }
             return false;
         }
 
-        public bool HitTest(Rectangle r)
+        public bool HitTest(Rectangle rectangle)
         {
+
             foreach (AbstractFigure item in singltone.tables)
             {
-                if (r.Contains(new Rectangle(item.startPoint.X, item.startPoint.Y, item.width, item.height)) && (item is AbstractTable))
+                if (item.Type == FigureType.Table)
                 {
-                    item.Selected = true;
+                    if (rectangle.Contains(new Rectangle(item.startPoint.X, item.startPoint.Y, item.width, item.height)) && (item is AbstractTable))
+                    {
+                        item.Selected = true;
 
+                    }
+                }
+
+                if(item.Type == FigureType.Arrow)
+                {
+                    foreach (AbstractFigure abstractFigure in singltone.tables)
+                    {
+
+                        if (rectangle.Contains(abstractFigure.startPoint))
+                        {
+                            StartPoint = true;
+                            item.Selected = true;
+                           
+                        }
+
+                        if (rectangle.Contains(abstractFigure.endPoint))
+                        {
+                            EndPoint = true;
+                            item.Selected = true;
+                           
+                        }
+                    }
                 }
             }
+
             foreach (AbstractFigure item in singltone.tables)
             {
                 if (item.Selected == true)
@@ -57,8 +87,10 @@ namespace ArrowLine
                 }
 
             }
+
             return false;
         }
+
         public List<Rectangle> RectanglesPoint(AbstractFigure objectRectangle)
         {
             return new List<Rectangle>()
@@ -74,6 +106,11 @@ namespace ArrowLine
                 new Rectangle(objectRectangle.startPoint.X + objectRectangle.width + 1, objectRectangle.startPoint.Y + objectRectangle.height/2 - 4, 8, 8)
 
             };
+        }
+
+        public void DrawOverlay(Brush brushes, Point point)
+        {
+            singltone.Graphics.FillRectangle(brushes, new Rectangle(point.X - 5, point.Y - 5, 10, 10));
         }
 
         public void DrawOverlay(Brush brushes, AbstractFigure objectRectangle)
