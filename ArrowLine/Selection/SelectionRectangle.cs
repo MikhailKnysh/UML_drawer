@@ -9,14 +9,14 @@ namespace ArrowLine
         public DataPictureBox singltone = DataPictureBox.GetInstance();
 
 
-        public bool HitTest(Point pt)
+        public bool HitTest(Point point)
         {
             foreach (AbstractFigure item in singltone.tables)
             {
                 if (item.Type == FigureType.Table)
                 {
-                    if (pt.X > item.startPoint.X && pt.X < item.startPoint.X + item.width
-                        && pt.Y > item.startPoint.Y && pt.Y < item.startPoint.Y + item.height && (item is AbstractTable))
+                    if (point.X > item.startPoint.X && point.X < item.startPoint.X + item.width
+                        && point.Y > item.startPoint.Y && point.Y < item.startPoint.Y + item.height && (item is AbstractTable))
                     {
                         item.Selected = true;
                         return true;
@@ -24,6 +24,14 @@ namespace ArrowLine
                 }
                 if(item.Type == FigureType.Arrow)
                 {
+                    if (new Rectangle(item.startPoint.X - 5, item.startPoint.Y - 5, 10, 10).Contains(point))
+                    {
+                        return true;
+                    }
+                    if (new Rectangle(item.endPoint.X - 5, item.endPoint.Y - 5, 10, 10).Contains(point))
+                    {
+                        return true;
+                    }
 
                 }
 

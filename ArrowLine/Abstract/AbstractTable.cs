@@ -153,7 +153,7 @@ namespace ArrowLine
 
             DrawKnots();
            
-            singltone.Graphics.DrawRectangle(singltone.pen, objectRectangle);
+            singltone.Graphics.DrawRectangle(pen, objectRectangle);
 
             DrawHorizontalLine(lineIndex: 2, stepDownPropertyPoint + 1);
         }
@@ -179,7 +179,7 @@ namespace ArrowLine
             objectRectangle.Height += heightStringRectangle;
             DrawKnots();
             
-            singltone.Graphics.DrawRectangle(singltone.pen, objectRectangle);
+            singltone.Graphics.DrawRectangle(pen, objectRectangle);
 
         }
 
@@ -277,7 +277,7 @@ namespace ArrowLine
             {
                 singltone.Graphics.DrawRectangle(DottedLinePen, item);
             }
-            singltone.Graphics.DrawRectangle(singltone.pen, objectRectangle);
+            singltone.Graphics.DrawRectangle(pen, objectRectangle);
         }
 
         protected virtual void ClaerKnots()
