@@ -73,5 +73,10 @@ namespace ArrowLine
             Graphics.Clear(Color.White);
             _pictureBox.Image = _bitmap;
         }
+
+        public Bitmap GetBitmap()
+        {
+            return _bitmap;
+        }
     }
 }

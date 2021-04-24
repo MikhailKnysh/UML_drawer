@@ -59,6 +59,7 @@ namespace ArrowLine
             this.buttonOpen = new System.Windows.Forms.Button();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
+            this.buttonSaveImage = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).BeginInit();
             this.toolStripGroupButtonsArrow.SuspendLayout();
@@ -303,7 +304,7 @@ namespace ArrowLine
             this.toolStripButtonStackTable});
             this.toolStripGroupButtonsTable.Location = new System.Drawing.Point(15, 264);
             this.toolStripGroupButtonsTable.Name = "toolStripGroupButtonsTable";
-            this.toolStripGroupButtonsTable.Size = new System.Drawing.Size(100, 27);
+            this.toolStripGroupButtonsTable.Size = new System.Drawing.Size(81, 25);
             this.toolStripGroupButtonsTable.TabIndex = 16;
             this.toolStripGroupButtonsTable.Text = "toolStrip1";
             // 
@@ -376,6 +377,7 @@ namespace ArrowLine
             this.ClientSize = new System.Drawing.Size(987, 561);
             this.Controls.Add(this.buttonOpen);
             this.Controls.Add(this.buttonSave);
+            this.Controls.Add(this.buttonSaveImage);
             this.Controls.Add(this.toolStripGroupButtonsTable);
             this.Controls.Add(this.buttonSelect);
             this.Controls.Add(this.toolStripGroupButtonsArrow);
@@ -385,7 +387,7 @@ namespace ArrowLine
             this.ForeColor = System.Drawing.SystemColors.ActiveCaption;
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "Form1";
-            this.Text = "Form1";
+            this.Text = "UML Drawer";
             this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).EndInit();
@@ -429,6 +431,7 @@ namespace ArrowLine
         private System.Windows.Forms.Button buttonOpen;
         private System.Windows.Forms.SaveFileDialog saveFileDialog1;
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
+        private System.Windows.Forms.Button buttonSaveImage;
     }
 }
 

@@ -29,6 +29,8 @@ namespace ArrowLine.Table
 
             singltone.Graphics.DrawRectangle(pen, objectRectangle);
 
+            DrawKnots();
+
             format.Alignment = StringAlignment.Near;
         }
 

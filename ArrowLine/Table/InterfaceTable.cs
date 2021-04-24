@@ -23,13 +23,10 @@ namespace ArrowLine.Table
 
             DrawHorizontalLine(lineIndex: 0, stepDownLine - 2);
 
-            foreach (var item in RectanglesPoint(this))
-            {
-                singltone.Graphics.FillRectangle(Brushes.Red, item);
-            }
-            singltone.Graphics.DrawRectangle(pen, objectRectangle);
+            DrawKnots();
 
             format.Alignment = StringAlignment.Near;
         }
+        
     }
 }
