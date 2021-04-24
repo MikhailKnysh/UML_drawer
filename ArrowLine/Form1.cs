@@ -58,8 +58,15 @@ namespace ArrowLine
                     crntFigure = currentFactory.CreateFigure();
                 }
             }
+            if (isButtonDeletePressed)
+            {
+                mouseHandler.OnMouseDown(crntFigure, e, this, contextMenuStrip1);
+            }
+            else
+            {
 
             mouseHandler.OnMouseDown(crntFigure, e, this, contextMenuStrip1);
+            }
             singltone.UpdatePictureBox();
         }
 
@@ -67,7 +74,17 @@ namespace ArrowLine
         {
             singltone.isMoving = false;
             singltone.SetBitmap();
+
+            if (isButtonDeletePressed)
+            {
+                mouseHandler.OnMouseUp(crntFigure, e);
+
+            }
+            else
+            {
             mouseHandler.OnMouseUp(crntFigure, e);
+
+            }
             singltone.UpdatePictureBox();
         }
 
@@ -170,6 +187,7 @@ namespace ArrowLine
         private void buttonSelect_Click(object sender, EventArgs e)
         {
             isButtonSelectPressed = true;
+            isButtonDeletePressed = false;
             mouseHandler = new SelectMouseHandler();
         }
 
@@ -225,6 +243,7 @@ namespace ArrowLine
             ToolStripButton toolStripButton = (ToolStripButton)sender;
 
             isButtonSelectPressed = false;
+            isButtonDeletePressed = false;
             isArrowButtonPressed = false;
 
             toolStripGroupButtonsTable.BackgroundImage = toolStripButton.BackgroundImage;
@@ -301,6 +320,15 @@ namespace ArrowLine
             }
 
             return null;
+        }
+
+        bool isButtonDeletePressed = false;
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            isButtonDeletePressed = true;
+
+            mouseHandler = new DeleteCurrentObject();
         }
     }
 }

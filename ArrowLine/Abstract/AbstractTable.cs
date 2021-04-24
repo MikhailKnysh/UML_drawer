@@ -187,7 +187,7 @@ namespace ArrowLine
             Font font, StringFormat format, string text, int heightStringRectangle, int stepDownPoint)
         {
             stringRectangle = new Rectangle(startPoint.X, startPoint.Y + stepDownPoint, width, heightStringRectangle);
-            singltone.Graphics.FillRectangle(new SolidBrush(Color.Red), stringRectangle);
+            singltone.Graphics.FillRectangle(solidBrushWhite, stringRectangle);
             singltone.Graphics.DrawString(text, font, solidBrush, stringRectangle, format);
         }
 
@@ -199,7 +199,7 @@ namespace ArrowLine
                  stringRectangles[i].Y + 20, width, heightStringRectangle);
 
                 stringRectangles[i] = stringRectangle;
-                singltone.Graphics.FillRectangle(new SolidBrush(Color.White), stringRectangles[i].X, stringRectangles[i].Y, width, heightStringRectangle);
+                singltone.Graphics.FillRectangle(solidBrushWhite, stringRectangles[i].X, stringRectangles[i].Y, width, heightStringRectangle);
                 singltone.Graphics.DrawString(stringData[i], font, solidBrush, stringRectangles[i], format);
             }
         }
@@ -240,7 +240,7 @@ namespace ArrowLine
                     startPoint.Y + tmpStepDownPoint + 4, width, heightStringRectangle);
                 methodRectangles[i] = stringRectangle;
                 tmpStepDownPoint += 20;
-                singltone.Graphics.FillRectangle(new SolidBrush(Color.White), methodRectangles[i].X, methodRectangles[i].Y, width, heightStringRectangle);
+                singltone.Graphics.FillRectangle(solidBrushWhite, methodRectangles[i].X, methodRectangles[i].Y, width, heightStringRectangle);
                 singltone.Graphics.DrawString(methods[i], font, solidBrush, methodRectangles[i], format);
 
             }

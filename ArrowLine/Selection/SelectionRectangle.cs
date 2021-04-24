@@ -26,10 +26,12 @@ namespace ArrowLine
                 {
                     if (new Rectangle(item.startPoint.X - 5, item.startPoint.Y - 5, 10, 10).Contains(point))
                     {
+                        item.Selected = true;
                         return true;
                     }
                     if (new Rectangle(item.endPoint.X - 5, item.endPoint.Y - 5, 10, 10).Contains(point))
                     {
+                        item.Selected = true;
                         return true;
                     }
 

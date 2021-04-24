@@ -82,6 +82,7 @@
     <Compile Include="Factory\CompositionEndArrowFactory.cs" />
     <Compile Include="Factory\CompositionStartArrowFactory.cs" />
     <Compile Include="DataObjects.cs" />
+    <Compile Include="Handler\DeleteCurrentObject.cs" />
     <Compile Include="Handler\DrawArrowMouseHandler.cs" />
     <Compile Include="Factory\IFigureFactory.cs" />
     <Compile Include="Handler\DrawRectangleHandler.cs" />
