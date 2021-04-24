@@ -1,7 +1,5 @@
 ﻿using ArrowLine.CapArrow;
 using ArrowLine.Line;
-using System.Drawing;
-using System;
 
 namespace ArrowLine.Arrow
 {

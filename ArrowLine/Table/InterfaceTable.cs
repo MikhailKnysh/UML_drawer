@@ -10,12 +10,17 @@ namespace ArrowLine.Table
             Type = type;
         }
 
-
         public override void Draw()
         {
+            format.Alignment = StringAlignment.Center;
+
             CreateBaseRactangle();
+            IncreaseFrame();
             DrawStringRectangle(font, format, "<< Interface >>", heightStringRectangle, stepDownPoint: 0);
-            DrawStringRectangle(font, format, "Title", heightStringRectangle, stepDownPoint: 20);
+            DrawStringRectangle(font, format, title, heightStringRectangle, stepDownPoint: 20);
+
+            titleRectangle = stringRectangle;
+
             DrawHorizontalLine(lineIndex: 0, stepDownLine - 2);
 
             foreach (var item in RectanglesPoint(this))
@@ -23,17 +28,8 @@ namespace ArrowLine.Table
                 singltone.Graphics.FillRectangle(Brushes.Red, item);
             }
             singltone.Graphics.DrawRectangle(pen, objectRectangle);
-        }
-       
 
-        protected override void Move()
-        {
-            throw new NotImplementedException();
-        }
-
-        protected override void Resize()
-        {
-            throw new NotImplementedException();
+            format.Alignment = StringAlignment.Near;
         }
     }
 }

@@ -11,7 +11,7 @@ namespace ArrowLine
         void OnMouseUp(AbstractFigure currentFigure, MouseEventArgs e);
 
         void OnPaint(AbstractFigure currentFigure, PaintEventArgs e);
-        IDTO OnToolStripMenuItemAddField_Click(StringDataForm stringDataForm);
+        IDTO OnToolStripMenuItemAddStringDataTable_Click(StringDataForm stringDataForm);
 
 
     }
