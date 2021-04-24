@@ -26,13 +26,18 @@ namespace ArrowLine
         public Pen whitePen;
         public Pen blackPen;
         public SolidBrush solidBrush;
-
+        public SolidBrush solidBrushWhite;
+        protected Pen DottedLinePen;
         public AbstractTable()
         {
+             DottedLinePen = new Pen(Color.Gray, 2);
+            DottedLinePen.DashStyle = System.Drawing.Drawing2D.DashStyle.Dash;
             font = new Font("Arial", 12, FontStyle.Regular);
             format = new StringFormat();
             whitePen = new Pen(Color.White, singltone.pen.Width);
             solidBrush = new SolidBrush(Color.Black);
+
+            solidBrushWhite = new SolidBrush(Color.White);
             blackPen = new Pen(singltone.pen.Color, singltone.pen.Width);
             linesInTable = new List<LineInTable>();
             fields = new List<string>();
@@ -57,10 +62,10 @@ namespace ArrowLine
             {
 
 
-                new Rectangle(objectRectangle.startPoint.X + objectRectangle.width/2 - 15, objectRectangle.startPoint.Y - 30, 30, 30),
-                new Rectangle(objectRectangle.startPoint.X - 30, objectRectangle.startPoint.Y + objectRectangle.height/2 - 12, 30, 30),
-                new Rectangle(objectRectangle.startPoint.X + objectRectangle.width/2 - 15, objectRectangle.startPoint.Y + objectRectangle.height , 30, 30 ),
-                new Rectangle(objectRectangle.startPoint.X + objectRectangle.width , objectRectangle.startPoint.Y + objectRectangle.height/2 - 15, 30, 30)
+                new Rectangle(objectRectangle.startPoint.X + objectRectangle.width/2 - 15, objectRectangle.startPoint.Y - 20, 20, 20),
+                new Rectangle(objectRectangle.startPoint.X - 20, objectRectangle.startPoint.Y + objectRectangle.height/2 - 12, 20, 20),
+                new Rectangle(objectRectangle.startPoint.X + objectRectangle.width/2 - 15, objectRectangle.startPoint.Y + objectRectangle.height , 20, 20 ),
+                new Rectangle(objectRectangle.startPoint.X + objectRectangle.width , objectRectangle.startPoint.Y + objectRectangle.height/2 - 10, 20, 20)
 
             };
         }
@@ -84,6 +89,8 @@ namespace ArrowLine
 
         public override void AddField()
         {
+            ClaerKnots();
+
             stepDownPropertyPoint += 20;
             stepDownMethodPoint += 20;
             format.Alignment = StringAlignment.Near;
@@ -109,16 +116,21 @@ namespace ArrowLine
             DrawStringRectangle(font, format, stringDataTable, heightStringRectangle,
                 stepDownPoint: stepDownFieldPoint += 20);
 
+
             height += heightStringRectangle;
             objectRectangle.Height += heightStringRectangle;
 
             singltone.Graphics.DrawRectangle(singltone.pen, objectRectangle);
+
+            DrawKnots();
 
             DrawHorizontalLine(lineIndex: 1, stepDownFieldPoint + 1);
         }
 
         public override void AddProperty()
         {
+            ClaerKnots();
+
             stepDownMethodPoint += 20;
 
             format.Alignment = StringAlignment.Near;
@@ -140,7 +152,9 @@ namespace ArrowLine
 
             height += heightStringRectangle;
             objectRectangle.Height += heightStringRectangle;
-            height += 20;
+
+            DrawKnots();
+           
             singltone.Graphics.DrawRectangle(singltone.pen, objectRectangle);
 
             DrawHorizontalLine(lineIndex: 2, stepDownPropertyPoint + 1);
@@ -148,6 +162,8 @@ namespace ArrowLine
 
         public override void AddMethod()
         {
+            ClaerKnots();
+
             format.Alignment = StringAlignment.Near;
 
             singltone.Graphics.DrawRectangle(whitePen, objectRectangle);
@@ -161,9 +177,12 @@ namespace ArrowLine
             methodRectangles.Add(stringRectangle);
 
             height += heightStringRectangle;
+         
             objectRectangle.Height += heightStringRectangle;
-            height += 20;
+            DrawKnots();
+            
             singltone.Graphics.DrawRectangle(singltone.pen, objectRectangle);
+
         }
 
         protected virtual void DrawStringRectangle(
@@ -252,6 +271,25 @@ namespace ArrowLine
             }
 
             objectRectangle.Width = width;
+        }
+
+        protected virtual void DrawKnots()
+        {
+            foreach (var item in RectanglesPoint(this))
+            {
+                singltone.Graphics.DrawRectangle(DottedLinePen, item);
+            }
+            singltone.Graphics.DrawRectangle(singltone.pen, objectRectangle);
+        }
+
+        protected virtual void ClaerKnots()
+        {
+            foreach (var item in RectanglesPoint(this))
+            {
+                singltone.Graphics.DrawRectangle(whitePen, item);
+            }
+            
+
         }
     }
 }
