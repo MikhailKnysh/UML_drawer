@@ -1,6 +1,7 @@
-﻿using ArrowLine.Table;
+﻿using ArrowLine.Abstract;
+using ArrowLine.Table;
 
-namespace ArrowLine
+namespace ArrowLine.Factory
 {
     class StackTableFactory : IFigureFactory
     {

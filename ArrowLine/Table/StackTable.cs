@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ArrowLine.Abstract;
+using System;
 using System.Drawing;
 
 namespace ArrowLine.Table

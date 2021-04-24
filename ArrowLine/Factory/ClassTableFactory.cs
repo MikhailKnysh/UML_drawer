@@ -1,6 +1,8 @@
-﻿using ArrowLine.Table;
+﻿using ArrowLine.Abstract;
+using ArrowLine.Factory;
+using ArrowLine.Table;
 
-namespace ArrowLine
+namespace ArrowLine.Factory
 {
     class ClassTableFactory : IFigureFactory
     {

@@ -1,7 +1,8 @@
-﻿using ArrowLine.Table.StringData;
+﻿using ArrowLine.Abstract;
+using ArrowLine.Table.StringData;
 using System.Windows.Forms;
 
-namespace ArrowLine
+namespace ArrowLine.Handler
 {
     public interface IMouseHandler
     {

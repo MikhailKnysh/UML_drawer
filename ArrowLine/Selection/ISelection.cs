@@ -1,11 +1,12 @@
-﻿using System;
+﻿using ArrowLine.Abstract;
+using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ArrowLine
+namespace ArrowLine.Selection
 {
     interface ISelection
     {
@@ -13,7 +14,7 @@ namespace ArrowLine
         bool HitTest(Point pt);
 
         bool HitTest(Rectangle r);
-        void DrawOverlay(Brush brushes, Point point);
+        void DrawOverlay(Point point);
         void DrawOverlay(Brush brush, AbstractFigure objectRectangle);
     }
 }

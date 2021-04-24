@@ -1,6 +1,7 @@
-﻿using ArrowLine.Arrow;
+﻿using ArrowLine.Abstract;
+using ArrowLine.Arrow;
 
-namespace ArrowLine
+namespace ArrowLine.Factory
 {
     public class AgregationStartArrowFactory : IFigureFactory
     {

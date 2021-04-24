@@ -1,10 +1,11 @@
-﻿using System;
+﻿using ArrowLine.Abstract;
+using System;
 using System.Collections.Generic;
 using System.Drawing;
 
-namespace ArrowLine
+namespace ArrowLine.Selection
 {
-    public class SelectionRectangle : ISelection
+    public class Selection : ISelection
     {
         public DataPictureBox singltone = DataPictureBox.GetInstance();
         public bool StartPoint { get; set; }
@@ -95,22 +96,22 @@ namespace ArrowLine
         {
             return new List<Rectangle>()
             {
-                new Rectangle(objectRectangle.startPoint.X - 8, objectRectangle.startPoint.Y - 8, 8, 8),
-                new Rectangle(objectRectangle.startPoint.X + objectRectangle.width, objectRectangle.startPoint.Y - 8, 8, 8),
-                new Rectangle(objectRectangle.startPoint.X - 8, objectRectangle.startPoint.Y + objectRectangle.height, 8, 8),
-                new Rectangle(objectRectangle.startPoint.X + objectRectangle.width, objectRectangle.startPoint.Y + objectRectangle.height, 8, 8),
+                new Rectangle(objectRectangle.startPoint.X - 6, objectRectangle.startPoint.Y - 6, 6, 6),
+                new Rectangle(objectRectangle.startPoint.X + objectRectangle.width, objectRectangle.startPoint.Y - 6, 6, 6),
+                new Rectangle(objectRectangle.startPoint.X - 6, objectRectangle.startPoint.Y + objectRectangle.height, 6, 6),
+                new Rectangle(objectRectangle.startPoint.X + objectRectangle.width, objectRectangle.startPoint.Y + objectRectangle.height, 6, 6),
 
-                new Rectangle(objectRectangle.startPoint.X + objectRectangle.width/2 - 4, objectRectangle.startPoint.Y - 9, 8, 8),
-                new Rectangle(objectRectangle.startPoint.X - 9, objectRectangle.startPoint.Y + objectRectangle.height/2 - 4, 8, 8),
-                new Rectangle(objectRectangle.startPoint.X + objectRectangle.width/2 - 4, objectRectangle.startPoint.Y + objectRectangle.height + 1, 8, 8 ),
-                new Rectangle(objectRectangle.startPoint.X + objectRectangle.width + 1, objectRectangle.startPoint.Y + objectRectangle.height/2 - 4, 8, 8)
+                new Rectangle(objectRectangle.startPoint.X + objectRectangle.width/2 - 3, objectRectangle.startPoint.Y - 7, 6, 6),
+                new Rectangle(objectRectangle.startPoint.X - 7, objectRectangle.startPoint.Y + objectRectangle.height/2 - 3, 6, 6),
+                new Rectangle(objectRectangle.startPoint.X + objectRectangle.width/2 - 3, objectRectangle.startPoint.Y + objectRectangle.height + 1, 6, 6 ),
+                new Rectangle(objectRectangle.startPoint.X + objectRectangle.width + 1, objectRectangle.startPoint.Y + objectRectangle.height/2 - 3, 6, 6)
 
             };
         }
 
-        public void DrawOverlay(Brush brushes, Point point)
+        public void DrawOverlay(Point point)
         {
-            singltone.Graphics.FillRectangle(brushes, new Rectangle(point.X - 5, point.Y - 5, 10, 10));
+            singltone.Graphics.FillRectangle(Brushes.Transparent, new Rectangle(point.X - 5, point.Y - 5, 10, 10));
         }
 
         public void DrawOverlay(Brush brushes, AbstractFigure objectRectangle)

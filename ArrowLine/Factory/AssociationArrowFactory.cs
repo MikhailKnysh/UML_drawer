@@ -5,8 +5,9 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Drawing;
 using ArrowLine.Arrow;
+using ArrowLine.Abstract;
 
-namespace ArrowLine
+namespace ArrowLine.Factory
 {
     public class AssociationArrowFactory : IFigureFactory
     {

@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Drawing;
 
-namespace ArrowLine
+namespace ArrowLine.Abstract
 {
 
     public enum FigureType

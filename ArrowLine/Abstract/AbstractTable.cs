@@ -1,7 +1,8 @@
-﻿using System.Collections.Generic;
+﻿using ArrowLine.Table;
+using System.Collections.Generic;
 using System.Drawing;
 
-namespace ArrowLine
+namespace ArrowLine.Abstract
 {
     public abstract class AbstractTable : AbstractFigure
     {

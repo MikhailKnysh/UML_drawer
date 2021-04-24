@@ -1,9 +1,10 @@
-﻿using ArrowLine.Table.StringData;
+﻿using ArrowLine.Abstract;
+using ArrowLine.Table.StringData;
 using System;
 using System.Drawing;
 using System.Windows.Forms;
 
-namespace ArrowLine.Selection
+namespace ArrowLine.Handler
 {
     public class MoveMouseHandler : IMouseHandler
     {

@@ -1,9 +1,14 @@
-﻿using ArrowLine.Table.StringData;
+﻿using ArrowLine.Abstract;
+using ArrowLine.Handler;
+using ArrowLine.Selection;
+using ArrowLine.Table.StringData;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace ArrowLine
@@ -15,7 +20,7 @@ namespace ArrowLine
         Point endPoint;
         Point tmpPoint;
         List<AbstractFigure> selectionObject;
-        ISelection selection = new SelectionRectangle();
+        ISelection selection = new Selection.Selection();
         private Brush _highlightBrush;
         private Pen _highlightPen;
 
@@ -26,124 +31,90 @@ namespace ArrowLine
             _highlightPen.DashStyle = DashStyle.Dash;
         }
 
-
-        public void OnMouseDown(AbstractFigure abstractFigure, MouseEventArgs e, Form form, ContextMenuStrip contextMenuStrip)
+        public void OnMouseDown(AbstractFigure currentFigure, MouseEventArgs e, Form form, ContextMenuStrip contextMenuStrip)
         {
-            switch (e.Button)
-            {
-                case MouseButtons.Left:
-                    {
-                        startPoint = e.Location;
-                        endPoint = startPoint;
-
-                        if (selectionObject != null)
-                        {
-
-                            DrawSelection(Brushes.White, selectionObject);
-                            selectionObject = null;
-
-                            foreach (var item in singltone.tables)
-                            {
-                                item.Selected = false;
-                            }
-                        }
-
-                    }
-                    break;
-                case MouseButtons.Right:
-                    {
-                        tmpPoint = e.Location;
-                    }
-                    break;
-            }
+            startPoint = e.Location;
+            endPoint = startPoint;
+            tmpPoint = e.Location;
         }
 
         public void OnMouseMove(AbstractFigure currentFigure, MouseEventArgs e)
         {
-            if (e.Button == MouseButtons.Left || e.Button == MouseButtons.Right)
+            if (singltone.isMoving)
             {
                 endPoint = e.Location;
 
-                switch (e.Button)
+                if (selectionObject != null && selection.HitTest(e.Location) == true)
                 {
-                    case MouseButtons.Right:
-
-                        if (selectionObject != null)
-                        {
-                            foreach (AbstractFigure item in selectionObject)
-                            {
-                                if (item is AbstractTable)
-                                {
-
-                                    item.Move(e.X - tmpPoint.X, e.Y - tmpPoint.Y);
-                                    item.ReDrawRectangleBody();
-                                    item.Draw();
-                                }
-                            }
-                        }
-
-                        tmpPoint = e.Location;
-
-                        foreach (var item in singltone.tables)
-                        {
-                            item.Selected = false;
-                        }
-                        break;
+                    foreach (AbstractFigure item in selectionObject)
+                    {
+                        item.Move(e.X - tmpPoint.X, e.Y - tmpPoint.Y);
+                        item.ReDrawRectangleBody();
+                        item.Draw();
+                    }
                 }
+
+                tmpPoint = e.Location;
             }
         }
 
         public void OnMouseUp(AbstractFigure currentFigure, MouseEventArgs e)
         {
-            switch (e.Button)
+            if (selectionObject != null)
             {
-                case MouseButtons.Left:
+                singltone.RebaseBitmap();
 
-                    Rectangle r = new Rectangle(
+                foreach (var item in singltone.tables)
+                {
+                    item.ReDrawRectangleBody();
+                    item.Draw();
+                }
+            }
+
+            if (currentFigure.Selected == false || selection.HitTest(e.Location) == false)
+            {
+                DrawSelection(Brushes.White, selectionObject);
+                selectionObject = null;
+
+                foreach (var item in singltone.tables)
+                {
+                    item.Selected = false;
+                }
+            }
+
+            if (e.Button == MouseButtons.Left)
+            {
+                Rectangle r = new Rectangle(
                           Math.Min(startPoint.X, endPoint.X),
                           Math.Min(startPoint.Y, endPoint.Y),
                           Math.Abs(startPoint.X - endPoint.X),
                           Math.Abs(startPoint.Y - endPoint.Y));
 
+                if (selection.HitTest(e.Location) || selection.HitTest(r) == true)
+                {
+                    selectionObject = singltone.tables.Where(item => item.Selected == true).ToList();
+                }
 
-                    
-                    if (selection.HitTest(r) == true)
-                    {
-                        selectionObject = singltone.tables.Where(item => item.Selected == true).ToList();
-                    }
-
-                    if (selectionObject != null)
-                    {
-                        DrawSelection(Brushes.Black, selectionObject);
-                    }
-                    break;
-
-                case MouseButtons.Right:
-                    if (selectionObject != null)
-                    {
-                        singltone.RebaseBitmap();
-
-                        foreach (var item in singltone.tables)
-                        {
-                            item.ReDrawRectangleBody();
-                            item.Draw();
-                        }
-                    }
-                    break;
+                if (selectionObject != null)
+                {
+                    DrawSelection(Brushes.Black, selectionObject);
+                }
             }
         }
 
         public void OnPaint(AbstractFigure currentFigure, PaintEventArgs e)
         {
-            Rectangle r = new Rectangle(
-              Math.Min(startPoint.X, endPoint.X),
-              Math.Min(startPoint.Y, endPoint.Y),
-              Math.Abs(startPoint.X - endPoint.X),
-              Math.Abs(startPoint.Y - endPoint.Y));
+            if (selectionObject == null)
+            {
+                Rectangle r = new Rectangle(
+                 Math.Min(startPoint.X, endPoint.X),
+                 Math.Min(startPoint.Y, endPoint.Y),
+                 Math.Abs(startPoint.X - endPoint.X),
+                 Math.Abs(startPoint.Y - endPoint.Y));
 
-            e.Graphics.FillRectangle(_highlightBrush, r);
-            e.Graphics.DrawRectangle(_highlightPen, r);
-
+                e.Graphics.FillRectangle(_highlightBrush, r);
+                e.Graphics.DrawRectangle(_highlightPen, r);
+            }
         }
 
         public IDTO OnToolStripMenuItemAddStringDataTable_Click(StringDataForm stringDataForm)
@@ -153,16 +124,18 @@ namespace ArrowLine
 
         private void DrawSelection(Brush brush, List<AbstractFigure> abstractFigures)
         {
-            foreach (var abstractFigure in abstractFigures)
+            if (abstractFigures != null)
             {
-                if (abstractFigure.Type == FigureType.Arrow)
+                foreach (var abstractFigure in abstractFigures)
                 {
-                    selection.DrawOverlay(brush, startPoint);
-                }
-                if (abstractFigure.Type == FigureType.Table)
-                {
-                    selection.DrawOverlay(brush, abstractFigure);
-
+                    if (abstractFigure.Type == FigureType.Arrow)
+                    {
+                        selection.DrawOverlay(abstractFigure.startPoint);
+                    }
+                    if (abstractFigure.Type == FigureType.Table)
+                    {
+                        selection.DrawOverlay(brush, abstractFigure);
+                    }
                 }
             }
         }
