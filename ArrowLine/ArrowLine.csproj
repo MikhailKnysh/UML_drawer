@@ -82,8 +82,9 @@
     <Compile Include="Factory\CompositionEndArrowFactory.cs" />
     <Compile Include="Factory\CompositionStartArrowFactory.cs" />
     <Compile Include="DataObjects.cs" />
-    <Compile Include="Handler\DrawMouseHandler.cs" />
+    <Compile Include="Handler\DrawArrowMouseHandler.cs" />
     <Compile Include="Factory\IFigureFactory.cs" />
+    <Compile Include="Handler\DrawRectangleHandler.cs" />
     <Compile Include="Handler\IMouseHandler.cs" />
     <Compile Include="IMoveable1.cs" />
     <Compile Include="SaveAndLoadProject.cs" />
@@ -92,6 +93,7 @@
     <Compile Include="Factory\InterfaceTableFactory.cs" />
     <Compile Include="Selection\ISelection.cs" />
     <Compile Include="Factory\StackTableFactory.cs" />
+    <Compile Include="Handler\MoveMouseHandler.cs" />
     <Compile Include="Selection\SelectionArrow.cs" />
     <Compile Include="StringDataForm.cs">
       <SubType>Form</SubType>

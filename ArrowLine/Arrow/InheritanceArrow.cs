@@ -17,9 +17,9 @@ namespace ArrowLine.Arrow
 
             AbstractLine line = new SolidLineArrow(startPoint, endPoint);
             line.Draw();
-
             AbstractArrowCap arrowCap = new CloseCapArrow(startPoint, endPoint);
             arrowCap.Draw();
+
         }
     }
 }

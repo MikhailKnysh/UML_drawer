@@ -52,7 +52,7 @@ namespace ArrowLine.CapArrow
         public override void Draw()
         {
 
-            singltone.Graphics.DrawLines(new Pen(singltone.Color, singltone.PenWidth), CreateArrowObject());
+            singltone.Graphics.DrawLines(pen, CreateArrowObject());
         }
     }
 }

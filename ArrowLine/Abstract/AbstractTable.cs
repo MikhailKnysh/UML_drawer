@@ -172,7 +172,7 @@ namespace ArrowLine
             Font font, StringFormat format, string text, int heightStringRectangle, int stepDownPoint)
         {
             stringRectangle = new Rectangle(startPoint.X, startPoint.Y + stepDownPoint, width, heightStringRectangle);
-            singltone.Graphics.FillRectangle(new SolidBrush(Color.White), stringRectangle);
+            singltone.Graphics.FillRectangle(new SolidBrush(Color.Red), stringRectangle);
             singltone.Graphics.DrawString(text, font, solidBrush, stringRectangle, format);
         }
 

@@ -4,6 +4,8 @@ using System.Windows.Forms;
 using Newtonsoft.Json;
 using System.Collections.Generic;
 using System.Drawing;
+using ArrowLine.Handler;
+//using ArrowLine.Selection;
 
 namespace ArrowLine
 {
@@ -69,10 +71,6 @@ namespace ArrowLine
 
         private void pictureBox1_MouseMove(object sender, MouseEventArgs e)
         {
-            if (e.Button == MouseButtons.Right)
-            {
-
-            }
             singltone.UpdateTmpBitmap();
             mouseHandler.OnMouseMove(crntFigure, e);
 
@@ -96,7 +94,7 @@ namespace ArrowLine
             if (colorDialog1.ShowDialog() == DialogResult.OK)
             {
                 //btnColor.BackColor = colorDialog1.Color;
-                //en.Color = colorDialog1.Color;
+                //crntFigure.pen.Color = colorDialog1.Color;
 
             }
 
@@ -104,7 +102,7 @@ namespace ArrowLine
 
         private void trackbar1_Scroll(object sender, EventArgs e)
         {
-            //crntFigure.pen =   new Pen(singltone.Color, singltone.PenWidth);
+            //crntFigure.pen = new Pen(singltone.Color, singltone.PenWidth);
             //crntFigure.pen.Width = trackBar1.Value;
         }
 
@@ -117,7 +115,7 @@ namespace ArrowLine
 
             toolStripGroupButtonsArrow.BackgroundImage = toolStripButton.BackgroundImage;
             buttonName = toolStripButton.Name;
-            mouseHandler = new DrawMouseHandler();
+            mouseHandler = new DrawArrowMouseHandler();
         }
 
         private void ChooseArrowButton()
@@ -229,7 +227,7 @@ namespace ArrowLine
 
             toolStripGroupButtonsTable.BackgroundImage = toolStripButton.BackgroundImage;
             buttonName = toolStripButton.Name;
-            mouseHandler = new DrawMouseHandler();
+            mouseHandler = new DrawRectangleHandler();
         }
         private void buttonSave_Click(object sender, EventArgs e)
         {

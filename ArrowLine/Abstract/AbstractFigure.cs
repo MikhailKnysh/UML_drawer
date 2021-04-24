@@ -12,10 +12,12 @@ namespace ArrowLine
 
     public abstract class AbstractFigure : IMoveable1
     {
+        
         public DataPictureBox singltone = DataPictureBox.GetInstance();
         public Point startPoint { get; set; }
         public Point endPoint { get; set; }
-        public Pen pen = new Pen(Color.Black, 2);
+        protected Pen pen = new Pen(Color.Black, 2);
+
         public int width = 140;
         public int height = 60;
         public string stringDataTable;

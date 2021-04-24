@@ -8,17 +8,25 @@ namespace ArrowLine
     {
         public DataPictureBox singltone = DataPictureBox.GetInstance();
 
-   
+
         public bool HitTest(Point pt)
         {
             foreach (AbstractFigure item in singltone.tables)
             {
-                if (pt.X > item.startPoint.X && pt.X < item.startPoint.X + item.width
-                    && pt.Y > item.startPoint.Y && pt.Y < item.startPoint.Y + item.height && (item is AbstractTable))
+                if (item.Type == FigureType.Table)
                 {
-                    item.Selected = true;
-                    return true;
+                    if (pt.X > item.startPoint.X && pt.X < item.startPoint.X + item.width
+                        && pt.Y > item.startPoint.Y && pt.Y < item.startPoint.Y + item.height && (item is AbstractTable))
+                    {
+                        item.Selected = true;
+                        return true;
+                    }
                 }
+                if(item.Type == FigureType.Arrow)
+                {
+
+                }
+
             }
             return false;
         }
@@ -30,16 +38,16 @@ namespace ArrowLine
                 if (r.Contains(new Rectangle(item.startPoint.X, item.startPoint.Y, item.width, item.height)) && (item is AbstractTable))
                 {
                     item.Selected = true;
-                    
+
                 }
             }
             foreach (AbstractFigure item in singltone.tables)
             {
-                if (item.Selected==true)
+                if (item.Selected == true)
                 {
                     return true;
                 }
-                
+
             }
             return false;
         }

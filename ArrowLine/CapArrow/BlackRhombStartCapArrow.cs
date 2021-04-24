@@ -4,8 +4,13 @@ namespace ArrowLine.CapArrow
 {
     public class BlackRhombStartCapArrow : AbstractArrowCap
     {
+        public BlackRhombStartCapArrow()
+        {
+
+        }
         public BlackRhombStartCapArrow(Point startPoint, Point endPoint)
         {
+            
             this.startPoint = startPoint;
             this.endPoint = endPoint;
         }

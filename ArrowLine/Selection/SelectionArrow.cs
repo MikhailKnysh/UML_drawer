@@ -12,18 +12,18 @@ namespace ArrowLine.Selection
         public DataPictureBox singltone = DataPictureBox.GetInstance();
         public void DrawOverlay(Brush brushes, AbstractFigure objectRectangle)
         {
-                //singltone.Graphics.FillRectangle(brushes, rectangle);
+                singltone.Graphics.FillRectangle(brushes, new Rectangle());
         }
 
         public bool HitTest(Point point)
         {
             foreach(AbstractFigure abstractFigure in singltone.tables)
             {
-                if(new Rectangle(abstractFigure.startPoint.X-10, abstractFigure.startPoint.Y - 10, 20, 20).Contains(point))
+                if(new Rectangle(abstractFigure.startPoint.X-5, abstractFigure.startPoint.Y - 5, 10, 10).Contains(point))
                 {
                     return true;
                 }
-                if (new Rectangle(abstractFigure.endPoint.X - 10, abstractFigure.endPoint.Y - 10, 20, 20).Contains(point))
+                if (new Rectangle(abstractFigure.endPoint.X - 5, abstractFigure.endPoint.Y - 5, 10, 10).Contains(point))
                 {
                     return true;
                 }

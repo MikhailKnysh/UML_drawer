@@ -14,7 +14,7 @@ namespace ArrowLine.Arrow
         }
         public override void Draw()
         {
-            Pen pen = new Pen(singltone.Color, singltone.PenWidth);
+          
             Delta();
 
             AbstractArrowCap arrowCap = new CloseCapArrow(startPoint, endPoint);

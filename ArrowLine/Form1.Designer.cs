@@ -70,11 +70,11 @@ namespace ArrowLine
             // 
             this.pictureBox1.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.pictureBox1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.pictureBox1.Location = new System.Drawing.Point(118, -2);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2);
+            this.pictureBox1.Location = new System.Drawing.Point(157, -2);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Padding = new System.Windows.Forms.Padding(0, 2, 0, 0);
-            this.pictureBox1.Size = new System.Drawing.Size(872, 565);
+            this.pictureBox1.Size = new System.Drawing.Size(1161, 694);
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
             this.pictureBox1.Paint += new System.Windows.Forms.PaintEventHandler(this.pictureBox1_Paint);
@@ -85,12 +85,12 @@ namespace ArrowLine
             // trackBar1
             // 
             this.trackBar1.LargeChange = 1;
-            this.trackBar1.Location = new System.Drawing.Point(14, 114);
-            this.trackBar1.Margin = new System.Windows.Forms.Padding(2);
+            this.trackBar1.Location = new System.Drawing.Point(19, 140);
+            this.trackBar1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.trackBar1.Maximum = 3;
             this.trackBar1.Minimum = 1;
             this.trackBar1.Name = "trackBar1";
-            this.trackBar1.Size = new System.Drawing.Size(78, 45);
+            this.trackBar1.Size = new System.Drawing.Size(104, 56);
             this.trackBar1.TabIndex = 3;
             this.trackBar1.Value = 1;
             this.trackBar1.Scroll += new System.EventHandler(this.trackbar1_Scroll);
@@ -98,9 +98,10 @@ namespace ArrowLine
             // button1
             // 
             this.button1.BackColor = System.Drawing.Color.Black;
-            this.button1.Location = new System.Drawing.Point(12, 11);
+            this.button1.Location = new System.Drawing.Point(16, 14);
+            this.button1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(59, 34);
+            this.button1.Size = new System.Drawing.Size(79, 42);
             this.button1.TabIndex = 11;
             this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.ButtonColor_Click);
@@ -124,10 +125,10 @@ namespace ArrowLine
             this.toolStripButtonCloseArrowDash,
             this.toolStripButtonTwoAngleLine});
             this.toolStripGroupButtonsArrow.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.HorizontalStackWithOverflow;
-            this.toolStripGroupButtonsArrow.Location = new System.Drawing.Point(12, 62);
+            this.toolStripGroupButtonsArrow.Location = new System.Drawing.Point(16, 76);
             this.toolStripGroupButtonsArrow.Name = "toolStripGroupButtonsArrow";
             this.toolStripGroupButtonsArrow.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
-            this.toolStripGroupButtonsArrow.Size = new System.Drawing.Size(88, 40);
+            this.toolStripGroupButtonsArrow.Size = new System.Drawing.Size(117, 49);
             this.toolStripGroupButtonsArrow.Stretch = true;
             this.toolStripGroupButtonsArrow.TabIndex = 13;
             this.toolStripGroupButtonsArrow.Text = "ARROWS";
@@ -238,10 +239,10 @@ namespace ArrowLine
             // 
             // buttonSelect
             // 
-            this.buttonSelect.Location = new System.Drawing.Point(16, 352);
-            this.buttonSelect.Margin = new System.Windows.Forms.Padding(2);
+            this.buttonSelect.Location = new System.Drawing.Point(22, 317);
+            this.buttonSelect.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.buttonSelect.Name = "buttonSelect";
-            this.buttonSelect.Size = new System.Drawing.Size(76, 54);
+            this.buttonSelect.Size = new System.Drawing.Size(101, 66);
             this.buttonSelect.TabIndex = 15;
             this.buttonSelect.Text = "Select";
             this.buttonSelect.UseVisualStyleBackColor = true;
@@ -257,7 +258,7 @@ namespace ArrowLine
             this.toolStripSeparator1,
             this.toolStripMenuItemRename});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(145, 98);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(168, 106);
             // 
             // toolStripMenuItemAddField
             // 
@@ -283,25 +284,26 @@ namespace ArrowLine
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(141, 6);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(164, 6);
             // 
             // toolStripMenuItemRename
             // 
             this.toolStripMenuItemRename.Name = "toolStripMenuItemRename";
-            this.toolStripMenuItemRename.Size = new System.Drawing.Size(144, 22);
+            this.toolStripMenuItemRename.Size = new System.Drawing.Size(167, 24);
             this.toolStripMenuItemRename.Text = "Rename";
             this.toolStripMenuItemRename.Click += new System.EventHandler(this.toolStripMenuItemRename_Click);
             // 
             // toolStripGroupButtonsTable
             // 
             this.toolStripGroupButtonsTable.Dock = System.Windows.Forms.DockStyle.None;
+            this.toolStripGroupButtonsTable.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.toolStripGroupButtonsTable.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripButtonClassTable,
             this.toolStripButtonInterfaceTable,
             this.toolStripButtonStackTable});
-            this.toolStripGroupButtonsTable.Location = new System.Drawing.Point(14, 288);
+            this.toolStripGroupButtonsTable.Location = new System.Drawing.Point(15, 264);
             this.toolStripGroupButtonsTable.Name = "toolStripGroupButtonsTable";
-            this.toolStripGroupButtonsTable.Size = new System.Drawing.Size(112, 25);
+            this.toolStripGroupButtonsTable.Size = new System.Drawing.Size(100, 27);
             this.toolStripGroupButtonsTable.TabIndex = 16;
             this.toolStripGroupButtonsTable.Text = "toolStrip1";
             // 
@@ -311,7 +313,7 @@ namespace ArrowLine
             this.toolStripButtonClassTable.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButtonClassTable.Image")));
             this.toolStripButtonClassTable.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButtonClassTable.Name = "toolStripButtonClassTable";
-            this.toolStripButtonClassTable.Size = new System.Drawing.Size(23, 22);
+            this.toolStripButtonClassTable.Size = new System.Drawing.Size(29, 24);
             this.toolStripButtonClassTable.Text = "toolStripButtonClassTable";
             this.toolStripButtonClassTable.Click += new System.EventHandler(this.CheckButtonPressedTable_Click);
             // 
@@ -321,7 +323,7 @@ namespace ArrowLine
             this.toolStripButtonInterfaceTable.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButtonInterfaceTable.Image")));
             this.toolStripButtonInterfaceTable.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButtonInterfaceTable.Name = "toolStripButtonInterfaceTable";
-            this.toolStripButtonInterfaceTable.Size = new System.Drawing.Size(23, 22);
+            this.toolStripButtonInterfaceTable.Size = new System.Drawing.Size(29, 24);
             this.toolStripButtonInterfaceTable.Text = "toolStripButtonInterfaceTable";
             this.toolStripButtonInterfaceTable.Click += new System.EventHandler(this.CheckButtonPressedTable_Click);
             // 
@@ -331,15 +333,16 @@ namespace ArrowLine
             this.toolStripButtonStackTable.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButtonStackTable.Image")));
             this.toolStripButtonStackTable.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButtonStackTable.Name = "toolStripButtonStackTable";
-            this.toolStripButtonStackTable.Size = new System.Drawing.Size(23, 22);
+            this.toolStripButtonStackTable.Size = new System.Drawing.Size(29, 24);
             this.toolStripButtonStackTable.Text = "toolStripButtonStackTable";
             this.toolStripButtonStackTable.Click += new System.EventHandler(this.CheckButtonPressedTable_Click);
             // 
             // buttonSave
             // 
-            this.buttonSave.Location = new System.Drawing.Point(17, 421);
+            this.buttonSave.Location = new System.Drawing.Point(13, 399);
+            this.buttonSave.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.buttonSave.Name = "buttonSave";
-            this.buttonSave.Size = new System.Drawing.Size(115, 49);
+            this.buttonSave.Size = new System.Drawing.Size(120, 47);
             this.buttonSave.TabIndex = 16;
             this.buttonSave.Text = "Save";
             this.buttonSave.UseVisualStyleBackColor = true;
@@ -347,9 +350,10 @@ namespace ArrowLine
             // 
             // buttonOpen
             // 
-            this.buttonOpen.Location = new System.Drawing.Point(24, 495);
+            this.buttonOpen.Location = new System.Drawing.Point(32, 609);
+            this.buttonOpen.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.buttonOpen.Name = "buttonOpen";
-            this.buttonOpen.Size = new System.Drawing.Size(107, 39);
+            this.buttonOpen.Size = new System.Drawing.Size(143, 48);
             this.buttonOpen.TabIndex = 17;
             this.buttonOpen.Text = "Open";
             this.buttonOpen.UseVisualStyleBackColor = true;
@@ -366,13 +370,12 @@ namespace ArrowLine
             // 
             // Form1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Coral;
-            
+            this.ClientSize = new System.Drawing.Size(987, 561);
             this.Controls.Add(this.buttonOpen);
             this.Controls.Add(this.buttonSave);
-            this.ClientSize = new System.Drawing.Size(740, 456);
             this.Controls.Add(this.toolStripGroupButtonsTable);
             this.Controls.Add(this.buttonSelect);
             this.Controls.Add(this.toolStripGroupButtonsArrow);
@@ -380,7 +383,7 @@ namespace ArrowLine
             this.Controls.Add(this.trackBar1);
             this.Controls.Add(this.pictureBox1);
             this.ForeColor = System.Drawing.SystemColors.ActiveCaption;
-            this.Margin = new System.Windows.Forms.Padding(2);
+            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "Form1";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
