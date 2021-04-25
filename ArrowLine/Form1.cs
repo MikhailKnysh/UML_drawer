@@ -1,4 +1,4 @@
-﻿using ArrowLine.Line;
+using ArrowLine.Line;
 using System;
 using System.Drawing;
 using System.Drawing.Imaging;

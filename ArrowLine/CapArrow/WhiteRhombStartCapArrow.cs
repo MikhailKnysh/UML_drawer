@@ -15,55 +15,13 @@ namespace ArrowLine.CapArrow
         {
             Point[] _CustomCapArrow = new Point[]
             {
-                new Point(startPoint.X, startPoint.Y),
-                new Point(startPoint.X, startPoint.Y),
-                startPoint,
-                new Point(startPoint.X, startPoint.Y),
-                startPoint,
+                new Point(startPoint.X, startPoint.Y -_arrowSize),
+                new Point(startPoint.X + _arrowSize, startPoint.Y),
+                new Point(startPoint.X , startPoint.Y + _arrowSize),
+                new Point(startPoint.X - _arrowSize, startPoint.Y),
+                new Point(startPoint.X, startPoint.Y - _arrowSize),
             };
-
-            if (startPoint.X < endPoint.X && startPoint.Y == endPoint.Y)
-            {
-
-                _CustomCapArrow[1].X += _arrowSize;
-                _CustomCapArrow[1].Y -= _arrowSize;
-
-                _CustomCapArrow[2].X += 2 * _arrowSize;
-
-                _CustomCapArrow[3].X += _arrowSize;
-                _CustomCapArrow[3].Y += _arrowSize;
-            }
-            else if (startPoint.Y > endPoint.Y && startPoint.X == endPoint.X)
-            {
-                _CustomCapArrow[1].X -= _arrowSize;
-                _CustomCapArrow[1].Y -= _arrowSize;
-
-                _CustomCapArrow[2].Y -= 2 * _arrowSize;
-
-                _CustomCapArrow[3].X += _arrowSize;
-                _CustomCapArrow[3].Y -= _arrowSize;
-            }
-            else if (startPoint.X > endPoint.X && startPoint.Y == endPoint.Y)
-            {
-                _CustomCapArrow[1].X -= _arrowSize;
-                _CustomCapArrow[1].Y -= _arrowSize;
-
-                _CustomCapArrow[2].X -= 2 * _arrowSize;
-
-                _CustomCapArrow[3].X -= _arrowSize;
-                _CustomCapArrow[3].Y += _arrowSize;
-            }
-            else
-            {
-                _CustomCapArrow[1].X += _arrowSize;
-                _CustomCapArrow[1].Y += _arrowSize;
-
-                _CustomCapArrow[2].Y += 2 * _arrowSize;
-
-                _CustomCapArrow[3].X -= _arrowSize;
-                _CustomCapArrow[3].Y += _arrowSize;
-            }
-
+           
             return _CustomCapArrow;
         }
 
