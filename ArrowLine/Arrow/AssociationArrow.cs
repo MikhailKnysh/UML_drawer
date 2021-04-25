@@ -1,4 +1,5 @@
-﻿using ArrowLine.CapArrow;
+﻿using ArrowLine.Abstract;
+using ArrowLine.CapArrow;
 using ArrowLine.Line;
 
 namespace ArrowLine.Arrow

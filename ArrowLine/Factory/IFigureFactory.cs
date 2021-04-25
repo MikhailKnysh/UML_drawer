@@ -1,6 +1,7 @@
-﻿using System.Drawing;
+﻿using ArrowLine.Abstract;
 
-namespace ArrowLine
+namespace ArrowLine.Factory
+﻿using System.Drawing;
 {
     public interface IFigureFactory
     {

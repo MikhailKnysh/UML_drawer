@@ -3,6 +3,7 @@ using ArrowLine.Line;
 using System.Drawing;
 using System.Drawing.Drawing2D;
 using System;
+using ArrowLine.Abstract;
 
 namespace ArrowLine.Arrow
 {

@@ -351,7 +351,7 @@ namespace ArrowLine
             // 
             // buttonOpen
             // 
-            this.buttonOpen.Location = new System.Drawing.Point(7, 454);
+            this.buttonOpen.Location = new System.Drawing.Point(7, 468);
             this.buttonOpen.Margin = new System.Windows.Forms.Padding(4);
             this.buttonOpen.Name = "buttonOpen";
             this.buttonOpen.Size = new System.Drawing.Size(143, 48);
@@ -381,7 +381,7 @@ namespace ArrowLine
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Coral;
-            this.ClientSize = new System.Drawing.Size(987, 686);
+            this.ClientSize = new System.Drawing.Size(987, 747);
             this.Controls.Add(this.buttonOpen);
             this.Controls.Add(this.buttonSave);
             this.Controls.Add(this.buttonSaveImage);
