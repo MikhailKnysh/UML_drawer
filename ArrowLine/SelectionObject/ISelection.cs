@@ -6,11 +6,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ArrowLine.Selection
+namespace ArrowLine.SelectionObject
 {
-    interface ISelection
+    public interface ISelection
     {
-     
+
         bool HitTest(Point pt);
 
         bool HitTest(Rectangle r);

@@ -1,6 +1,6 @@
 ﻿using ArrowLine.Abstract;
 using ArrowLine.Handler;
-using ArrowLine.Selection;
+using ArrowLine.SelectionObject;
 using ArrowLine.Table.StringData;
 using System;
 using System.Collections.Generic;
@@ -20,7 +20,7 @@ namespace ArrowLine
         Point endPoint;
         Point tmpPoint;
         List<AbstractFigure> selectionObject;
-        ISelection selection = new Selection.Selection();
+        ISelection selection = new Selection();
         private Brush _highlightBrush;
         private Pen _highlightPen;
 

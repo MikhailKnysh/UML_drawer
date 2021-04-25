@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Drawing;
 
-namespace ArrowLine.Selection
+namespace ArrowLine.SelectionObject
 {
     public class Selection : ISelection
     {
@@ -18,7 +18,7 @@ namespace ArrowLine.Selection
                 {
                     var tableRectangle = item as AbstractTable;
                     if (point.X > tableRectangle.startPoint.X && point.X < tableRectangle.startPoint.X + tableRectangle.width
-                        && point.Y > tableRectangle.startPoint.Y && point.Y < tableRectangle.startPoint.Y + tableRectangle.height )
+                        && point.Y > tableRectangle.startPoint.Y && point.Y < tableRectangle.startPoint.Y + tableRectangle.height)
                     {
                         item.Selected = true;
                         return true;

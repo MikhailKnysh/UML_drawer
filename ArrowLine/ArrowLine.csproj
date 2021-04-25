@@ -88,7 +88,6 @@
     <Compile Include="Factory\ClassTableFactory.cs" />
     <Compile Include="Factory\CompositionEndArrowFactory.cs" />
     <Compile Include="Factory\CompositionStartArrowFactory.cs" />
-    <Compile Include="DataObjects.cs" />
     <Compile Include="Handler\DeleteCurrentObject.cs" />
     <Compile Include="Handler\DrawArrowMouseHandler.cs" />
     <Compile Include="GraficPictureBox.cs" />
@@ -103,8 +102,8 @@
     <Compile Include="Handler\MoveMouseHandler.cs" />
     <Compile Include="Handler\SelectMouseHandler.cs" />
     <Compile Include="SaveAndLoadProject.cs" />
-    <Compile Include="Selection\ISelection.cs" />
-    <Compile Include="Selection\Selection.cs" />
+    <Compile Include="SelectionObject\ISelection.cs" />
+    <Compile Include="SelectionObject\Selection.cs" />
     <Compile Include="StringDataForm.cs">
       <SubType>Form</SubType>
     </Compile>
