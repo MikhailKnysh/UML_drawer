@@ -63,7 +63,6 @@ namespace ArrowLine
             this.button3 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.buttonClear = new System.Windows.Forms.Button();
-            this.buttonChangeColor = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).BeginInit();
             this.toolStripGroupButtonsArrow.SuspendLayout();
@@ -244,13 +243,15 @@ namespace ArrowLine
             // 
             // buttonSelect
             // 
+            this.buttonSelect.BackColor = System.Drawing.Color.LightSkyBlue;
+            this.buttonSelect.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.buttonSelect.Location = new System.Drawing.Point(32, 306);
             this.buttonSelect.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.buttonSelect.Name = "buttonSelect";
             this.buttonSelect.Size = new System.Drawing.Size(101, 66);
             this.buttonSelect.TabIndex = 15;
             this.buttonSelect.Text = "Select";
-            this.buttonSelect.UseVisualStyleBackColor = true;
+            this.buttonSelect.UseVisualStyleBackColor = false;
             this.buttonSelect.Click += new System.EventHandler(this.buttonSelect_Click);
             // 
             // contextMenuStrip1
@@ -354,24 +355,28 @@ namespace ArrowLine
             // 
             // buttonSave
             // 
+            this.buttonSave.BackColor = System.Drawing.Color.LightSkyBlue;
+            this.buttonSave.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.buttonSave.Location = new System.Drawing.Point(19, 378);
             this.buttonSave.Margin = new System.Windows.Forms.Padding(4);
             this.buttonSave.Name = "buttonSave";
             this.buttonSave.Size = new System.Drawing.Size(120, 47);
             this.buttonSave.TabIndex = 16;
             this.buttonSave.Text = "Save";
-            this.buttonSave.UseVisualStyleBackColor = true;
+            this.buttonSave.UseVisualStyleBackColor = false;
             this.buttonSave.Click += new System.EventHandler(this.buttonSave_Click);
             // 
             // buttonOpen
             // 
+            this.buttonOpen.BackColor = System.Drawing.Color.LightSkyBlue;
+            this.buttonOpen.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.buttonOpen.Location = new System.Drawing.Point(9, 576);
             this.buttonOpen.Margin = new System.Windows.Forms.Padding(5);
             this.buttonOpen.Name = "buttonOpen";
             this.buttonOpen.Size = new System.Drawing.Size(143, 48);
             this.buttonOpen.TabIndex = 17;
             this.buttonOpen.Text = "Open";
-            this.buttonOpen.UseVisualStyleBackColor = true;
+            this.buttonOpen.UseVisualStyleBackColor = false;
             this.buttonOpen.Click += new System.EventHandler(this.buttonOpen_Click);
             // 
             // saveFileDialog1
@@ -385,11 +390,15 @@ namespace ArrowLine
             // 
             // buttonSaveImage
             // 
+            this.buttonSaveImage.BackColor = System.Drawing.Color.LightSkyBlue;
+            this.buttonSaveImage.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.buttonSaveImage.Location = new System.Drawing.Point(33, 449);
             this.buttonSaveImage.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.buttonSaveImage.Name = "buttonSaveImage";
             this.buttonSaveImage.Size = new System.Drawing.Size(100, 28);
             this.buttonSaveImage.TabIndex = 18;
+            this.buttonSaveImage.Text = "Save as image";
+            this.buttonSaveImage.UseVisualStyleBackColor = false;
             this.buttonSaveImage.Click += new System.EventHandler(this.buttonSaveImage_Click);
             // 
             // button3
@@ -403,33 +412,27 @@ namespace ArrowLine
             // 
             // button2
             // 
+            this.button2.BackColor = System.Drawing.Color.LightSkyBlue;
+            this.button2.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.button2.Location = new System.Drawing.Point(16, 482);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(117, 52);
             this.button2.TabIndex = 19;
             this.button2.Text = "УНИЧТОЖИТЬ";
-            this.button2.UseVisualStyleBackColor = true;
+            this.button2.UseVisualStyleBackColor = false;
             this.button2.Click += new System.EventHandler(this.button2_Click_1);
             // 
             // buttonClear
             // 
+            this.buttonClear.BackColor = System.Drawing.Color.LightSkyBlue;
+            this.buttonClear.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.buttonClear.Location = new System.Drawing.Point(42, 643);
             this.buttonClear.Name = "buttonClear";
             this.buttonClear.Size = new System.Drawing.Size(96, 33);
             this.buttonClear.TabIndex = 20;
             this.buttonClear.Text = "Clear";
-            this.buttonClear.UseVisualStyleBackColor = true;
+            this.buttonClear.UseVisualStyleBackColor = false;
             this.buttonClear.Click += new System.EventHandler(this.buttonClear_Click);
-            // 
-            // buttonChangeColor
-            // 
-            this.buttonChangeColor.Location = new System.Drawing.Point(30, 703);
-            this.buttonChangeColor.Name = "buttonChangeColor";
-            this.buttonChangeColor.Size = new System.Drawing.Size(107, 33);
-            this.buttonChangeColor.TabIndex = 21;
-            this.buttonChangeColor.Text = "ChangeColor";
-            this.buttonChangeColor.UseVisualStyleBackColor = true;
-            this.buttonChangeColor.Click += new System.EventHandler(this.buttonChangeColor_Click);
             // 
             // Form1
             // 
@@ -437,7 +440,6 @@ namespace ArrowLine
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Coral;
             this.ClientSize = new System.Drawing.Size(1437, 919);
-            this.Controls.Add(this.buttonChangeColor);
             this.Controls.Add(this.buttonClear);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.buttonOpen);
@@ -500,7 +502,6 @@ namespace ArrowLine
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button buttonClear;
-        private System.Windows.Forms.Button buttonChangeColor;
     }
 }
 

@@ -345,10 +345,5 @@ namespace ArrowLine
             CollectionFigure.tables.Clear();
             singltone.RebaseBitmap();
         }
-
-        private void buttonChangeColor_Click(object sender, EventArgs e)
-        {
-            mouseHandler = new ChangeObjectsHandler();
-        }
     }
 }

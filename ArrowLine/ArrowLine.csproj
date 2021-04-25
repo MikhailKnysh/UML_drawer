@@ -88,7 +88,6 @@
     <Compile Include="Factory\ClassTableFactory.cs" />
     <Compile Include="Factory\CompositionEndArrowFactory.cs" />
     <Compile Include="Factory\CompositionStartArrowFactory.cs" />
-    <Compile Include="Handler\ChangeObjectsHandler.cs" />
     <Compile Include="Handler\DeleteCurrentObject.cs" />
     <Compile Include="GraficPictureBox.cs" />
     <Compile Include="Factory\IFigureFactory.cs" />
