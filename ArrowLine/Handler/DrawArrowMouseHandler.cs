@@ -10,7 +10,7 @@ namespace ArrowLine.Handler
     {
 
         public DataPictureBox singltone = DataPictureBox.GetInstance();
-        
+
 
         public void OnMouseDown(AbstractFigure currentFigure, MouseEventArgs e, Form form, ContextMenuStrip contextMenuStrip)
         {
@@ -33,9 +33,9 @@ namespace ArrowLine.Handler
 
         public void OnMouseMove(AbstractFigure currentFigure, MouseEventArgs e)
         {
-            if(e.Button == MouseButtons.Left)
+            if (e.Button == MouseButtons.Left)
             {
-                    currentFigure.endPoint = e.Location;
+                currentFigure.endPoint = e.Location;
             }
         }
 
@@ -61,7 +61,7 @@ namespace ArrowLine.Handler
             throw new Exception("Чот не туда зашло");
         }
 
-        private void CheckStartPointLocation(AbstractTable  item, AbstractFigure currentFigure, MouseEventArgs e)
+        private void CheckStartPointLocation(AbstractTable item, AbstractFigure currentFigure, MouseEventArgs e)
         {
             if (e.Location.X > item.startPoint.X + 30
                                             && (Math.Abs(e.Location.Y - item.startPoint.Y) < 30))

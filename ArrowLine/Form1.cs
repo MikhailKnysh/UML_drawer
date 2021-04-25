@@ -20,7 +20,7 @@ namespace ArrowLine
         AbstractFigure crntFigure;
         IMouseHandler mouseHandler;
         IFigureFactory currentFactory;
-        public string stringDataTable;
+        Pen pen = new Pen(Brushes.Black, 2);
 
         public Form1()
         {
@@ -34,6 +34,8 @@ namespace ArrowLine
             CollectionFigure.tables = new List<AbstractFigure>();
             currentFactory = new InterfaceTableFactory();
             crntFigure = currentFactory.CreateFigure();
+            crntFigure.Color =Color.Black;
+            crntFigure.PenWidth = 2;
             singltone.isMoving = false;
             mouseHandler = new SelectMouseHandler();
         }
@@ -113,7 +115,7 @@ namespace ArrowLine
             if (colorDialog1.ShowDialog() == DialogResult.OK)
             {
                 btnColor.BackColor = colorDialog1.Color;
-                GraficPictureBox.pen.Color = colorDialog1.Color;
+                crntFigure.Color = colorDialog1.Color;
 
             }
 
@@ -121,8 +123,9 @@ namespace ArrowLine
 
         private void trackbar1_Scroll(object sender, EventArgs e)
         {
-            GraficPictureBox.pen = GraficPictureBox.pen;
-            GraficPictureBox.pen.Width = trackBar1.Value;
+            Pen currentPen = new Pen(crntFigure.Color,2);
+            currentPen.Width = trackBar1.Value;
+            crntFigure.PenWidth = currentPen.Width;
         }
 
         private void CheckArrowButtonPressed_Click(object sender, EventArgs e)
@@ -312,12 +315,7 @@ namespace ArrowLine
 
         bool isButtonDeletePressed = false;
 
-        private void button2_Click(object sender, EventArgs e)
-        {
-            isButtonDeletePressed = true;
-
-            mouseHandler = new DeleteCurrentObject();
-        }
+    
 
         private void buttonSaveImage_Click(object sender, EventArgs e)
         {
@@ -335,6 +333,13 @@ namespace ArrowLine
             encoderParameter = new EncoderParameter(encoder, 75L);
             encoderParameters.Param[0] = encoderParameter;
             bitmapToSave.Save("Shapes075.jpg", imageCodecInfo, encoderParameters);
+        }
+
+        private void button2_Click_1(object sender, EventArgs e)
+        {
+            isButtonDeletePressed = true;
+
+            mouseHandler = new DeleteCurrentObject();
         }
     }
 }

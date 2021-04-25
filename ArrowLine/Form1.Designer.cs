@@ -60,8 +60,8 @@ namespace ArrowLine
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.buttonSaveImage = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).BeginInit();
             this.toolStripGroupButtonsArrow.SuspendLayout();
@@ -73,7 +73,7 @@ namespace ArrowLine
             // 
             this.pictureBox1.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.pictureBox1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.pictureBox1.Location = new System.Drawing.Point(157, -2);
+            this.pictureBox1.Location = new System.Drawing.Point(152, 11);
             this.pictureBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Padding = new System.Windows.Forms.Padding(0, 2, 0, 0);
@@ -101,8 +101,8 @@ namespace ArrowLine
             // button1
             // 
             this.button1.BackColor = System.Drawing.Color.Black;
-            this.button1.Location = new System.Drawing.Point(16, 14);
-            this.button1.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.button1.Location = new System.Drawing.Point(54, 14);
+            this.button1.Margin = new System.Windows.Forms.Padding(5);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(79, 42);
             this.button1.TabIndex = 11;
@@ -242,7 +242,7 @@ namespace ArrowLine
             // 
             // buttonSelect
             // 
-            this.buttonSelect.Location = new System.Drawing.Point(21, 318);
+            this.buttonSelect.Location = new System.Drawing.Point(32, 306);
             this.buttonSelect.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.buttonSelect.Name = "buttonSelect";
             this.buttonSelect.Size = new System.Drawing.Size(101, 66);
@@ -307,7 +307,7 @@ namespace ArrowLine
             this.toolStripButtonInterfaceTable,
             this.toolStripButtonStackTable});
             this.toolStripGroupButtonsTable.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.HorizontalStackWithOverflow;
-            this.toolStripGroupButtonsTable.Location = new System.Drawing.Point(12, 198);
+            this.toolStripGroupButtonsTable.Location = new System.Drawing.Point(16, 198);
             this.toolStripGroupButtonsTable.Name = "toolStripGroupButtonsTable";
             this.toolStripGroupButtonsTable.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
             this.toolStripGroupButtonsTable.Size = new System.Drawing.Size(133, 74);
@@ -352,8 +352,8 @@ namespace ArrowLine
             // 
             // buttonSave
             // 
-            this.buttonSave.Location = new System.Drawing.Point(13, 399);
-            this.buttonSave.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.buttonSave.Location = new System.Drawing.Point(19, 378);
+            this.buttonSave.Margin = new System.Windows.Forms.Padding(4);
             this.buttonSave.Name = "buttonSave";
             this.buttonSave.Size = new System.Drawing.Size(120, 47);
             this.buttonSave.TabIndex = 16;
@@ -364,7 +364,7 @@ namespace ArrowLine
             // buttonOpen
             // 
             this.buttonOpen.Location = new System.Drawing.Point(9, 576);
-            this.buttonOpen.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.buttonOpen.Margin = new System.Windows.Forms.Padding(5);
             this.buttonOpen.Name = "buttonOpen";
             this.buttonOpen.Size = new System.Drawing.Size(143, 48);
             this.buttonOpen.TabIndex = 17;
@@ -383,23 +383,12 @@ namespace ArrowLine
             // 
             // buttonSaveImage
             // 
-            this.buttonSaveImage.Location = new System.Drawing.Point(23, 471);
+            this.buttonSaveImage.Location = new System.Drawing.Point(33, 449);
             this.buttonSaveImage.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.buttonSaveImage.Name = "buttonSaveImage";
             this.buttonSaveImage.Size = new System.Drawing.Size(100, 28);
             this.buttonSaveImage.TabIndex = 18;
             this.buttonSaveImage.Click += new System.EventHandler(this.buttonSaveImage_Click);
-            // 
-            // button2
-            // 
-            this.button2.ForeColor = System.Drawing.Color.Red;
-            this.button2.Location = new System.Drawing.Point(9, 224);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(100, 30);
-            this.button2.TabIndex = 19;
-            this.button2.Text = "УНИЧТОЖИТЬ";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // button3
             // 
@@ -410,12 +399,23 @@ namespace ArrowLine
             this.button3.Text = "button3";
             this.button3.UseVisualStyleBackColor = true;
             // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(16, 482);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(117, 52);
+            this.button2.TabIndex = 19;
+            this.button2.Text = "УНИЧТОЖИТЬ";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click_1);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Coral;
-            this.ClientSize = new System.Drawing.Size(1316, 919);
+            this.ClientSize = new System.Drawing.Size(1437, 919);
+            this.Controls.Add(this.button2);
             this.Controls.Add(this.buttonOpen);
             this.Controls.Add(this.buttonSave);
             this.Controls.Add(this.buttonSaveImage);
@@ -473,8 +473,8 @@ namespace ArrowLine
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
         private System.Windows.Forms.Button buttonSaveImage;
         private System.Windows.Forms.ToolStripButton toolStripButtonClassTable;
-        private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button button2;
     }
 }
 

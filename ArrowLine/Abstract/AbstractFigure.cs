@@ -1,5 +1,4 @@
-﻿using Newtonsoft.Json;
-using System;
+﻿using System;
 using System.Drawing;
 
 namespace ArrowLine.Abstract
@@ -13,14 +12,36 @@ namespace ArrowLine.Abstract
 
     public abstract class AbstractFigure 
     {
-        
-        //public DataPictureBox singltone = DataPictureBox.GetInstance();
         public Point startPoint { get; set; }
         public Point endPoint { get; set; }
-         protected Pen pen = GraficPictureBox.pen;
+        public static float penWidth;
+        public static Color color;
+      
+        protected Pen pen = new Pen(color, penWidth);
         public FigureType Type { get; set; }
         public bool Selected { get; set; }
-        
+        public Color Color
+        {
+            get
+            {
+                return color;
+            }
+            set
+            {
+                color = value;
+            }
+        }
+        public float PenWidth
+        {
+            get
+            {
+                return penWidth;
+            }
+            set
+            {
+                penWidth = value;
+            }
+        }
 
         public abstract void Draw();
         public void Delta()

@@ -26,7 +26,6 @@ namespace ArrowLine
 
         public void SetPictureBox(PictureBox pictureBox1)
         {
-            GraficPictureBox.pen = new Pen(Color.Black, 2);
             _pictureBox = pictureBox1;
             _bitmap = new Bitmap(_pictureBox.Width, _pictureBox.Height);
             _tmpbitmap = (Bitmap)_bitmap.Clone();
