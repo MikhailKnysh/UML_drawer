@@ -73,11 +73,11 @@ namespace ArrowLine
             // 
             this.pictureBox1.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.pictureBox1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.pictureBox1.Location = new System.Drawing.Point(118, -2);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pictureBox1.Location = new System.Drawing.Point(157, -2);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Padding = new System.Windows.Forms.Padding(0, 2, 0, 0);
-            this.pictureBox1.Size = new System.Drawing.Size(872, 565);
+            this.pictureBox1.Size = new System.Drawing.Size(1161, 694);
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
             this.pictureBox1.Paint += new System.Windows.Forms.PaintEventHandler(this.pictureBox1_Paint);
@@ -88,12 +88,12 @@ namespace ArrowLine
             // trackBar1
             // 
             this.trackBar1.LargeChange = 1;
-            this.trackBar1.Location = new System.Drawing.Point(14, 114);
-            this.trackBar1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.trackBar1.Location = new System.Drawing.Point(19, 140);
+            this.trackBar1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.trackBar1.Maximum = 3;
             this.trackBar1.Minimum = 1;
             this.trackBar1.Name = "trackBar1";
-            this.trackBar1.Size = new System.Drawing.Size(78, 45);
+            this.trackBar1.Size = new System.Drawing.Size(104, 56);
             this.trackBar1.TabIndex = 3;
             this.trackBar1.Value = 1;
             this.trackBar1.Scroll += new System.EventHandler(this.trackbar1_Scroll);
@@ -101,10 +101,10 @@ namespace ArrowLine
             // button1
             // 
             this.button1.BackColor = System.Drawing.Color.Black;
-            this.button1.Location = new System.Drawing.Point(12, 11);
-            this.button1.Margin = new System.Windows.Forms.Padding(4);
+            this.button1.Location = new System.Drawing.Point(16, 14);
+            this.button1.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(59, 34);
+            this.button1.Size = new System.Drawing.Size(79, 42);
             this.button1.TabIndex = 11;
             this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.ButtonColor_Click);
@@ -128,10 +128,10 @@ namespace ArrowLine
             this.toolStripButtonCloseArrowDash,
             this.toolStripButtonTwoAngleLine});
             this.toolStripGroupButtonsArrow.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.HorizontalStackWithOverflow;
-            this.toolStripGroupButtonsArrow.Location = new System.Drawing.Point(12, 62);
+            this.toolStripGroupButtonsArrow.Location = new System.Drawing.Point(16, 76);
             this.toolStripGroupButtonsArrow.Name = "toolStripGroupButtonsArrow";
             this.toolStripGroupButtonsArrow.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
-            this.toolStripGroupButtonsArrow.Size = new System.Drawing.Size(88, 40);
+            this.toolStripGroupButtonsArrow.Size = new System.Drawing.Size(117, 49);
             this.toolStripGroupButtonsArrow.Stretch = true;
             this.toolStripGroupButtonsArrow.TabIndex = 13;
             this.toolStripGroupButtonsArrow.Text = "ARROWS";
@@ -242,10 +242,10 @@ namespace ArrowLine
             // 
             // buttonSelect
             // 
-            this.buttonSelect.Location = new System.Drawing.Point(16, 258);
-            this.buttonSelect.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.buttonSelect.Location = new System.Drawing.Point(21, 318);
+            this.buttonSelect.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.buttonSelect.Name = "buttonSelect";
-            this.buttonSelect.Size = new System.Drawing.Size(76, 54);
+            this.buttonSelect.Size = new System.Drawing.Size(101, 66);
             this.buttonSelect.TabIndex = 15;
             this.buttonSelect.Text = "Select";
             this.buttonSelect.UseVisualStyleBackColor = true;
@@ -261,38 +261,38 @@ namespace ArrowLine
             this.toolStripSeparator1,
             this.toolStripMenuItemRename});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(145, 98);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(168, 106);
             // 
             // toolStripMenuItemAddField
             // 
             this.toolStripMenuItemAddField.Name = "toolStripMenuItemAddField";
-            this.toolStripMenuItemAddField.Size = new System.Drawing.Size(144, 22);
+            this.toolStripMenuItemAddField.Size = new System.Drawing.Size(167, 24);
             this.toolStripMenuItemAddField.Text = "Add field";
             this.toolStripMenuItemAddField.Click += new System.EventHandler(this.toolStripMenuItemAddField_Click);
             // 
             // toolStripMenuItemAddProperty
             // 
             this.toolStripMenuItemAddProperty.Name = "toolStripMenuItemAddProperty";
-            this.toolStripMenuItemAddProperty.Size = new System.Drawing.Size(144, 22);
+            this.toolStripMenuItemAddProperty.Size = new System.Drawing.Size(167, 24);
             this.toolStripMenuItemAddProperty.Text = "Add property";
             this.toolStripMenuItemAddProperty.Click += new System.EventHandler(this.toolStripMenuItemAddProperty_Click);
             // 
             // toolStripMenuItemAddMethod
             // 
             this.toolStripMenuItemAddMethod.Name = "toolStripMenuItemAddMethod";
-            this.toolStripMenuItemAddMethod.Size = new System.Drawing.Size(144, 22);
+            this.toolStripMenuItemAddMethod.Size = new System.Drawing.Size(167, 24);
             this.toolStripMenuItemAddMethod.Text = "Add method";
             this.toolStripMenuItemAddMethod.Click += new System.EventHandler(this.toolStripMenuItemAddMethod_Click);
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(141, 6);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(164, 6);
             // 
             // toolStripMenuItemRename
             // 
             this.toolStripMenuItemRename.Name = "toolStripMenuItemRename";
-            this.toolStripMenuItemRename.Size = new System.Drawing.Size(144, 22);
+            this.toolStripMenuItemRename.Size = new System.Drawing.Size(167, 24);
             this.toolStripMenuItemRename.Text = "Rename";
             this.toolStripMenuItemRename.Click += new System.EventHandler(this.toolStripMenuItemRename_Click);
             // 
@@ -307,10 +307,10 @@ namespace ArrowLine
             this.toolStripButtonInterfaceTable,
             this.toolStripButtonStackTable});
             this.toolStripGroupButtonsTable.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.HorizontalStackWithOverflow;
-            this.toolStripGroupButtonsTable.Location = new System.Drawing.Point(9, 161);
+            this.toolStripGroupButtonsTable.Location = new System.Drawing.Point(12, 198);
             this.toolStripGroupButtonsTable.Name = "toolStripGroupButtonsTable";
             this.toolStripGroupButtonsTable.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
-            this.toolStripGroupButtonsTable.Size = new System.Drawing.Size(100, 60);
+            this.toolStripGroupButtonsTable.Size = new System.Drawing.Size(133, 74);
             this.toolStripGroupButtonsTable.TabIndex = 13;
             this.toolStripGroupButtonsTable.Text = "toolStrip1";
             // 
@@ -352,9 +352,10 @@ namespace ArrowLine
             // 
             // buttonSave
             // 
-            this.buttonSave.Location = new System.Drawing.Point(10, 324);
+            this.buttonSave.Location = new System.Drawing.Point(13, 399);
+            this.buttonSave.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.buttonSave.Name = "buttonSave";
-            this.buttonSave.Size = new System.Drawing.Size(90, 38);
+            this.buttonSave.Size = new System.Drawing.Size(120, 47);
             this.buttonSave.TabIndex = 16;
             this.buttonSave.Text = "Save";
             this.buttonSave.UseVisualStyleBackColor = true;
@@ -362,10 +363,10 @@ namespace ArrowLine
             // 
             // buttonOpen
             // 
-            this.buttonOpen.Location = new System.Drawing.Point(7, 468);
-            this.buttonOpen.Margin = new System.Windows.Forms.Padding(4);
+            this.buttonOpen.Location = new System.Drawing.Point(9, 576);
+            this.buttonOpen.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
             this.buttonOpen.Name = "buttonOpen";
-            this.buttonOpen.Size = new System.Drawing.Size(107, 39);
+            this.buttonOpen.Size = new System.Drawing.Size(143, 48);
             this.buttonOpen.TabIndex = 17;
             this.buttonOpen.Text = "Open";
             this.buttonOpen.UseVisualStyleBackColor = true;
@@ -382,11 +383,12 @@ namespace ArrowLine
             // 
             // buttonSaveImage
             // 
-            this.buttonSaveImage.Location = new System.Drawing.Point(0, 0);
-            this.buttonSaveImage.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.buttonSaveImage.Location = new System.Drawing.Point(23, 471);
+            this.buttonSaveImage.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.buttonSaveImage.Name = "buttonSaveImage";
-            this.buttonSaveImage.Size = new System.Drawing.Size(56, 19);
+            this.buttonSaveImage.Size = new System.Drawing.Size(100, 28);
             this.buttonSaveImage.TabIndex = 18;
+            this.buttonSaveImage.Click += new System.EventHandler(this.buttonSaveImage_Click);
             // 
             // button2
             // 
@@ -408,19 +410,12 @@ namespace ArrowLine
             this.button3.Text = "button3";
             this.button3.UseVisualStyleBackColor = true;
             // 
-            // buttonSaveImage
-            // 
-            this.buttonSaveImage.Location = new System.Drawing.Point(22, 558);
-            this.buttonSaveImage.Name = "buttonSaveImage";
-            this.buttonSaveImage.Size = new System.Drawing.Size(75, 23);
-            this.buttonSaveImage.TabIndex = 18;
-            // 
             // Form1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Coral;
-            this.ClientSize = new System.Drawing.Size(987, 747);
+            this.ClientSize = new System.Drawing.Size(1316, 919);
             this.Controls.Add(this.buttonOpen);
             this.Controls.Add(this.buttonSave);
             this.Controls.Add(this.buttonSaveImage);
@@ -431,7 +426,7 @@ namespace ArrowLine
             this.Controls.Add(this.trackBar1);
             this.Controls.Add(this.pictureBox1);
             this.ForeColor = System.Drawing.SystemColors.ActiveCaption;
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "Form1";
             this.Text = "UML Drawer";
             this.Load += new System.EventHandler(this.Form1_Load);

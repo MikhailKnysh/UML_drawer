@@ -293,22 +293,7 @@ namespace ArrowLine
             
         }
 
-        private void buttonSaveImage_Click(object sender, EventArgs e)
-        {
-            Bitmap bitmapToSave = singltone.GetBitmap();
-            ImageCodecInfo imageCodecInfo;
-            Encoder encoder;
-            EncoderParameter encoderParameter;
-            EncoderParameters encoderParameters;
-
-            imageCodecInfo = GetEncoderInfo("image/jpeg");
-            encoder = Encoder.Quality;
-            encoderParameters = new EncoderParameters(1);
-
-            encoderParameter = new EncoderParameter(encoder, 75L);
-            encoderParameters.Param[0] = encoderParameter;
-            bitmapToSave.Save("Shapes075.jpg", imageCodecInfo, encoderParameters);
-        }
+        
 
         private static ImageCodecInfo GetEncoderInfo(string mimeType)
         {
@@ -332,6 +317,24 @@ namespace ArrowLine
             isButtonDeletePressed = true;
 
             mouseHandler = new DeleteCurrentObject();
+        }
+
+        private void buttonSaveImage_Click(object sender, EventArgs e)
+        {
+
+            Bitmap bitmapToSave = singltone.GetBitmap();
+            ImageCodecInfo imageCodecInfo;
+            Encoder encoder;
+            EncoderParameter encoderParameter;
+            EncoderParameters encoderParameters;
+
+            imageCodecInfo = GetEncoderInfo("image/jpeg");
+            encoder = Encoder.Quality;
+            encoderParameters = new EncoderParameters(1);
+
+            encoderParameter = new EncoderParameter(encoder, 75L);
+            encoderParameters.Param[0] = encoderParameter;
+            bitmapToSave.Save("Shapes075.jpg", imageCodecInfo, encoderParameters);
         }
     }
 }
