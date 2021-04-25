@@ -7,18 +7,18 @@ namespace ArrowLine.Selection
 {
     public class Selection : ISelection
     {
-        public DataPictureBox singltone = DataPictureBox.GetInstance();
         public bool StartPoint { get; set; }
         public bool EndPoint { get; set; }
 
         public bool HitTest(Point point)
         {
-            foreach (AbstractFigure item in singltone.tables)
+            foreach (AbstractFigure item in CollectionFigure.tables)
             {
                 if (item.Type == FigureType.Table)
                 {
-                    if (point.X > item.startPoint.X && point.X < item.startPoint.X + item.width
-                        && point.Y > item.startPoint.Y && point.Y < item.startPoint.Y + item.height && (item is AbstractTable))
+                    var tableRectangle = item as AbstractTable;
+                    if (point.X > tableRectangle.startPoint.X && point.X < tableRectangle.startPoint.X + tableRectangle.width
+                        && point.Y > tableRectangle.startPoint.Y && point.Y < tableRectangle.startPoint.Y + tableRectangle.height )
                     {
                         item.Selected = true;
                         return true;
@@ -31,13 +31,13 @@ namespace ArrowLine.Selection
                     {
                         StartPoint = true;
                         item.Selected = true;
-                       
+
                     }
                     if (new Rectangle(item.endPoint.X - 5, item.endPoint.Y - 5, 10, 10).Contains(point))
                     {
                         EndPoint = true;
                         item.Selected = true;
-                       
+
                     }
                 }
             }
@@ -47,40 +47,41 @@ namespace ArrowLine.Selection
         public bool HitTest(Rectangle rectangle)
         {
 
-            foreach (AbstractFigure item in singltone.tables)
+            foreach (AbstractFigure item in CollectionFigure.tables)
             {
                 if (item.Type == FigureType.Table)
                 {
-                    if (rectangle.Contains(new Rectangle(item.startPoint.X, item.startPoint.Y, item.width, item.height)) && (item is AbstractTable))
+                    var tableRectangle = item as AbstractTable;
+                    if (rectangle.Contains(new Rectangle(tableRectangle.startPoint.X, tableRectangle.startPoint.Y, tableRectangle.width, tableRectangle.height)))
                     {
                         item.Selected = true;
 
                     }
                 }
 
-                if(item.Type == FigureType.Arrow)
+                if (item.Type == FigureType.Arrow)
                 {
-                    foreach (AbstractFigure abstractFigure in singltone.tables)
+                    foreach (AbstractFigure abstractFigure in CollectionFigure.tables)
                     {
 
                         if (rectangle.Contains(abstractFigure.startPoint))
                         {
                             StartPoint = true;
                             item.Selected = true;
-                           
+
                         }
 
                         if (rectangle.Contains(abstractFigure.endPoint))
                         {
                             EndPoint = true;
                             item.Selected = true;
-                           
+
                         }
                     }
                 }
             }
 
-            foreach (AbstractFigure item in singltone.tables)
+            foreach (AbstractFigure item in CollectionFigure.tables)
             {
                 if (item.Selected == true)
                 {
@@ -94,24 +95,25 @@ namespace ArrowLine.Selection
 
         public List<Rectangle> RectanglesPoint(AbstractFigure objectRectangle)
         {
+            var rectangle = objectRectangle as AbstractTable;
             return new List<Rectangle>()
             {
-                new Rectangle(objectRectangle.startPoint.X - 6, objectRectangle.startPoint.Y - 6, 6, 6),
-                new Rectangle(objectRectangle.startPoint.X + objectRectangle.width, objectRectangle.startPoint.Y - 6, 6, 6),
-                new Rectangle(objectRectangle.startPoint.X - 6, objectRectangle.startPoint.Y + objectRectangle.height, 6, 6),
-                new Rectangle(objectRectangle.startPoint.X + objectRectangle.width, objectRectangle.startPoint.Y + objectRectangle.height, 6, 6),
+                new Rectangle(rectangle.startPoint.X - 6, rectangle.startPoint.Y - 6, 6, 6),
+                new Rectangle(rectangle.startPoint.X + rectangle.width, rectangle.startPoint.Y - 6, 6, 6),
+                new Rectangle(rectangle.startPoint.X - 6, rectangle.startPoint.Y + rectangle.height, 6, 6),
+                new Rectangle(rectangle.startPoint.X + rectangle.width, rectangle.startPoint.Y + rectangle.height, 6, 6),
 
-                new Rectangle(objectRectangle.startPoint.X + objectRectangle.width/2 - 3, objectRectangle.startPoint.Y - 7, 6, 6),
-                new Rectangle(objectRectangle.startPoint.X - 7, objectRectangle.startPoint.Y + objectRectangle.height/2 - 3, 6, 6),
-                new Rectangle(objectRectangle.startPoint.X + objectRectangle.width/2 - 3, objectRectangle.startPoint.Y + objectRectangle.height + 1, 6, 6 ),
-                new Rectangle(objectRectangle.startPoint.X + objectRectangle.width + 1, objectRectangle.startPoint.Y + objectRectangle.height/2 - 3, 6, 6)
+                new Rectangle(rectangle.startPoint.X + rectangle.width/2 - 3, rectangle.startPoint.Y - 7, 6, 6),
+                new Rectangle(rectangle.startPoint.X - 7, rectangle.startPoint.Y + rectangle.height/2 - 3, 6, 6),
+                new Rectangle(rectangle.startPoint.X + rectangle.width/2 - 3,rectangle.startPoint.Y + rectangle.height + 1, 6, 6 ),
+                new Rectangle(rectangle.startPoint.X + rectangle.width + 1,rectangle.startPoint.Y + rectangle.height/2 - 3, 6, 6)
 
             };
         }
 
         public void DrawOverlay(Point point)
         {
-            singltone.Graphics.FillRectangle(Brushes.Transparent, new Rectangle(point.X - 5, point.Y - 5, 10, 10));
+            GraficPictureBox.Graphics.FillRectangle(Brushes.Transparent, new Rectangle(point.X - 5, point.Y - 5, 10, 10));
         }
 
         public void DrawOverlay(Brush brushes, AbstractFigure objectRectangle)
@@ -119,9 +121,10 @@ namespace ArrowLine.Selection
 
             foreach (Rectangle rectangle in RectanglesPoint(objectRectangle))
             {
-                singltone.Graphics.FillRectangle(brushes, rectangle);
+                GraficPictureBox.Graphics.FillRectangle(brushes, rectangle);
 
             }
         }
     }
 }
+

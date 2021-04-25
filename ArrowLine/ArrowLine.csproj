@@ -82,7 +82,6 @@
     <Compile Include="Arrow\CompositionStartArrow.cs" />
     <Compile Include="Arrow\ImplementationArrow.cs" />
     <Compile Include="Arrow\InheritanceArrow.cs" />
-    <Compile Include="DataObjects.cs" />
     <Compile Include="Factory\AgregationEndArrowFactory.cs" />
     <Compile Include="Factory\AgregationStartArrowFactory.cs" />
     <Compile Include="Factory\AssociationArrowFactory.cs" />
@@ -100,7 +99,6 @@
     <Compile Include="Handler\IMouseHandler.cs" />
     <Compile Include="Handler\MoveMouseHandler.cs" />
     <Compile Include="Handler\SelectMouseHandler.cs" />
-    <Compile Include="IMoveable1.cs" />
     <Compile Include="SaveAndLoadProject.cs" />
     <Compile Include="Selection\ISelection.cs" />
     <Compile Include="Selection\Selection.cs" />

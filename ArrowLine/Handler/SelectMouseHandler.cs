@@ -49,7 +49,12 @@ namespace ArrowLine
                     foreach (AbstractFigure item in selectionObject)
                     {
                         item.Move(e.X - tmpPoint.X, e.Y - tmpPoint.Y);
-                        item.ReDrawRectangleBody();
+
+                        if (item.Type == FigureType.Table)
+                        {
+                            (item as AbstractTable).ReDrawRectangleBody();
+                        }
+
                         item.Draw();
                     }
                 }
@@ -64,9 +69,13 @@ namespace ArrowLine
             {
                 singltone.RebaseBitmap();
 
-                foreach (var item in singltone.tables)
+                foreach (var item in CollectionFigure.tables)
                 {
-                    item.ReDrawRectangleBody();
+                    if (item.Type == FigureType.Table)
+                    {
+                        (item as AbstractTable).ReDrawRectangleBody();
+                    }
+
                     item.Draw();
                 }
             }
@@ -76,7 +85,7 @@ namespace ArrowLine
                 DrawSelection(Brushes.White, selectionObject);
                 selectionObject = null;
 
-                foreach (var item in singltone.tables)
+                foreach (var item in CollectionFigure.tables)
                 {
                     item.Selected = false;
                 }
@@ -92,7 +101,7 @@ namespace ArrowLine
 
                 if (selection.HitTest(e.Location) || selection.HitTest(r) == true)
                 {
-                    selectionObject = singltone.tables.Where(item => item.Selected == true).ToList();
+                    selectionObject = CollectionFigure.tables.Where(item => item.Selected == true).ToList();
                 }
 
                 if (selectionObject != null)
