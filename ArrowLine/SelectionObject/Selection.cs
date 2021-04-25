@@ -31,13 +31,13 @@ namespace ArrowLine.SelectionObject
                     {
                         StartPoint = true;
                         item.Selected = true;
-
+                        return true;
                     }
                     if (new Rectangle(item.endPoint.X - 5, item.endPoint.Y - 5, 10, 10).Contains(point))
                     {
                         EndPoint = true;
                         item.Selected = true;
-
+                        return true;
                     }
                 }
             }
