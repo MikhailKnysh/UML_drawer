@@ -11,53 +11,49 @@ using System.Windows.Forms;
 
 namespace ArrowLine.Handler
 {
-    class DeleteCurrentObject : IMouseHandler
+    public class DeleteCurrentObjectMouseHandler : IMouseHandler
     {
-        DataPictureBox singltone = DataPictureBox.GetInstance();
-        List<AbstractFigure> selectionObjectDelete;
+        DataPictureBox dataPictureBox = DataPictureBox.GetInstance();
+        List<AbstractFigure> selectedObjectDelete;
         ISelection selection = new Selection();
-        public void OnMouseDown(AbstractFigure abstractFigure, MouseEventArgs e, Form form, ContextMenuStrip contextMenuStrip)
+
+        public void OnMouseDown(AbstractFigure currentFigure, MouseEventArgs e, Form form, ContextMenuStrip contextMenuStrip)
         {
-
-
-            if (selection.HitTest(e.Location))
+            if (selection.HitObjectArea(e.Location))
             {
-                selectionObjectDelete = CollectionFigure.tables.Where(item => item.Selected == true).ToList();
+                selectedObjectDelete = CollectionFigure.collectionFigures.Where(item => item.Selected == true).ToList();
             }
-
-
         }
 
         public void OnMouseMove(AbstractFigure currentFigure, MouseEventArgs e)
         {
-
         }
 
         public void OnMouseUp(AbstractFigure currentFigure, MouseEventArgs e)
         {
-            for (int i = 0; i < CollectionFigure.tables.Count; i++)
+            for (int i = 0; i < CollectionFigure.collectionFigures.Count; i++)
             {
-                if (CollectionFigure.tables[i].Selected == true)
+                if (CollectionFigure.collectionFigures[i].Selected == true)
                 {
-                    CollectionFigure.tables.RemoveAt(i);
+                    CollectionFigure.collectionFigures.RemoveAt(i);
                 }
             }
 
-            singltone.RebaseBitmap();
+            dataPictureBox.RebaseBitmap();
 
-            foreach (var item in CollectionFigure.tables)
+            foreach (var item in CollectionFigure.collectionFigures)
             {
                 if (item.Type == FigureType.Table)
                 {
                     (item as AbstractTable).ReDrawRectangleBody();
                 }
+
                 item.Draw();
             }
         }
 
         public void OnPaint(AbstractFigure currentFigure, PaintEventArgs e)
         {
-
         }
 
         public IDTO OnToolStripMenuItemAddStringDataTable_Click(StringDataForm stringDataForm)

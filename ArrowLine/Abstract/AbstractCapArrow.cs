@@ -2,7 +2,7 @@
 
 namespace ArrowLine.Abstract
 {
-    public abstract class AbstractArrowCap: AbstractFigure
+    public abstract class AbstractCapArrow: AbstractFigure
     {
         protected int _arrowSize = 10;
         

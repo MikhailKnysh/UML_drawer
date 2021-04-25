@@ -4,7 +4,7 @@ using ArrowLine.Table;
 
 namespace ArrowLine.Factory
 {
-    class ClassTableFactory : IFigureFactory
+    public class ClassTableFactory : IFigureFactory
     {
         public AbstractFigure CreateFigure()
         {

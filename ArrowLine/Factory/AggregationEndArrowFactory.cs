@@ -2,18 +2,17 @@
 using ArrowLine.Arrow;
 using System;
 using System.Collections.Generic;
-using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace ArrowLine.Factory
 {
-    public class AgregationEndArrowFactory : IFigureFactory
+    public class AggregationEndArrowFactory : IFigureFactory
     {
         public AbstractFigure CreateFigure()
         {
-            return new AgregationEndArrow(FigureType.Arrow);
+            return new AggregationEndArrow(FigureType.Arrow);
         }
     }
 }

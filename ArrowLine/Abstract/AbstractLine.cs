@@ -8,40 +8,40 @@ namespace ArrowLine.Abstract
 
         public virtual Point[] CreateArrowLine()
         {
-            int midlleX = (startPoint.X + endPoint.X) / 2;
-            int midlleY = (startPoint.Y + endPoint.Y) / 2;
+            int midlleX = (StartPoint.X + EndPoint.X) / 2;
+            int midlleY = (StartPoint.Y + EndPoint.Y) / 2;
+
             Point[] linePoint = new Point[]
             {
-                startPoint,
-                 new Point(startPoint.X, midlleY),
-                 new Point(endPoint.X, midlleY),
-                endPoint
+                StartPoint,
+                 new Point(StartPoint.X, midlleY),
+                 new Point(EndPoint.X, midlleY),
+                EndPoint
             };
 
-
-            if (startPoint.X < endPoint.X && Math.Abs(startPoint.X - endPoint.X) > Math.Abs(startPoint.Y - endPoint.Y))
+            if (StartPoint.X < EndPoint.X && Math.Abs(StartPoint.X - EndPoint.X) > Math.Abs(StartPoint.Y - EndPoint.Y))
             {
-                linePoint[1] = new Point(midlleX, startPoint.Y);
-                linePoint[2] = new Point(midlleX, endPoint.Y);
+                linePoint[1] = new Point(midlleX, StartPoint.Y);
+                linePoint[2] = new Point(midlleX, EndPoint.Y);
 
             }
-            else if (startPoint.Y < endPoint.Y && Math.Abs(startPoint.X - endPoint.X) < Math.Abs(startPoint.Y - endPoint.Y))
+            else if (StartPoint.Y < EndPoint.Y && Math.Abs(StartPoint.X - EndPoint.X) < Math.Abs(StartPoint.Y - EndPoint.Y))
             {
 
-                linePoint[1] = new Point(startPoint.X, midlleY);
-                linePoint[2] = new Point(endPoint.X, midlleY);
+                linePoint[1] = new Point(StartPoint.X, midlleY);
+                linePoint[2] = new Point(EndPoint.X, midlleY);
 
             }
 
-            if (startPoint.X > endPoint.X && Math.Abs(startPoint.X - endPoint.X) > Math.Abs(startPoint.Y - endPoint.Y))
+            if (StartPoint.X > EndPoint.X && Math.Abs(StartPoint.X - EndPoint.X) > Math.Abs(StartPoint.Y - EndPoint.Y))
             {
-                linePoint[1] = new Point(midlleX, startPoint.Y);
-                linePoint[2] = new Point(midlleX, endPoint.Y);
+                linePoint[1] = new Point(midlleX, StartPoint.Y);
+                linePoint[2] = new Point(midlleX, EndPoint.Y);
             }
-            else if (startPoint.Y > endPoint.Y && Math.Abs(startPoint.X - endPoint.X) > Math.Abs(startPoint.Y - endPoint.Y))
+            else if (StartPoint.Y > EndPoint.Y && Math.Abs(StartPoint.X - EndPoint.X) > Math.Abs(StartPoint.Y - EndPoint.Y))
             {
-                linePoint[1] = new Point(midlleX, startPoint.Y);
-                linePoint[2] = new Point(midlleX, endPoint.Y);
+                linePoint[1] = new Point(midlleX, StartPoint.Y);
+                linePoint[2] = new Point(midlleX, EndPoint.Y);
             }
 
             return linePoint;

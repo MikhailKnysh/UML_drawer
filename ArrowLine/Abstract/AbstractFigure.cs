@@ -12,12 +12,12 @@ namespace ArrowLine.Abstract
 
     public abstract class AbstractFigure 
     {
-        public Point startPoint { get; set; }
-        public Point endPoint { get; set; }
         public static float penWidth;
         public static Color color;
-      
         protected Pen pen = new Pen(color, penWidth);
+
+        public Point StartPoint { get; set; }
+        public Point EndPoint { get; set; }
         public FigureType Type { get; set; }
         public bool Selected { get; set; }
         public Color Color
@@ -31,6 +31,7 @@ namespace ArrowLine.Abstract
                 color = value;
             }
         }
+
         public float PenWidth
         {
             get
@@ -44,23 +45,23 @@ namespace ArrowLine.Abstract
         }
 
         public abstract void Draw();
-        public void Delta()
+        public void SetDelta()
         {
             
-            if (Math.Abs(startPoint.X - endPoint.X) < 20)
+            if (Math.Abs(StartPoint.X - EndPoint.X) < 20)
             {
-                endPoint = new Point(startPoint.X, endPoint.Y);
+                EndPoint = new Point(StartPoint.X, EndPoint.Y);
             }
-            else if (Math.Abs(startPoint.Y - endPoint.Y) < 20)
+            else if (Math.Abs(StartPoint.Y - EndPoint.Y) < 20)
             {
-                endPoint = new Point(endPoint.X, startPoint.Y);
+                EndPoint = new Point(EndPoint.X, StartPoint.Y);
             }
         }
 
         public void Move(int deltaX, int deltaY)
         {
-            startPoint = new Point(startPoint.X + deltaX, startPoint.Y + deltaY);
-            endPoint = new Point(endPoint.X + deltaX, endPoint.Y + deltaY);
+            StartPoint = new Point(StartPoint.X + deltaX, StartPoint.Y + deltaY);
+            EndPoint = new Point(EndPoint.X + deltaX, EndPoint.Y + deltaY);
         }
     }
 }

@@ -7,7 +7,7 @@ namespace ArrowLine.Handler
     public interface IMouseHandler
     {
 
-        void OnMouseDown(AbstractFigure abstractFigure, MouseEventArgs e, Form form, ContextMenuStrip contextMenuStrip);
+        void OnMouseDown(AbstractFigure currentFigure, MouseEventArgs e, Form form, ContextMenuStrip contextMenuStrip);
 
         void OnMouseMove(AbstractFigure currentFigure, MouseEventArgs e);
         void OnMouseUp(AbstractFigure currentFigure, MouseEventArgs e);

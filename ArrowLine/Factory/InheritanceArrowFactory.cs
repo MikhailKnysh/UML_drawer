@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace ArrowLine.Factory
 {
-    public class InharitanceArrowFactory : IFigureFactory
+    public class InheritanceArrowFactory : IFigureFactory
     {
         public AbstractFigure CreateFigure()
         {

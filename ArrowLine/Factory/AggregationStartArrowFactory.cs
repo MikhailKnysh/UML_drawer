@@ -3,11 +3,11 @@ using ArrowLine.Arrow;
 
 namespace ArrowLine.Factory
 {
-    public class AgregationStartArrowFactory : IFigureFactory
+    public class AggregationStartArrowFactory : IFigureFactory
     {
         public AbstractFigure CreateFigure()
         {
-            return new AgregationStartArrow(FigureType.Arrow);
+            return new AggregationStartArrow(FigureType.Arrow);
         }
     }
 }

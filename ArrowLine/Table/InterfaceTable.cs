@@ -24,7 +24,7 @@ namespace ArrowLine.Table
 
             DrawHorizontalLine(lineIndex: 0, stepDownLine - 2);
 
-            DrawKnots();
+            DrawNodes();
 
             format.Alignment = StringAlignment.Near;
         }

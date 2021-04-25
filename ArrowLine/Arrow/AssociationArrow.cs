@@ -6,10 +6,6 @@ namespace ArrowLine.Arrow
 {
      public class AssociationArrow : AbstractFigure
     {
-        public AssociationArrow()
-        {
-
-        }
         public AssociationArrow(FigureType type)
         {
             Type = type;
@@ -17,11 +13,11 @@ namespace ArrowLine.Arrow
 
         public override void Draw()
         {
-            Delta();
-            AbstractArrowCap arrowCap = new OpenCapArrow(startPoint, endPoint);
+            SetDelta();
+            AbstractCapArrow arrowCap = new OpenCapArrow(StartPoint, EndPoint);
             arrowCap.Draw();
 
-            AbstractLine line = new SolidLineArrow(startPoint, endPoint);
+            AbstractLine line = new SolidLine(StartPoint, EndPoint);
             line.Draw();
         }
     }

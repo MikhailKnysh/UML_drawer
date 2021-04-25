@@ -13,15 +13,15 @@ namespace ArrowLine.Arrow
         {
             Type = type;
         }
+
         public override void Draw()
         {
-          
-            Delta();
+            SetDelta();
 
-            AbstractArrowCap arrowCap = new CloseCapArrow(startPoint, endPoint);
+            AbstractCapArrow arrowCap = new CloseCapArrow(StartPoint, EndPoint);
             arrowCap.Draw();
 
-            AbstractLine line = new DashLineArrow(startPoint, endPoint);
+            AbstractLine line = new DashLine(StartPoint, EndPoint);
             line.Draw();
             pen.DashStyle = DashStyle.Solid;
         }

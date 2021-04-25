@@ -2,7 +2,7 @@
 
 namespace ArrowLine
 {
-    public static class GraficPictureBox
+    public static class GraphicsPictureBox
     {
         public static Graphics Graphics { get; set; }
     }

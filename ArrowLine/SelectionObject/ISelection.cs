@@ -10,10 +10,8 @@ namespace ArrowLine.SelectionObject
 {
     public interface ISelection
     {
-
-        bool HitTest(Point pt);
-
-        bool HitTest(Rectangle r);
+        bool HitObjectArea(Point point);
+        bool HitObjectArea(Rectangle rectangle);
         void DrawOverlay(Point point);
         void DrawOverlay(Brush brush, AbstractFigure objectRectangle);
     }

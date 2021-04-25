@@ -3,7 +3,7 @@ using ArrowLine.Table;
 
 namespace ArrowLine.Factory
 {
-    class StackTableFactory : IFigureFactory
+    public class StackTableFactory : IFigureFactory
     {
         public AbstractFigure CreateFigure()
         {

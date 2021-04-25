@@ -13,14 +13,14 @@ namespace ArrowLine
 {
     public partial class Form1 : Form
     {
-        DataPictureBox singltone;
+        DataPictureBox dataPictureBox;
         string buttonName;
         bool isButtonSelectPressed = false;
         bool isArrowButtonPressed = true;
-        AbstractFigure crntFigure;
+        bool isButtonDeletePressed = false;
+        AbstractFigure currentFigure;
         IMouseHandler mouseHandler;
         IFigureFactory currentFactory;
-        Pen pen = new Pen(Brushes.Black, 2);
 
         public Form1()
         {
@@ -29,20 +29,20 @@ namespace ArrowLine
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            singltone = DataPictureBox.GetInstance();
-            singltone.SetPictureBox(pictureBox1);
-            CollectionFigure.tables = new List<AbstractFigure>();
+            dataPictureBox = DataPictureBox.GetInstance();
+            dataPictureBox.SetPictureBox(pictureBox1);
+            CollectionFigure.collectionFigures = new List<AbstractFigure>();
             currentFactory = new InterfaceTableFactory();
-            crntFigure = currentFactory.CreateFigure();
-            crntFigure.Color =Color.Black;
-            crntFigure.PenWidth = 2;
-            singltone.isMoving = false;
-            mouseHandler = new SelectMouseHandler();
+            currentFigure = currentFactory.CreateFigure();
+            currentFigure.Color =Color.Black;
+            currentFigure.PenWidth = 2;
+            dataPictureBox.isMoving = false;
+            mouseHandler = new SelectAndMoveMouseHandler();
         }
 
         private void pictureBox1_MouseDown(object sender, MouseEventArgs e)
         {
-            singltone.isMoving = true;
+            dataPictureBox.isMoving = true;
 
             if (!isButtonSelectPressed)
             {
@@ -57,68 +57,66 @@ namespace ArrowLine
 
                 if (e.Button == MouseButtons.Left)
                 {
-                    crntFigure = currentFactory.CreateFigure();
+                    currentFigure = currentFactory.CreateFigure();
                 }
             }
           
-            mouseHandler.OnMouseDown(crntFigure, e, this, contextMenuStrip1);
-            singltone.UpdatePictureBox();
+            mouseHandler.OnMouseDown(currentFigure, e, this, contextMenuStrip1);
+            dataPictureBox.UpdatePictureBox();
         }
 
         private void pictureBox1_MouseUp(object sender, MouseEventArgs e)
         {
-            singltone.isMoving = false;
-            singltone.SetBitmap();
+            dataPictureBox.isMoving = false;
+            dataPictureBox.SetBitmap();
 
             if (isButtonDeletePressed)
             {
-                mouseHandler.OnMouseUp(crntFigure, e);
+                mouseHandler.OnMouseUp(currentFigure, e);
 
             }
             else
             {
-            mouseHandler.OnMouseUp(crntFigure, e);
+            mouseHandler.OnMouseUp(currentFigure, e);
 
             }
-            singltone.UpdatePictureBox();
+            dataPictureBox.UpdatePictureBox();
         }
 
         private void pictureBox1_MouseMove(object sender, MouseEventArgs e)
         {
-            singltone.UpdateTmpBitmap();
-            mouseHandler.OnMouseMove(crntFigure, e);
+            dataPictureBox.UpdateTmpBitmap();
+            mouseHandler.OnMouseMove(currentFigure, e);
 
-            singltone.UpdatePictureBox();
+            dataPictureBox.UpdatePictureBox();
         }
 
         private void pictureBox1_Paint(object sender, PaintEventArgs e)
         {
-            if (singltone.isMoving)
+            if (dataPictureBox.isMoving)
             {
-                mouseHandler.OnPaint(crntFigure, e);
-                singltone.UpdatePictureBox();
+                mouseHandler.OnPaint(currentFigure, e);
+                dataPictureBox.UpdatePictureBox();
             }
         }
 
         private void ButtonColor_Click(object sender, EventArgs e)
         {
             
-            Button btnColor = sender as Button;
+            Button buttonColor = sender as Button;
 
             if (colorDialog1.ShowDialog() == DialogResult.OK)
             {
-                btnColor.BackColor = colorDialog1.Color;
-                crntFigure.Color = colorDialog1.Color;
-
+                buttonColor.BackColor = colorDialog1.Color;
+                currentFigure.Color = colorDialog1.Color;
             }
-
         }
 
         private void trackbar1_Scroll(object sender, EventArgs e)
         {
-            Pen currentPen = new Pen(crntFigure.Color,2);
+            Pen currentPen = new Pen(currentFigure.Color,2);
             currentPen.Width = trackBar1.Value;
-            crntFigure.PenWidth = currentPen.Width;
+            currentFigure.PenWidth = currentPen.Width;
         }
 
         private void CheckArrowButtonPressed_Click(object sender, EventArgs e)
@@ -138,16 +136,16 @@ namespace ArrowLine
             switch (buttonName)
             {
                 case nameof(toolStripButtonCloseArrow):
-                    currentFactory = new InharitanceArrowFactory();
+                    currentFactory = new InheritanceArrowFactory();
                     break;
                 case nameof(toolStripButtonEndRhomb):
-                    currentFactory = new AgregationEndArrowFactory();
+                    currentFactory = new AggregationEndArrowFactory();
                     break;
                 case nameof(toolStripButtonEndRhombBlack):
                     currentFactory = new CompositionEndArrowFactory();
                     break;
                 case nameof(toolStripButtonStartRhomb1):
-                    currentFactory = new AgregationStartArrowFactory();
+                    currentFactory = new AggregationStartArrowFactory();
                     break;
                 case nameof(toolStripButtonStartRhombBlack):
                     currentFactory = new CompositionStartArrowFactory();
@@ -157,9 +155,6 @@ namespace ArrowLine
                     break;
                 case nameof(toolStripButtonCloseArrowDash):
                     currentFactory = new ImplementationArrowFactory();
-                    break;
-                case nameof(toolStripButtonTwoAngleLine):
-                    crntFigure = new TwoAngleLineArrow();
                     break;
             }
         }
@@ -184,56 +179,55 @@ namespace ArrowLine
         {
             isButtonSelectPressed = true;
             isButtonDeletePressed = false;
-            mouseHandler = new SelectMouseHandler();
+            mouseHandler = new SelectAndMoveMouseHandler();
         }
 
         private void toolStripMenuItemAddField_Click(object sender, EventArgs e)
         {
-            singltone.UpdateTmpBitmap();
-            var figure = crntFigure as AbstractTable;
+            dataPictureBox.UpdateTmpBitmap();
+            var figure = currentFigure as AbstractTable;
             figure.stringDataTable = mouseHandler.OnToolStripMenuItemAddStringDataTable_Click(
                 new StringDataForm(labelData: "Field")).ToString();
 
             figure.AddField();
 
-
-            singltone.SetBitmap();
+            dataPictureBox.SetBitmap();
         }
 
         private void toolStripMenuItemAddProperty_Click(object sender, EventArgs e)
         {
-            singltone.UpdateTmpBitmap();
-            var figure = crntFigure as AbstractTable;
+            dataPictureBox.UpdateTmpBitmap();
+            var figure = currentFigure as AbstractTable;
             figure.stringDataTable = mouseHandler.OnToolStripMenuItemAddStringDataTable_Click(
                new StringDataForm(labelData: "Property")).ToString();
 
             figure.AddProperty();
 
-            singltone.SetBitmap();
+            dataPictureBox.SetBitmap();
         }
 
         private void toolStripMenuItemAddMethod_Click(object sender, EventArgs e)
         {
-            singltone.UpdateTmpBitmap();
-            var figure = crntFigure as AbstractTable;
+            dataPictureBox.UpdateTmpBitmap();
+            var figure = currentFigure as AbstractTable;
             figure.stringDataTable = mouseHandler.OnToolStripMenuItemAddStringDataTable_Click(
               new StringDataForm(labelData: "Method")).ToString();
 
             figure.AddMethod();
 
-            singltone.SetBitmap();
+            dataPictureBox.SetBitmap();
         }
 
         private void toolStripMenuItemRename_Click(object sender, EventArgs e)
         {
-            singltone.UpdateTmpBitmap();
-            var figure = crntFigure as AbstractTable;
+            dataPictureBox.UpdateTmpBitmap();
+            var figure = currentFigure as AbstractTable;
             figure.title = mouseHandler.OnToolStripMenuItemAddStringDataTable_Click(
                 new StringDataForm(labelData: "Title")).ToString();
 
-            crntFigure.Draw();
+            currentFigure.Draw();
 
-            singltone.SetBitmap();
+            dataPictureBox.SetBitmap();
         }
 
         private void CheckButtonPressedTable_Click(object sender, EventArgs e)
@@ -246,7 +240,7 @@ namespace ArrowLine
 
             toolStripGroupButtonsTable.BackgroundImage = toolStripButton.BackgroundImage;
             buttonName = toolStripButton.Name;
-            mouseHandler = new DrawRectangleHandler();
+            mouseHandler = new DrawTableMouseHandler();
         }
         private void buttonSave_Click(object sender, EventArgs e)
         {
@@ -259,7 +253,7 @@ namespace ArrowLine
 
         private string SerializeFile()
         {
-            string fileData = JsonConvert.SerializeObject(CollectionFigure.tables, Formatting.Indented,
+            string fileData = JsonConvert.SerializeObject(CollectionFigure.collectionFigures, Formatting.Indented,
                  new JsonSerializerSettings
                  {
                      TypeNameHandling = TypeNameHandling.All
@@ -280,23 +274,20 @@ namespace ArrowLine
         {
             if (fileData != String.Empty)
             {
-                CollectionFigure.tables = JsonConvert.DeserializeObject<List<AbstractFigure>>(fileData,
+                CollectionFigure.collectionFigures = JsonConvert.DeserializeObject<List<AbstractFigure>>(fileData,
                     new JsonSerializerSettings
                     {
                         TypeNameHandling = TypeNameHandling.All
                     });
             }
 
-            singltone.RebaseBitmap();
+            dataPictureBox.RebaseBitmap();
 
-            foreach (var item in CollectionFigure.tables)
+            foreach (var item in CollectionFigure.collectionFigures)
             {
                 item.Draw();
             }
-
         }
-
-        
 
         private static ImageCodecInfo GetEncoderInfo(string mimeType)
         {
@@ -313,14 +304,10 @@ namespace ArrowLine
             return null;
         }
 
-        bool isButtonDeletePressed = false;
-
-    
-
         private void buttonSaveImage_Click(object sender, EventArgs e)
         {
 
-            Bitmap bitmapToSave = singltone.GetBitmap();
+            Bitmap bitmapToSave = dataPictureBox.GetBitmap();
             ImageCodecInfo imageCodecInfo;
             Encoder encoder;
             EncoderParameter encoderParameter;
@@ -337,13 +324,13 @@ namespace ArrowLine
 
         private void button2_Click_1(object sender, EventArgs e)
         {
-            mouseHandler = new DeleteCurrentObject();
+            mouseHandler = new DeleteCurrentObjectMouseHandler();
         }
 
         private void buttonClear_Click(object sender, EventArgs e)
         {
-            CollectionFigure.tables.Clear();
-            singltone.RebaseBitmap();
+            CollectionFigure.collectionFigures.Clear();
+            dataPictureBox.RebaseBitmap();
         }
     }
 }

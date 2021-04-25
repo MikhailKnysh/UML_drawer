@@ -6,23 +6,24 @@ using ArrowLine.Abstract;
 
 namespace ArrowLine.Arrow
 {
-    class CompositionStartArrow : AbstractFigure
+    public class CompositionStartArrow : AbstractFigure
     {
         public CompositionStartArrow(FigureType type)
         {
             Type = type;
         }
+
         public override void Draw()
         {
-            Delta();
+            SetDelta();
 
-            AbstractLine line = new SolidLineArrow(startPoint, endPoint);
+            AbstractLine line = new SolidLine(StartPoint, EndPoint);
             line.Draw();
 
-            AbstractArrowCap arrowCap = new OpenCapArrow(startPoint, endPoint);
+            AbstractCapArrow arrowCap = new OpenCapArrow(StartPoint, EndPoint);
             arrowCap.Draw();
 
-            AbstractFigure arrowCapRhomb = new BlackRhombStartCapArrow(startPoint, endPoint);
+            AbstractCapArrow arrowCapRhomb = new BlackRhombStartCapArrow(StartPoint, EndPoint);
             arrowCapRhomb.Draw();
         }
     }

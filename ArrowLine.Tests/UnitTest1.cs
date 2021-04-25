@@ -14,14 +14,14 @@ namespace ArrowLine.Tests
         [SetUp]
         public void Setup()
         {
-            CollectionFigure.tables = new List<AbstractFigure>();
+            CollectionFigure.collectionFigures = new List<AbstractFigure>();
         }
 
         [TestCaseSource(typeof(HitTestPoint))]
         public void HitTest_WhenPointNotNull_ShouldReturnBool(AbstractFigure abstractFigure, Selection selectedObject, Point point, bool expected)
         {
-            CollectionFigure.tables.Add(abstractFigure);
-            bool actual = selectedObject.HitTest(point);
+            CollectionFigure.collectionFigures.Add(abstractFigure);
+            bool actual = selectedObject.HitObjectArea(point);
             Assert.AreEqual(expected, actual);
         }
 
@@ -31,7 +31,7 @@ namespace ArrowLine.Tests
             {
                 yield return new object[]
                 {
-                    new AgregationEndArrow (FigureType.Arrow){startPoint = new Point(0,0), endPoint = new Point(50,50)},
+                    new AggregationEndArrow (FigureType.Arrow){StartPoint = new Point(0,0), EndPoint = new Point(50,50)},
                     new Selection() { },
                     new Point (0, 0),
                     true
@@ -42,8 +42,8 @@ namespace ArrowLine.Tests
         [TestCaseSource(typeof(HitTestRectangle))]
         public void HitTest_WhenRectangleNotNull_ShouldReturnBool(AbstractFigure abstractFigure, Selection selectObject, Rectangle rectangle, bool expected)
         {
-            CollectionFigure.tables.Add(abstractFigure);
-            bool actual = selectObject.HitTest(rectangle);
+            CollectionFigure.collectionFigures.Add(abstractFigure);
+            bool actual = selectObject.HitObjectArea(rectangle);
             Assert.AreEqual(expected, actual);
         }
 
@@ -53,7 +53,7 @@ namespace ArrowLine.Tests
             {
                 yield return new object[]
                 {
-                    new AgregationEndArrow(FigureType.Arrow){startPoint = new Point(0,0), endPoint = new Point(50,50)},
+                    new AggregationEndArrow(FigureType.Arrow){StartPoint = new Point(0,0), EndPoint = new Point(50,50)},
                     new Selection() { },
                     new Rectangle (0, 1, 100, 100),
                     true
@@ -64,8 +64,8 @@ namespace ArrowLine.Tests
         [TestCaseSource(typeof(Contain))]
         public void Contain_WhenPointNotNull_ShouldReturnBool(InterfaceTable table, Point point, bool expected)
         {
-            CollectionFigure.tables.Add(table);
-            bool actual = table.Contain(point);
+            CollectionFigure.collectionFigures.Add(table);
+            bool actual = table.Contains(point);
             Assert.AreEqual(expected, actual);
         }
 
@@ -75,7 +75,7 @@ namespace ArrowLine.Tests
             {
                 yield return new object[]
                 {
-                    new InterfaceTable(FigureType.Table) {startPoint = new Point(0,0)},
+                    new InterfaceTable(FigureType.Table) {StartPoint = new Point(0,0)},
                     new Point (0, 55),
                     true
                 };

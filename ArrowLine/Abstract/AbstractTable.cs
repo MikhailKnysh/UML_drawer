@@ -6,6 +6,15 @@ namespace ArrowLine.Abstract
 {
     public abstract class AbstractTable : AbstractFigure
     {
+        public Rectangle objectRectangle;
+        public Font font;
+        public StringFormat format;
+        public SolidBrush solidBrush;
+        public SolidBrush solidBrushWhite;
+        public int width = 140;
+        public int height = 60;
+        public string stringDataTable;
+        public string title = "Title";
         protected Rectangle titleRectangle;
         protected int heightStringRectangle = 20;
         protected int stepDownLine = 20;
@@ -19,28 +28,18 @@ namespace ArrowLine.Abstract
         protected List<Rectangle> propertieRectangles;
         protected List<Rectangle> methodRectangles;
         protected List<LineInTable> linesInTable;
-        public Rectangle objectRectangle;
         protected Rectangle stringRectangle;
-        public List<Rectangle> highlightRectangles = new List<Rectangle>();
-        public Font font;
-        public StringFormat format;
         protected Pen whitePen;
         protected Pen blackPen;
-        public SolidBrush solidBrush;
-        public SolidBrush solidBrushWhite;
         protected Pen DottedLinePen;
-        public int width = 140;
-        public int height = 60;
-        public string stringDataTable;
-        public string title = "Title";
         public AbstractTable()
         {
-             DottedLinePen = new Pen(Color.Gray, 2);
+            DottedLinePen = new Pen(Color.Gray, 2);
             DottedLinePen.DashStyle = System.Drawing.Drawing2D.DashStyle.Dash;
             font = new Font("Arial", 12, FontStyle.Regular);
             format = new StringFormat();
-            whitePen = new Pen(Color.White, pen.Width);////////////////
-            solidBrush = new SolidBrush(Color.Black);//////Pen.Color
+            whitePen = new Pen(Color.White, pen.Width);
+            solidBrush = new SolidBrush(Color.Black);
             blackPen = new Pen(pen.Color, pen.Width);
             solidBrushWhite = new SolidBrush(Color.White);
             linesInTable = new List<LineInTable>();
@@ -60,26 +59,27 @@ namespace ArrowLine.Abstract
             }
         }
 
-        public List<Rectangle> RectanglesPoint(AbstractFigure objectRectangle)
+        public List<Rectangle> GetRectanglesNodePoints(AbstractFigure objectRectangle)
         {
             var objectRec = objectRectangle as AbstractTable;
+
             return new List<Rectangle>()
             {
 
 
-                new Rectangle(objectRec.startPoint.X + objectRec.width/2 - 15, objectRec.startPoint.Y - 20, 20, 20),
-                new Rectangle(objectRec.startPoint.X - 20, objectRec.startPoint.Y + objectRec.height/2 - 12, 20, 20),
-                new Rectangle(objectRec.startPoint.X + objectRec.width/2 - 15, objectRec.startPoint.Y + objectRec.height , 20, 20 ),
-                new Rectangle(objectRec.startPoint.X + objectRec.width , objectRec.startPoint.Y + objectRec.height/2 - 10, 20, 20)
+                new Rectangle(objectRec.StartPoint.X + objectRec.width/2 - 15, objectRec.StartPoint.Y - 20, 20, 20),
+                new Rectangle(objectRec.StartPoint.X - 20, objectRec.StartPoint.Y + objectRec.height/2 - 12, 20, 20),
+                new Rectangle(objectRec.StartPoint.X + objectRec.width/2 - 15, objectRec.StartPoint.Y + objectRec.height , 20, 20 ),
+                new Rectangle(objectRec.StartPoint.X + objectRec.width , objectRec.StartPoint.Y + objectRec.height/2 - 10, 20, 20)
 
             };
         }
 
-        public bool Contain(Point pt)
+        public bool Contains(Point point)
         {
-            foreach (var item in RectanglesPoint(this))
+            foreach (var item in GetRectanglesNodePoints(this))
             {
-                if (item.Contains(pt))
+                if (item.Contains(point))
                 {
                     return true;
                 }
@@ -89,18 +89,18 @@ namespace ArrowLine.Abstract
 
         public void CreateBaseRactangle()
         {
-            objectRectangle = new Rectangle(startPoint.X, startPoint.Y, width, height);
+            objectRectangle = new Rectangle(StartPoint.X, StartPoint.Y, width, height);
         }
 
-        public  void AddField()
+        public void AddField()
         {
-            ClaerKnots();
+            ClearNodes();
 
             stepDownPropertyPoint += 20;
             stepDownMethodPoint += 20;
             format.Alignment = StringAlignment.Near;
 
-            GraficPictureBox.Graphics.DrawRectangle(whitePen, objectRectangle);
+            GraphicsPictureBox.Graphics.DrawRectangle(whitePen, objectRectangle);
 
             IncreaseFrame();
 
@@ -125,21 +125,20 @@ namespace ArrowLine.Abstract
             height += heightStringRectangle;
             objectRectangle.Height += heightStringRectangle;
 
-
-            DrawKnots();
+            DrawNodes();
 
             DrawHorizontalLine(lineIndex: 1, stepDownFieldPoint + 1);
         }
 
         public  void AddProperty()
         {
-            ClaerKnots();
+            ClearNodes();
 
             stepDownMethodPoint += 20;
 
             format.Alignment = StringAlignment.Near;
 
-            GraficPictureBox.Graphics.DrawRectangle(whitePen, objectRectangle);
+            GraphicsPictureBox.Graphics.DrawRectangle(whitePen, objectRectangle);
 
             IncreaseFrame();
 
@@ -157,20 +156,20 @@ namespace ArrowLine.Abstract
             height += heightStringRectangle;
             objectRectangle.Height += heightStringRectangle;
 
-            DrawKnots();
+            DrawNodes();
 
-            GraficPictureBox.Graphics.DrawRectangle(pen, objectRectangle);
+            GraphicsPictureBox.Graphics.DrawRectangle(pen, objectRectangle);
 
             DrawHorizontalLine(lineIndex: 2, stepDownPropertyPoint + 1);
         }
 
         public void AddMethod()
         {
-            ClaerKnots();
+            ClearNodes();
 
             format.Alignment = StringAlignment.Near;
 
-            GraficPictureBox.Graphics.DrawRectangle(whitePen, objectRectangle);
+            GraphicsPictureBox.Graphics.DrawRectangle(whitePen, objectRectangle);
 
             IncreaseFrame();
 
@@ -183,18 +182,19 @@ namespace ArrowLine.Abstract
             height += heightStringRectangle;
          
             objectRectangle.Height += heightStringRectangle;
-            DrawKnots();
 
-            GraficPictureBox.Graphics.DrawRectangle(pen, objectRectangle);
+            DrawNodes();
+
+            GraphicsPictureBox.Graphics.DrawRectangle(pen, objectRectangle);
 
         }
 
         protected virtual void DrawStringRectangle(
             Font font, StringFormat format, string text, int heightStringRectangle, int stepDownPoint)
         {
-            stringRectangle = new Rectangle(startPoint.X, startPoint.Y + stepDownPoint, width, heightStringRectangle);
-            GraficPictureBox.Graphics.FillRectangle(solidBrushWhite, stringRectangle);
-            GraficPictureBox.Graphics.DrawString(text, font, solidBrush, stringRectangle, format);
+            stringRectangle = new Rectangle(StartPoint.X, StartPoint.Y + stepDownPoint, width, heightStringRectangle);
+            GraphicsPictureBox.Graphics.FillRectangle(solidBrushWhite, stringRectangle);
+            GraphicsPictureBox.Graphics.DrawString(text, font, solidBrush, stringRectangle, format);
         }
 
         protected virtual void ReDrawArea(List<Rectangle> stringRectangles, List<string> stringData)
@@ -205,8 +205,8 @@ namespace ArrowLine.Abstract
                  stringRectangles[i].Y + 20, width, heightStringRectangle);
 
                 stringRectangles[i] = stringRectangle;
-                GraficPictureBox.Graphics.FillRectangle(solidBrushWhite, stringRectangles[i].X, stringRectangles[i].Y, width, heightStringRectangle);
-                GraficPictureBox.Graphics.DrawString(stringData[i], font, solidBrush, stringRectangles[i], format);
+                GraphicsPictureBox.Graphics.FillRectangle(solidBrushWhite, stringRectangles[i].X, stringRectangles[i].Y, width, heightStringRectangle);
+                GraphicsPictureBox.Graphics.DrawString(stringData[i], font, solidBrush, stringRectangles[i], format);
             }
         }
 
@@ -216,55 +216,53 @@ namespace ArrowLine.Abstract
 
             for (int i = 0; i < fieldRectangles.Count; i++)
             {
-                stringRectangle = new Rectangle(startPoint.X,
-                    startPoint.Y + tmpStepDownPoint, width, heightStringRectangle);
+                stringRectangle = new Rectangle(StartPoint.X,
+                    StartPoint.Y + tmpStepDownPoint, width, heightStringRectangle);
                 fieldRectangles[i] = stringRectangle;
                 tmpStepDownPoint += 20;
 
-                GraficPictureBox.Graphics.FillRectangle(solidBrushWhite, fieldRectangles[i].X, fieldRectangles[i].Y, width, heightStringRectangle);
-                GraficPictureBox.Graphics.DrawString(fields[i], font, solidBrush, fieldRectangles[i], format);
+                GraphicsPictureBox.Graphics.FillRectangle(solidBrushWhite, fieldRectangles[i].X, fieldRectangles[i].Y, width, heightStringRectangle);
+                GraphicsPictureBox.Graphics.DrawString(fields[i], font, solidBrush, fieldRectangles[i], format);
             }
 
             DrawHorizontalLine(lineIndex: 1, stepDownFieldPoint);
 
             for (int i = 0; i < propertieRectangles.Count; i++)
             {
-                stringRectangle = new Rectangle(startPoint.X,
-                    startPoint.Y + tmpStepDownPoint + 2, width, heightStringRectangle);
+                stringRectangle = new Rectangle(StartPoint.X,
+                    StartPoint.Y + tmpStepDownPoint + 2, width, heightStringRectangle);
                 propertieRectangles[i] = stringRectangle;
                 tmpStepDownPoint += 20;
-                GraficPictureBox.Graphics.FillRectangle(solidBrushWhite, propertieRectangles[i].X, propertieRectangles[i].Y, width, heightStringRectangle);
-                GraficPictureBox.Graphics.DrawString(properties[i], font, solidBrush, propertieRectangles[i], format);
-
+                GraphicsPictureBox.Graphics.FillRectangle(solidBrushWhite, propertieRectangles[i].X, propertieRectangles[i].Y, width, heightStringRectangle);
+                GraphicsPictureBox.Graphics.DrawString(properties[i], font, solidBrush, propertieRectangles[i], format);
             }
 
             DrawHorizontalLine(lineIndex: 2, stepDownPropertyPoint);
 
             for (int i = 0; i < methodRectangles.Count; i++)
             {
-                stringRectangle = new Rectangle(startPoint.X,
-                    startPoint.Y + tmpStepDownPoint + 4, width, heightStringRectangle);
+                stringRectangle = new Rectangle(StartPoint.X,
+                    StartPoint.Y + tmpStepDownPoint + 4, width, heightStringRectangle);
                 methodRectangles[i] = stringRectangle;
                 tmpStepDownPoint += 20;
-                GraficPictureBox.Graphics.FillRectangle(solidBrushWhite, methodRectangles[i].X, methodRectangles[i].Y, width, heightStringRectangle);
-                GraficPictureBox.Graphics.DrawString(methods[i], font, solidBrush, methodRectangles[i], format);
-
+                GraphicsPictureBox.Graphics.FillRectangle(solidBrushWhite, methodRectangles[i].X, methodRectangles[i].Y, width, heightStringRectangle);
+                GraphicsPictureBox.Graphics.DrawString(methods[i], font, solidBrush, methodRectangles[i], format);
             }
         }
 
         protected virtual void DrawHorizontalLine(int lineIndex, int stepDownPoint)
         {
-            linesInTable[lineIndex]._startLinePoint.X = startPoint.X;
-            linesInTable[lineIndex]._startLinePoint.Y = startPoint.Y + stepDownPoint + heightStringRectangle;
-            linesInTable[lineIndex]._endLinePoint.X = startPoint.X + width;
-            linesInTable[lineIndex]._endLinePoint.Y = startPoint.Y + stepDownPoint + heightStringRectangle;
-            GraficPictureBox.Graphics.DrawLine(pen , linesInTable[lineIndex]._startLinePoint, linesInTable[lineIndex]._endLinePoint);
+            linesInTable[lineIndex]._startLinePoint.X = StartPoint.X;
+            linesInTable[lineIndex]._startLinePoint.Y = StartPoint.Y + stepDownPoint + heightStringRectangle;
+            linesInTable[lineIndex]._endLinePoint.X = StartPoint.X + width;
+            linesInTable[lineIndex]._endLinePoint.Y = StartPoint.Y + stepDownPoint + heightStringRectangle;
+            GraphicsPictureBox.Graphics.DrawLine(pen , linesInTable[lineIndex]._startLinePoint, linesInTable[lineIndex]._endLinePoint);
         }
 
         protected virtual void IncreaseFrame()
         {
-            float stringWidth = GraficPictureBox.Graphics.MeasureString(stringDataTable, font).Width;
-            float titleWidth = GraficPictureBox.Graphics.MeasureString(title, font).Width;
+            float stringWidth = GraphicsPictureBox.Graphics.MeasureString(stringDataTable, font).Width;
+            float titleWidth = GraphicsPictureBox.Graphics.MeasureString(title, font).Width;
 
             if (stringWidth > width || titleWidth > width)
             {
@@ -277,23 +275,21 @@ namespace ArrowLine.Abstract
             objectRectangle.Width = width;
         }
 
-        protected virtual void DrawKnots()
+        protected virtual void DrawNodes()
         {
-            foreach (var item in RectanglesPoint(this))
+            foreach (var item in GetRectanglesNodePoints(this))
             {
-                GraficPictureBox.Graphics.DrawRectangle(DottedLinePen, item);
+                GraphicsPictureBox.Graphics.DrawRectangle(DottedLinePen, item);
             }
-            GraficPictureBox.Graphics.DrawRectangle(pen, objectRectangle);
+            GraphicsPictureBox.Graphics.DrawRectangle(pen, objectRectangle);
         }
 
-        protected virtual void ClaerKnots()
+        protected virtual void ClearNodes()
         {
-            foreach (var item in RectanglesPoint(this))
+            foreach (var item in GetRectanglesNodePoints(this))
             {
-                GraficPictureBox.Graphics.DrawRectangle(whitePen, item);
+                GraphicsPictureBox.Graphics.DrawRectangle(whitePen, item);
             }
-            
-
         }
     }
 }

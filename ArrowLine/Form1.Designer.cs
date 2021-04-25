@@ -113,6 +113,7 @@ namespace ArrowLine
             // toolStripGroupButtonsArrow
             // 
             this.toolStripGroupButtonsArrow.AutoSize = false;
+            this.toolStripGroupButtonsArrow.BackColor = System.Drawing.Color.LightSkyBlue;
             this.toolStripGroupButtonsArrow.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("toolStripGroupButtonsArrow.BackgroundImage")));
             this.toolStripGroupButtonsArrow.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.toolStripGroupButtonsArrow.Dock = System.Windows.Forms.DockStyle.None;

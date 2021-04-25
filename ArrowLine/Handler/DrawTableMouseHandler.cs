@@ -5,38 +5,36 @@ using System.Windows.Forms;
 
 namespace ArrowLine.Handler
 {
-    public class DrawRectangleHandler : IMouseHandler
+    public class DrawTableMouseHandler : IMouseHandler
     {
-        public DataPictureBox singltone = DataPictureBox.GetInstance();
+        public DataPictureBox dataPictureBox = DataPictureBox.GetInstance();
         private IDTO _idto;
 
         public void OnMouseDown(AbstractFigure currentFigure, MouseEventArgs e, Form form, ContextMenuStrip contextMenuStrip)
         {
             if (e.Button == MouseButtons.Left)
             {
-            currentFigure.startPoint = e.Location;
-            currentFigure.endPoint = e.Location;
-
+                currentFigure.StartPoint = e.Location;
+                currentFigure.EndPoint = e.Location;
             }
 
             if (e.Button == MouseButtons.Right)
             {
-                singltone.isMoving = false;
+                dataPictureBox.isMoving = false;
                 contextMenuStrip.Show(form, new Point(e.X + 120, e.Y));
-
             }
         }
 
         public void OnMouseMove(AbstractFigure currentFigure, MouseEventArgs e)
         {
-            currentFigure.endPoint = e.Location;
+            currentFigure.EndPoint = e.Location;
         }
 
         public void OnMouseUp(AbstractFigure currentFigure, MouseEventArgs e)
         {
             if (currentFigure != null && e.Button == MouseButtons.Left)
             {
-                CollectionFigure.tables.Add(currentFigure);
+                CollectionFigure.collectionFigures.Add(currentFigure);
             }
         }
 

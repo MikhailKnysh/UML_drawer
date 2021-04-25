@@ -6,22 +6,24 @@ using ArrowLine.Abstract;
 
 namespace ArrowLine.Arrow
 {
-    public class InheritanceArrow : AbstractFigure
+    public class AggregationStartArrow : AbstractFigure
     {
-        public InheritanceArrow(FigureType type)
+        public AggregationStartArrow(FigureType type)
         {
             Type = type;
         }
-
         public override void Draw()
         {
             SetDelta();
 
             AbstractLine line = new SolidLine(StartPoint, EndPoint);
             line.Draw();
-            AbstractCapArrow arrowCap = new CloseCapArrow(StartPoint, EndPoint);
+
+            AbstractCapArrow arrowCap = new OpenCapArrow(StartPoint, EndPoint);
             arrowCap.Draw();
 
+            AbstractCapArrow arrowCapRhomb = new WhiteRhombStartCapArrow(StartPoint, EndPoint);
+            arrowCapRhomb.Draw();
         }
     }
 }

@@ -13,18 +13,18 @@ using System.Windows.Forms;
 
 namespace ArrowLine
 {
-    public class SelectMouseHandler : IMouseHandler
+    public class SelectAndMoveMouseHandler : IMouseHandler
     {
-        DataPictureBox singltone = DataPictureBox.GetInstance();
+        DataPictureBox dataPictureBox = DataPictureBox.GetInstance();
         Point startPoint;
         Point endPoint;
         Point tmpPoint;
-        List<AbstractFigure> selectionObject;
+        List<AbstractFigure> selectedObjects;
         ISelection selection = new Selection();
         private Brush _highlightBrush;
         private Pen _highlightPen;
 
-        public SelectMouseHandler()
+        public SelectAndMoveMouseHandler()
         {
             _highlightBrush = new SolidBrush(Color.FromArgb(50, Color.Aquamarine));
             _highlightPen = new Pen(Color.Navy);
@@ -40,13 +40,13 @@ namespace ArrowLine
 
         public void OnMouseMove(AbstractFigure currentFigure, MouseEventArgs e)
         {
-            if (singltone.isMoving)
+            if (dataPictureBox.isMoving)
             {
                 endPoint = e.Location;
 
-                if (selectionObject != null && selection.HitTest(e.Location) == true)
+                if (selectedObjects != null && selection.HitObjectArea(e.Location) == true)
                 {
-                    foreach (AbstractFigure item in selectionObject)
+                    foreach (AbstractFigure item in selectedObjects)
                     {
                         item.Move(e.X - tmpPoint.X, e.Y - tmpPoint.Y);
 
@@ -65,11 +65,11 @@ namespace ArrowLine
 
         public void OnMouseUp(AbstractFigure currentFigure, MouseEventArgs e)
         {
-            if (selectionObject != null)
+            if (selectedObjects != null)
             {
-                singltone.RebaseBitmap();
+                dataPictureBox.RebaseBitmap();
 
-                foreach (var item in CollectionFigure.tables)
+                foreach (var item in CollectionFigure.collectionFigures)
                 {
                     if (item.Type == FigureType.Table)
                     {
@@ -80,12 +80,12 @@ namespace ArrowLine
                 }
             }
 
-            if (currentFigure.Selected == false || selection.HitTest(e.Location) == false)
+            if (currentFigure.Selected == false || selection.HitObjectArea(e.Location) == false)
             {
-                DrawSelection(Brushes.White, selectionObject);
-                selectionObject = null;
+                DrawSelection(Brushes.White, selectedObjects);
+                selectedObjects = null;
 
-                foreach (var item in CollectionFigure.tables)
+                foreach (var item in CollectionFigure.collectionFigures)
                 {
                     item.Selected = false;
                 }
@@ -93,36 +93,36 @@ namespace ArrowLine
 
             if (e.Button == MouseButtons.Left)
             {
-                Rectangle r = new Rectangle(
+                Rectangle rectangle = new Rectangle(
                           Math.Min(startPoint.X, endPoint.X),
                           Math.Min(startPoint.Y, endPoint.Y),
                           Math.Abs(startPoint.X - endPoint.X),
                           Math.Abs(startPoint.Y - endPoint.Y));
 
-                if (selection.HitTest(e.Location) || selection.HitTest(r) == true)
+                if (selection.HitObjectArea(e.Location) || selection.HitObjectArea(rectangle) == true)
                 {
-                    selectionObject = CollectionFigure.tables.Where(item => item.Selected == true).ToList();
+                    selectedObjects = CollectionFigure.collectionFigures.Where(item => item.Selected == true).ToList();
                 }
 
-                if (selectionObject != null)
+                if (selectedObjects != null)
                 {
-                    DrawSelection(Brushes.Black, selectionObject);
+                    DrawSelection(Brushes.Black, selectedObjects);
                 }
             }
         }
 
         public void OnPaint(AbstractFigure currentFigure, PaintEventArgs e)
         {
-            if (selectionObject == null)
+            if (selectedObjects == null)
             {
-                Rectangle r = new Rectangle(
+                Rectangle rectangle = new Rectangle(
                  Math.Min(startPoint.X, endPoint.X),
                  Math.Min(startPoint.Y, endPoint.Y),
                  Math.Abs(startPoint.X - endPoint.X),
                  Math.Abs(startPoint.Y - endPoint.Y));
 
-                e.Graphics.FillRectangle(_highlightBrush, r);
-                e.Graphics.DrawRectangle(_highlightPen, r);
+                e.Graphics.FillRectangle(_highlightBrush, rectangle);
+                e.Graphics.DrawRectangle(_highlightPen, rectangle);
             }
         }
 
@@ -139,8 +139,9 @@ namespace ArrowLine
                 {
                     if (abstractFigure.Type == FigureType.Arrow)
                     {
-                        selection.DrawOverlay(abstractFigure.startPoint);
+                        selection.DrawOverlay(abstractFigure.StartPoint);
                     }
+
                     if (abstractFigure.Type == FigureType.Table)
                     {
                         selection.DrawOverlay(brush, abstractFigure);

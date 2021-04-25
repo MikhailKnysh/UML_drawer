@@ -6,21 +6,21 @@ using ArrowLine.Abstract;
 
 namespace ArrowLine.Arrow
 {
-    class CompositionEndArrow : AbstractFigure
+    public class CompositionEndArrow : AbstractFigure
     {
         public CompositionEndArrow(FigureType type)
         {
             Type = type;
         }
+
         public override void Draw()
         {
-            Delta();
+            SetDelta();
 
-            AbstractLine line = new SolidLineArrow(startPoint, endPoint);
+            AbstractLine line = new SolidLine(StartPoint, EndPoint);
             line.Draw();
-
             
-            AbstractFigure arrowCapRhomb = new BlackRhombEndCapArrow(startPoint, endPoint);
+            AbstractCapArrow arrowCapRhomb = new BlackRhombEndCapArrow(StartPoint, EndPoint);
             arrowCapRhomb.Draw();
         }
     }

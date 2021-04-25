@@ -24,9 +24,9 @@ namespace ArrowLine.Table
 
             DrawHorizontalLine(lineIndex: 0, stepDownLine - 2);
 
-            GraficPictureBox.Graphics.DrawRectangle(pen, objectRectangle);
+            GraphicsPictureBox.Graphics.DrawRectangle(pen, objectRectangle);
 
-            DrawKnots();
+            DrawNodes();
 
             format.Alignment = StringAlignment.Near;
         }

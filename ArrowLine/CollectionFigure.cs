@@ -8,6 +8,6 @@ namespace ArrowLine.Abstract
 {
     public static class CollectionFigure
     {
-        public static List<AbstractFigure> tables;
+        public static List<AbstractFigure> collectionFigures;
     }
 }

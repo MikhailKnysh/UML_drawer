@@ -8,48 +8,43 @@ namespace ArrowLine.Handler
 {
     public class DrawArrowMouseHandler : IMouseHandler
     {
-
-        public DataPictureBox singltone = DataPictureBox.GetInstance();
-
-
         public void OnMouseDown(AbstractFigure currentFigure, MouseEventArgs e, Form form, ContextMenuStrip contextMenuStrip)
         {
 
-            foreach (var item in CollectionFigure.tables)
+            foreach (var item in CollectionFigure.collectionFigures)
             {
                 if (item.Type == FigureType.Table)
                 {
                     var rectangle = item as AbstractTable;
 
-                    if (rectangle.Contain(e.Location))
+                    if (rectangle.Contains(e.Location))
                     {
                         CheckStartPointLocation(rectangle, currentFigure, e);
                         return;
                     }
                 }
             }
-
         }
 
         public void OnMouseMove(AbstractFigure currentFigure, MouseEventArgs e)
         {
             if (e.Button == MouseButtons.Left)
             {
-                currentFigure.endPoint = e.Location;
+                currentFigure.EndPoint = e.Location;
             }
         }
 
         public void OnMouseUp(AbstractFigure currentFigure, MouseEventArgs e)
         {
-            if (currentFigure != null && e.Button == MouseButtons.Left && currentFigure.startPoint.X != 0 && currentFigure.startPoint.Y != 0)
+            if (currentFigure != null && e.Button == MouseButtons.Left && currentFigure.StartPoint.X != 0 && currentFigure.StartPoint.Y != 0)
             {
-                CollectionFigure.tables.Add(currentFigure);
+                CollectionFigure.collectionFigures.Add(currentFigure);
             }
         }
 
         public void OnPaint(AbstractFigure currentFigure, PaintEventArgs e)
         {
-            if (currentFigure.startPoint.X != 0 && currentFigure.startPoint.Y != 0)
+            if (currentFigure.StartPoint.X != 0 && currentFigure.StartPoint.Y != 0)
             {
 
                 currentFigure.Draw();
@@ -63,30 +58,31 @@ namespace ArrowLine.Handler
 
         private void CheckStartPointLocation(AbstractTable item, AbstractFigure currentFigure, MouseEventArgs e)
         {
-            if (e.Location.X > item.startPoint.X + 30
-                                            && (Math.Abs(e.Location.Y - item.startPoint.Y) < 30))
+            if (e.Location.X > item.StartPoint.X + 30
+               && (Math.Abs(e.Location.Y - item.StartPoint.Y) < 30))
             {
-                currentFigure.startPoint = new Point(item.startPoint.X + item.width / 2,
-                    item.startPoint.Y-10);
+                currentFigure.StartPoint = new Point(item.StartPoint.X + item.width / 2,
+                    item.StartPoint.Y-10);
             }
-            else if ((Math.Abs(e.Location.X - item.startPoint.X) < 30)
-                && e.Location.Y > item.startPoint.Y)
+            else if ((Math.Abs(e.Location.X - item.StartPoint.X) < 30)
+                && e.Location.Y > item.StartPoint.Y)
             {
-                currentFigure.startPoint = new Point(item.startPoint.X-10,
-                    item.startPoint.Y + item.height / 2);
+                currentFigure.StartPoint = new Point(item.StartPoint.X-10,
+                    item.StartPoint.Y + item.height / 2);
             }
-            else if (e.Location.X < item.startPoint.X + item.width + 30
-                && (e.Location.Y < item.startPoint.Y + item.height / 2 + 30))
+            else if (e.Location.X < item.StartPoint.X + item.width + 30
+                && (e.Location.Y < item.StartPoint.Y + item.height / 2 + 30))
             {
-                currentFigure.startPoint = new Point(item.startPoint.X + 10 + item.width,
-                    item.startPoint.Y + item.height / 2);
+                currentFigure.StartPoint = new Point(item.StartPoint.X + 10 + item.width,
+                    item.StartPoint.Y + item.height / 2);
             }
             else
             {
-                currentFigure.startPoint = new Point(item.startPoint.X + item.width / 2,
-                   item.startPoint.Y + item.height + 10);
+                currentFigure.StartPoint = new Point(item.StartPoint.X + item.width / 2,
+                   item.StartPoint.Y + item.height + 10);
             }
-            currentFigure.endPoint = e.Location;
+
+            currentFigure.EndPoint = e.Location;
         }
     }
 }
