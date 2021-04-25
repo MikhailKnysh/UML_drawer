@@ -60,15 +60,8 @@ namespace ArrowLine
                     crntFigure = currentFactory.CreateFigure();
                 }
             }
-            if (isButtonDeletePressed)
-            {
-                mouseHandler.OnMouseDown(crntFigure, e, this, contextMenuStrip1);
-            }
-            else
-            {
-
+          
             mouseHandler.OnMouseDown(crntFigure, e, this, contextMenuStrip1);
-            }
             singltone.UpdatePictureBox();
         }
 
@@ -293,7 +286,14 @@ namespace ArrowLine
                         TypeNameHandling = TypeNameHandling.All
                     });
             }
-            
+
+            singltone.RebaseBitmap();
+
+            foreach (var item in CollectionFigure.tables)
+            {
+                item.Draw();
+            }
+
         }
 
         
@@ -337,9 +337,18 @@ namespace ArrowLine
 
         private void button2_Click_1(object sender, EventArgs e)
         {
-            isButtonDeletePressed = true;
-
             mouseHandler = new DeleteCurrentObject();
+        }
+
+        private void buttonClear_Click(object sender, EventArgs e)
+        {
+            CollectionFigure.tables.Clear();
+            singltone.RebaseBitmap();
+        }
+
+        private void buttonChangeColor_Click(object sender, EventArgs e)
+        {
+            mouseHandler = new ChangeObjectsHandler();
         }
     }
 }
