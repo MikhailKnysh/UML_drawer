@@ -55,6 +55,7 @@ namespace ArrowLine
             this.toolStripButtonClassTable = new System.Windows.Forms.ToolStripButton();
             this.toolStripButtonInterfaceTable = new System.Windows.Forms.ToolStripButton();
             this.toolStripButtonStackTable = new System.Windows.Forms.ToolStripButton();
+            this.buttonSaveImage = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).BeginInit();
             this.toolStripGroupButtonsArrow.SuspendLayout();
@@ -66,11 +67,11 @@ namespace ArrowLine
             // 
             this.pictureBox1.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.pictureBox1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.pictureBox1.Location = new System.Drawing.Point(118, -2);
+            this.pictureBox1.Location = new System.Drawing.Point(118, 1);
             this.pictureBox1.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Padding = new System.Windows.Forms.Padding(0, 2, 0, 0);
-            this.pictureBox1.Size = new System.Drawing.Size(872, 565);
+            this.pictureBox1.Size = new System.Drawing.Size(1240, 740);
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
             this.pictureBox1.Paint += new System.Windows.Forms.PaintEventHandler(this.pictureBox1_Paint);
@@ -297,7 +298,7 @@ namespace ArrowLine
             this.toolStripButtonStackTable});
             this.toolStripGroupButtonsTable.Location = new System.Drawing.Point(14, 288);
             this.toolStripGroupButtonsTable.Name = "toolStripGroupButtonsTable";
-            this.toolStripGroupButtonsTable.Size = new System.Drawing.Size(112, 25);
+            this.toolStripGroupButtonsTable.Size = new System.Drawing.Size(81, 25);
             this.toolStripGroupButtonsTable.TabIndex = 16;
             this.toolStripGroupButtonsTable.Text = "toolStrip1";
             // 
@@ -331,12 +332,24 @@ namespace ArrowLine
             this.toolStripButtonStackTable.Text = "toolStripButtonStackTable";
             this.toolStripButtonStackTable.Click += new System.EventHandler(this.CheckButtonPressedTable_Click);
             // 
+            // buttonSaveImage
+            // 
+            this.buttonSaveImage.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.buttonSaveImage.Location = new System.Drawing.Point(16, 412);
+            this.buttonSaveImage.Name = "buttonSaveImage";
+            this.buttonSaveImage.Size = new System.Drawing.Size(75, 23);
+            this.buttonSaveImage.TabIndex = 17;
+            this.buttonSaveImage.Text = "Save image";
+            this.buttonSaveImage.UseVisualStyleBackColor = true;
+            this.buttonSaveImage.Click += new System.EventHandler(this.buttonSaveImage_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Coral;
-            this.ClientSize = new System.Drawing.Size(740, 456);
+            this.ClientSize = new System.Drawing.Size(1350, 729);
+            this.Controls.Add(this.buttonSaveImage);
             this.Controls.Add(this.toolStripGroupButtonsTable);
             this.Controls.Add(this.buttonSelect);
             this.Controls.Add(this.toolStripGroupButtonsArrow);
@@ -346,7 +359,7 @@ namespace ArrowLine
             this.ForeColor = System.Drawing.SystemColors.ActiveCaption;
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "Form1";
-            this.Text = "Form1";
+            this.Text = "UML Drawer";
             this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).EndInit();
@@ -386,6 +399,7 @@ namespace ArrowLine
         private System.Windows.Forms.ToolStripButton toolStripButtonClassTable;
         private System.Windows.Forms.ToolStripButton toolStripButtonInterfaceTable;
         private System.Windows.Forms.ToolStripButton toolStripButtonStackTable;
+        private System.Windows.Forms.Button buttonSaveImage;
     }
 }
 

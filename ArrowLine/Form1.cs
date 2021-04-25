@@ -1,5 +1,7 @@
 ﻿using ArrowLine.Line;
 using System;
+using System.Drawing;
+using System.Drawing.Imaging;
 using System.Windows.Forms;
 
 namespace ArrowLine
@@ -66,13 +68,13 @@ namespace ArrowLine
 
         private void pictureBox1_MouseMove(object sender, MouseEventArgs e)
         {
-            if(e.Button == MouseButtons.Right)
+            if (e.Button == MouseButtons.Right)
             {
 
             }
             singltone.UpdateTmpBitmap();
             mouseHandler.OnMouseMove(crntFigure, e);
-            
+
             singltone.UpdatePictureBox();
         }
 
@@ -225,6 +227,38 @@ namespace ArrowLine
             toolStripGroupButtonsTable.BackgroundImage = toolStripButton.BackgroundImage;
             buttonName = toolStripButton.Name;
             mouseHandler = new DrawMouseHandler();
+        }
+
+        private void buttonSaveImage_Click(object sender, EventArgs e)
+        {
+            Bitmap bitmapToSave = singltone.GetBitmap();
+            ImageCodecInfo imageCodecInfo;
+            Encoder encoder;
+            EncoderParameter encoderParameter;
+            EncoderParameters encoderParameters;
+
+            imageCodecInfo = GetEncoderInfo("image/jpeg");
+            encoder = Encoder.Quality;
+            encoderParameters = new EncoderParameters(1);
+
+            encoderParameter = new EncoderParameter(encoder, 75L);
+            encoderParameters.Param[0] = encoderParameter;
+            bitmapToSave.Save("Shapes075.jpg", imageCodecInfo, encoderParameters);
+        }
+
+        private static ImageCodecInfo GetEncoderInfo(string mimeType)
+        {
+            ImageCodecInfo[] encoders = ImageCodecInfo.GetImageEncoders();
+
+            for (int j = 0; j < encoders.Length; ++j)
+            {
+                if (encoders[j].MimeType == mimeType)
+                {
+                    return encoders[j];
+                }
+            }
+
+            return null;
         }
     }
 }
