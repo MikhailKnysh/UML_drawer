@@ -1,4 +1,4 @@
-﻿
+
 namespace ArrowLine
 {
     partial class Form1

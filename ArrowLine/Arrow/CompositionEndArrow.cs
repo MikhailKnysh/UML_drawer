@@ -8,6 +8,10 @@ namespace ArrowLine.Arrow
 {
     class CompositionEndArrow : AbstractFigure
     {
+        public CompositionEndArrow(FigureType type)
+        {
+            Type = type;
+        }
         public override void Draw()
         {
             Delta();
@@ -15,9 +19,7 @@ namespace ArrowLine.Arrow
             AbstractLine line = new SolidLineArrow(startPoint, endPoint);
             line.Draw();
 
-            AbstractArrowCap arrowCap = new OpenCapArrow(startPoint, endPoint);
-            arrowCap.Draw();
-
+            
             AbstractFigure arrowCapRhomb = new BlackRhombEndCapArrow(startPoint, endPoint);
             arrowCapRhomb.Draw();
         }

@@ -67,25 +67,26 @@ namespace ArrowLine.Handler
                                             && (Math.Abs(e.Location.Y - item.startPoint.Y) < 30))
             {
                 currentFigure.startPoint = new Point(item.startPoint.X + item.width / 2,
-                    item.startPoint.Y);
+                    item.startPoint.Y-10);
             }
             else if ((Math.Abs(e.Location.X - item.startPoint.X) < 30)
                 && e.Location.Y > item.startPoint.Y)
             {
-                currentFigure.startPoint = new Point(item.startPoint.X,
+                currentFigure.startPoint = new Point(item.startPoint.X-10,
                     item.startPoint.Y + item.height / 2);
             }
             else if (e.Location.X < item.startPoint.X + item.width + 30
                 && (e.Location.Y < item.startPoint.Y + item.height / 2 + 30))
             {
-                currentFigure.startPoint = new Point(item.startPoint.X + item.width,
+                currentFigure.startPoint = new Point(item.startPoint.X + 10 + item.width,
                     item.startPoint.Y + item.height / 2);
             }
             else
             {
                 currentFigure.startPoint = new Point(item.startPoint.X + item.width / 2,
-                   item.startPoint.Y + item.height);
+                   item.startPoint.Y + item.height + 10);
             }
+            currentFigure.endPoint = e.Location;
         }
     }
 }

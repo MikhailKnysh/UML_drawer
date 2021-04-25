@@ -193,7 +193,7 @@ namespace ArrowLine.Abstract
             Font font, StringFormat format, string text, int heightStringRectangle, int stepDownPoint)
         {
             stringRectangle = new Rectangle(startPoint.X, startPoint.Y + stepDownPoint, width, heightStringRectangle);
-            GraficPictureBox.Graphics.FillRectangle(new SolidBrush(Color.Red), stringRectangle);
+            GraficPictureBox.Graphics.FillRectangle(solidBrushWhite, stringRectangle);
             GraficPictureBox.Graphics.DrawString(text, font, solidBrush, stringRectangle, format);
         }
 
@@ -205,7 +205,7 @@ namespace ArrowLine.Abstract
                  stringRectangles[i].Y + 20, width, heightStringRectangle);
 
                 stringRectangles[i] = stringRectangle;
-                GraficPictureBox.Graphics.FillRectangle(new SolidBrush(Color.White), stringRectangles[i].X, stringRectangles[i].Y, width, heightStringRectangle);
+                GraficPictureBox.Graphics.FillRectangle(solidBrushWhite, stringRectangles[i].X, stringRectangles[i].Y, width, heightStringRectangle);
                 GraficPictureBox.Graphics.DrawString(stringData[i], font, solidBrush, stringRectangles[i], format);
             }
         }
@@ -221,7 +221,7 @@ namespace ArrowLine.Abstract
                 fieldRectangles[i] = stringRectangle;
                 tmpStepDownPoint += 20;
 
-                GraficPictureBox.Graphics.FillRectangle(new SolidBrush(Color.White), fieldRectangles[i].X, fieldRectangles[i].Y, width, heightStringRectangle);
+                GraficPictureBox.Graphics.FillRectangle(solidBrushWhite, fieldRectangles[i].X, fieldRectangles[i].Y, width, heightStringRectangle);
                 GraficPictureBox.Graphics.DrawString(fields[i], font, solidBrush, fieldRectangles[i], format);
             }
 
@@ -233,7 +233,7 @@ namespace ArrowLine.Abstract
                     startPoint.Y + tmpStepDownPoint + 2, width, heightStringRectangle);
                 propertieRectangles[i] = stringRectangle;
                 tmpStepDownPoint += 20;
-                GraficPictureBox.Graphics.FillRectangle(new SolidBrush(Color.White), propertieRectangles[i].X, propertieRectangles[i].Y, width, heightStringRectangle);
+                GraficPictureBox.Graphics.FillRectangle(solidBrushWhite, propertieRectangles[i].X, propertieRectangles[i].Y, width, heightStringRectangle);
                 GraficPictureBox.Graphics.DrawString(properties[i], font, solidBrush, propertieRectangles[i], format);
 
             }
@@ -246,7 +246,7 @@ namespace ArrowLine.Abstract
                     startPoint.Y + tmpStepDownPoint + 4, width, heightStringRectangle);
                 methodRectangles[i] = stringRectangle;
                 tmpStepDownPoint += 20;
-                GraficPictureBox.Graphics.FillRectangle(new SolidBrush(Color.White), methodRectangles[i].X, methodRectangles[i].Y, width, heightStringRectangle);
+                GraficPictureBox.Graphics.FillRectangle(solidBrushWhite, methodRectangles[i].X, methodRectangles[i].Y, width, heightStringRectangle);
                 GraficPictureBox.Graphics.DrawString(methods[i], font, solidBrush, methodRectangles[i], format);
 
             }

@@ -1,4 +1,5 @@
 ﻿using ArrowLine.Abstract;
+using System;
 using System.Drawing;
 
 namespace ArrowLine.CapArrow
@@ -22,7 +23,7 @@ namespace ArrowLine.CapArrow
                 endPoint,
              };
 
-            if (startPoint.X < endPoint.X)
+            if (startPoint.X < endPoint.X && Math.Abs(startPoint.X - endPoint.X) > Math.Abs(startPoint.Y - endPoint.Y))
             {
                 _CustomCapArrow[1].X -= _arrowSize;
                 _CustomCapArrow[1].Y -= _arrowSize;
@@ -32,7 +33,7 @@ namespace ArrowLine.CapArrow
                 _CustomCapArrow[3].X -= _arrowSize;
                 _CustomCapArrow[3].Y += _arrowSize;
             }
-            else if (startPoint.Y > endPoint.Y && startPoint.X == endPoint.X)
+            else if (startPoint.Y > endPoint.Y && Math.Abs(startPoint.X - endPoint.X) < Math.Abs(startPoint.Y - endPoint.Y))
             {
                 _CustomCapArrow[1].X += _arrowSize;
                 _CustomCapArrow[1].Y += _arrowSize;
@@ -42,7 +43,7 @@ namespace ArrowLine.CapArrow
                 _CustomCapArrow[3].X -= _arrowSize;
                 _CustomCapArrow[3].Y += _arrowSize;
             }
-            else if (startPoint.X > endPoint.X)
+            if (startPoint.X > endPoint.X && Math.Abs(startPoint.X - endPoint.X) > Math.Abs(startPoint.Y - endPoint.Y))
             {
                 _CustomCapArrow[1].X += _arrowSize;
                 _CustomCapArrow[1].Y -= _arrowSize;
@@ -52,7 +53,7 @@ namespace ArrowLine.CapArrow
                 _CustomCapArrow[3].X += _arrowSize;
                 _CustomCapArrow[3].Y += _arrowSize;
             }
-            else
+            else if(startPoint.Y < endPoint.Y && Math.Abs(startPoint.X - endPoint.X) < Math.Abs(startPoint.Y - endPoint.Y))
             {
                 _CustomCapArrow[1].X -= _arrowSize;
                 _CustomCapArrow[1].Y -= _arrowSize;

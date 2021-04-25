@@ -13,7 +13,7 @@ namespace ArrowLine.Factory
     {
         public AbstractFigure CreateFigure()
         {
-            return new CompositionStartArrow(FigureType.Arrow);
+            return new CompositionEndArrow(FigureType.Arrow);
         }
     }
 }
