@@ -242,7 +242,8 @@ namespace ArrowLine
             buttonName = toolStripButton.Name;
             mouseHandler = new DrawTableMouseHandler();
         }
-        private void buttonSave_Click(object sender, EventArgs e)
+
+        private void saveToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (saveFileDialog1.ShowDialog() == DialogResult.OK)
             {
@@ -261,7 +262,7 @@ namespace ArrowLine
             return fileData;
         }
 
-        private void buttonOpen_Click(object sender, EventArgs e)
+        private void OpenToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (openFileDialog1.ShowDialog() == DialogResult.OK)
             {
@@ -304,9 +305,8 @@ namespace ArrowLine
             return null;
         }
 
-        private void buttonSaveImage_Click(object sender, EventArgs e)
+        private void saveAsImageToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
             Bitmap bitmapToSave = dataPictureBox.GetBitmap();
             ImageCodecInfo imageCodecInfo;
             Encoder encoder;
