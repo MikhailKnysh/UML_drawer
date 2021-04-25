@@ -62,6 +62,8 @@ namespace ArrowLine
             this.buttonSaveImage = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
+            this.buttonClear = new System.Windows.Forms.Button();
+            this.buttonChangeColor = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).BeginInit();
             this.toolStripGroupButtonsArrow.SuspendLayout();
@@ -409,12 +411,34 @@ namespace ArrowLine
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click_1);
             // 
+            // buttonClear
+            // 
+            this.buttonClear.Location = new System.Drawing.Point(42, 643);
+            this.buttonClear.Name = "buttonClear";
+            this.buttonClear.Size = new System.Drawing.Size(96, 33);
+            this.buttonClear.TabIndex = 20;
+            this.buttonClear.Text = "Clear";
+            this.buttonClear.UseVisualStyleBackColor = true;
+            this.buttonClear.Click += new System.EventHandler(this.buttonClear_Click);
+            // 
+            // buttonChangeColor
+            // 
+            this.buttonChangeColor.Location = new System.Drawing.Point(30, 703);
+            this.buttonChangeColor.Name = "buttonChangeColor";
+            this.buttonChangeColor.Size = new System.Drawing.Size(107, 33);
+            this.buttonChangeColor.TabIndex = 21;
+            this.buttonChangeColor.Text = "ChangeColor";
+            this.buttonChangeColor.UseVisualStyleBackColor = true;
+            this.buttonChangeColor.Click += new System.EventHandler(this.buttonChangeColor_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Coral;
             this.ClientSize = new System.Drawing.Size(1437, 919);
+            this.Controls.Add(this.buttonChangeColor);
+            this.Controls.Add(this.buttonClear);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.buttonOpen);
             this.Controls.Add(this.buttonSave);
@@ -475,6 +499,8 @@ namespace ArrowLine
         private System.Windows.Forms.ToolStripButton toolStripButtonClassTable;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button buttonClear;
+        private System.Windows.Forms.Button buttonChangeColor;
     }
 }
 
