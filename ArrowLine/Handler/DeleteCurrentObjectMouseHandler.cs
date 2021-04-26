@@ -1,15 +1,13 @@
-﻿using ArrowLine.Abstract;
-using ArrowLine.SelectionObject;
-using ArrowLine.Table.StringData;
+﻿using UMLDrawer.Abstract;
+using UMLDrawer.SelectionObject;
+using UMLDrawer.Table.StringData;
 using System;
 using System.Collections.Generic;
-using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
+using UMlDrawer.Abstract;
 
-namespace ArrowLine.Handler
+namespace UMLDrawer.Handler
 {
     public class DeleteCurrentObjectMouseHandler : IMouseHandler
     {

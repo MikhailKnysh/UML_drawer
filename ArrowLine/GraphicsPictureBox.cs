@@ -1,6 +1,6 @@
 ﻿using System.Drawing;
 
-namespace ArrowLine
+namespace UMLDrawer
 {
     public static class GraphicsPictureBox
     {

@@ -1,7 +1,7 @@
-﻿using ArrowLine.Abstract;
+﻿using UMLDrawer.Abstract;
 using System.Drawing;
 
-namespace ArrowLine.CapArrow
+namespace UMLDrawer.CapArrow
 {
     public class BlackRhombStartCapArrow : AbstractCapArrow
     {
@@ -9,9 +9,9 @@ namespace ArrowLine.CapArrow
         {
 
         }
+
         public BlackRhombStartCapArrow(Point startPoint, Point endPoint)
         {
-            
             this.StartPoint = startPoint;
             this.EndPoint = endPoint;
         }
@@ -26,7 +26,6 @@ namespace ArrowLine.CapArrow
                 new Point(StartPoint.X - _arrowSize, StartPoint.Y),
                 new Point(StartPoint.X, StartPoint.Y - _arrowSize),
             };
-
 
             return _CustomCapArrow;
         }

@@ -1,11 +1,10 @@
-﻿using ArrowLine.Abstract;
+﻿using UMLDrawer.Abstract;
 using System.Drawing;
 
-namespace ArrowLine.Line
+namespace UMLDrawer.Line
 {
     public class SolidLine : AbstractLine
     {
-        
         public SolidLine(Point startPoint, Point endPoint)
         {
             this.StartPoint = startPoint;

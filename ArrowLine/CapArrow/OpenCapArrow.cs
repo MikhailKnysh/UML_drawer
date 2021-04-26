@@ -1,8 +1,8 @@
-﻿using ArrowLine.Abstract;
+﻿using UMLDrawer.Abstract;
 using System;
 using System.Drawing;
 
-namespace ArrowLine.CapArrow
+namespace UMLDrawer.CapArrow
 {
     public class OpenCapArrow : AbstractCapArrow
     {
@@ -15,11 +15,11 @@ namespace ArrowLine.CapArrow
         public override Point[] CreateArrowObject()
         {
             Point[] _CustomCapArrow = new Point[]
-              {
+            {
                 new Point(EndPoint.X, EndPoint.Y),
                 EndPoint,
                 new Point(EndPoint.X, EndPoint.Y)
-              };
+            };
 
             if (StartPoint.X < EndPoint.X && Math.Abs(StartPoint.X - EndPoint.X) > Math.Abs(StartPoint.Y - EndPoint.Y))
             {

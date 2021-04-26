@@ -1,8 +1,8 @@
-﻿using ArrowLine.Abstract;
+﻿using UMLDrawer.Abstract;
 using System;
 using System.Drawing;
 
-namespace ArrowLine.CapArrow
+namespace UMLDrawer.CapArrow
 {
     public class WhiteRhombEndCapArrow : AbstractCapArrow
     {
@@ -15,13 +15,13 @@ namespace ArrowLine.CapArrow
         public override Point[] CreateArrowObject()
         {
             Point[] _CustomCapArrow = new Point[]
-             {
+            {
                 EndPoint,
                 new Point(EndPoint.X, EndPoint.Y),
                 new Point(EndPoint.X, EndPoint.Y),
                 new Point(EndPoint.X, EndPoint.Y),
                 EndPoint,
-             };
+            };
 
             if (StartPoint.X < EndPoint.X && Math.Abs(StartPoint.X - EndPoint.X) > Math.Abs(StartPoint.Y - EndPoint.Y))
             {
@@ -43,6 +43,7 @@ namespace ArrowLine.CapArrow
                 _CustomCapArrow[3].X -= _arrowSize;
                 _CustomCapArrow[3].Y += _arrowSize;
             }
+
             if (StartPoint.X > EndPoint.X && Math.Abs(StartPoint.X - EndPoint.X) > Math.Abs(StartPoint.Y - EndPoint.Y))
             {
                 _CustomCapArrow[1].X += _arrowSize;

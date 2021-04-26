@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ArrowLine.Table.StringData
+namespace UMLDrawer.Table.StringData
 {
     public interface IDTO
     {

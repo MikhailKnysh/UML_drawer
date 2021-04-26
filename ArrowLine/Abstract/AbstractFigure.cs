@@ -1,19 +1,13 @@
-﻿using System;
+﻿using UMlDrawer.Abstract;
+using System;
 using System.Drawing;
 
-namespace ArrowLine.Abstract
+namespace UMLDrawer.Abstract
 {
-
-    public enum FigureType
-    {
-        Arrow,
-        Table
-    }
-
     public abstract class AbstractFigure 
     {
-        public static float penWidth;
-        public static Color color;
+        private static float penWidth;
+        private static Color color;
         protected Pen pen = new Pen(color, penWidth);
 
         public Point StartPoint { get; set; }
@@ -45,9 +39,9 @@ namespace ArrowLine.Abstract
         }
 
         public abstract void Draw();
+
         public void SetDelta()
         {
-            
             if (Math.Abs(StartPoint.X - EndPoint.X) < 20)
             {
                 EndPoint = new Point(StartPoint.X, EndPoint.Y);

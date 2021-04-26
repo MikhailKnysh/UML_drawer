@@ -1,7 +1,7 @@
-﻿using ArrowLine.Abstract;
+﻿using UMLDrawer.Abstract;
 using System.Drawing;
 
-namespace ArrowLine.CapArrow
+namespace UMLDrawer.CapArrow
 {
     public class WhiteRhombStartCapArrow : AbstractCapArrow
     {

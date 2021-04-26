@@ -1,15 +1,12 @@
-﻿using ArrowLine.Abstract;
-using System;
+﻿using UMLDrawer.Abstract;
 using System.Collections.Generic;
 using System.Drawing;
+using UMlDrawer.Abstract;
 
-namespace ArrowLine.SelectionObject
+namespace UMLDrawer.SelectionObject
 {
     public class Selection : ISelection
     {
-        public bool StartPoint { get; set; }
-        public bool EndPoint { get; set; }
-
         public bool HitObjectArea(Point point)
         {
             foreach (AbstractFigure item in CollectionFigure.collectionFigures)
@@ -27,14 +24,15 @@ namespace ArrowLine.SelectionObject
 
                 if (item.Type == FigureType.Arrow)
                 {
-                    if (new Rectangle(item.StartPoint.X - 5, item.StartPoint.Y - 5, 10, 10).Contains(point)
-                        || new Rectangle(item.EndPoint.X - 5, item.EndPoint.Y - 5, 10, 10).Contains(point))
+                    if (new Rectangle(item.StartPoint.X - 7, item.StartPoint.Y - 7, 15, 15).Contains(point)
+                        || new Rectangle(item.EndPoint.X - 7, item.EndPoint.Y - 7, 15, 15).Contains(point))
                     {
                         item.Selected = true;
                         return true;
                     }
                 }
             }
+
             return false;
         }
 
@@ -53,13 +51,10 @@ namespace ArrowLine.SelectionObject
 
                 if (item.Type == FigureType.Arrow)
                 {
-                    foreach (AbstractFigure abstractFigure in CollectionFigure.collectionFigures)
+                    if (rectangle.Contains(item.StartPoint)
+                        || rectangle.Contains(item.EndPoint))
                     {
-                        if (rectangle.Contains(abstractFigure.StartPoint)
-                            || rectangle.Contains(abstractFigure.EndPoint))
-                        {
-                            item.Selected = true;
-                        }
+                        item.Selected = true;
                     }
                 }
             }
@@ -89,13 +84,12 @@ namespace ArrowLine.SelectionObject
                 new Rectangle(rectangle.StartPoint.X - 7, rectangle.StartPoint.Y + rectangle.height/2 - 3, 6, 6),
                 new Rectangle(rectangle.StartPoint.X + rectangle.width/2 - 3,rectangle.StartPoint.Y + rectangle.height + 1, 6, 6 ),
                 new Rectangle(rectangle.StartPoint.X + rectangle.width + 1,rectangle.StartPoint.Y + rectangle.height/2 - 3, 6, 6)
-
             };
         }
 
         public void DrawOverlay(Point point)
         {
-            GraphicsPictureBox.Graphics.FillRectangle(Brushes.Transparent, new Rectangle(point.X - 5, point.Y - 5, 10, 10));
+            GraphicsPictureBox.Graphics.FillRectangle(Brushes.Transparent, new Rectangle(point.X - 15, point.Y - 15, 15, 15));
         }
 
         public void DrawOverlay(Brush brushes, AbstractFigure objectRectangle)
@@ -103,7 +97,6 @@ namespace ArrowLine.SelectionObject
             foreach (Rectangle rectangle in RectanglesPoint(objectRectangle))
             {
                 GraphicsPictureBox.Graphics.FillRectangle(brushes, rectangle);
-
             }
         }
     }

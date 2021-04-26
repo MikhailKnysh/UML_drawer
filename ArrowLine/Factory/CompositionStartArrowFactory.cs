@@ -1,14 +1,8 @@
-﻿using ArrowLine.Abstract;
-using ArrowLine.Arrow;
-using ArrowLine.Factory;
-using System;
-using System.Collections.Generic;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using UMLDrawer.Abstract;
+using UMLDrawer.Arrow;
+using UMlDrawer.Abstract;
 
-namespace ArrowLine.Factory
+namespace UMLDrawer.Factory
 {
     public class CompositionStartArrowFactory : IFigureFactory
     {

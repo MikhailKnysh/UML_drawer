@@ -1,5 +1,5 @@
 ﻿
-namespace ArrowLine
+namespace UMLDrawer
 {
     partial class StringDataForm
     {

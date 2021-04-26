@@ -1,16 +1,16 @@
-﻿using ArrowLine.Abstract;
-using ArrowLine.Table.StringData;
+﻿using UMLDrawer.Abstract;
+using UMLDrawer.Table.StringData;
 using System;
 using System.Drawing;
 using System.Windows.Forms;
+using UMlDrawer.Abstract;
 
-namespace ArrowLine.Handler
+namespace UMLDrawer.Handler
 {
     public class DrawArrowMouseHandler : IMouseHandler
     {
         public void OnMouseDown(AbstractFigure currentFigure, MouseEventArgs e, Form form, ContextMenuStrip contextMenuStrip)
         {
-
             foreach (var item in CollectionFigure.collectionFigures)
             {
                 if (item.Type == FigureType.Table)
@@ -46,7 +46,6 @@ namespace ArrowLine.Handler
         {
             if (currentFigure.StartPoint.X != 0 && currentFigure.StartPoint.Y != 0)
             {
-
                 currentFigure.Draw();
             }
         }

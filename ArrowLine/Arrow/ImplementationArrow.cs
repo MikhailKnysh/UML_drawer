@@ -1,11 +1,10 @@
-﻿using ArrowLine.CapArrow;
-using ArrowLine.Line;
-using System.Drawing;
+﻿using UMLDrawer.CapArrow;
+using UMLDrawer.Line;
 using System.Drawing.Drawing2D;
-using System;
-using ArrowLine.Abstract;
+using UMLDrawer.Abstract;
+using UMlDrawer.Abstract;
 
-namespace ArrowLine.Arrow
+namespace UMLDrawer.Arrow
 {
     public class ImplementationArrow : AbstractFigure
     {

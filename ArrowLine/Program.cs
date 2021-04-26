@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Windows.Forms;
 
-namespace ArrowLine
+namespace UMLDrawer
 {
     static class Program
     {

@@ -1,8 +1,8 @@
-﻿using ArrowLine.Abstract;
-using System;
+﻿using UMLDrawer.Abstract;
 using System.Drawing;
+using UMlDrawer.Abstract;
 
-namespace ArrowLine.Table
+namespace UMLDrawer.Table
 {
     public class ClassTable : AbstractTable
     {

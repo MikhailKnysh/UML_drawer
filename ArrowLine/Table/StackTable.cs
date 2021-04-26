@@ -1,10 +1,10 @@
-﻿using ArrowLine.Abstract;
-using System;
+﻿using UMLDrawer.Abstract;
 using System.Drawing;
+using UMlDrawer.Abstract;
 
-namespace ArrowLine.Table
+namespace UMLDrawer.Table
 {
-    class StackTable : AbstractTable
+    public class StackTable : AbstractTable
     {
         public StackTable(FigureType type)
         {

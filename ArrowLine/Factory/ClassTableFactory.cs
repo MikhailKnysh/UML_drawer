@@ -1,8 +1,8 @@
-﻿using ArrowLine.Abstract;
-using ArrowLine.Factory;
-using ArrowLine.Table;
+﻿using UMlDrawer.Abstract;
+using UMLDrawer.Abstract;
+using UMLDrawer.Table;
 
-namespace ArrowLine.Factory
+namespace UMLDrawer.Factory
 {
     public class ClassTableFactory : IFigureFactory
     {

@@ -1,26 +1,24 @@
-using ArrowLine.Line;
 using System;
 using System.Drawing;
 using System.Drawing.Imaging;
 using System.Windows.Forms;
 using Newtonsoft.Json;
 using System.Collections.Generic;
-using ArrowLine.Handler;
-using ArrowLine.Abstract;
-using ArrowLine.Factory;
+using UMLDrawer.Handler;
+using UMLDrawer.Abstract;
+using UMLDrawer.Factory;
 
-namespace ArrowLine
+namespace UMLDrawer
 {
     public partial class Form1 : Form
     {
-        DataPictureBox dataPictureBox;
-        string buttonName;
-        bool isButtonSelectPressed = false;
-        bool isArrowButtonPressed = true;
-        bool isButtonDeletePressed = false;
-        AbstractFigure currentFigure;
-        IMouseHandler mouseHandler;
-        IFigureFactory currentFactory;
+        private DataPictureBox dataPictureBox;
+        private string buttonName;
+        private bool isButtonSelectPressed = false;
+        private bool isArrowButtonPressed = true;
+        private AbstractFigure currentFigure;
+        private IMouseHandler mouseHandler;
+        private IFigureFactory currentFactory;
 
         public Form1()
         {
@@ -69,17 +67,7 @@ namespace ArrowLine
         {
             dataPictureBox.isMoving = false;
             dataPictureBox.SetBitmap();
-
-            if (isButtonDeletePressed)
-            {
-                mouseHandler.OnMouseUp(currentFigure, e);
-
-            }
-            else
-            {
             mouseHandler.OnMouseUp(currentFigure, e);
-
-            }
             dataPictureBox.UpdatePictureBox();
         }
 
@@ -87,7 +75,6 @@ namespace ArrowLine
         {
             dataPictureBox.UpdateTmpBitmap();
             mouseHandler.OnMouseMove(currentFigure, e);
-
             dataPictureBox.UpdatePictureBox();
         }
 
@@ -178,7 +165,6 @@ namespace ArrowLine
         private void buttonSelect_Click(object sender, EventArgs e)
         {
             isButtonSelectPressed = true;
-            isButtonDeletePressed = false;
             mouseHandler = new SelectAndMoveMouseHandler();
         }
 
@@ -235,7 +221,6 @@ namespace ArrowLine
             ToolStripButton toolStripButton = (ToolStripButton)sender;
 
             isButtonSelectPressed = false;
-            isButtonDeletePressed = false;
             isArrowButtonPressed = false;
 
             toolStripGroupButtonsTable.BackgroundImage = toolStripButton.BackgroundImage;

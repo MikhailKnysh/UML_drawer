@@ -1,17 +1,16 @@
-﻿using ArrowLine.Abstract;
-using ArrowLine.Handler;
-using ArrowLine.SelectionObject;
-using ArrowLine.Table.StringData;
+﻿using UMLDrawer.Abstract;
+using UMLDrawer.Handler;
+using UMLDrawer.SelectionObject;
+using UMLDrawer.Table.StringData;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
+using UMlDrawer.Abstract;
 
-namespace ArrowLine
+namespace UMLDrawer
 {
     public class SelectAndMoveMouseHandler : IMouseHandler
     {
@@ -83,6 +82,7 @@ namespace ArrowLine
             if (currentFigure.Selected == false || selection.HitObjectArea(e.Location) == false)
             {
                 DrawSelection(Brushes.White, selectedObjects);
+
                 selectedObjects = null;
 
                 foreach (var item in CollectionFigure.collectionFigures)

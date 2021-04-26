@@ -1,8 +1,8 @@
-﻿using ArrowLine.Abstract;
-using System;
+﻿using UMLDrawer.Abstract;
 using System.Drawing;
+using UMlDrawer.Abstract;
 
-namespace ArrowLine.Table
+namespace UMLDrawer.Table
 {
     public class InterfaceTable : AbstractTable
     {
@@ -23,7 +23,6 @@ namespace ArrowLine.Table
             titleRectangle = stringRectangle;
 
             DrawHorizontalLine(lineIndex: 0, stepDownLine - 2);
-
             DrawNodes();
 
             format.Alignment = StringAlignment.Near;

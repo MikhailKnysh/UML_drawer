@@ -1,11 +1,10 @@
 ﻿using System;
 using System.Drawing;
 
-namespace ArrowLine.Abstract
+namespace UMLDrawer.Abstract
 {
     public abstract class AbstractLine : AbstractFigure
     {
-
         public virtual Point[] CreateArrowLine()
         {
             int midlleX = (StartPoint.X + EndPoint.X) / 2;
@@ -46,7 +45,5 @@ namespace ArrowLine.Abstract
 
             return linePoint;
         }
-
-       
     }
 }

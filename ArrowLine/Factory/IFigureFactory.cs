@@ -1,6 +1,6 @@
-﻿using ArrowLine.Abstract;
+﻿using UMLDrawer.Abstract;
 
-namespace ArrowLine.Factory
+namespace UMLDrawer.Factory
 {
     public interface IFigureFactory
     {

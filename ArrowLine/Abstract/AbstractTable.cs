@@ -1,8 +1,8 @@
-﻿using ArrowLine.Table;
+﻿using UMLDrawer.Table;
 using System.Collections.Generic;
 using System.Drawing;
 
-namespace ArrowLine.Abstract
+namespace UMLDrawer.Abstract
 {
     public abstract class AbstractTable : AbstractFigure
     {
@@ -32,6 +32,7 @@ namespace ArrowLine.Abstract
         protected Pen whitePen;
         protected Pen blackPen;
         protected Pen DottedLinePen;
+
         public AbstractTable()
         {
             DottedLinePen = new Pen(Color.Gray, 2);
@@ -65,13 +66,10 @@ namespace ArrowLine.Abstract
 
             return new List<Rectangle>()
             {
-
-
                 new Rectangle(objectRec.StartPoint.X + objectRec.width/2 - 15, objectRec.StartPoint.Y - 20, 20, 20),
                 new Rectangle(objectRec.StartPoint.X - 20, objectRec.StartPoint.Y + objectRec.height/2 - 12, 20, 20),
                 new Rectangle(objectRec.StartPoint.X + objectRec.width/2 - 15, objectRec.StartPoint.Y + objectRec.height , 20, 20 ),
                 new Rectangle(objectRec.StartPoint.X + objectRec.width , objectRec.StartPoint.Y + objectRec.height/2 - 10, 20, 20)
-
             };
         }
 
@@ -84,6 +82,7 @@ namespace ArrowLine.Abstract
                     return true;
                 }
             }
+
             return false;
         }
 
@@ -186,7 +185,6 @@ namespace ArrowLine.Abstract
             DrawNodes();
 
             GraphicsPictureBox.Graphics.DrawRectangle(pen, objectRectangle);
-
         }
 
         protected virtual void DrawStringRectangle(

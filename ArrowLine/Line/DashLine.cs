@@ -1,8 +1,8 @@
-﻿using ArrowLine.Abstract;
+﻿using UMLDrawer.Abstract;
 using System.Drawing;
 using System.Drawing.Drawing2D;
 
-namespace ArrowLine.Line
+namespace UMLDrawer.Line
 {
     public class DashLine : AbstractLine
     {

@@ -1,11 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace ArrowLine
+namespace UMLDrawer
 {
     public static class SaveAndLoadProject
     {
@@ -24,6 +20,7 @@ namespace ArrowLine
             {
                 fileData = openSR.ReadToEnd();
             }
+
             return fileData;
         }
     }

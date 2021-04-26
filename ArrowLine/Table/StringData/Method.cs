@@ -1,5 +1,5 @@
 ﻿
-namespace ArrowLine.Table.StringData
+namespace UMLDrawer.Table.StringData
 {
     public class Method : IDTO
     {

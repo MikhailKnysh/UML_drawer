@@ -1,7 +1,7 @@
 ﻿using System;
 using System.ComponentModel;
 
-namespace ArrowLine.Table
+namespace UMLDrawer.Table
 {
     public static class EnumExtensionMethod
     {

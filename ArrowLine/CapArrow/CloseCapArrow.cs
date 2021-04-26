@@ -1,8 +1,8 @@
-﻿using ArrowLine.Abstract;
+﻿using UMLDrawer.Abstract;
 using System;
 using System.Drawing;
 
-namespace ArrowLine.CapArrow
+namespace UMLDrawer.CapArrow
 {
     public class CloseCapArrow : AbstractCapArrow
     {
@@ -55,7 +55,6 @@ namespace ArrowLine.CapArrow
 
         public override void Draw()
         {
-
             GraphicsPictureBox.Graphics.DrawLines(pen, CreateArrowObject());
         }
     }

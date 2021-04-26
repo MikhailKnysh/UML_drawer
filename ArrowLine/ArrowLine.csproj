@@ -65,6 +65,7 @@
     <Compile Include="Abstract\AbstractTable.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Abstract\FigureType.cs" />
     <Compile Include="CollectionFigure.cs" />
     <Compile Include="Factory\AggregationEndArrowFactory.cs" />
     <Compile Include="Abstract\AbstractTable.cs" />

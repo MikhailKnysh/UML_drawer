@@ -1,13 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Drawing;
-using ArrowLine.Arrow;
-using ArrowLine.Abstract;
+﻿using UMLDrawer.Arrow;
+using UMLDrawer.Abstract;
+using UMlDrawer.Abstract;
 
-namespace ArrowLine.Factory
+namespace UMLDrawer.Factory
 {
     public class AssociationArrowFactory : IFigureFactory
     {

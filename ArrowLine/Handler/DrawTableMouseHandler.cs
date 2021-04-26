@@ -1,9 +1,9 @@
-using ArrowLine.Abstract;
-using ArrowLine.Table.StringData;
+using UMLDrawer.Abstract;
+using UMLDrawer.Table.StringData;
 using System.Drawing;
 using System.Windows.Forms;
 
-namespace ArrowLine.Handler
+namespace UMLDrawer.Handler
 {
     public class DrawTableMouseHandler : IMouseHandler
     {
