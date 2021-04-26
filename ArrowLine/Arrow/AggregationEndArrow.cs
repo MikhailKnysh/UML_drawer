@@ -1,9 +1,9 @@
-﻿using UMLDrawer.Abstract;
-using UMLDrawer.CapArrow;
-using UMLDrawer.Line;
+﻿using ArrowLine.Abstract;
+using ArrowLine.CapArrow;
+using ArrowLine.Line;
 using UMlDrawer.Abstract;
 
-namespace UMLDrawer.Arrow
+namespace ArrowLine.Arrow
 {
     public class AggregationEndArrow : AbstractFigure
     {

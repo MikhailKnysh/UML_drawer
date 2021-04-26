@@ -1,4 +1,4 @@
-﻿namespace UMLDrawer.Table.StringData
+﻿namespace ArrowLine.Table.StringData
 {
     public class Property : IDTO
     {

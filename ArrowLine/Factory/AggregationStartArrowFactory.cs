@@ -1,8 +1,8 @@
 ﻿using UMlDrawer.Abstract;
-using UMLDrawer.Abstract;
-using UMLDrawer.Arrow;
+using ArrowLine.Abstract;
+using ArrowLine.Arrow;
 
-namespace UMLDrawer.Factory
+namespace ArrowLine.Factory
 {
     public class AggregationStartArrowFactory : IFigureFactory
     {

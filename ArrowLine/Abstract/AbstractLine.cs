@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Drawing;
 
-namespace UMLDrawer.Abstract
+namespace ArrowLine.Abstract
 {
     public abstract class AbstractLine : AbstractFigure
     {

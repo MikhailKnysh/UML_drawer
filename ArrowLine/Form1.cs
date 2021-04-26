@@ -4,13 +4,13 @@ using System.Drawing.Imaging;
 using System.Windows.Forms;
 using Newtonsoft.Json;
 using System.Collections.Generic;
-using UMLDrawer.Handler;
-using UMLDrawer.Abstract;
-using UMLDrawer.Factory;
+using ArrowLine.Handler;
+using ArrowLine.Abstract;
+using ArrowLine.Factory;
 
-namespace UMLDrawer
+namespace ArrowLine
 {
-    public partial class Form1 : Form
+    public partial class DrawerForm : Form
     {
         private DataPictureBox dataPictureBox;
         private string buttonName;
@@ -20,7 +20,7 @@ namespace UMLDrawer
         private IMouseHandler mouseHandler;
         private IFigureFactory currentFactory;
 
-        public Form1()
+        public DrawerForm()
         {
             InitializeComponent();
         }
@@ -32,7 +32,7 @@ namespace UMLDrawer
             CollectionFigure.collectionFigures = new List<AbstractFigure>();
             currentFactory = new InterfaceTableFactory();
             currentFigure = currentFactory.CreateFigure();
-            currentFigure.Color =Color.Black;
+            currentFigure.Color = Color.Black;
             currentFigure.PenWidth = 2;
             dataPictureBox.isMoving = false;
             mouseHandler = new SelectAndMoveMouseHandler();

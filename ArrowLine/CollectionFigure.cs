@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace UMLDrawer.Abstract
+namespace ArrowLine.Abstract
 {
     public static class CollectionFigure
     {

@@ -1,8 +1,8 @@
-﻿using UMLDrawer.Abstract;
-using UMLDrawer.Table.StringData;
+﻿using ArrowLine.Abstract;
+using ArrowLine.Table.StringData;
 using System.Windows.Forms;
 
-namespace UMLDrawer.Handler
+namespace ArrowLine.Handler
 {
     public interface IMouseHandler
     {

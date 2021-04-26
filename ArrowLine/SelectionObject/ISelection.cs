@@ -1,7 +1,7 @@
-﻿using UMLDrawer.Abstract;
+﻿using ArrowLine.Abstract;
 using System.Drawing;
 
-namespace UMLDrawer.SelectionObject
+namespace ArrowLine.SelectionObject
 {
     public interface ISelection
     {

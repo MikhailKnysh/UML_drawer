@@ -1,8 +1,8 @@
-﻿using UMLDrawer.Abstract;
+﻿using ArrowLine.Abstract;
 using System.Drawing;
 using UMlDrawer.Abstract;
 
-namespace UMLDrawer.Table
+namespace ArrowLine.Table
 {
     public class StackTable : AbstractTable
     {

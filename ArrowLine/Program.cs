@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Windows.Forms;
 
-namespace UMLDrawer
+namespace ArrowLine
 {
     static class Program
     {
@@ -13,7 +13,7 @@ namespace UMLDrawer
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form1());
+            Application.Run(new DrawerForm());
         }
     }
 }

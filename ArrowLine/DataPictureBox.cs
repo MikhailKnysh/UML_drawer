@@ -1,7 +1,7 @@
 using System.Drawing;
 using System.Windows.Forms;
 
-namespace UMLDrawer
+namespace ArrowLine
 {
     public class DataPictureBox
     {

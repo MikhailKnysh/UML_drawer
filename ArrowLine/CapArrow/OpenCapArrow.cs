@@ -1,8 +1,8 @@
-﻿using UMLDrawer.Abstract;
+﻿using ArrowLine.Abstract;
 using System;
 using System.Drawing;
 
-namespace UMLDrawer.CapArrow
+namespace ArrowLine.CapArrow
 {
     public class OpenCapArrow : AbstractCapArrow
     {

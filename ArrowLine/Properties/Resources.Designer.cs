@@ -9,7 +9,7 @@
 //------------------------------------------------------------------------------
 
 
-namespace UMLDrawer.Properties
+namespace ArrowLine.Properties
 {
     /// <summary>
     ///   A strongly-typed resource class, for looking up localized strings, etc.

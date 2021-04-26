@@ -1,8 +1,8 @@
-﻿using UMLDrawer.Table;
+﻿using ArrowLine.Table;
 using System.Collections.Generic;
 using System.Drawing;
 
-namespace UMLDrawer.Abstract
+namespace ArrowLine.Abstract
 {
     public abstract class AbstractTable : AbstractFigure
     {

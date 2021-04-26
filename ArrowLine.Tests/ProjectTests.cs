@@ -1,14 +1,14 @@
-using UMLDrawer.Table;
+using ArrowLine.Table;
 using NUnit.Framework;
 using System.Collections;
 using System.Drawing;
-using UMLDrawer.SelectionObject;
-using UMLDrawer.Abstract;
-using UMLDrawer.Arrow;
+using ArrowLine.SelectionObject;
+using ArrowLine.Abstract;
+using ArrowLine.Arrow;
 using System.Collections.Generic;
 using UMlDrawer.Abstract;
 
-namespace UMLDrawer.Tests
+namespace ArrowLine.Tests
 {
     public class ArrowLineTests
     {

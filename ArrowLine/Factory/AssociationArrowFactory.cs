@@ -1,8 +1,8 @@
-﻿using UMLDrawer.Arrow;
-using UMLDrawer.Abstract;
+﻿using ArrowLine.Arrow;
+using ArrowLine.Abstract;
 using UMlDrawer.Abstract;
 
-namespace UMLDrawer.Factory
+namespace ArrowLine.Factory
 {
     public class AssociationArrowFactory : IFigureFactory
     {

@@ -1,6 +1,6 @@
 ﻿using System.Drawing;
 
-namespace UMLDrawer.Table
+namespace ArrowLine.Table
 {
     public class LineInTable
     {

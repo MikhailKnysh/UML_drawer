@@ -1,7 +1,7 @@
 
-namespace UMLDrawer
+namespace ArrowLine
 {
-    partial class Form1
+    partial class DrawerForm
     {
         /// <summary>
         /// Required designer variable.
@@ -30,7 +30,7 @@ namespace UMLDrawer
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DrawerForm));
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.colorDialog1 = new System.Windows.Forms.ColorDialog();
             this.trackBar1 = new System.Windows.Forms.TrackBar();

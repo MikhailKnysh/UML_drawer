@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel;
 
-namespace UMLDrawer.Table
+namespace ArrowLine.Table
 {
     public enum AccessModifier
     {

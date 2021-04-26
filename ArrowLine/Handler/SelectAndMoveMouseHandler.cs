@@ -1,7 +1,7 @@
-﻿using UMLDrawer.Abstract;
-using UMLDrawer.Handler;
-using UMLDrawer.SelectionObject;
-using UMLDrawer.Table.StringData;
+﻿using ArrowLine.Abstract;
+using ArrowLine.Handler;
+using ArrowLine.SelectionObject;
+using ArrowLine.Table.StringData;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -10,7 +10,7 @@ using System.Linq;
 using System.Windows.Forms;
 using UMlDrawer.Abstract;
 
-namespace UMLDrawer
+namespace ArrowLine
 {
     public class SelectAndMoveMouseHandler : IMouseHandler
     {

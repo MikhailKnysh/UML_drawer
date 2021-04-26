@@ -1,9 +1,9 @@
-﻿using UMLDrawer.Abstract;
+﻿using ArrowLine.Abstract;
 using System.Collections.Generic;
 using System.Drawing;
 using UMlDrawer.Abstract;
 
-namespace UMLDrawer.SelectionObject
+namespace ArrowLine.SelectionObject
 {
     public class Selection : ISelection
     {

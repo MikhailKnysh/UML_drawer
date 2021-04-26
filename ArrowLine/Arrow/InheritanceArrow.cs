@@ -1,9 +1,9 @@
-﻿using UMLDrawer.CapArrow;
-using UMLDrawer.Line;
-using UMLDrawer.Abstract;
+﻿using ArrowLine.CapArrow;
+using ArrowLine.Line;
+using ArrowLine.Abstract;
 using UMlDrawer.Abstract;
 
-namespace UMLDrawer.Arrow
+namespace ArrowLine.Arrow
 {
     public class InheritanceArrow : AbstractFigure
     {

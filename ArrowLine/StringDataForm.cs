@@ -1,10 +1,10 @@
-﻿using UMLDrawer.Table;
-using UMLDrawer.Table.StringData;
+﻿using ArrowLine.Table;
+using ArrowLine.Table.StringData;
 using System;
 using System.Linq;
 using System.Windows.Forms;
 
-namespace UMLDrawer
+namespace ArrowLine
 {
     public partial class StringDataForm : Form
     {

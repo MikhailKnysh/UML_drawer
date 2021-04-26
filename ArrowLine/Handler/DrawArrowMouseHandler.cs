@@ -1,11 +1,11 @@
-﻿using UMLDrawer.Abstract;
-using UMLDrawer.Table.StringData;
+﻿using ArrowLine.Abstract;
+using ArrowLine.Table.StringData;
 using System;
 using System.Drawing;
 using System.Windows.Forms;
 using UMlDrawer.Abstract;
 
-namespace UMLDrawer.Handler
+namespace ArrowLine.Handler
 {
     public class DrawArrowMouseHandler : IMouseHandler
     {
