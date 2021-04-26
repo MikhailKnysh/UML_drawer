@@ -391,7 +391,7 @@ namespace ArrowLine
             this.button2.TabIndex = 19;
             this.button2.Text = "УНИЧТОЖИТЬ";
             this.button2.UseVisualStyleBackColor = false;
-            this.button2.Click += new System.EventHandler(this.button2_Click_1);
+            this.button2.Click += new System.EventHandler(this.buttonDelete_Click);
             // 
             // buttonClear
             // 

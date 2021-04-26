@@ -307,7 +307,7 @@ namespace ArrowLine
             bitmapToSave.Save("Shapes075.jpg", imageCodecInfo, encoderParameters);
         }
 
-        private void button2_Click_1(object sender, EventArgs e)
+        private void buttonDelete_Click(object sender, EventArgs e)
         {
             mouseHandler = new DeleteCurrentObjectMouseHandler();
         }
